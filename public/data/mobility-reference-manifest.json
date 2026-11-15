@@ -1,0 +1,41 @@
+{
+  "id": "nasa-glenn-published-mobility-reference-v1",
+  "role": "validation_only",
+  "sources": [
+    {
+      "role": "NASA-hosted paper preprint; 15 February 2025 PDF",
+      "url": "https://ntrs.nasa.gov/api/citations/20250001809/downloads/main-20250215.pdf",
+      "local_file": "data/raw/robots/research/mobility-gravity-2025.pdf",
+      "sha256": "12a95d406c4e371847263a5ab06ae93f178044e1cd05b11e0e7d17356e4f5854",
+      "bytes": 36125917
+    },
+    {
+      "role": "Author experimental plot-point arrays",
+      "url": "https://github.com/sjtumsd/crm_sim_nasa_exp_scripts/blob/54f74dc514b394d3a02e15d7508b1bf27a88d1a6/images/figure4b.py",
+      "local_file": "data/raw/robots/crm_sim_nasa_exp_scripts/images/figure4b.py",
+      "sha256": "9c924e0df50ac6aadb27e9eed2d70520c0e77eee7514468f6dbba4a7b7fdb592",
+      "bytes": 4320
+    },
+    {
+      "role": "Author single-wheel rig definition",
+      "url": "https://github.com/sjtumsd/crm_sim_nasa_exp_scripts/blob/54f74dc514b394d3a02e15d7508b1bf27a88d1a6/demos/single_wheel_vv_mode/demo_FSI_SingleWheelTest_VV_mode.cpp",
+      "local_file": "data/raw/robots/crm_sim_nasa_exp_scripts/demos/single_wheel_vv_mode/demo_FSI_SingleWheelTest_VV_mode.cpp",
+      "sha256": "fb2c3e540d8a721f26f7c127b241e2ba66a4bd7f7c3f9f425e54cb4ad8d8117e",
+      "bytes": 18109
+    },
+    {
+      "role": "Author reproduction requirements",
+      "url": "https://github.com/sjtumsd/crm_sim_nasa_exp_scripts/blob/54f74dc514b394d3a02e15d7508b1bf27a88d1a6/README.md",
+      "local_file": "data/raw/robots/crm_sim_nasa_exp_scripts/README.md",
+      "sha256": "d5fc14006ec9b31bcfaed1a207d870de0dd6f61329ff2472eba36c89bdb42129",
+      "bytes": 3279
+    }
+  ],
+  "derivative": {
+    "url": "/data/mobility-reference.json",
+    "sha256": "bbc2049b556bb5eb5b0ff7a688945d09a189ed55d3a43b810022724df911d33e",
+    "bytes": 9422,
+    "script": "scripts/prepare_mobility_reference.py"
+  },
+  "limits": "Not established. Earth simulant tests do not directly calibrate local lunar regolith, and changing vehicle gravity alone does not model soil gravity."
+}

@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spaceapps.invalid/contracts/v0.1/plan-evaluation.schema.json",
+  "title": "Scoped plan evaluation",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "evaluation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "robot_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "environment_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "assessment_scope": {
+      "enum": [
+        "surface_mission",
+        "departure_and_surface_screening"
+      ]
+    },
+    "status": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/assessment_status"
+    },
+    "scope_notes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "surface_result": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/assessment_status"
+        },
+        "minimum_battery_wh": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "battery_reserve_margin_wh": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "longest_geometric_earth_outage_s": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "required_tasks_completed": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "first_violation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "constraint_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "t_s": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "constraint_id",
+                "t_s",
+                "message"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "samples": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "t_s": {
+                "type": "number",
+                "minimum": 0
+              },
+              "position_enu_m": {
+                "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+              },
+              "solar_power_w": {
+                "type": "number",
+                "minimum": 0
+              },
+              "total_load_w": {
+                "type": "number",
+                "minimum": 0
+              },
+              "battery_energy_wh": {
+                "type": "number",
+                "minimum": 0
+              },
+              "earth_center_visible": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "t_s",
+              "position_enu_m",
+              "solar_power_w",
+              "total_load_w",
+              "battery_energy_wh",
+              "earth_center_visible"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "status",
+        "minimum_battery_wh",
+        "battery_reserve_margin_wh",
+        "longest_geometric_earth_outage_s",
+        "required_tasks_completed",
+        "first_violation",
+        "samples"
+      ],
+      "additionalProperties": false
+    },
+    "transfer_result": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "not_run",
+            "converged",
+            "no_solution_found_in_search",
+            "nonconverged",
+            "invalid_input"
+          ]
+        },
+        "departure_utc": {
+          "anyOf": [
+            {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "encounter_utc": {
+          "anyOf": [
+            {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "capture_utc": {
+          "anyOf": [
+            {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total_maneuver_delta_v_m_s": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "candidate_artifact": {
+          "anyOf": [
+            {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "status",
+        "departure_utc",
+        "encounter_utc",
+        "capture_utc",
+        "total_maneuver_delta_v_m_s",
+        "candidate_artifact",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "landing_access": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "not_evaluated",
+            "assumed_not_dynamically_validated",
+            "dynamically_validated"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "status",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "provenance": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/provenance"
+    }
+  },
+  "required": [
+    "schema_version",
+    "evaluation_id",
+    "request_id",
+    "robot_ref",
+    "environment_ref",
+    "assessment_scope",
+    "status",
+    "scope_notes",
+    "surface_result",
+    "transfer_result",
+    "landing_access",
+    "issues",
+    "assumptions",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

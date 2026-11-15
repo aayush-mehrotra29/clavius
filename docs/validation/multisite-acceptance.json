@@ -1,0 +1,101 @@
+{
+  "site04_mission_id": "56d45cde-1221-473d-a756-505cabe75d88",
+  "paired_site01_mission_id": "7cfa09fa-7c45-4703-ab5d-858b27460b73",
+  "paired_mission_inputs_equal_except_site_name": true,
+  "site04_metrics": {
+    "capacity_wh": 500.0,
+    "consumed_wh": 255.60631928620828,
+    "distance_m": 113.27701431377791,
+    "final_battery_wh": 155.94071654082978,
+    "generated_wh": 0.0,
+    "longest_earth_outage_s": 0,
+    "max_route_pitch_deg": 5.223251028468241,
+    "max_terrain_slope_deg": 5.92694182592862,
+    "minimum_battery_wh": 155.94071654082978,
+    "operations_energy_supported": true,
+    "required_tasks_scheduled_complete": true,
+    "reserve_wh": 75,
+    "scheduled_completion_s": 2865.5402862755577
+  },
+  "site01_metrics": {
+    "capacity_wh": 500.0,
+    "consumed_wh": 255.58849085251285,
+    "distance_m": 113.2373277458786,
+    "final_battery_wh": 156.24091169096977,
+    "generated_wh": 0.2673569589379854,
+    "longest_earth_outage_s": 0,
+    "max_route_pitch_deg": 3.431054853446434,
+    "max_terrain_slope_deg": 4.429420338102939,
+    "minimum_battery_wh": 156.24091169096977,
+    "operations_energy_supported": true,
+    "required_tasks_scheduled_complete": true,
+    "reserve_wh": 75,
+    "scheduled_completion_s": 2864.7465549175718
+  },
+  "site04_failure_id": "0a71fe32-b16f-4668-81d9-f20c250bc859",
+  "failure_status": "constraint_violated",
+  "failure_first_violation": {
+    "code": "BATTERY_RESERVE",
+    "message": "Battery falls below the required reserve. Solar generation is insufficient for the active loads.",
+    "severity": "violation",
+    "state": {
+      "load_w": 20.0,
+      "mode": "idle",
+      "solar_visible_fraction": 0.0,
+      "solar_w": 0.0
+    },
+    "t_s": 42505.86252848228
+  },
+  "site04_repair_id": "39a5f991-2744-4516-95db-7cdfe0fa85ae",
+  "repair_status": "verified_repair_found",
+  "repair_metrics": {
+    "audit_candidates_frozen": 2,
+    "audit_cases_per_candidate": 3,
+    "candidate_budget_exhausted": false,
+    "candidate_space_size": 3,
+    "nominal_checked": 3,
+    "nominal_supported": 2,
+    "requested_work_complete": true,
+    "search_complete": true,
+    "simulation_evaluations": 9,
+    "unsearched_candidates": 0,
+    "verified_candidates": 1
+  },
+  "repair_preserved_requirements": {
+    "duration_hours": 12.0,
+    "max_earth_outage_s": 21600.0,
+    "required_activities": [
+      {
+        "duration_s": 600.0,
+        "kind": "science",
+        "waypoint": 1
+      }
+    ],
+    "robot_id": "afd6c5cad00ea2dd2efa2d12",
+    "signature": "1354bdbdd22d51f059606d381615b4318e6c989d75934be22f9fe49f7c0ec087",
+    "site_id": "shackleton-rim",
+    "waypoints": [
+      {
+        "east_m": 0.0,
+        "north_m": 0.0
+      },
+      {
+        "east_m": 60.0,
+        "north_m": 0.0
+      },
+      {
+        "east_m": 100.0,
+        "north_m": 35.0
+      }
+    ]
+  },
+  "site04_dynamics_id": "798b8f8f-c871-4416-8605-df8172b0aee5",
+  "comparison_export": {
+    "bytes": 184438,
+    "sha256": "6ec40bddbcded1814ff78378cbf6277fe6eb8d5070f4d83bf096e52315ce6a60"
+  },
+  "repair_export": {
+    "bytes": 1251782,
+    "sha256": "f8929a5e9bd2fd14d36e19a47f558a348bd7e526ea564f03b2a697c18430c1c0"
+  }
+}

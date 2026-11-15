@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spaceapps.invalid/contracts/v0.1/vehicle-response.schema.json",
+  "title": "Detailed vehicle segment response",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "response_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "segment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "segment_request_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "robot_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "environment_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "time_origin_utc": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+    },
+    "local_axes": {
+      "const": "x_east_y_north_z_up"
+    },
+    "quaternion_convention": {
+      "const": "xyzw_body_to_enu"
+    },
+    "response_model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "response_model_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "power_basis": {
+      "const": "base_plus_mobility_excludes_payload_radio_heater"
+    },
+    "mobility_bus_energy_wh": {
+      "type": "number",
+      "minimum": 0
+    },
+    "validity_status": {
+      "enum": [
+        "within_domain",
+        "outside_domain",
+        "unknown"
+      ]
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "t_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "position_enu_m": {
+            "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+          },
+          "orientation_body_to_enu_xyzw": {
+            "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/quaternion_xyzw"
+          },
+          "actual_speed_m_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "mobility_bus_power_w": {
+            "type": "number",
+            "minimum": 0
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "t_s",
+          "position_enu_m",
+          "orientation_body_to_enu_xyzw",
+          "actual_speed_m_s",
+          "mobility_bus_power_w",
+          "flags"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2
+    },
+    "provenance": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/provenance"
+    }
+  },
+  "required": [
+    "schema_version",
+    "response_id",
+    "segment_id",
+    "segment_request_ref",
+    "robot_ref",
+    "environment_ref",
+    "time_origin_utc",
+    "local_axes",
+    "quaternion_convention",
+    "response_model_id",
+    "response_model_version",
+    "power_basis",
+    "mobility_bus_energy_wh",
+    "validity_status",
+    "samples",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

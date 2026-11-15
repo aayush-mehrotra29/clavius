@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spaceapps.invalid/contracts/v0.1/vehicle-segment-request.schema.json",
+  "title": "Detailed vehicle segment request",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "segment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "robot_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "environment_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "time_origin_utc": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+    },
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "soil_category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "start_t_s": {
+      "type": "number",
+      "minimum": 0
+    },
+    "duration_s": {
+      "type": "number",
+      "minimum": 0.001
+    },
+    "initial_state": {
+      "type": "object",
+      "properties": {
+        "position_enu_m": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+        },
+        "orientation_body_to_enu_xyzw": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/quaternion_xyzw"
+        },
+        "speed_m_s": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "position_enu_m",
+        "orientation_body_to_enu_xyzw",
+        "speed_m_s"
+      ],
+      "additionalProperties": false
+    },
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "start_t_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "duration_s": {
+            "type": "number",
+            "minimum": 0.001
+          },
+          "mode": {
+            "enum": [
+              "drive",
+              "idle"
+            ]
+          },
+          "speed_setpoint_m_s": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "start_t_s",
+          "duration_s",
+          "mode",
+          "speed_setpoint_m_s"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "provenance": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/provenance"
+    }
+  },
+  "required": [
+    "schema_version",
+    "segment_id",
+    "robot_ref",
+    "environment_ref",
+    "time_origin_utc",
+    "scenario_id",
+    "seed",
+    "soil_category",
+    "start_t_s",
+    "duration_s",
+    "initial_state",
+    "controls",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

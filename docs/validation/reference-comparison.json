@@ -1,0 +1,68 @@
+{
+  "case": "Same rover, site, route, science stop and models; only UTC date changes",
+  "robot_id": "afd6c5cad00ea2dd2efa2d12",
+  "implementation": {
+    "libraries": {
+      "mujoco": "4.0.1",
+      "numpy": "2.5.4",
+      "rasterio": "1.5.2",
+      "scipy": "1.18.1",
+      "spiceypy": "8.4.0"
+    },
+    "source_sha256": "4b986f9b359350d6a2affa91e7f190b7742a01abc2a521931a26104bcdbe0bb8",
+    "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+  },
+  "runs": [
+    {
+      "id": "14b8145e-c6df-4f5a-b37a-3e148aaebcac",
+      "name": "Reference traverse \u00b7 Jan 01 2028",
+      "input_sha256": "f8a1f3b68c2696480b0a4990a88fd5e26c64b2f61054f1d4adb6cc20b087be79",
+      "artifact_sha256": "d854e1054f793d846ee27de3816fb461c47f853f14738e94bb2c72f26070caa2",
+      "status": "supported_under_assumptions",
+      "metrics": {
+        "capacity_wh": 500,
+        "consumed_wh": 255.58849085251285,
+        "distance_m": 113.2373277458786,
+        "final_battery_wh": 156.24091169096977,
+        "generated_wh": 0.2673569589379854,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 3.431054853446434,
+        "max_terrain_slope_deg": 4.429420338102939,
+        "minimum_battery_wh": 156.24091169096977,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2864.7465549175718
+      },
+      "first_violation": null
+    },
+    {
+      "id": "02d915c7-5b8f-4e25-a6fe-6d39557455ac",
+      "name": "Reference traverse \u00b7 Jan 14 2028",
+      "input_sha256": "833808e78bea579996f2f943a8b00f7d70afa05aa53a8c4f57109b68e2c48698",
+      "artifact_sha256": "386128c6ec1375a0b7e205d55a279d8bd3a71c5d6a6722ada9a5f04d1c57567c",
+      "status": "constraint_violated",
+      "metrics": {
+        "capacity_wh": 500,
+        "consumed_wh": 255.58849085251285,
+        "distance_m": 113.2373277458786,
+        "final_battery_wh": 223.26404838031723,
+        "generated_wh": 63.93933681381133,
+        "longest_earth_outage_s": 43200.0,
+        "max_route_pitch_deg": 3.431054853446434,
+        "max_terrain_slope_deg": 4.429420338102939,
+        "minimum_battery_wh": 223.26404838031723,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2864.7465549175718
+      },
+      "first_violation": {
+        "code": "CONTACT_OUTAGE_LIMIT",
+        "message": "Continuous geometric Earth-center outage exceeds the declared 6 h limit.",
+        "severity": "violation",
+        "t_s": 21600.0
+      }
+    }
+  ]
+}

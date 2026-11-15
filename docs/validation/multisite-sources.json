@@ -1,0 +1,187 @@
+{
+  "source_asset_hashes_verified": [
+    {
+      "file": "Site01_final_adj_5mpp_surf.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif",
+      "sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+      "bytes": 40980810
+    },
+    {
+      "file": "Site01_final_adj_5mpp_toterr.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_toterr.tif",
+      "sha256": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c",
+      "bytes": 40980810
+    },
+    {
+      "file": "LDEM_80S_80MPP_ADJ.TIF",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+      "sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a",
+      "bytes": 189158392
+    },
+    {
+      "file": "Site04_final_adj_5mpp_surf.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_final_adj_5mpp_surf.tif",
+      "sha256": "38ff70dbdf2f066c2cfa94a646c3a59d653ce7f6b4528b15fc1b43ee397ce758",
+      "bytes": 40980806
+    },
+    {
+      "file": "Site04_final_adj_5mpp_toterr.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_final_adj_5mpp_toterr.tif",
+      "sha256": "416c4baa3b64def0182bb3379a1a9228482efd8ce32a39309ea8de5d0330fbe6",
+      "bytes": 40980808
+    },
+    {
+      "file": "Site04_ROIs.tgz",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_ROIs.tgz",
+      "sha256": "8e8b788f9fdf6400f23fd36dad02138102bd1a905b4b71a5739a9a4fd8a0e07a",
+      "bytes": 1712
+    },
+    {
+      "file": "LOLA_5mpp_README.txt",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/README",
+      "sha256": "e985a2337c9de1cd665b0ddad8b7f1fac88d65c96d1e47d1b975a91c8e53e7bd",
+      "bytes": 1829
+    }
+  ],
+  "roi4_anchor_inside_polygon": true,
+  "sites": [
+    {
+      "definition": {
+        "id": "connecting-ridge",
+        "name": "Connecting Ridge",
+        "latitude_deg": -89.44,
+        "longitude_deg": 222.8,
+        "local_asset_id": "PGDA78-Site01",
+        "error_asset_id": "PGDA78-Site01-height-error",
+        "regional_asset_id": "PGDA90-80m",
+        "manifest_file": "connecting-ridge-manifest.json",
+        "source_id": "PGDA78-Site01",
+        "origin_selection": {
+          "method": "Existing curated Connecting Ridge reference point; approximate navigation origin, not a surveyed landing location."
+        }
+      },
+      "origin_elevation_m": 1958.1793212890625,
+      "origin_registration_check": null,
+      "vertical_checks": [
+        {
+          "lat_deg": -89.44,
+          "lon_deg": 222.8,
+          "local_elevation_m": 1958.1793212890625,
+          "regional_elevation_m": 1957.42919921875,
+          "difference_m": 0.7501220703125
+        },
+        {
+          "lat_deg": -89.45,
+          "lon_deg": 222.8,
+          "local_elevation_m": 1956.777099609375,
+          "regional_elevation_m": 1955.023681640625,
+          "difference_m": 1.75341796875
+        },
+        {
+          "lat_deg": -89.44,
+          "lon_deg": 223.2,
+          "local_elevation_m": 1952.8533935546875,
+          "regional_elevation_m": 1953.1680908203125,
+          "difference_m": -0.314697265625
+        },
+        {
+          "lat_deg": -89.43,
+          "lon_deg": 222.5,
+          "local_elevation_m": 1942.9156494140625,
+          "regional_elevation_m": 1942.82763671875,
+          "difference_m": 0.0880126953125
+        },
+        {
+          "lat_deg": -89.46,
+          "lon_deg": 222.7,
+          "local_elevation_m": 1948.8848876953125,
+          "regional_elevation_m": 1947.965576171875,
+          "difference_m": 0.9193115234375
+        }
+      ],
+      "local_patch_height_range_m": [
+        -28.41312442391835,
+        1.1428937261217809
+      ],
+      "local_origin_slope_deg": 1.7700414339675323
+    },
+    {
+      "definition": {
+        "id": "shackleton-rim",
+        "name": "Shackleton rim",
+        "latitude_deg": -89.78487391500357,
+        "longitude_deg": 204.04052123431973,
+        "local_asset_id": "PGDA78-Site04",
+        "error_asset_id": "PGDA78-Site04-height-error",
+        "regional_asset_id": "PGDA90-80m",
+        "roi_asset_id": "PGDA78-Site04-rois",
+        "manifest_file": "shackleton-rim-manifest.json",
+        "source_id": "PGDA78-Site04",
+        "origin_selection": {
+          "method": "Published Site04_ROIs.dbf record 4 X/Y attributes, converted from source south polar stereographic metres.",
+          "source_archive": "Site04_ROIs.tgz",
+          "source_archive_sha256": "8e8b788f9fdf6400f23fd36dad02138102bd1a905b4b71a5739a9a4fd8a0e07a",
+          "record": 4,
+          "polar_x_m": -2657.5,
+          "polar_y_m": -5957.5,
+          "limit": "A curated analysis origin inside the published ROI, not proof of landing or rover safety."
+        }
+      },
+      "origin_elevation_m": 1737.2283935546875,
+      "origin_registration_check": {
+        "roi_record": 4,
+        "source_x_m": -2657.5,
+        "source_y_m": -5957.5,
+        "pixel_column": 1268,
+        "pixel_row": 1391,
+        "conversion_residual_m": 2.701111222518759e-10
+      },
+      "vertical_checks": [
+        {
+          "lat_deg": -89.78487391500357,
+          "lon_deg": 204.04052123431973,
+          "local_elevation_m": 1737.2283935546875,
+          "regional_elevation_m": 1732.7679443359375,
+          "difference_m": 4.46044921875
+        },
+        {
+          "lat_deg": -89.78210373010046,
+          "lon_deg": 205.62458891995354,
+          "local_elevation_m": 1728.889404296875,
+          "regional_elevation_m": 1727.24169921875,
+          "difference_m": 1.647705078125
+        },
+        {
+          "lat_deg": -89.78747545273723,
+          "lon_deg": 202.41640432010183,
+          "local_elevation_m": 1673.0933837890625,
+          "regional_elevation_m": 1669.4534912109375,
+          "difference_m": 3.639892578125
+        },
+        {
+          "lat_deg": -89.77883415384943,
+          "lon_deg": 203.34442380296778,
+          "local_elevation_m": 1735.9925537109375,
+          "regional_elevation_m": 1732.289306640625,
+          "difference_m": 3.7032470703125
+        },
+        {
+          "lat_deg": -89.79088009282803,
+          "lon_deg": 204.77671822611362,
+          "local_elevation_m": 1722.7598876953125,
+          "regional_elevation_m": 1723.074462890625,
+          "difference_m": -0.3145751953125
+        }
+      ],
+      "local_patch_height_range_m": [
+        -161.97910413939988,
+        1.5137886885541851
+      ],
+      "local_origin_slope_deg": 2.291964414605017
+    }
+  ],
+  "limits": [
+    "Vertical comparison is against coarser regional data, not an absolute accuracy determination.",
+    "5 m source cells include interpolation between LOLA tracks; no rover-scale hazards or calibrated regolith are supplied."
+  ]
+}

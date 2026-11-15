@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.1.0",
+  "source_class": "synthetic_contract_fixture",
+  "dataset_ids": [],
+  "kernel_assets": [],
+  "notes": "No NASA assets or kernels were used to generate this synthetic environment.",
+  "terrain_asset": {
+    "uri": "assets/synthetic-terrain.json",
+    "sha256": "853c7ae19da5c3dfb72ff5104b4584a55009dcb2bd0a8092da1f0d275a9e67ce"
+  },
+  "normalization": "Explicit flat local tangent plane at an artificial sphere point."
+}

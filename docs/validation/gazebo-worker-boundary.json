@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-14",
+  "worker_native_execution": "not_executed; no Linux worker configured",
+  "container_build": "not_executed",
+  "checks": {
+    "simulation_tests": {
+      "passed": 42,
+      "command": "npm run test:simulation"
+    },
+    "production_build": "passed; existing Three.js chunk size advisory",
+    "shell_syntax": "workers/gazebo/entrypoint.sh passed bash -n",
+    "browser_unavailable_engine": "Gazebo option disabled, reason shows no configured Linux worker",
+    "browser_input_download": {
+      "filename": "clavius-gazebo-inputs.zip",
+      "bytes": 169323,
+      "sha256": "a8842961205e4c72b2c797405a888094b8182a1a4021a99582f5f7a2ffad93e9",
+      "bundle_sha256": "b7a753850f61c3675d9d570dcc71b7bc32227cf75ef968b79f36f96c30813757",
+      "source_run_id": "14b8145e-c6df-4f5a-b37a-3e148aaebcac"
+    },
+    "browser_local_physics_probe": {
+      "run_id": "2c5344e6-fb24-405a-b050-7ad9f344b2bb",
+      "engine": {
+        "gravity_m_s2": [
+          0,
+          0,
+          -1.62
+        ],
+        "name": "MuJoCo",
+        "terrain_resolution_m": 5,
+        "timestep_s": 0.005,
+        "version": "4.0.1"
+      },
+      "source_mission": {
+        "energy_policy": "Independent physical probe. Does not replace or add to the source mission energy ledger.",
+        "id": "14b8145e-c6df-4f5a-b37a-3e148aaebcac",
+        "input_sha256": "f8a1f3b68c2696480b0a4990a88fd5e26c64b2f61054f1d4adb6cc20b087be79",
+        "offset_s": 1800.6628330622323
+      },
+      "request": {
+        "duration_s": 20.0,
+        "east_m": 60.0,
+        "engine": "mujoco",
+        "friction_coefficient": 0.7,
+        "heading_deg": 41.185925165709655,
+        "mission_offset_s": 1800.6628330622323,
+        "motor_efficiency": 0.65,
+        "north_m": 0.0,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "seed": 42,
+        "source_run_id": "14b8145e-c6df-4f5a-b37a-3e148aaebcac",
+        "speed_m_s": 0.05,
+        "turn_rate_rad_s": 0.0
+      },
+      "metrics": {
+        "contacts_observed": true,
+        "displacement_m": 1.032439600755932,
+        "distance_m": 1.0324546399213075,
+        "duration_s": 20.000000000000306,
+        "maximum_abs_slip_ratio": 0.9504099225172792,
+        "maximum_pitch_deg": 1.8562219671334421,
+        "maximum_roll_deg": 2.317002923444102,
+        "mobility_bus_energy_wh": 0.06718493885768967
+      },
+      "implementation": {
+        "libraries": {
+          "mujoco": "4.0.1",
+          "numpy": "2.5.4",
+          "rasterio": "1.5.2",
+          "scipy": "1.18.1",
+          "spiceypy": "8.4.0"
+        },
+        "source_sha256": "d5e6d3dcaf6495d545b8d32b89f04a8fbbf617d0f246af0fa118b59a78e41aae",
+        "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+      },
+      "reproduction": {
+        "reproduced": true,
+        "metric_tolerance": "relative/absolute 1e-6",
+        "differences": [],
+        "export_bytes": 162300,
+        "export_sha256": "6eef092595ce1237c84c3761c1f63b3e78b06cb4b3843c9af3a3ccf915c40f4c"
+      }
+    },
+    "browser_mobile_engine_dialog": {
+      "viewport_css_px": [
+        390,
+        844
+      ],
+      "dialog_client_width": 356,
+      "dialog_scroll_width": 356,
+      "dialog_client_height": 758,
+      "dialog_scroll_height": 827,
+      "download_button_reachable": true
+    }
+  },
+  "limits": [
+    "Protocol fixtures, SDF export and shell syntax checks do not establish native Gazebo execution.",
+    "Native Gazebo/DART integration, ROS 2 reception and analytical benchmark must run on Linux.",
+    "Calibrated lunar soil/thermal predictions and observed-shadow validation remain unresolved."
+  ],
+  "launch_source": {
+    "workers/gazebo/Dockerfile": "f288c2b9950fcaad84c8ab885de911cf424dd2109b8e588c8dba578a8e908f41",
+    "workers/gazebo/entrypoint.sh": "d516d7db1ed64fc259c076a9e764b7dd64dfeab9846314fd5565006842d19bc2",
+    "workers/gazebo/compose.yaml": "384f2f17190f50c1a735d955310810e801490e5a3c26094bd98eff977ab72490"
+  }
+}

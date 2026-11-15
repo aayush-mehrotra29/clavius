@@ -1,0 +1,53 @@
+{
+  "checked_date": "2026-11-15",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "mission_id": "904e8af3-c059-4379-b098-bebc8465ca15",
+  "native_probe_id": "19c4e62b-efdc-4b55-86e7-410fe887e873",
+  "observed_checks": [
+    "Surface selector names nominal plus NASA statistical clones 001\u2013003.",
+    "Selecting clone 001 updates map name and geometry; changing to nominal invalidates the prior result, and changing back restores the selected clone label.",
+    "Saved clone mission reloads the matching Shackleton/001 surface.",
+    "The native LOLA support layer shows distinct projected source cells with nearest filtering rather than blended vertex colors.",
+    "A canvas point at local east 34.3 m / north 11.1 m reports one LOLA return in its containing nominal cell.",
+    "Both PNG responses over the live HTTP server have image/png type and exact manifest SHA-256.",
+    "A stale Vite static-file catalogue returned HTML for a new image; the image hash guard disabled the layer. Restarting Vite restored valid native textures.",
+    "The source-linked Gazebo selector refreshes verified worker readiness and retains the selected site/clone.",
+    "The 20-second clone probe replays through its final clock and operates the Follow rover control.",
+    "Browser evidence downloads retain the selected surface and reproduce numerically.",
+    "The 390 px surface form shows the complete clone label and model limits; document clientWidth equals scrollWidth (390 px)."
+  ],
+  "screenshots": {
+    "native_support": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts/terrain-native-support-final.png",
+    "native_rover": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts/terrain-clone-gazebo-final.png",
+    "mobile_surface": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts/terrain-surface-mobile.png"
+  },
+  "downloads": [
+    {
+      "kind": "mission",
+      "bytes": 192478,
+      "sha256": "12f1387c715ae27a575b3a39f56144a7dfc66e9b41fc7a2d733542a4a7dd5949",
+      "reproduction_report": "terrain-clone-mission-reproduction.json",
+      "reproduced": true
+    },
+    {
+      "kind": "Gazebo clone segment",
+      "bytes": 300228,
+      "sha256": "198a6a2a0d71ca78bdc14bc12f003479bcbd55e23c37dc258cd8693e94c63f67",
+      "reproduction_report": "terrain-clone-gazebo-reproduction.json",
+      "reproduced": true
+    }
+  ],
+  "native_pair_report": "terrain-native-pair.json",
+  "backend_tests_passed": 95,
+  "global_terrain_tests_passed": 7,
+  "production_build": "passed"
+}

@@ -1,0 +1,17 @@
+{
+  "source_comparison_sha256": "630754a54601d25e56e5813380d52c586d504527184f66d855a8e886141e80a7",
+  "case": "TREC source index 1, base timestep",
+  "checks": {
+    "trace_exact": true,
+    "xml_exact": true,
+    "traction_exact": true,
+    "controls_passed": true
+  },
+  "python": "3.13.13",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "libraries": {
+    "numpy": "2.5.4",
+    "mujoco": "4.0.1"
+  },
+  "scope": "One independent repeated native case, not a repeat of the complete 18-point campaign."
+}

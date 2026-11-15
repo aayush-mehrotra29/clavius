@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "robot_id": "fixture-rover-001",
+  "name": "Hypothetical reference rover",
+  "family": "wheeled_rover",
+  "body_axes": "x_forward_y_left_z_up",
+  "mass_kg": 120,
+  "dimensions_m": [
+    1.8,
+    1.6,
+    1.0
+  ],
+  "center_of_mass_body_m": [
+    0,
+    0,
+    0.35
+  ],
+  "wheel_count": 6,
+  "ground_clearance_m": 0.25,
+  "power": {
+    "battery_capacity_wh": 1000,
+    "initial_soc_fraction": 0.8,
+    "reserve_wh": 200,
+    "charge_efficiency": 0.95,
+    "discharge_efficiency": 0.95,
+    "base_bus_power_w": 40,
+    "science_increment_w": 30,
+    "downlink_increment_w": 20,
+    "heater_increment_w": 0,
+    "solar_rated_power_w": 200,
+    "solar_reference_irradiance_w_m2": 1361,
+    "array_normal_body_unit": [
+      0,
+      0,
+      1
+    ]
+  },
+  "mobility": {
+    "response_model_id": "fixture-constant-mobility",
+    "response_model_version": "0.1.0",
+    "response_model_kind": "declared_constant",
+    "nominal_speed_m_s": 0.05,
+    "max_supported_slope_deg": 15,
+    "driving_bus_power_w": 120,
+    "power_basis": "base_plus_mobility_excludes_payload_radio_heater",
+    "validity_domain": {
+      "slope_min_deg": -15,
+      "slope_max_deg": 15,
+      "speed_min_m_s": 0,
+      "speed_max_m_s": 0.05,
+      "soil_categories": [
+        "synthetic_flat"
+      ]
+    }
+  },
+  "provenance": {
+    "source_class": "synthetic_contract_fixture",
+    "model_id": "fixture-robot-profile",
+    "model_version": "0.1.0",
+    "notes": "Declared hypothetical parameters for interface testing; not NASA rover specifications."
+  }
+}

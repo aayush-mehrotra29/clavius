@@ -1,0 +1,1140 @@
+{
+  "method": "macOS ditto --hfsCompression; verified original logical size/SHA-256 before atomic replacement. No raw data bytes, record offsets, source identities or application code changed.",
+  "records": [
+    {
+      "file": "data/raw/diviner/pcp_avg_tbol_pols_sum_ltim01_240.tab",
+      "sha256": "414354cb2334b62161e895fe0f36369fdee77af13b0c5f333b86ddb05a0f618b",
+      "logical_bytes": 212653759,
+      "allocated_before": 212656128,
+      "allocated_after": 89944064,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/raw/diviner/pcp_avg_tbol_pols_sum_ltim49_240.tab",
+      "sha256": "35348174fb3d973fe3d43fa7777cb4a10055361c6313675f35b181079bad5ca3",
+      "logical_bytes": 197367449,
+      "allocated_before": 197369856,
+      "allocated_after": 85086208,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/raw/Site01_final_adj_5mpp_ldec.tif",
+      "sha256": "16d6ed21020ad48fa71d94e7437492acf5bf04118f52bcd292f57f22ead4cd23",
+      "logical_bytes": 40980744,
+      "allocated_before": 40984576,
+      "allocated_after": 3555328,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/raw/Site04_final_adj_5mpp_toterr.tif",
+      "sha256": "416c4baa3b64def0182bb3379a1a9228482efd8ce32a39309ea8de5d0330fbe6",
+      "logical_bytes": 40980808,
+      "allocated_before": 40984576,
+      "allocated_after": 40984576,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": false
+    },
+    {
+      "file": "data/raw/LDEM_80S_80MPP_ADJ.TIF",
+      "sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a",
+      "logical_bytes": 189158392,
+      "allocated_before": 189161472,
+      "allocated_after": 189161472,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": false
+    },
+    {
+      "file": "data/runtime/artifacts/bd8bf2a27129b93d21c387ba2d06d109bdac34d2deb119464cbc566bd26e3572.json",
+      "sha256": "bd8bf2a27129b93d21c387ba2d06d109bdac34d2deb119464cbc566bd26e3572",
+      "logical_bytes": 986022,
+      "allocated_before": 987136,
+      "allocated_after": 172032,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/d72ec924a37fc36b8388ad028ceda97b1d29cdd7979af966aaf5d262a162fca7.json",
+      "sha256": "d72ec924a37fc36b8388ad028ceda97b1d29cdd7979af966aaf5d262a162fca7",
+      "logical_bytes": 972893,
+      "allocated_before": 974848,
+      "allocated_after": 172032,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/8ea2ce0ef57ed3f38ad936df4ff5171de2538d821bc6d24f27bcb52c83d787b4.json",
+      "sha256": "8ea2ce0ef57ed3f38ad936df4ff5171de2538d821bc6d24f27bcb52c83d787b4",
+      "logical_bytes": 972893,
+      "allocated_before": 974848,
+      "allocated_after": 172032,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/aa553028b7caa5b6f758fe0a1da96d5782b8c24723cbf8f59fc21cbcfafb0816.json",
+      "sha256": "aa553028b7caa5b6f758fe0a1da96d5782b8c24723cbf8f59fc21cbcfafb0816",
+      "logical_bytes": 972871,
+      "allocated_before": 974848,
+      "allocated_after": 172032,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/ac0528594db1a5558c42b86ec3106a1beb7d104c2ba39ef3ecd05ae238defd1c.json",
+      "sha256": "ac0528594db1a5558c42b86ec3106a1beb7d104c2ba39ef3ecd05ae238defd1c",
+      "logical_bytes": 957032,
+      "allocated_before": 958464,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/3d1e57a3ad333102ba687451da587843361a94418ed3aad54cd20684aebc9324.json",
+      "sha256": "3d1e57a3ad333102ba687451da587843361a94418ed3aad54cd20684aebc9324",
+      "logical_bytes": 957032,
+      "allocated_before": 958464,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/3ff3bfedd6d49c97d5be37b5b5fa6320bd17b001b0d25b31b697fd4a7e2138e4.json",
+      "sha256": "3ff3bfedd6d49c97d5be37b5b5fa6320bd17b001b0d25b31b697fd4a7e2138e4",
+      "logical_bytes": 807035,
+      "allocated_before": 811008,
+      "allocated_after": 167936,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/835c06b77170e7b2d12b2209fc8fa06e534bb1a74943deda2ce9586ad76983da.json",
+      "sha256": "835c06b77170e7b2d12b2209fc8fa06e534bb1a74943deda2ce9586ad76983da",
+      "logical_bytes": 807027,
+      "allocated_before": 811008,
+      "allocated_after": 167936,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/f65c8c0108c0bbad216aca0bdf5bcac9f265fe8b3f5903ecfd866b93c586976f.json",
+      "sha256": "f65c8c0108c0bbad216aca0bdf5bcac9f265fe8b3f5903ecfd866b93c586976f",
+      "logical_bytes": 806080,
+      "allocated_before": 806912,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/b40bc190b5abce18331152aa61d8f841b895f49993f8557350f827288b711a7d.json",
+      "sha256": "b40bc190b5abce18331152aa61d8f841b895f49993f8557350f827288b711a7d",
+      "logical_bytes": 805428,
+      "allocated_before": 806912,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/980cfacb12a4f0c52023e9ec6e85b065f31c360d0df2c1705d584f337830f6a5.json",
+      "sha256": "980cfacb12a4f0c52023e9ec6e85b065f31c360d0df2c1705d584f337830f6a5",
+      "logical_bytes": 804933,
+      "allocated_before": 806912,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/1f623c196a8eb3d04aa10929390b3cfcf083fab8f5df07978076499c39def955.json",
+      "sha256": "1f623c196a8eb3d04aa10929390b3cfcf083fab8f5df07978076499c39def955",
+      "logical_bytes": 794495,
+      "allocated_before": 794624,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/a031b93180371295aa49643dfee6ceb0c7cb4acc4cac45abd13e4312d591ecce.json",
+      "sha256": "a031b93180371295aa49643dfee6ceb0c7cb4acc4cac45abd13e4312d591ecce",
+      "logical_bytes": 794444,
+      "allocated_before": 794624,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/3ee975b16e8232a615c16998f3d364a2d3f5109ded204f23b2804387c226ba15.json",
+      "sha256": "3ee975b16e8232a615c16998f3d364a2d3f5109ded204f23b2804387c226ba15",
+      "logical_bytes": 793204,
+      "allocated_before": 794624,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/9bb3995cd56ba5f165fb6c7514e48fb443112638532cb771ecb6c671d6d068c6.json",
+      "sha256": "9bb3995cd56ba5f165fb6c7514e48fb443112638532cb771ecb6c671d6d068c6",
+      "logical_bytes": 793039,
+      "allocated_before": 794624,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/52107c8a21a5ad36c175d10b948e903519b0444d926b7023a8d795a003d7068c.json",
+      "sha256": "52107c8a21a5ad36c175d10b948e903519b0444d926b7023a8d795a003d7068c",
+      "logical_bytes": 792243,
+      "allocated_before": 794624,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/a4278dd321ee0631899a66864a1863ac80a2fb56af4f300953ffb635f1e1f4dd.json",
+      "sha256": "a4278dd321ee0631899a66864a1863ac80a2fb56af4f300953ffb635f1e1f4dd",
+      "logical_bytes": 791691,
+      "allocated_before": 794624,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/7e39b047ca52bcaa8b38d01f1ea21aaae6772df5b161544aac52e92c1ebf1a15.json",
+      "sha256": "7e39b047ca52bcaa8b38d01f1ea21aaae6772df5b161544aac52e92c1ebf1a15",
+      "logical_bytes": 791258,
+      "allocated_before": 794624,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/bb582ea44cc863fecb1c1b1fff587e7cf0f67b5ca56fd2a88ce4eef17f78668e.json",
+      "sha256": "bb582ea44cc863fecb1c1b1fff587e7cf0f67b5ca56fd2a88ce4eef17f78668e",
+      "logical_bytes": 791156,
+      "allocated_before": 794624,
+      "allocated_after": 163840,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/28cb56e37e805714374b8f31d9d4cb13505f8c9a21021e9a0bcea0bf692e994b.json",
+      "sha256": "28cb56e37e805714374b8f31d9d4cb13505f8c9a21021e9a0bcea0bf692e994b",
+      "logical_bytes": 791004,
+      "allocated_before": 794624,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/910265433fed805edbd9df0a3ab2243031de6f508beafda1df6648366f88bef2.json",
+      "sha256": "910265433fed805edbd9df0a3ab2243031de6f508beafda1df6648366f88bef2",
+      "logical_bytes": 788723,
+      "allocated_before": 790528,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/aab30ba46b0afb75a68230349bd4d13cf9be4e66840f195311d6efcee5270a03.json",
+      "sha256": "aab30ba46b0afb75a68230349bd4d13cf9be4e66840f195311d6efcee5270a03",
+      "logical_bytes": 786302,
+      "allocated_before": 786432,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/ab57b0bad4d2c29ae5318239727287d4ea975e17593c91ed82dd3b15f5021b1a.json",
+      "sha256": "ab57b0bad4d2c29ae5318239727287d4ea975e17593c91ed82dd3b15f5021b1a",
+      "logical_bytes": 784797,
+      "allocated_before": 786432,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/149e3115e08b3598add12dcb972073be77f282006c89306a5f73f55d4fa5c71c.json",
+      "sha256": "149e3115e08b3598add12dcb972073be77f282006c89306a5f73f55d4fa5c71c",
+      "logical_bytes": 784747,
+      "allocated_before": 786432,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/b05cd0003a816f306703a34d208cc5d4998538c30488f5ee4e8804280c004a0a.json",
+      "sha256": "b05cd0003a816f306703a34d208cc5d4998538c30488f5ee4e8804280c004a0a",
+      "logical_bytes": 783337,
+      "allocated_before": 786432,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/fe802693c3df82d8a507b0fe08cd307b3dbe5e9538141afdf90320935c12d83f.json",
+      "sha256": "fe802693c3df82d8a507b0fe08cd307b3dbe5e9538141afdf90320935c12d83f",
+      "logical_bytes": 779703,
+      "allocated_before": 782336,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/9abaf84661743ea1318069fd24358573cc78fc0380bf5d0d201cd746b95a3513.json",
+      "sha256": "9abaf84661743ea1318069fd24358573cc78fc0380bf5d0d201cd746b95a3513",
+      "logical_bytes": 779205,
+      "allocated_before": 782336,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/dd9ef07f73ac2bec9951b7a4f9308aa5b3d04f5e0e4e332ff29d80a91e973336.json",
+      "sha256": "dd9ef07f73ac2bec9951b7a4f9308aa5b3d04f5e0e4e332ff29d80a91e973336",
+      "logical_bytes": 779159,
+      "allocated_before": 782336,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/83a618b5d2b91f606780edff8403fd0da2d9c2d569f1d53f52f431d0cd37f13e.json",
+      "sha256": "83a618b5d2b91f606780edff8403fd0da2d9c2d569f1d53f52f431d0cd37f13e",
+      "logical_bytes": 773434,
+      "allocated_before": 774144,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/0028cb8bce3b4e5803c982d97ee938f7f0b7d1fbda3fef7ccff9889403702086.json",
+      "sha256": "0028cb8bce3b4e5803c982d97ee938f7f0b7d1fbda3fef7ccff9889403702086",
+      "logical_bytes": 771153,
+      "allocated_before": 774144,
+      "allocated_after": 151552,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/bc7ce9d3eebafbc2a8bf5fdb6efa7a9e9d3579c8b149cf578335bffa380612da.json",
+      "sha256": "bc7ce9d3eebafbc2a8bf5fdb6efa7a9e9d3579c8b149cf578335bffa380612da",
+      "logical_bytes": 765160,
+      "allocated_before": 765952,
+      "allocated_after": 151552,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/89b15406065facbb8fd30b9d3ce7542de74ece9f04cfceee344187394e7d79a0.json",
+      "sha256": "89b15406065facbb8fd30b9d3ce7542de74ece9f04cfceee344187394e7d79a0",
+      "logical_bytes": 732124,
+      "allocated_before": 733184,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/ba959d4cc9453e2144a4f7adf852d24e132d85677de25e10a318ac10c707b073.json",
+      "sha256": "ba959d4cc9453e2144a4f7adf852d24e132d85677de25e10a318ac10c707b073",
+      "logical_bytes": 732064,
+      "allocated_before": 733184,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/db98a574107e7ee400a31a8353515a41278c624b50a155862f01891ef5c82b6d.json",
+      "sha256": "db98a574107e7ee400a31a8353515a41278c624b50a155862f01891ef5c82b6d",
+      "logical_bytes": 732030,
+      "allocated_before": 733184,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/a22eb64d259503030c88be32aaacf8343bc5dfb81a771f102cf6c32449a45fbc.json",
+      "sha256": "a22eb64d259503030c88be32aaacf8343bc5dfb81a771f102cf6c32449a45fbc",
+      "logical_bytes": 731968,
+      "allocated_before": 733184,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/ec5840c219a569e49d13caeaed1459306452f97ac8174e63eddd78b1378d3783.json",
+      "sha256": "ec5840c219a569e49d13caeaed1459306452f97ac8174e63eddd78b1378d3783",
+      "logical_bytes": 731597,
+      "allocated_before": 733184,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/0048e13593a8615816adcc7d3b61fa032fcebdb41adbac05604943c248efc352.json",
+      "sha256": "0048e13593a8615816adcc7d3b61fa032fcebdb41adbac05604943c248efc352",
+      "logical_bytes": 731495,
+      "allocated_before": 733184,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/f5b75c4f5fc90360d1e657b826540ae05c9398d3444d25c1fa2684a59ef6435b.json",
+      "sha256": "f5b75c4f5fc90360d1e657b826540ae05c9398d3444d25c1fa2684a59ef6435b",
+      "logical_bytes": 731464,
+      "allocated_before": 733184,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/179c8c958f9adffaefe791b6e7649de46d559db65ed41d792d1b91061688c36f.json",
+      "sha256": "179c8c958f9adffaefe791b6e7649de46d559db65ed41d792d1b91061688c36f",
+      "logical_bytes": 731458,
+      "allocated_before": 733184,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/e2585d63961f3e4d4e737356c5d813c56702fc2739efab60c1464abba1c12a51.json",
+      "sha256": "e2585d63961f3e4d4e737356c5d813c56702fc2739efab60c1464abba1c12a51",
+      "logical_bytes": 731305,
+      "allocated_before": 733184,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/5413d0bc71f2f69e3c5b5585a89850388569fd697019a2db29f4c197abc689aa.json",
+      "sha256": "5413d0bc71f2f69e3c5b5585a89850388569fd697019a2db29f4c197abc689aa",
+      "logical_bytes": 727972,
+      "allocated_before": 729088,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/005b9fd3cca14d415e5f66f2c9a1cf79a8671c3ed450f4ca6da5cc07fe2c636b.json",
+      "sha256": "005b9fd3cca14d415e5f66f2c9a1cf79a8671c3ed450f4ca6da5cc07fe2c636b",
+      "logical_bytes": 727448,
+      "allocated_before": 729088,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/83d752f6838059a1bf78b73867ee8ed6e43350864a29551f0c6061a064e386f1.json",
+      "sha256": "83d752f6838059a1bf78b73867ee8ed6e43350864a29551f0c6061a064e386f1",
+      "logical_bytes": 718121,
+      "allocated_before": 720896,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/d355ee7a4911bb0939c8d7263ebc735b6224d1800ed060e7ddc2616f6da5e2f3.json",
+      "sha256": "d355ee7a4911bb0939c8d7263ebc735b6224d1800ed060e7ddc2616f6da5e2f3",
+      "logical_bytes": 717786,
+      "allocated_before": 720896,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/a7288d7c3563f8502c9532d813d22f739c37d512a473c0626a5c30b4e3d341c0.json",
+      "sha256": "a7288d7c3563f8502c9532d813d22f739c37d512a473c0626a5c30b4e3d341c0",
+      "logical_bytes": 717683,
+      "allocated_before": 720896,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/c361a60c745d6794576e41dffaa62469dabb5f852c3bb90a238fbe362afa870d.json",
+      "sha256": "c361a60c745d6794576e41dffaa62469dabb5f852c3bb90a238fbe362afa870d",
+      "logical_bytes": 717682,
+      "allocated_before": 720896,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/a481f3d1531aa22b77eac5a406628d9b5f410924273de1ba09c805d10e687b69.json",
+      "sha256": "a481f3d1531aa22b77eac5a406628d9b5f410924273de1ba09c805d10e687b69",
+      "logical_bytes": 715620,
+      "allocated_before": 716800,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/616e9387177927567ef0a6e4a0429dd65df975efca3d40b06f27e7a6e88f63fe.json",
+      "sha256": "616e9387177927567ef0a6e4a0429dd65df975efca3d40b06f27e7a6e88f63fe",
+      "logical_bytes": 715492,
+      "allocated_before": 716800,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/7dd3e8f9a145ea95c79240293e273184e3d248d9f22d698395f5bd6c7fa38d21.json",
+      "sha256": "7dd3e8f9a145ea95c79240293e273184e3d248d9f22d698395f5bd6c7fa38d21",
+      "logical_bytes": 714946,
+      "allocated_before": 716800,
+      "allocated_after": 151552,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/97d00f7d31ff147c21f4e4249d808c40898eecaf6f98fb8f4743713e768519b9.json",
+      "sha256": "97d00f7d31ff147c21f4e4249d808c40898eecaf6f98fb8f4743713e768519b9",
+      "logical_bytes": 714006,
+      "allocated_before": 716800,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/79359763901c6519f01fd87243a64344898f0febc622b52e728f505687fe2f18.json",
+      "sha256": "79359763901c6519f01fd87243a64344898f0febc622b52e728f505687fe2f18",
+      "logical_bytes": 712490,
+      "allocated_before": 712704,
+      "allocated_after": 151552,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/98afa69757e26d9841c917cd7559587ea9a356332f659aeb318fe67874c7d11f.json",
+      "sha256": "98afa69757e26d9841c917cd7559587ea9a356332f659aeb318fe67874c7d11f",
+      "logical_bytes": 710544,
+      "allocated_before": 712704,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/6ce6cf9aeae06b87cad01a15645fcdc011f5b9df1e9886a3c6bb2f985fe69441.json",
+      "sha256": "6ce6cf9aeae06b87cad01a15645fcdc011f5b9df1e9886a3c6bb2f985fe69441",
+      "logical_bytes": 710451,
+      "allocated_before": 712704,
+      "allocated_after": 159744,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/22515df3894714ca7e8a893c1c1ded6caf07cd06c7c8176b767aa9ef35ad60c6.json",
+      "sha256": "22515df3894714ca7e8a893c1c1ded6caf07cd06c7c8176b767aa9ef35ad60c6",
+      "logical_bytes": 710030,
+      "allocated_before": 712704,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/e4875f274e08ee6997982dae006c15f56f2b99df0fc2d4ca2e874c8c0e94de82.json",
+      "sha256": "e4875f274e08ee6997982dae006c15f56f2b99df0fc2d4ca2e874c8c0e94de82",
+      "logical_bytes": 709990,
+      "allocated_before": 712704,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/82f973b076ff1e774bdfcd236234a19d4f40b10ee8409b649ebf0c5990233ef2.json",
+      "sha256": "82f973b076ff1e774bdfcd236234a19d4f40b10ee8409b649ebf0c5990233ef2",
+      "logical_bytes": 709934,
+      "allocated_before": 712704,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/d3267aa484c77e4cccbd9667bea6fc412025a3f3d01e162b8d65f005fb64aa0c.json",
+      "sha256": "d3267aa484c77e4cccbd9667bea6fc412025a3f3d01e162b8d65f005fb64aa0c",
+      "logical_bytes": 709786,
+      "allocated_before": 712704,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/b6d230f5fd3477d0c2b359ff9d1d903089021e641a3f756315d3903e669820df.json",
+      "sha256": "b6d230f5fd3477d0c2b359ff9d1d903089021e641a3f756315d3903e669820df",
+      "logical_bytes": 709713,
+      "allocated_before": 712704,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/21e0d7571893d22eb10bc61aa2fe6fe0f58f94aa330b491fa316cf116a182d10.json",
+      "sha256": "21e0d7571893d22eb10bc61aa2fe6fe0f58f94aa330b491fa316cf116a182d10",
+      "logical_bytes": 708865,
+      "allocated_before": 712704,
+      "allocated_after": 151552,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/0835509ea1814fa3b1299a49c0f8545c5da0ec90a491ab540dd4f8bb2a3e6385.json",
+      "sha256": "0835509ea1814fa3b1299a49c0f8545c5da0ec90a491ab540dd4f8bb2a3e6385",
+      "logical_bytes": 708797,
+      "allocated_before": 712704,
+      "allocated_after": 151552,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/5c8e167571a38c2373cf6a8dd58cde0d4fec99aabfbd1bdc4eb653708343891b.json",
+      "sha256": "5c8e167571a38c2373cf6a8dd58cde0d4fec99aabfbd1bdc4eb653708343891b",
+      "logical_bytes": 535667,
+      "allocated_before": 536576,
+      "allocated_after": 192512,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/c1a79b4e9bd98ade8092d02c1e13ec3d97319e44f4abdd424f5fb0246f749774.json",
+      "sha256": "c1a79b4e9bd98ade8092d02c1e13ec3d97319e44f4abdd424f5fb0246f749774",
+      "logical_bytes": 704726,
+      "allocated_before": 708608,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/fa66353eea8eb728470d71d6cf19c53981a8af09fa28766a92bbfeffd56c6eed.json",
+      "sha256": "fa66353eea8eb728470d71d6cf19c53981a8af09fa28766a92bbfeffd56c6eed",
+      "logical_bytes": 544603,
+      "allocated_before": 544768,
+      "allocated_after": 204800,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/47828185bed92f63026f47ccdd0c74ee0afcda0fd04c4140abbe29a0e8d2e9bd.json",
+      "sha256": "47828185bed92f63026f47ccdd0c74ee0afcda0fd04c4140abbe29a0e8d2e9bd",
+      "logical_bytes": 45956,
+      "allocated_before": 49152,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/a9c670fc7ced14d355ff15aa1dd28e26c85c3f9d4f5c5b4c5e3a3530dd0b202c.json",
+      "sha256": "a9c670fc7ced14d355ff15aa1dd28e26c85c3f9d4f5c5b4c5e3a3530dd0b202c",
+      "logical_bytes": 40803,
+      "allocated_before": 40960,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/995378b71329e73826997d17a45707f07799bf51e7554974a63fc53d41aa34ac.json",
+      "sha256": "995378b71329e73826997d17a45707f07799bf51e7554974a63fc53d41aa34ac",
+      "logical_bytes": 649432,
+      "allocated_before": 651264,
+      "allocated_after": 131072,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/65f16f90e12ab9b4d18a6cc6ee1c77b503a0f4a37e2f443b3dc761a88261491a.json",
+      "sha256": "65f16f90e12ab9b4d18a6cc6ee1c77b503a0f4a37e2f443b3dc761a88261491a",
+      "logical_bytes": 38990,
+      "allocated_before": 40960,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/299bba677d189b5bede1e477862451430860837254788efaa50d05893c88a75d.json",
+      "sha256": "299bba677d189b5bede1e477862451430860837254788efaa50d05893c88a75d",
+      "logical_bytes": 544191,
+      "allocated_before": 544768,
+      "allocated_after": 200704,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/57ab9e42943ef59ae998672bfe4eae893da816ad842e55e919ff3df9489d9b87.json",
+      "sha256": "57ab9e42943ef59ae998672bfe4eae893da816ad842e55e919ff3df9489d9b87",
+      "logical_bytes": 707056,
+      "allocated_before": 708608,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/666d9239a63876eacafaa6a4fcfe7933e50470cc9d27e65493ac150f4906f692.json",
+      "sha256": "666d9239a63876eacafaa6a4fcfe7933e50470cc9d27e65493ac150f4906f692",
+      "logical_bytes": 37249,
+      "allocated_before": 40960,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/539ffc13cc64df22f31d5e96fd6df3524640b79b03eb711c8bc4a26c3e76ea75.json",
+      "sha256": "539ffc13cc64df22f31d5e96fd6df3524640b79b03eb711c8bc4a26c3e76ea75",
+      "logical_bytes": 35413,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/d52d3abe00b87355548360d7d95a373efc1e61d575e930e9e9f0730ddfab01fe.json",
+      "sha256": "d52d3abe00b87355548360d7d95a373efc1e61d575e930e9e9f0730ddfab01fe",
+      "logical_bytes": 300830,
+      "allocated_before": 303104,
+      "allocated_after": 122880,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/ca94eaf36bab11c2da542b674a6cf3566b347549b6d9e98828cbf42c7ecf5107.json",
+      "sha256": "ca94eaf36bab11c2da542b674a6cf3566b347549b6d9e98828cbf42c7ecf5107",
+      "logical_bytes": 36566,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/5c2157e7fcbc0dba40a8adace917dbbfcc6aa9b4186ee63bf971bc53de0e5dbb.json",
+      "sha256": "5c2157e7fcbc0dba40a8adace917dbbfcc6aa9b4186ee63bf971bc53de0e5dbb",
+      "logical_bytes": 38990,
+      "allocated_before": 40960,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/a85d00516ef7fb4ed86dd719f1111dccdf74593b6350606668c7eb6d31ce5f5b.json",
+      "sha256": "a85d00516ef7fb4ed86dd719f1111dccdf74593b6350606668c7eb6d31ce5f5b",
+      "logical_bytes": 355033,
+      "allocated_before": 356352,
+      "allocated_after": 139264,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/8ddb32819e94547c8e185020fbb668e6e9857fbddbce152f05e30c023045bfe6.json",
+      "sha256": "8ddb32819e94547c8e185020fbb668e6e9857fbddbce152f05e30c023045bfe6",
+      "logical_bytes": 44363,
+      "allocated_before": 45056,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/6fe1742f4efee7909f3e3df32cb01c97daf91bb5973bef98702151ab570733de.json",
+      "sha256": "6fe1742f4efee7909f3e3df32cb01c97daf91bb5973bef98702151ab570733de",
+      "logical_bytes": 45147,
+      "allocated_before": 49152,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/70505d7ab1ba854184aa53c33ffcb2dceb95dd11358ad3f6f1cdffa2967e0629.json",
+      "sha256": "70505d7ab1ba854184aa53c33ffcb2dceb95dd11358ad3f6f1cdffa2967e0629",
+      "logical_bytes": 43501,
+      "allocated_before": 45056,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/854d02754610d4f973a85c021e2576a2a0f78b989fd958929a550ce2497e4f57.json",
+      "sha256": "854d02754610d4f973a85c021e2576a2a0f78b989fd958929a550ce2497e4f57",
+      "logical_bytes": 707114,
+      "allocated_before": 708608,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/c208da5a9462cb10ea8b89aa9069b873a0c22257898b933b876d2ffddf81caaa.json",
+      "sha256": "c208da5a9462cb10ea8b89aa9069b873a0c22257898b933b876d2ffddf81caaa",
+      "logical_bytes": 40803,
+      "allocated_before": 40960,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/0bde0de5b99035c5372132e53ce9c7e94cb48375dd4b07831d77e930ddc78467.json",
+      "sha256": "0bde0de5b99035c5372132e53ce9c7e94cb48375dd4b07831d77e930ddc78467",
+      "logical_bytes": 535667,
+      "allocated_before": 536576,
+      "allocated_after": 192512,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/1efc77e8b013797d75dbdbf8cab9cc668350cc263d5eb1475e75bba1ebfc18d1.json",
+      "sha256": "1efc77e8b013797d75dbdbf8cab9cc668350cc263d5eb1475e75bba1ebfc18d1",
+      "logical_bytes": 34180,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/e89b6faf2f1d0bb5ddec5241f1bd2868a48635db9d38d4ebee53500ee28ac6b7.json",
+      "sha256": "e89b6faf2f1d0bb5ddec5241f1bd2868a48635db9d38d4ebee53500ee28ac6b7",
+      "logical_bytes": 39040,
+      "allocated_before": 40960,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/c8595cd744864186c014ac92635236e0ab9349950c78c035c16b201990859eb9.json",
+      "sha256": "c8595cd744864186c014ac92635236e0ab9349950c78c035c16b201990859eb9",
+      "logical_bytes": 109382,
+      "allocated_before": 110592,
+      "allocated_after": 32768,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/79c99de65d47e1248723d36aac6b3d1811a13b3c48efa2a8c35de5432a19f56d.json",
+      "sha256": "79c99de65d47e1248723d36aac6b3d1811a13b3c48efa2a8c35de5432a19f56d",
+      "logical_bytes": 683370,
+      "allocated_before": 684032,
+      "allocated_after": 151552,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/9aa0255683a70e98fa6fe6161064d49c8439f6982d37e08db8c7d5c03e61694e.json",
+      "sha256": "9aa0255683a70e98fa6fe6161064d49c8439f6982d37e08db8c7d5c03e61694e",
+      "logical_bytes": 37128,
+      "allocated_before": 40960,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/9f2b6cedcfb2877e6bf61a670bd38f75406515545812b9ab353e42a9f5e73ed6.json",
+      "sha256": "9f2b6cedcfb2877e6bf61a670bd38f75406515545812b9ab353e42a9f5e73ed6",
+      "logical_bytes": 706575,
+      "allocated_before": 708608,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/bc1e6f5e4ce8f8c4cb3588f9e24059e67052b48d61268773b622ad83225a5069.json",
+      "sha256": "bc1e6f5e4ce8f8c4cb3588f9e24059e67052b48d61268773b622ad83225a5069",
+      "logical_bytes": 36577,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/220cdd4deb919b75f21e2cc5598fe61fa3a6d6e6d24d7572f83b770dd2fe0d7e.json",
+      "sha256": "220cdd4deb919b75f21e2cc5598fe61fa3a6d6e6d24d7572f83b770dd2fe0d7e",
+      "logical_bytes": 43502,
+      "allocated_before": 45056,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/f52deb114190509ee7bfbfaf3b5db6c3a8c6f8a376704889ae296fae6bb371df.json",
+      "sha256": "f52deb114190509ee7bfbfaf3b5db6c3a8c6f8a376704889ae296fae6bb371df",
+      "logical_bytes": 36575,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/583f1dfcf2716a0de09c56fdb3439b2752af0fd8267c26870739c950b8c7e210.json",
+      "sha256": "583f1dfcf2716a0de09c56fdb3439b2752af0fd8267c26870739c950b8c7e210",
+      "logical_bytes": 41663,
+      "allocated_before": 45056,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/3a8e2aa9d8718b9f42b3baae34eaa84d0c698db92e3be2e70f35dfbc53bef17d.json",
+      "sha256": "3a8e2aa9d8718b9f42b3baae34eaa84d0c698db92e3be2e70f35dfbc53bef17d",
+      "logical_bytes": 706715,
+      "allocated_before": 708608,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/0143810ba74b051213f079bb24bc38fa762de91ff390a554add60fea07da3dfa.json",
+      "sha256": "0143810ba74b051213f079bb24bc38fa762de91ff390a554add60fea07da3dfa",
+      "logical_bytes": 706457,
+      "allocated_before": 708608,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/fdc677db74c46e4d97f0a5fc1dd9ab4a92c6af198b0066a1444cba260d44569a.json",
+      "sha256": "fdc677db74c46e4d97f0a5fc1dd9ab4a92c6af198b0066a1444cba260d44569a",
+      "logical_bytes": 35014,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/6dc477794b737746ff70d71679e71b2ae4daa98e4a46607493e1e55e4cd23266.json",
+      "sha256": "6dc477794b737746ff70d71679e71b2ae4daa98e4a46607493e1e55e4cd23266",
+      "logical_bytes": 544623,
+      "allocated_before": 544768,
+      "allocated_after": 204800,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/a13050803f84b027d4b32d7b7b82a80a6f65d467c6d40120f6c8ef5161c479f9.json",
+      "sha256": "a13050803f84b027d4b32d7b7b82a80a6f65d467c6d40120f6c8ef5161c479f9",
+      "logical_bytes": 340713,
+      "allocated_before": 344064,
+      "allocated_after": 135168,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/2f952e6307e9df51a49d3fdce0f6bc29c6ca41895b7eec15dedfa51ea2541f64.json",
+      "sha256": "2f952e6307e9df51a49d3fdce0f6bc29c6ca41895b7eec15dedfa51ea2541f64",
+      "logical_bytes": 705966,
+      "allocated_before": 708608,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/51ba2e2fde3ef0be35c760312cba99ccaa1aff544791707eca4721c0c5d914c7.json",
+      "sha256": "51ba2e2fde3ef0be35c760312cba99ccaa1aff544791707eca4721c0c5d914c7",
+      "logical_bytes": 46011,
+      "allocated_before": 49152,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/d854e1054f793d846ee27de3816fb461c47f853f14738e94bb2c72f26070caa2.json",
+      "sha256": "d854e1054f793d846ee27de3816fb461c47f853f14738e94bb2c72f26070caa2",
+      "logical_bytes": 706440,
+      "allocated_before": 708608,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/589045c7f3a062f1496165de0fc2f8fd869183c32004f3b120e16d7078309d8f.json",
+      "sha256": "589045c7f3a062f1496165de0fc2f8fd869183c32004f3b120e16d7078309d8f",
+      "logical_bytes": 35795,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/6a20048f36d2aa633d9d442bfde3a86f7ad111c6dfc1fd0e3c798231d1184259.json",
+      "sha256": "6a20048f36d2aa633d9d442bfde3a86f7ad111c6dfc1fd0e3c798231d1184259",
+      "logical_bytes": 706527,
+      "allocated_before": 708608,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/9c4c782f3aa9636a87555b16618c915766a54b931ee88b8af998795fe20ffb4b.json",
+      "sha256": "9c4c782f3aa9636a87555b16618c915766a54b931ee88b8af998795fe20ffb4b",
+      "logical_bytes": 91221,
+      "allocated_before": 94208,
+      "allocated_after": 28672,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/816a153527424988b83643020ea3710bdcd10071bbe76e4465d851aa922beebd.json",
+      "sha256": "816a153527424988b83643020ea3710bdcd10071bbe76e4465d851aa922beebd",
+      "logical_bytes": 536797,
+      "allocated_before": 540672,
+      "allocated_after": 200704,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/6f5474226184d61a7c777685ae407d5848af559b591c0cb3dcc75fece60f2ef4.json",
+      "sha256": "6f5474226184d61a7c777685ae407d5848af559b591c0cb3dcc75fece60f2ef4",
+      "logical_bytes": 46020,
+      "allocated_before": 49152,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/834a9ff9694e49f5b5621e5ebdd4d6d543349f68cbfd95be9e3ede03e1f7d77a.json",
+      "sha256": "834a9ff9694e49f5b5621e5ebdd4d6d543349f68cbfd95be9e3ede03e1f7d77a",
+      "logical_bytes": 707044,
+      "allocated_before": 708608,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/386128c6ec1375a0b7e205d55a279d8bd3a71c5d6a6722ada9a5f04d1c57567c.json",
+      "sha256": "386128c6ec1375a0b7e205d55a279d8bd3a71c5d6a6722ada9a5f04d1c57567c",
+      "logical_bytes": 707967,
+      "allocated_before": 708608,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/b0df8bfd19628c69fd3c7699569b121eeb715c19d33ec5351a320a456a649573.json",
+      "sha256": "b0df8bfd19628c69fd3c7699569b121eeb715c19d33ec5351a320a456a649573",
+      "logical_bytes": 705584,
+      "allocated_before": 708608,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/1d0b48a5bbc1219d3a36bb7a961d20212b28527922ab922f15b499070ba2fe59.json",
+      "sha256": "1d0b48a5bbc1219d3a36bb7a961d20212b28527922ab922f15b499070ba2fe59",
+      "logical_bytes": 651977,
+      "allocated_before": 655360,
+      "allocated_after": 139264,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/9a28fc60bcdb0fdc16effaec45cfc14758efa5d5ed74b8dc2aabaf2accd138f5.json",
+      "sha256": "9a28fc60bcdb0fdc16effaec45cfc14758efa5d5ed74b8dc2aabaf2accd138f5",
+      "logical_bytes": 705345,
+      "allocated_before": 708608,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/1d5ec9cbb46ceb8b4624463de42de2841133b5c002ea2d82785b5705686f946d.json",
+      "sha256": "1d5ec9cbb46ceb8b4624463de42de2841133b5c002ea2d82785b5705686f946d",
+      "logical_bytes": 34182,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/691e0172ca04a95f49eee452699a2f72a2fbdf320d45d8287b31584b431e6a35.json",
+      "sha256": "691e0172ca04a95f49eee452699a2f72a2fbdf320d45d8287b31584b431e6a35",
+      "logical_bytes": 707053,
+      "allocated_before": 708608,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/08b9729728c7f994a6d6adac8e4010b0c87ff946a70dfc2ad9d8699cd773a2c9.json",
+      "sha256": "08b9729728c7f994a6d6adac8e4010b0c87ff946a70dfc2ad9d8699cd773a2c9",
+      "logical_bytes": 705614,
+      "allocated_before": 708608,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/61720a3d733f9804bca6d76d817808f534fffd83269f12b9d7338439228433ee.json",
+      "sha256": "61720a3d733f9804bca6d76d817808f534fffd83269f12b9d7338439228433ee",
+      "logical_bytes": 708013,
+      "allocated_before": 708608,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/ebc421dccb4238d7dc9109d4b0c687e27bad6967ab538605698df0c9c212e7ff.json",
+      "sha256": "ebc421dccb4238d7dc9109d4b0c687e27bad6967ab538605698df0c9c212e7ff",
+      "logical_bytes": 704418,
+      "allocated_before": 704512,
+      "allocated_after": 147456,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/c0eed583f2085f2ccda479b481604cabf20ac779e115922bfb2109a91588efdb.json",
+      "sha256": "c0eed583f2085f2ccda479b481604cabf20ac779e115922bfb2109a91588efdb",
+      "logical_bytes": 42444,
+      "allocated_before": 45056,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/7d5313ed0a9526e3b32b6aba7deedef948ff6e5062355fdff00ae8a764aa4337.json",
+      "sha256": "7d5313ed0a9526e3b32b6aba7deedef948ff6e5062355fdff00ae8a764aa4337",
+      "logical_bytes": 39828,
+      "allocated_before": 40960,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/6061e7dc6a9b2498e7002c1d484314161e40d01416c7b0b66c9fdb4452a10a98.json",
+      "sha256": "6061e7dc6a9b2498e7002c1d484314161e40d01416c7b0b66c9fdb4452a10a98",
+      "logical_bytes": 708060,
+      "allocated_before": 708608,
+      "allocated_after": 155648,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/18c34860f819de1537a2789074a16679dae8e1b59ef5390310e37dfb441b1b07.json",
+      "sha256": "18c34860f819de1537a2789074a16679dae8e1b59ef5390310e37dfb441b1b07",
+      "logical_bytes": 33399,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    },
+    {
+      "file": "data/runtime/artifacts/35a1792c7bbeb2fdf651a31d11c2c04d4de535901f4a3b4b0eac41e28a0eefdf.json",
+      "sha256": "35a1792c7bbeb2fdf651a31d11c2c04d4de535901f4a3b4b0eac41e28a0eefdf",
+      "logical_bytes": 33474,
+      "allocated_before": 36864,
+      "allocated_after": 12288,
+      "logical_content_unchanged": true,
+      "filesystem_compressed": true
+    }
+  ],
+  "free_before": 384491520,
+  "free_after": 792956928,
+  "immutable_artifact_files_processed": 60,
+  "temporary_build_cleanup": {
+    "path": "dist",
+    "verified_generated_files": 34,
+    "public_assets_matched_before_cleanup": true,
+    "rebuild_command": "npm run build",
+    "free_before": 729382912,
+    "free_after": 792956928,
+    "source_and_live_development_app_unchanged": true
+  },
+  "private_vm_build_cache_cleanup": {
+    "reclaimable_before_mb": 674.7,
+    "images_preserved": 5,
+    "volumes_preserved": 1,
+    "running_container_unchanged": true,
+    "log": "work/gmat-build-cache-prune.log"
+  }
+}

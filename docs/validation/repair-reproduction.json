@@ -1,0 +1,19 @@
+{
+  "run_id": "edd76b4b-6ddf-4293-9939-24f7414a9d5e",
+  "reproduced": true,
+  "metric_tolerance": "relative/absolute 1e-6",
+  "differences": [],
+  "metrics": {
+    "candidate_space_size": 2,
+    "nominal_checked": 2,
+    "nominal_supported": 1,
+    "audit_candidates_frozen": 1,
+    "audit_cases_per_candidate": 3,
+    "verified_candidates": 1,
+    "simulation_evaluations": 5,
+    "unsearched_candidates": 0,
+    "candidate_budget_exhausted": false,
+    "search_complete": true,
+    "requested_work_complete": true
+  }
+}

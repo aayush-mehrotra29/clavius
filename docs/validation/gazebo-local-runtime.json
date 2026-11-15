@@ -1,0 +1,417 @@
+{
+  "date": "2026-11-15",
+  "execution_host": "Local Colima VZ ARM64 Linux VM on Apple Silicon Mac",
+  "vm": {
+    "profile": "clavius",
+    "cpus": 2,
+    "memory_gib": 4,
+    "container_disk_limit_gib": 8,
+    "root_disk_limit_gib": 4,
+    "mounts": "disabled",
+    "ssh_agent_forwarding": false
+  },
+  "container": {
+    "image_id": "sha256:eeee5ab6777a1b91225b319f7eaf9dec2103d255d6bd930e2e645c4a61b44821",
+    "os": "linux",
+    "architecture": "arm64",
+    "size_bytes": 664283678,
+    "memory_limit_gib": 2,
+    "port_binding": "127.0.0.1:8002"
+  },
+  "worker_health": {
+    "worker_source_sha256": "03668ba634732c292d5f63a6be6c5b9b28ebca789f9f2b776fc187f1d6c7b4bc",
+    "libraries": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "rasterio": "1.5.2",
+      "spiceypy": "8.4.0",
+      "mujoco": "4.0.1"
+    },
+    "python": "3.12.3",
+    "platform": "Linux-6.8.0-117-generic-aarch64-with-glibc2.39",
+    "ros_distro": "jazzy",
+    "gazebo_version": "8.15.0",
+    "native_packages": {
+      "gz-sim8-cli": "8.15.0-1~noble",
+      "gz-tools2:arm64": "2.0.4-1~noble",
+      "libdart-core+collisions+odelcpsolver6.13:arm64": "6.13.2+ds1-1~osrf2~noble",
+      "libgz-common5:arm64": "5.9.0-1~noble",
+      "libgz-common5-av:arm64": "5.9.0-1~noble",
+      "libgz-common5-events:arm64": "5.9.0-1~noble",
+      "libgz-common5-geospatial:arm64": "5.9.0-1~noble",
+      "libgz-common5-graphics:arm64": "5.9.0-1~noble",
+      "libgz-common5-io:arm64": "5.9.0-1~noble",
+      "libgz-fuel-tools9:arm64": "9.1.1-1~noble",
+      "libgz-gui8:arm64": "8.4.0-1~noble",
+      "libgz-math7:arm64": "7.7.0-1~noble",
+      "libgz-msgs10:arm64": "10.4.0-1~noble",
+      "libgz-physics7:arm64": "7.9.0-1~noble",
+      "libgz-physics7-dartsim:arm64": "7.9.0-1~noble",
+      "libgz-plugin2:arm64": "2.0.4-1~noble",
+      "libgz-rendering8:arm64": "8.3.0-1~noble",
+      "libgz-sensors8:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-air-pressure:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-air-speed:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-altimeter:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-boundingbox-camera:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-camera:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-depth-camera:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-dvl:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-force-torque:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-gpu-lidar:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-imu:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-lidar:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-logical-camera:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-magnetometer:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-navsat:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-rendering:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-rgbd-camera:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-segmentation-camera:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-thermal-camera:arm64": "8.3.0-1~noble",
+      "libgz-sensors8-wide-angle-camera:arm64": "8.3.0-1~noble",
+      "libgz-sim8:arm64": "8.15.0-1~noble",
+      "libgz-sim8-plugins:arm64": "8.15.0-1~noble",
+      "libgz-transport13:arm64": "13.6.0-1~noble",
+      "libgz-transport13-log:arm64": "13.6.0-1~noble",
+      "libgz-transport13-parameters:arm64": "13.6.0-1~noble",
+      "libgz-utils2:arm64": "2.2.1-1~noble",
+      "libsdformat14:arm64": "14.9.0-1~noble",
+      "python3-gz-math7": "7.7.0-1~noble",
+      "python3-gz-msgs10": "10.4.0-1~noble",
+      "python3-gz-sim8": "8.15.0-1~noble",
+      "python3-gz-transport13": "13.6.0-1~noble",
+      "ros-jazzy-fastcdr": "2.2.8-1noble.20260901.192535",
+      "ros-jazzy-fastrtps": "2.14.7-1noble.20260911.035410",
+      "ros-jazzy-fastrtps-cmake-module": "3.6.4-1noble.20260603.150028",
+      "ros-jazzy-rclpy": "7.1.12-1noble.20260911.111116",
+      "ros-jazzy-rmw": "7.3.4-1noble.20260911.050452",
+      "ros-jazzy-rmw-dds-common": "3.1.1-1noble.20260911.053822",
+      "ros-jazzy-rmw-fastrtps-cpp": "8.4.4-1noble.20260911.054759",
+      "ros-jazzy-rmw-fastrtps-shared-cpp": "8.4.4-1noble.20260911.054302",
+      "ros-jazzy-rmw-implementation": "2.15.6-1noble.20260911.055232",
+      "ros-jazzy-rmw-implementation-cmake": "7.3.4-1noble.20260911.035409"
+    },
+    "runtime_identity": "9798618ce4acc6128cae2877c2e060149593d190777d67e74d7f6f423942593a",
+    "protocol": "clavius-gazebo-1",
+    "runtime_available": true,
+    "reason": "Benchmark passed for this runtime.",
+    "execution_backend": "gz.sim8.TestFixture",
+    "telemetry_topics": [
+      "/clock",
+      "/clavius/pose",
+      "/clavius/joints"
+    ],
+    "benchmark": {
+      "passed": true,
+      "worker_source_sha256": "03668ba634732c292d5f63a6be6c5b9b28ebca789f9f2b776fc187f1d6c7b4bc",
+      "runtime_identity": "9798618ce4acc6128cae2877c2e060149593d190777d67e74d7f6f423942593a",
+      "cases": {
+        "flat_drive": {
+          "job_id": "8d8b474c-91f7-45e3-bc6a-504195e4c7af",
+          "input_bundle_sha256": "846b25c1fd220c37864b163a1ff6877eea8d8b75d317b3c8dbfb0da7ef5b7ccb",
+          "result_sha256": "dce3fabdd61b7249fe835aee6b84a2a1ed70f06d9e767b21cebae2f4e8004eb6",
+          "checks": {
+            "speed_m_s": 0.049900203522872236,
+            "distance_m": 0.23929241561364128,
+            "settled_root_up_m": -5.3538954979244804e-08,
+            "maximum_roll_deg": 3.27198083229554e-13,
+            "maximum_pitch_deg": 0.059494658178953434
+          },
+          "ros2_clock_messages": 51
+        },
+        "free_fall": {
+          "job_id": "21a701f8-ac90-4f23-bc3d-1daae65db209",
+          "input_bundle_sha256": "305943ddcfb82e7bec367e7c028440f787878dd8fbd365e78678c53d41143716",
+          "result_sha256": "870e83935d34345e60de7ebed960a6f8716df53e55c40f261a35744b021a8b5f",
+          "checks": {
+            "expected_root_up_m": -0.17750000000000002,
+            "actual_root_up_m": -0.17952499999979998,
+            "expected_vertical_velocity_m_s": -0.81,
+            "actual_vertical_velocity_m_s": -0.8099999999999997
+          },
+          "ros2_clock_messages": 6
+        }
+      },
+      "scope": "Executed native gravity, placement, bounded drive and ROS 2 telemetry benchmark; no measured lunar soil/contact-reaction calibration is implied.",
+      "reason": "Benchmark passed for this runtime."
+    }
+  },
+  "host_free_disk_gib": 3.95,
+  "benchmark_report": "gazebo-native-benchmark.json",
+  "measured_terrain_probe": {
+    "id": "bc09be23-4743-4fdb-8cc5-44b11297ed64",
+    "artifact_sha256": "5c8e167571a38c2373cf6a8dd58cde0d4fec99aabfbd1bdc4eb653708343891b",
+    "request": {
+      "duration_s": 20.0,
+      "east_m": 60.0,
+      "engine": "gazebo",
+      "friction_coefficient": 0.7,
+      "heading_deg": 41.185925165709655,
+      "mission_offset_s": 1800.6628330622323,
+      "motor_efficiency": 0.65,
+      "north_m": 0.0,
+      "robot_id": "afd6c5cad00ea2dd2efa2d12",
+      "seed": 42,
+      "source_run_id": "14b8145e-c6df-4f5a-b37a-3e148aaebcac",
+      "speed_m_s": 0.05,
+      "turn_rate_rad_s": 0.0
+    },
+    "engine": {
+      "backend": "gz.sim8.TestFixture",
+      "gravity_m_s2": [
+        0,
+        0,
+        -1.62
+      ],
+      "motor_control": "bounded proportional velocity servo; authored URDF effort and velocity limits",
+      "name": "Gazebo",
+      "physics": "DART",
+      "ros_distro": "jazzy",
+      "terrain_resolution_m": 5.0,
+      "timestep_s": 0.005,
+      "version": "8.15.0"
+    },
+    "metrics": {
+      "contacts_observed": null,
+      "displacement_m": 1.0355375266881488,
+      "distance_m": 1.035537578490568,
+      "duration_s": 20.0,
+      "maximum_abs_slip_ratio": 0.9556276824328725,
+      "maximum_pitch_deg": 1.8859344410888148,
+      "maximum_roll_deg": 2.317822320073578,
+      "mobility_bus_energy_wh": 0.06733487636147599
+    },
+    "source_mission": {
+      "energy_policy": "Independent physical probe. Does not replace or add to the source mission energy ledger.",
+      "id": "14b8145e-c6df-4f5a-b37a-3e148aaebcac",
+      "input_sha256": "f8a1f3b68c2696480b0a4990a88fd5e26c64b2f61054f1d4adb6cc20b087be79",
+      "offset_s": 1800.6628330622323
+    },
+    "ros2": {
+      "domain_id": 176,
+      "received_clock_messages": 201,
+      "time_basis": "Gazebo simulation time; source mission UTC is attached by Clavius",
+      "topics": [
+        "/clock",
+        "/clavius/pose",
+        "/clavius/joints"
+      ]
+    },
+    "worker_job": {
+      "id": "3cc81025-1dd8-41f7-84e0-ef53810b1696",
+      "input_sha256": "6ed99db41d7be3a1b37db1e693a4ac06c572264e4f3a33efddab887d0d1b7ecc",
+      "result_sha256": "674ba17e9c3e952fccdbf4dcc9f893df707e25c78190bf5d52708d9b26938426",
+      "url": "http://127.0.0.1:8002"
+    },
+    "input_bundle_sha256": "6ed99db41d7be3a1b37db1e693a4ac06c572264e4f3a33efddab887d0d1b7ecc",
+    "provenance": {
+      "conditioned_terrain_sha256": "e827c909393cf23ccf71885a73b82b3f029444a3282e33d8df1747867e516e03",
+      "controller": "fixed requested wheel velocity with 5 N m s proportional gain, bounded by imported torque limits",
+      "implementation": {
+        "libraries": {
+          "mujoco": "4.0.1",
+          "numpy": "2.5.4",
+          "rasterio": "1.5.2",
+          "scipy": "1.18.1",
+          "spiceypy": "8.4.0"
+        },
+        "source_sha256": "03668ba634732c292d5f63a6be6c5b9b28ebca789f9f2b776fc187f1d6c7b4bc",
+        "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+      },
+      "profile_sha256": "1b6f88f26588a77e604f4b956a7fe6cd7b7ba5c2572040952ae5bf096b9bc0e7",
+      "robot_package_sha256": "d69414f74ea9b411febe6118d5eb28bdf5e399fbd980a74db347a75a3136f39b",
+      "runtime_identity": "9798618ce4acc6128cae2877c2e060149593d190777d67e74d7f6f423942593a",
+      "seed": 42,
+      "terrain": {
+        "assets": [
+          {
+            "bytes": 40980810,
+            "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+            "file": "Site01_final_adj_5mpp_surf.tif",
+            "id": "PGDA78-Site01",
+            "nodata": "NaN",
+            "pixel_registration": "pixel centers",
+            "resolution_m": 5.0,
+            "sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+            "shape": [
+              3200,
+              3200
+            ],
+            "transform": [
+              5.0,
+              0.0,
+              -19000.0,
+              0.0,
+              -5.0,
+              -4000.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif"
+          },
+          {
+            "bytes": 40980810,
+            "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+            "file": "Site01_final_adj_5mpp_toterr.tif",
+            "id": "PGDA78-Site01-height-error",
+            "nodata": "NaN",
+            "pixel_registration": "pixel centers",
+            "resolution_m": 5.0,
+            "sha256": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c",
+            "shape": [
+              3200,
+              3200
+            ],
+            "transform": [
+              5.0,
+              0.0,
+              -19000.0,
+              0.0,
+              -5.0,
+              -4000.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_toterr.tif"
+          },
+          {
+            "bytes": 189158392,
+            "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+            "file": "LDEM_80S_80MPP_ADJ.TIF",
+            "id": "PGDA90-80m",
+            "nodata": "NaN",
+            "pixel_registration": "pixel centers",
+            "resolution_m": 80.0,
+            "sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a",
+            "shape": [
+              7600,
+              7600
+            ],
+            "transform": [
+              80.0,
+              0.0,
+              -304000.0,
+              0.0,
+              -80.0,
+              304000.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF"
+          }
+        ],
+        "frame": "MOON_ME_DE421",
+        "limits": [
+          "5 m posting does not resolve wheel-scale hazards",
+          "height RMS is not a complete terrain error model",
+          "horizon sampling requires numerical convergence/observed-shadow validation before mission reliance"
+        ],
+        "reference_radius_m": 1737400.0,
+        "site_id": "connecting-ridge",
+        "vertical_checks": [
+          {
+            "difference_m": 0.7501220703125,
+            "lat_deg": -89.44,
+            "local_elevation_m": 1958.1793212890625,
+            "lon_deg": 222.8,
+            "regional_elevation_m": 1957.42919921875
+          },
+          {
+            "difference_m": 1.75341796875,
+            "lat_deg": -89.45,
+            "local_elevation_m": 1956.777099609375,
+            "lon_deg": 222.8,
+            "regional_elevation_m": 1955.023681640625
+          },
+          {
+            "difference_m": -0.314697265625,
+            "lat_deg": -89.44,
+            "local_elevation_m": 1952.8533935546875,
+            "lon_deg": 223.2,
+            "regional_elevation_m": 1953.1680908203125
+          },
+          {
+            "difference_m": 0.0880126953125,
+            "lat_deg": -89.43,
+            "local_elevation_m": 1942.9156494140625,
+            "lon_deg": 222.5,
+            "regional_elevation_m": 1942.82763671875
+          },
+          {
+            "difference_m": 0.9193115234375,
+            "lat_deg": -89.46,
+            "local_elevation_m": 1948.8848876953125,
+            "lon_deg": 222.7,
+            "regional_elevation_m": 1947.965576171875
+          }
+        ],
+        "vertical_definition": "metres above 1737400 m sphere, checked against regional PGDA90 at five matching coordinates"
+      }
+    }
+  },
+  "descriptive_comparison": {
+    "policy": "One matched-input case, not a general cross-engine calibration or acceptance bound.",
+    "mujoco_run_id": "2c5344e6-fb24-405a-b050-7ad9f344b2bb",
+    "mujoco_metrics": {
+      "contacts_observed": true,
+      "displacement_m": 1.032439600755932,
+      "distance_m": 1.0324546399213075,
+      "duration_s": 20.000000000000306,
+      "maximum_abs_slip_ratio": 0.9504099225172792,
+      "maximum_pitch_deg": 1.8562219671334421,
+      "maximum_roll_deg": 2.317002923444102,
+      "mobility_bus_energy_wh": 0.06718493885768967
+    },
+    "gazebo_run_id": "bc09be23-4743-4fdb-8cc5-44b11297ed64",
+    "gazebo_metrics": {
+      "contacts_observed": null,
+      "displacement_m": 1.0355375266881488,
+      "distance_m": 1.035537578490568,
+      "duration_s": 20.0,
+      "maximum_abs_slip_ratio": 0.9556276824328725,
+      "maximum_pitch_deg": 1.8859344410888148,
+      "maximum_roll_deg": 2.317822320073578,
+      "mobility_bus_energy_wh": 0.06733487636147599
+    },
+    "distance_difference_m": 0.0030829385692605626,
+    "energy_difference_wh": 0.00014993750378632098
+  },
+  "validation": {
+    "simulation_tests": "43 passed",
+    "production_build": "passed; existing chunk-size advisory",
+    "cancellation_report": "gazebo-native-cancellation.json",
+    "native_export_reproduction": {
+      "run_id": "bc09be23-4743-4fdb-8cc5-44b11297ed64",
+      "reproduced": true,
+      "metric_tolerance": "relative/absolute 1e-6",
+      "differences": [],
+      "metrics": {
+        "duration_s": 20.0,
+        "distance_m": 1.035537578490568,
+        "displacement_m": 1.0355375266881488,
+        "maximum_roll_deg": 2.317822320073578,
+        "maximum_pitch_deg": 1.8859344410888148,
+        "maximum_abs_slip_ratio": 0.9556276824328725,
+        "mobility_bus_energy_wh": 0.06733487636147599,
+        "contacts_observed": null
+      },
+      "archive_bytes": 268001,
+      "archive_sha256": "236216996258eb52778d24bcd3d620d42d0c2eb4049d3a87aeb877baf28ea90b"
+    },
+    "browser_acceptance": [
+      "Gazebo engine selected in the detailed segment form after the native benchmark",
+      "Linked measured-terrain run completed and replayed with Engine: Gazebo 8.15.0",
+      "Replay scrubber reached 20 seconds and retained source mission UTC",
+      "Follow camera and route overview controls operated",
+      "Evidence ZIP downloaded through the browser",
+      "Service status shows both available engines"
+    ]
+  },
+  "limits": [
+    "CPU physics and ROS 2 telemetry verified; GUI rendering and arbitrary external ROS controller integration are not claimed.",
+    "Rigid friction, motor efficiency and terrain interpolation remain declared models; lunar regolith and thermal calibration remain unresolved."
+  ]
+}

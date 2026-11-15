@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "mission_id": "f141b35b-9481-4f10-8d2e-0c000a89407c",
+  "native_probe_id": "599c416a-7587-4678-a2c8-5472bc12d66e",
+  "checks": [
+    "Saved mission restored Shackleton rim, clone 001, robot and UTC origin.",
+    "Data & models shows observed image scope, local date limit and unmet numerical targets.",
+    "Browser download parsed as v1.2 JSON and matches the published SHA-256.",
+    "390x844 dialog fits with no horizontal document/dialog overflow; report link scrolled into view at y403\u2013440.",
+    "Desktop viewport restored after mobile QA."
+  ],
+  "download": {
+    "file": "/Users/Aayush/Downloads/clavius-illumination-validation.json",
+    "bytes": 1192083,
+    "sha256": "0b853723ff6526d51976606639ae0955e89e120b2638259cf45dd0663db27b9f"
+  },
+  "mobile_layout": {
+    "viewport_width": 390,
+    "document_width": 390,
+    "dialog_left": 16,
+    "dialog_right": 374,
+    "dialog_client_width": 356,
+    "dialog_scroll_width": 356,
+    "download_visible": true
+  },
+  "screenshots": [
+    "/Users/Aayush/.aside/u/0/sessions/2026-11-15_jeZ3XZ0YFTLueBfn/artifacts/illumination-sources-desktop.png",
+    "/Users/Aayush/.aside/u/0/sessions/2026-11-15_jeZ3XZ0YFTLueBfn/artifacts/illumination-sources-mobile-download.png",
+    "/Users/Aayush/.aside/u/0/sessions/2026-11-15_jeZ3XZ0YFTLueBfn/artifacts/illumination-mission-final.png"
+  ]
+}

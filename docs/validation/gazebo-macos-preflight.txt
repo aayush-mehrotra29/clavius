@@ -1,0 +1,188 @@
+Warning: The following taps are not trusted:
+  getsentry/xcodebuildmcp
+  supabase/tap
+
+Homebrew is currently ignoring formulae, casks and commands
+from these taps because tap trust is required.
+Prefer trusting only the specific formulae, casks or commands you need.
+Trust installed formulae from these taps with:
+  brew trust --formula supabase/tap/supabase
+Trust other specific casks and commands with:
+  brew trust --cask <user>/<tap>/<cask>
+  brew trust --command <user>/<tap>/<command>
+Whole-tap trust is broader and includes all current and future formulae,
+casks and commands from the listed taps. Trust whole taps with:
+  brew trust getsentry/xcodebuildmcp supabase/tap
+Untap them with:
+  brew untap getsentry/xcodebuildmcp supabase/tap
+For more information, see:
+  https://docs.brew.sh/Tap-Trust
+
+==> Would install 1 formula:
+osrf/simulation/gz-sim8 8.15.0_8
+==> Would install 125 dependencies for gz-sim8:
+abseil                                  20260817.0
+openssl@4                               4.1.0
+gflags                                  2.3.1
+google-benchmark                        1.10.0
+cmake                                   4.5.0
+pkgconf                                 3.0.10
+osrf/simulation/gz-cmake3               3.6.0_2
+assimp                                  6.0.6
+freeimage                               3.18.0
+aws-c-common                            1.0.5
+aws-c-cal                               1.0.0_1
+aws-c-compression                       1.0.0
+s2n                                     1.7.14
+aws-c-io                                1.1.2
+aws-c-http                              1.3.0
+aws-c-sdkutils                          1.0.1
+aws-c-auth                              1.0.4_1
+aws-checksums                           1.0.1
+aws-c-event-stream                      1.0.0_1
+aws-c-mqtt                              1.1.3_1
+aws-c-s3                                1.5.2_2
+aws-crt-cpp                             0.44.4_1
+aws-sdk-cpp                             1.11.929_1
+protobuf                                36.2
+re2                                     2025-11-05_2
+grpc                                    1.85.2
+z3                                      5.4.1
+llvm                                    23.1.5_1
+snappy                                  1.3.1
+thrift                                  0.25.0_1
+uriparser                               1.0.3
+utf8proc                                2.12.0
+apache-arrow                            26.0.1
+c-blosc                                 1.21.7
+cfitsio                                 4.7.0
+popt                                    1.19
+epsilon                                 0.9.2
+minizip                                 1.4
+freexl                                  2.0.0
+geos                                    3.15.0
+isl                                     0.28
+mpfr                                    4.2.2
+libmpc                                  1.4.1
+gcc                                     16.2.0
+libaec                                  1.1.8
+hdf5                                    2.2.0
+imath                                   3.2.3
+highway                                 1.4.0
+libdeflate                              1.26
+openjph                                 0.33.0
+openexr                                 3.5.4
+jpeg-xl                                 0.13.0
+proj                                    9.9.0
+libgeotiff                              1.7.4
+aom                                     3.15.3
+libde265                                1.1.3
+libheif                                 1.23.7
+libkml                                  1.3.0_1
+liblerc                                 4.3.0
+icu4c@79                                79.1
+krb5                                    1.22.3
+libpq                                   18.7
+librttopo                               1.1.0
+libxml2                                 2.15.4
+libspatialite                           5.1.0_4
+netcdf                                  4.10.1_1
+openblas                                0.3.34
+numpy                                   2.5.4
+python@3.15                             3.15.2
+qhull                                   2020.2
+boost                                   1.92.0_1
+eigen                                   5.0.1
+cgal                                    6.2.1
+sfcgal                                  2.3.0_1
+m4                                      1.4.21
+libtool                                 2.6.2
+unixodbc                                2.3.14
+xerces-c                                3.3.0
+gdal                                    3.13.3_7
+jasper                                  4.2.9
+netpbm                                  10.86.51
+gts                                     0.7.6_4
+osrf/simulation/gz-utils2               2.2.1
+ruby                                    4.0.9
+osrf/simulation/gz-math7                7.7.0_2
+ossp-uuid                               1.6.2_2
+tinyxml2                                11.0.0
+osrf/simulation/gz-common5              5.9.0_2
+osrf/simulation/gz-tools2               2.0.4
+osrf/simulation/gz-msgs10               10.4.0_8
+jsoncpp                                 1.9.8
+libzip                                  1.12.1
+osrf/simulation/gz-fuel-tools9          9.1.1_45
+osrf/simulation/gz-plugin2              2.0.4
+spdlog                                  1.17.0
+doxygen                                 1.18.0
+libzzip                                 0.13.80
+hwloc                                   2.15.0
+tbb                                     2023.2.0
+osrf/simulation/ogre1.9                 1.9-20160714-108ab0bcc69603dba32c0ffd4bbbc39051f421c9_12
+rapidjson                               1.1.0
+osrf/simulation/ogre2.3-with-freeimage  2.3.1_1
+osrf/simulation/gz-rendering8           8.3.0_2
+cppzmq                                  4.11.0
+osrf/simulation/gz-transport13          13.6.0_8
+md4c                                    0.6.0
+qt@5                                    5.15.19
+osrf/simulation/gz-gui8                 8.4.0_44
+bullet                                  3.25
+libccd                                  2.1_1
+octomap                                 1.10.1
+fcl                                     0.7.0_2
+flann                                   1.9.2_4
+ampl-asl                                1.0.2
+ipopt                                   3.14.20
+nlopt                                   2.11.0
+ode                                     0.16.6
+open-scene-graph                        3.6.5_2
+console_bridge                          1.0.2
+urdfdom_headers                         3.0.1
+urdfdom                                 6.0.2
+dartsim                                 6.20.3
+osrf/simulation/sdformat14              14.9.0_8
+osrf/simulation/gz-physics7             7.9.0
+osrf/simulation/gz-sensors8             8.3.0
+==> Would upgrade 39 dependencies for gz-sim8:
+ca-certificates  2026-08-13 -> 2026-11-05
+sdl3             3.4.16     -> 3.4.20
+sdl2-compat      2.32.72    -> 2.32.74
+svt-av1          4.2.0      -> 4.3.0
+xz               5.8.3      -> 5.8.4
+ffmpeg           9.0.1_1    -> 9.0.2_1
+brotli           1.2.0      -> 1.2.1
+c-ares           1.34.6     -> 1.34.9
+lz4              1.10.0     -> 1.11.1
+simdjson         4.4.0      -> 5.1.1
+jpeg-turbo       3.2.0      -> 3.2.1
+libpng           1.6.58     -> 1.6.59
+little-cms2      2.19.1     -> 2.20
+libarchive       3.8.9      -> 3.8.11
+readline         8.3.3      -> 8.3.6
+sqlite           3.53.1     -> 3.54.1
+libomp           22.1.8     -> 23.1.5
+openjpeg         2.5.4      -> 2.5.4_1
+pcre2            10.48      -> 10.49
+freetype         2.14.3     -> 2.15.0
+libunistring     1.4.2      -> 1.5
+glib             2.90.0     -> 2.90.1
+xorgproto        2025.1     -> 2026.1
+libx11           1.8.13     -> 1.8.14
+libxrender       0.9.12     -> 0.9.13
+cairo            1.18.4     -> 1.18.6
+p11-kit          0.26.2     -> 0.26.6
+libgcrypt        1.12.2     -> 1.12.4
+libksba          1.8.0      -> 1.8.1
+pinentry         1.3.2      -> 1.3.3
+gnupg            2.5.20     -> 2.5.24_1
+gpgme            2.1.0      -> 2.2.0
+gpgmepp          2.1.0      -> 2.2.0
+harfbuzz         14.4.0     -> 15.1.0
+nspr             4.39       -> 4.40
+nss              3.125      -> 3.133
+poppler          26.06.0    -> 26.11.0
+fmt              12.1.0     -> 12.2.1
+libsodium        1.0.21     -> 1.0.22

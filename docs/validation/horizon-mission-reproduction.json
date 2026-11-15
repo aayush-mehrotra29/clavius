@@ -1,0 +1,21 @@
+{
+  "run_id": "f141b35b-9481-4f10-8d2e-0c000a89407c",
+  "reproduced": true,
+  "metric_tolerance": "relative/absolute 1e-6",
+  "differences": [],
+  "metrics": {
+    "distance_m": 113.26568350764511,
+    "scheduled_completion_s": 2865.3136701529024,
+    "minimum_battery_wh": 155.94333870720533,
+    "reserve_wh": 75,
+    "capacity_wh": 500.0,
+    "final_battery_wh": 155.94333870720533,
+    "generated_wh": 0.0,
+    "consumed_wh": 255.60382822815112,
+    "max_route_pitch_deg": 4.801584010321487,
+    "max_terrain_slope_deg": 7.579798986506034,
+    "longest_earth_outage_s": 0,
+    "required_tasks_scheduled_complete": true,
+    "operations_energy_supported": true
+  }
+}

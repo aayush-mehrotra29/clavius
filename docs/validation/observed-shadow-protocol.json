@@ -1,0 +1,78 @@
+{
+  "version": "clavius-observed-shadow-screen-v1.2",
+  "declared_before_clavius_predictions": true,
+  "scene_selection": "First two scene IDs in the PGDA90 image/model archive order, without inspecting Clavius agreement: M1188426614 and M1311409938. Keep non-overlap and inconclusive outcomes.",
+  "scenes": [
+    "M1188426614",
+    "M1311409938"
+  ],
+  "regional_extension_declared_before_predictions": "The first scene has no curated-site overlap. Keep both initial scenes and all non-overlap/coverage failures. Additionally screen the same scenes with the unchanged production horizon algorithm using PGDA90 80 m terrain everywhere. This is explicitly a regional-only experiment. If fewer than two regional scenes have complete ray coverage, inspect subsequent scene footprints in the fixed archive order below, before predictions, and add the first supported scene(s). Do not select by agreement.",
+  "archive_order_for_coverage_only_selection": [
+    "M1188426614",
+    "M1311409938",
+    "M1312308500",
+    "M139356343",
+    "M139729686",
+    "M151364517",
+    "M154940551",
+    "M155368056",
+    "M184288222"
+  ],
+  "coverage_selection_rule": "The fallback scene is the first additional archive entry whose exact LE label's catalog center has complete 220 km Sun-center ray coverage in the existing regional DEM. Keep every center preflight result, and require exact LabelFileName matching because short numeric wildcard searches can include other scenes. This selection uses coverage only, never image brightness or prediction agreement.",
+  "followup_declared_after_initial_regional_results_before_local_predictions": "The original regional protocol, code and results are retained in observed-shadow-regional-initial.zip. Regional 1x-to-2x checks exceeded the original targets. Keep the production 1x predictions and original thresholds; add 4x/8x numerical comparisons at the same preselected every-twentieth samples. Also test all observed samples in both curated local 5 m domains (10 m guard), using the actual production Site methods and fixed nominal ENU frames, for every selected scene that overlaps. Do not choose locations by agreement. This is one observed epoch at the local sites, not two independent local dates.",
+  "followup_refinement_levels": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "sites": [
+    "connecting-ridge",
+    "shackleton-rim"
+  ],
+  "terrain_realization": "nominal",
+  "observation_height_m": 0,
+  "epoch_policy": "Use each camera's PDS acquisition midpoint from archived ODE labels; retain start/stop times. Never decode image IDs as UTC. Pushbroom per-line times are not modeled; record exposure span and midpoint approximation.",
+  "registration": "Use the published south polar stereographic pixel centers and CRS. Require matching numeric lunar CRS parameters. Do not fit translations, rotations or time offsets to the predictions. LE takes priority in overlap; RE fills cells without valid LE data.",
+  "sampling": "A common 200 m projected lattice at X=200*i+10 and Y=200*j+10 metres, within the camera bounding boxes. Read each observation's containing native 20 m pixel, without interpolation; record its pixel-center displacement (at most sqrt(2)*10 m). Inspection showed the camera grid origins differ from the model and each other. For curated-site tests also require the native 5 m domain with a 10 m inner guard. This is a 200 m screening lattice, not a 20 m boundary-accuracy test.",
+  "nodata_policy": "Respect GDAL masks, finite samples and the source nodata sentinel. No missing pixel is replaced with darkness. Do not interpolate image reflectance across pixels or camera gaps.",
+  "reflectance_proxy": {
+    "units": "Observed NAC I/F, distinct from the NASA reference rendering's W/m2",
+    "primary": {
+      "dark_at_most": 0.001,
+      "lit_at_least": 0.005
+    },
+    "sensitivity": [
+      {
+        "dark_at_most": 0.0005,
+        "lit_at_least": 0.0025
+      },
+      {
+        "dark_at_most": 0.002,
+        "lit_at_least": 0.01
+      }
+    ],
+    "ambiguous_policy": "Values between the two thresholds are excluded from the confident-class confusion matrix but retained in the data. Negative calibrated samples remain valid if the source mask permits them. Pixels above I/F 1 are excluded as out of the declared proxy domain.",
+    "caveat": "These are predeclared engineering proxy thresholds, not NASA-provided shadow truth. Albedo, grazing incidence, scattering and radiometry can confound the classifications. Report sensitivity; do not tune thresholds after seeing agreement."
+  },
+  "clavius_classes": {
+    "dark_at_most_visible_disk_fraction": 0.05,
+    "lit_at_least_visible_disk_fraction": 0.95
+  },
+  "metrics": [
+    "coverage and ambiguous/unknown counts",
+    "false-sunlit fraction among confidently dark observed pixels, counting only Clavius fraction >= 0.95 as false sunlit",
+    "false-shadow fraction among confidently lit observed pixels, counting only Clavius fraction <= 0.05 as false shadow",
+    "full dark/partial/lit counts against dark/ambiguous/lit observations",
+    "symmetric shadow-boundary distance median and p95 on the 200 m common lattice, only four-neighbor label transitions with every neighbor covered; observation midpoint threshold I/F 0.003 and Clavius visible fraction 0.5",
+    "NASA rendering comparison as a separate positive-irradiance reference, never as independent observational truth"
+  ],
+  "numerical_refinement": {
+    "sample_selection": "Every twentieth valid lattice sample in stable site/scene row-major order, independent of prediction value; use refinement=2 versus production refinement=1 at the exact solar azimuth.",
+    "horizon_change_target_deg": 0.05,
+    "visible_fraction_change_target": 0.05,
+    "target_meaning": "Predeclared numerical screening targets only, not established observational error bounds. Record failures and worst cases."
+  },
+  "acceptance_policy": "Record both scenes even if no local overlap or poor agreement. A comparison is inconclusive if no confident dark or lit samples, or no eligible boundaries. There is no pre-established observational pass threshold; do not call the illumination model calibrated or mission validated. This bounded comparison does not close wider convergence, camera timing, scattering, registration or terrain-resolution uncertainty.",
+  "sampling_fix_followup": "After v1.1 local comparisons, production horizon sampling was corrected to retain native 5 m posting throughout a padded diagonal of each curated local patch, rather than switching to 80 m at 1 km. It also samples the interpolated local surface at no more than one-eighth posting (0.625 m) in the first km, where sub-cell peak positions affect angular elevation; the original regional/far sampling lattice is retained. This adds numerical samples, not measured terrain detail. Thresholds, scenes, grid and every-twentieth refinement locations remain frozen. Pre-fix code/protocol/results are archived in observed-shadow-before-sampling-fix.zip. Recompute every case with the revised production implementation; do not reinterpret earlier results as results of the fix."
+}

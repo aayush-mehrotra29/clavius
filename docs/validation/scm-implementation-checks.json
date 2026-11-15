@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-15",
+  "python_tests": {
+    "passed": 159,
+    "command": "npm run test:simulation",
+    "log": "work/simulation-scm-final.log"
+  },
+  "frontend_tests": {
+    "passed": 13,
+    "command": "npm test",
+    "log": "work/frontend-scm-final.log"
+  },
+  "production_build": {
+    "passed": true,
+    "log": "work/build-scm-final.log"
+  },
+  "contracts": {
+    "schemas": 8,
+    "messages": 7,
+    "invalid_rejections": 4,
+    "log": "work/contracts-scm.log"
+  },
+  "scm": {
+    "native_case_count": 54,
+    "runtime_identity": "b6893013760304c5d046a33fc9c27068e070eade0584278f97fb2865c5bae9cf",
+    "report_sha256": "5b608ab2118bc5a57911358227ef8479103ae452327ce44a7014e3daffc7c3b9",
+    "all_rig_controls_passed": true,
+    "holdout_targets_met": false,
+    "numerical_targets_met": false,
+    "lunar_validation_established": false,
+    "active_app_dynamics": false,
+    "rig_control_case_count": 54
+  },
+  "viper": {
+    "audit_sha256": "58a2988f1bd27ad7a2f882a6f992cfb6fd1ba1c017a42b2814408dd7f41b7f01",
+    "structural_checks_passed": true,
+    "mass_frame_consistency_passed": false,
+    "rigid_floor_component_targets_met": true,
+    "active_app_robot": false
+  },
+  "browser_record": "docs/validation/scm-browser.json",
+  "active_goal_complete": false
+}

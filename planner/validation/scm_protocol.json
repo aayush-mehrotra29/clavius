@@ -1,0 +1,52 @@
+{
+  "id": "clavius-trec-scm-development-v1",
+  "role": "offline_experimental_development",
+  "source_reference_sha256": "bbc2049b556bb5eb5b0ff7a688945d09a189ed55d3a43b810022724df911d33e",
+  "engine": "Project Chrono 9.0.1 CPU SCM",
+  "upstream_commit": "2617649bf687456328a122b63dc0bb64df91394a",
+  "gravity_m_s2": 9.81,
+  "duration_s": 20,
+  "steady_window_s": [10, 20],
+  "base_dt_s": 0.001,
+  "base_grid_m": 0.01,
+  "refined_dt_s": 0.0005,
+  "refined_grid_m": 0.005,
+  "fixed_material_assumptions": {
+    "bekker_kphi": 200000,
+    "bekker_kc": 0,
+    "bekker_n": 1.1,
+    "cohesion_pa": 0,
+    "elastic_pa_m": 40000000,
+    "damping_pa_s_m": 30000,
+    "bulldozing": false
+  },
+  "material_basis": "Declared cohesionless SCM demonstration family; not measured GRC-3 stiffness or local lunar regolith. Pressure/sinkage parameters are not identifiable from these traction-only observations and are fixed rather than fitted.",
+  "calibration_variables": {
+    "friction_angle_deg": [30, 42],
+    "janosi_m": [0.015, 0.05]
+  },
+  "training_source_indices": [0, 4, 7, 8, 9, 11, 12, 13, 16, 17],
+  "holdout_source_indices": [1, 2, 3, 5, 6, 10, 14, 15],
+  "split_rule": "Nominal slip groups 0/0.2/0.4/0.6/0.8 train; 0.05/0.1/0.3/0.5/0.7 hold out. All repeats of a slip group stay together. Source coordinates are not rounded or changed during execution.",
+  "maximum_parameter_candidates": 4,
+  "selection": "Minimize training RMS traction discrepancy; freeze selected candidate and its hash before evaluating any holdout. Holdout outcomes must not select or tune candidates.",
+  "numerical_refinement_source_indices": [1, 7, 16],
+  "checks": {
+    "maximum_translation_error_m_s": 0.002,
+    "maximum_relative_angular_speed_error": 0.01,
+    "maximum_relative_normal_load_error": 0.05,
+    "maximum_abs_mean_vertical_velocity_m_s": 0.002,
+    "maximum_time_refinement_traction_change_deg": 1,
+    "maximum_grid_refinement_traction_change_deg": 1,
+    "holdout_traction_rmse_target_deg": 5,
+    "holdout_maximum_abs_traction_error_target_deg": 10
+  },
+  "target_scope": "Predeclared development gates, not experimental uncertainty or an operational accuracy bound.",
+  "limitations": [
+    "Held-out plot points from one published Earth experiment are not a new independent experiment or lunar validation.",
+    "The grousered wheel and high slip range stress the applicability of this semi-empirical model; failed gates remain failures.",
+    "No fitted parameter is presented as uniquely identified soil physics.",
+    "No flight-rover, full-rover, battery, thermal, steering, variable load or measured-terrain prediction is validated by this family.",
+    "No lunar gravity prediction is accepted from Earth calibration alone."
+  ]
+}

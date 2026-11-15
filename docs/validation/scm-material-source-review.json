@@ -1,0 +1,26 @@
+{
+  "reviewed_date": "2026-11-15",
+  "purpose": "Find independent pressure/sinkage constraints without changing the frozen TREC campaign",
+  "sources": [
+    {
+      "url": "https://ntrs.nasa.gov/citations/20150010165",
+      "download_url": "https://ntrs.nasa.gov/api/citations/20150010165/downloads/20150010165.pdf",
+      "title": "Simulated Lunar Environment For The Study Of Regolith Strength: An Improved Vacuum Bevameter Design",
+      "authors": ["Heather A. Oravec", "Phillip B. Abel"],
+      "presentation_date": "2012-03-06",
+      "sha256": "475746a41e9c08abcbd47a4de76c9709bb6ee0a69e81fdac31bb4e89bce694b8",
+      "bytes": 2081154,
+      "inspection": "Original 18-page PDF text inspected. Preliminary plate tests use air-dried JSC-1A in ambient Earth conditions, with a 32 mm plate; the reported limitations include shaft friction, a single density and room temperature.",
+      "decision": "Do not substitute these measurements for GRC-3 or flight-site lunar material. No numbers entered the frozen campaign or active app model.",
+      "active_dataset": false
+    },
+    {
+      "url": "https://ntrs.nasa.gov/citations/20250001809",
+      "source_manifest": "public/data/mobility-reference-manifest.json",
+      "inspection": "The retained paper describes GRC-3 density/friction-angle sets and cautions that Bekker/Janosi parameters require a bevameter and are gravity-dependent. These physical density/friction values do not independently determine SCM pressure/sinkage stiffness or shear length.",
+      "decision": "Keep pressure/sinkage coefficients explicitly assumed, fitted parameters non-unique, and lunar validation false. Seek matched independent normal/shear tests and a separate validation campaign before mission use."
+    }
+  ],
+  "campaign_protocol_changed": false,
+  "lunar_calibration_established": false
+}

@@ -1,0 +1,488 @@
+{
+  "id": "clavius-viper-frame-repair-validation-v1",
+  "finished_utc": "2026-11-15T22:09:22.732170+00:00",
+  "model_id": "clavius-viper-mechanical-frame-repair-v1",
+  "runtime_identity": "1f18c4a4faeb68faac1d849e14c0c2b5006a85619044af30c3322b4a960ac055",
+  "reference_runtime_identity": "b6893013760304c5d046a33fc9c27068e070eade0584278f97fb2865c5bae9cf",
+  "protocol_sha256": "613d52768ba2af114a026b721d36798ee1d98fad8d5e5ad2bfbea3d286bfacf1",
+  "rigid_protocol_sha256": "ef2760ef8a8f54620f2c84cca1ed5277d89e9739a9a1b61bbfaeef721e66d7d5",
+  "frame_cases": [
+    {
+      "variant": "upstream-original",
+      "mode": "static",
+      "pose": "identity",
+      "checks": {
+        "collider_cog_frames": false,
+        "collider_inertia_tensors": false,
+        "shaft_reference_directions": false,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": false,
+        "joint_constraints": true,
+        "shaft_speed_relation": true,
+        "forward_torque_response": null
+      },
+      "checks_passed": false,
+      "maximum_cog_difference_m": 0.027591727067862632,
+      "maximum_relative_tensor_difference": 0.0008239349285317281,
+      "maximum_shaft_axis_difference": 0.0003698842183365716,
+      "mass_accounting_error_kg": -4.0,
+      "forward_wheel_speeds_rad_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "original-static-identity",
+      "raw_sha256": "6839ba8c50aff0c4bce190aa33c6910229f8cef7f04e8dcc106e9722f92665f5"
+    },
+    {
+      "variant": "upstream-original",
+      "mode": "static",
+      "pose": "tilted",
+      "checks": {
+        "collider_cog_frames": false,
+        "collider_inertia_tensors": false,
+        "shaft_reference_directions": false,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": false,
+        "joint_constraints": true,
+        "shaft_speed_relation": true,
+        "forward_torque_response": null
+      },
+      "checks_passed": false,
+      "maximum_cog_difference_m": 0.027591727067862632,
+      "maximum_relative_tensor_difference": 0.0008239349285317281,
+      "maximum_shaft_axis_difference": 0.0003698842183367818,
+      "mass_accounting_error_kg": -4.0,
+      "forward_wheel_speeds_rad_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "original-static-tilted",
+      "raw_sha256": "7f72f119f7f45acffc83061e693b97d0cc5cbfec301fafd319780e4cea954d64"
+    },
+    {
+      "variant": "upstream-original",
+      "mode": "torque",
+      "pose": "identity",
+      "checks": {
+        "collider_cog_frames": false,
+        "collider_inertia_tensors": false,
+        "shaft_reference_directions": false,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": false,
+        "joint_constraints": true,
+        "shaft_speed_relation": true,
+        "forward_torque_response": true
+      },
+      "checks_passed": false,
+      "maximum_cog_difference_m": 0.027591727067862632,
+      "maximum_relative_tensor_difference": 0.0008239349285317281,
+      "maximum_shaft_axis_difference": 0.00036988421833650443,
+      "mass_accounting_error_kg": -4.0,
+      "forward_wheel_speeds_rad_s": [
+        0.37424906223058835,
+        0.37424906223059384,
+        0.37424906223051313,
+        0.3742490622305933
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "original-torque-identity",
+      "raw_sha256": "a2b45a07004e8fa78f52b50fa78a6a8c7d40b52ed26441984d140137cd3f0e14"
+    },
+    {
+      "variant": "upstream-original",
+      "mode": "torque",
+      "pose": "tilted",
+      "checks": {
+        "collider_cog_frames": false,
+        "collider_inertia_tensors": false,
+        "shaft_reference_directions": false,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": false,
+        "joint_constraints": true,
+        "shaft_speed_relation": true,
+        "forward_torque_response": true
+      },
+      "checks_passed": false,
+      "maximum_cog_difference_m": 0.027591727067862632,
+      "maximum_relative_tensor_difference": 0.0008239349285317281,
+      "maximum_shaft_axis_difference": 0.0003698842183408721,
+      "mass_accounting_error_kg": -4.0,
+      "forward_wheel_speeds_rad_s": [
+        0.3742490622307762,
+        0.37424906223076465,
+        0.37424906223073234,
+        0.3742490622305106
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "original-torque-tilted",
+      "raw_sha256": "fa77f9a23216ab6031bbbed5f7f9da3a9a940dd44104277e28efc0dd0f7c1249"
+    },
+    {
+      "variant": "clavius-frame-repaired",
+      "mode": "static",
+      "pose": "identity",
+      "checks": {
+        "collider_cog_frames": true,
+        "collider_inertia_tensors": true,
+        "shaft_reference_directions": true,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": true,
+        "joint_constraints": true,
+        "shaft_speed_relation": true,
+        "forward_torque_response": null
+      },
+      "checks_passed": true,
+      "maximum_cog_difference_m": 4.7356680017425137e-17,
+      "maximum_relative_tensor_difference": 2.502794645964781e-16,
+      "maximum_shaft_axis_difference": 2.662332011600096e-16,
+      "mass_accounting_error_kg": 0.0,
+      "forward_wheel_speeds_rad_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "repaired-static-identity",
+      "raw_sha256": "d4888c7c562a2662ace13167e280feec6d90f0bb6eb5173a727943fe31d431c6"
+    },
+    {
+      "variant": "clavius-frame-repaired",
+      "mode": "static",
+      "pose": "tilted",
+      "checks": {
+        "collider_cog_frames": true,
+        "collider_inertia_tensors": true,
+        "shaft_reference_directions": true,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": true,
+        "joint_constraints": true,
+        "shaft_speed_relation": true,
+        "forward_torque_response": null
+      },
+      "checks_passed": true,
+      "maximum_cog_difference_m": 4.7356680017425137e-17,
+      "maximum_relative_tensor_difference": 2.502794645964781e-16,
+      "maximum_shaft_axis_difference": 9.412276482540589e-16,
+      "mass_accounting_error_kg": 0.0,
+      "forward_wheel_speeds_rad_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "repaired-static-tilted",
+      "raw_sha256": "dae09d6913c22cb3026299c41d4072988a463924ac4b97db7a5361bf3582262e"
+    },
+    {
+      "variant": "clavius-frame-repaired",
+      "mode": "torque",
+      "pose": "identity",
+      "checks": {
+        "collider_cog_frames": true,
+        "collider_inertia_tensors": true,
+        "shaft_reference_directions": true,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": true,
+        "joint_constraints": true,
+        "shaft_speed_relation": true,
+        "forward_torque_response": true
+      },
+      "checks_passed": true,
+      "maximum_cog_difference_m": 4.7356680017425137e-17,
+      "maximum_relative_tensor_difference": 2.502794645964781e-16,
+      "maximum_shaft_axis_difference": 1.33815982648305e-14,
+      "mass_accounting_error_kg": 0.0,
+      "forward_wheel_speeds_rad_s": [
+        0.3742490782508577,
+        0.3742490782507085,
+        0.37424907825074405,
+        0.3742490782505531
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "repaired-torque-identity",
+      "raw_sha256": "29cb1f0816a48d7b1b2c897d1fa46eb3a477924fb02a20d75877e186651c7496"
+    },
+    {
+      "variant": "clavius-frame-repaired",
+      "mode": "torque",
+      "pose": "tilted",
+      "checks": {
+        "collider_cog_frames": true,
+        "collider_inertia_tensors": true,
+        "shaft_reference_directions": true,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": true,
+        "joint_constraints": true,
+        "shaft_speed_relation": true,
+        "forward_torque_response": true
+      },
+      "checks_passed": true,
+      "maximum_cog_difference_m": 4.7356680017425137e-17,
+      "maximum_relative_tensor_difference": 2.502794645964781e-16,
+      "maximum_shaft_axis_difference": 1.1919047077258936e-14,
+      "mass_accounting_error_kg": 0.0,
+      "forward_wheel_speeds_rad_s": [
+        0.37424907825060444,
+        0.37424907825088155,
+        0.3742490782505763,
+        0.37424907825078924
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "repaired-torque-tilted",
+      "raw_sha256": "90590ab440b624fb2e0deec0d03031fdc358b67842a86695b795afdb2f28e500"
+    },
+    {
+      "variant": "clavius-frame-repaired",
+      "mode": "wrong-axis",
+      "pose": "identity",
+      "checks": {
+        "collider_cog_frames": true,
+        "collider_inertia_tensors": true,
+        "shaft_reference_directions": false,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": true,
+        "joint_constraints": true,
+        "shaft_speed_relation": false,
+        "forward_torque_response": false
+      },
+      "checks_passed": false,
+      "maximum_cog_difference_m": 4.7356680017425137e-17,
+      "maximum_relative_tensor_difference": 2.502794645964781e-16,
+      "maximum_shaft_axis_difference": 1.9999999657964154,
+      "mass_accounting_error_kg": 0.0,
+      "forward_wheel_speeds_rad_s": [
+        -0.37424906223056204,
+        0.37424906223056814,
+        -0.37424906223061416,
+        0.3742490622306478
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "repaired-wrong-axis-identity",
+      "raw_sha256": "d87d95555a3e8211ad1b36254501c902e8b2d5134c7c2f1cdc53fecbdecf09b7"
+    },
+    {
+      "variant": "clavius-frame-repaired",
+      "mode": "wrong-axis",
+      "pose": "tilted",
+      "checks": {
+        "collider_cog_frames": true,
+        "collider_inertia_tensors": true,
+        "shaft_reference_directions": false,
+        "wheel_mass_preserved": true,
+        "total_mass_accounting": true,
+        "joint_constraints": true,
+        "shaft_speed_relation": false,
+        "forward_torque_response": false
+      },
+      "checks_passed": false,
+      "maximum_cog_difference_m": 4.7356680017425137e-17,
+      "maximum_relative_tensor_difference": 2.502794645964781e-16,
+      "maximum_shaft_axis_difference": 1.9999999657964156,
+      "mass_accounting_error_kg": 0.0,
+      "forward_wheel_speeds_rad_s": [
+        -0.37424906223068044,
+        0.37424906223074456,
+        -0.37424906223065313,
+        0.3742490622307819
+      ],
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "repaired-wrong-axis-tilted",
+      "raw_sha256": "3a0c68ddc16bd0d93ecbea4736f288f8a438b79f6ddfad6664def60c72dc9537"
+    }
+  ],
+  "baseline_defects_reproduced": true,
+  "deliberate_axis_error_detected": true,
+  "repaired_frame_targets_met": true,
+  "rigid_cases": [
+    {
+      "gravity_m_s2": 9.81,
+      "dt_s": 0.001,
+      "mean_speed_m_s": 0.10186879413233735,
+      "mean_vertical_speed_m_s": -4.4396637326840655e-05,
+      "mean_normal_force_n": 4262.894140878268,
+      "nominal_weight_n": 4266.576127304514,
+      "maximum_steady_lateral_position_m": 0.00012172318597771862,
+      "maximum_quaternion_norm_error": 6.772360450213455e-15,
+      "mean_wheel_omega_rad_s": 0.39998962202616156,
+      "final_position_m": [
+        1.6801941887227674,
+        -5.454434961473579e-05,
+        0.2538265784697059
+      ],
+      "checks": {
+        "speed_matches_wheel_envelope": true,
+        "normal_load_balance": true,
+        "vertical_settling": true,
+        "lateral_drift": true,
+        "quaternion_normalization": true
+      },
+      "checks_passed": true,
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "rigid-earth-base",
+      "label": "earth",
+      "kind": "base",
+      "trace_sha256": "df745012c60b165ac4d9b3eda64df88167ef15ffbd1d230c5c9279f551a4fbc5"
+    },
+    {
+      "gravity_m_s2": 9.81,
+      "dt_s": 0.0005,
+      "mean_speed_m_s": 0.10186244265042749,
+      "mean_vertical_speed_m_s": -4.0090051963458294e-05,
+      "mean_normal_force_n": 4267.129466633554,
+      "nominal_weight_n": 4266.576127304514,
+      "maximum_steady_lateral_position_m": 0.00012370406093764133,
+      "maximum_quaternion_norm_error": 1.567634910770721e-13,
+      "mean_wheel_omega_rad_s": 0.39998982160630875,
+      "final_position_m": [
+        1.680196223765396,
+        -5.7710095149032216e-05,
+        0.2538263772595549
+      ],
+      "checks": {
+        "speed_matches_wheel_envelope": true,
+        "normal_load_balance": true,
+        "vertical_settling": true,
+        "lateral_drift": true,
+        "quaternion_normalization": true
+      },
+      "checks_passed": true,
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "rigid-earth-refined",
+      "label": "earth",
+      "kind": "refined",
+      "trace_sha256": "21b8cb95e57cad23c948543bc658f99bfda366d55242075277221de2d2819547"
+    },
+    {
+      "gravity_m_s2": 1.62,
+      "dt_s": 0.001,
+      "mean_speed_m_s": 0.1019179671917502,
+      "mean_vertical_speed_m_s": -5.383253916305739e-05,
+      "mean_normal_force_n": 703.4413497138812,
+      "nominal_weight_n": 704.5722045090023,
+      "maximum_steady_lateral_position_m": 0.00013531241210744686,
+      "maximum_quaternion_norm_error": 3.441691376337985e-14,
+      "mean_wheel_omega_rad_s": 0.4000015339205273,
+      "final_position_m": [
+        1.680859257154134,
+        -4.5413424950422785e-06,
+        0.2543326657722814
+      ],
+      "checks": {
+        "speed_matches_wheel_envelope": true,
+        "normal_load_balance": true,
+        "vertical_settling": true,
+        "lateral_drift": true,
+        "quaternion_normalization": true
+      },
+      "checks_passed": true,
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "rigid-moon-base",
+      "label": "moon",
+      "kind": "base",
+      "trace_sha256": "81d273e73cca27142d27c0c5b07a61332356b250efa6d0aeb501b05a5808ee6b"
+    },
+    {
+      "gravity_m_s2": 1.62,
+      "dt_s": 0.0005,
+      "mean_speed_m_s": 0.10191893591782761,
+      "mean_vertical_speed_m_s": -5.024477466986068e-05,
+      "mean_normal_force_n": 704.5978326337065,
+      "nominal_weight_n": 704.5722045090023,
+      "maximum_steady_lateral_position_m": 0.00014084956266745204,
+      "maximum_quaternion_norm_error": 1.2145839889399213e-13,
+      "mean_wheel_omega_rad_s": 0.3999997629910046,
+      "final_position_m": [
+        1.6808716401280035,
+        -1.2260505824223335e-05,
+        0.2543338006551683
+      ],
+      "checks": {
+        "speed_matches_wheel_envelope": true,
+        "normal_load_balance": true,
+        "vertical_settling": true,
+        "lateral_drift": true,
+        "quaternion_normalization": true
+      },
+      "checks_passed": true,
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "case": "rigid-moon-refined",
+      "label": "moon",
+      "kind": "refined",
+      "trace_sha256": "281c64df522985c8f69adc64be41451f926c435de547ede89998a51f98c16731"
+    }
+  ],
+  "rigid_refinements": [
+    {
+      "label": "earth",
+      "mean_speed_change_m_s": -6.351481909860901e-06,
+      "final_position_change_m": 3.7687967327962383e-06,
+      "normal_load_change_fraction": 0.0009926755386318697,
+      "checks": {
+        "speed": true,
+        "final_position": true,
+        "normal_load": true
+      },
+      "checks_passed": true
+    },
+    {
+      "label": "moon",
+      "mean_speed_change_m_s": 9.687260774104978e-07,
+      "final_position_change_m": 1.4635965411271738e-05,
+      "normal_load_change_fraction": 0.0016413973080746437,
+      "checks": {
+        "speed": true,
+        "final_position": true,
+        "normal_load": true
+      },
+      "checks_passed": true
+    }
+  ],
+  "rigid_targets_met": true,
+  "active_app_robot": false,
+  "flight_prediction_validated": false,
+  "lunar_soil_validated": false,
+  "limitations": [
+    "Correct mass frames make the source-derived geometry internally consistent; they do not provide measured flight tensors.",
+    "The original approximate 434.9211 kg system mass, 30 degree steering, spring and drive properties remain for this isolated correction.",
+    "The constant torque and rigid-floor speed drivers are component test inputs, not flight actuator maps or control validation.",
+    "No active app robot, calibrated lunar soil, battery, thermal or mission prediction is established."
+  ],
+  "evidence": {
+    "directory": "data/runtime/viper-frame-repair-v1",
+    "report_sha256": "0960958689f9d208cf095adf9618708596eee0e0f727337e96dc761cb0adcb11",
+    "index_sha256": "9bd30b301d1db812c2c8dd5d8e301e4ac0c4b6a1ec88d577ea3f5e3cb139a170",
+    "archive": "data/runtime/viper-frame-repair-v1.zip",
+    "archive_sha256": "6a66de27713a31384b481234a05109664cce0faef27ef6c6da95490b6fc19345",
+    "archive_bytes": 1103455
+  },
+  "postrun_reverification": {
+    "verified_utc": "2026-11-15T22:16:23.701573+00:00",
+    "cases_rescored": 14,
+    "all_native_results_unchanged": true,
+    "scorer_sha256": "fcd33f602980f0f73605c3cf747d7c74d41ab04cf6f0e0df975dee075ae81b3a",
+    "verifier_sha256": "7af54f385b0179344563601e1dbe5ea4cb835cfbab06e0746c24f12b209c24bf",
+    "note": "After native execution, evidence guards were tightened for nonfinite clocks/shaft data, negative residuals and explicit case bindings. All actual finite native metrics rescore identically; the originally executed source snapshots remain in the archive."
+  }
+}

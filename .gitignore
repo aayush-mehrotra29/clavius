@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.DS_Store
+artifacts/
+__pycache__/
+*.pyc
+.venv/
+data/raw/
+data/kernels/
+data/runtime/
+work/
+.pytest_cache/
+.env
+.env.*
+*.pem
+*.key

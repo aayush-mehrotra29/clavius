@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spaceapps.invalid/contracts/v0.1/transfer-candidate.schema.json",
+  "title": "Orbital screening candidate",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "candidate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference_case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidate_status": {
+      "enum": [
+        "accepted_for_screening",
+        "rejected",
+        "not_run",
+        "nonconverged"
+      ]
+    },
+    "solver_status": {
+      "enum": [
+        "converged",
+        "nonconverged",
+        "not_run"
+      ]
+    },
+    "termination_event": {
+      "type": "string",
+      "minLength": 1
+    },
+    "departure_utc": {
+      "anyOf": [
+        {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "encounter_utc": {
+      "anyOf": [
+        {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "capture_utc": {
+      "anyOf": [
+        {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "departure_state": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "epoch_utc": {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+            },
+            "central_body": {
+              "enum": [
+                "EARTH",
+                "MOON"
+              ]
+            },
+            "frame_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "position_m": {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+            },
+            "velocity_m_s": {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+            }
+          },
+          "required": [
+            "epoch_utc",
+            "central_body",
+            "frame_id",
+            "position_m",
+            "velocity_m_s"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "capture_state": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "epoch_utc": {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+            },
+            "central_body": {
+              "enum": [
+                "EARTH",
+                "MOON"
+              ]
+            },
+            "frame_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "position_m": {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+            },
+            "velocity_m_s": {
+              "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+            }
+          },
+          "required": [
+            "epoch_utc",
+            "central_body",
+            "frame_id",
+            "position_m",
+            "velocity_m_s"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "maneuvers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "epoch_utc": {
+            "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+          },
+          "frame_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "delta_v_m_s": {
+            "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+          }
+        },
+        "required": [
+          "epoch_utc",
+          "frame_id",
+          "delta_v_m_s"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "total_maneuver_delta_v_m_s": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "minimum_lunar_clearance_m": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "capture_eccentricity": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "target_residuals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "residual": {
+            "type": "number"
+          },
+          "tolerance": {
+            "type": "number",
+            "minimum": 0
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name",
+          "residual",
+          "tolerance",
+          "unit"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "verification_status": {
+      "enum": [
+        "passed",
+        "failed",
+        "pending",
+        "not_run"
+      ]
+    },
+    "gmat_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "script_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "supporting_assets": {
+      "type": "array",
+      "items": {
+        "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+      },
+      "minItems": 0
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "provenance": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/provenance"
+    }
+  },
+  "required": [
+    "schema_version",
+    "candidate_id",
+    "request_id",
+    "reference_case_id",
+    "candidate_status",
+    "solver_status",
+    "termination_event",
+    "departure_utc",
+    "encounter_utc",
+    "capture_utc",
+    "departure_state",
+    "capture_state",
+    "maneuvers",
+    "total_maneuver_delta_v_m_s",
+    "minimum_lunar_clearance_m",
+    "capture_eccentricity",
+    "target_residuals",
+    "verification_status",
+    "gmat_version",
+    "script_sha256",
+    "supporting_assets",
+    "assumptions",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

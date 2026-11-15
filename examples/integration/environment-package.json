@@ -1,0 +1,122 @@
+{
+  "schema_version": "0.1.0",
+  "environment_id": "fixture-environment-001",
+  "site_id": "synthetic-connecting-ridge-location",
+  "global_frame": "MOON_ME_DE421",
+  "local_axes": "x_east_y_north_z_up",
+  "source_manifest_ref": {
+    "uri": "assets/source-manifest.json",
+    "sha256": "78f4e3b7af9916b09e24da8849bcc7b0ca2247d50874b1c98924657f753f0b2a"
+  },
+  "origin": {
+    "latitude_deg": -89.44,
+    "longitude_east_deg": 222.8,
+    "position_body_fixed_m": [
+      -12459.324395556354,
+      -11537.460892735617,
+      -1737317.01546717
+    ],
+    "enu_to_body_fixed_rotation": [
+      [
+        0.6794413042615165,
+        -0.7336948189002349,
+        -0.007171246918128441
+      ],
+      [
+        -0.7337298645028764,
+        -0.6794088516776443,
+        -0.0066406474575432355
+      ],
+      [
+        0,
+        0.009773688199249151,
+        -0.9999522363688097
+      ]
+    ]
+  },
+  "terrain": {
+    "asset": {
+      "uri": "assets/synthetic-terrain.json",
+      "sha256": "853c7ae19da5c3dfb72ff5104b4584a55009dcb2bd0a8092da1f0d275a9e67ce"
+    },
+    "horizontal_frame": "LOCAL_ENU",
+    "vertical_quantity": "local_up_m",
+    "grid_spacing_m": 5,
+    "raw_vertical_definition": "Synthetic tangent-plane height, zero at the local origin.",
+    "normalization_notes": "No real raster was transformed. The sphere point and flat patch are artificial."
+  },
+  "gravity_m_s2": 1.62,
+  "time_origin_utc": "2028-01-01T00:00:00Z",
+  "elapsed_time_basis": "SI_seconds_from_time_origin",
+  "geometry_convention": "geometric_observer_to_body_unit_vectors",
+  "sky_samples": [
+    {
+      "t_s": 0,
+      "sun_direction_enu_unit": [
+        0.6,
+        0,
+        0.8
+      ],
+      "earth_direction_enu_unit": [
+        0.8,
+        0,
+        0.6
+      ],
+      "sun_angular_radius_rad": 0.00465,
+      "solar_irradiance_w_m2": 1361
+    },
+    {
+      "t_s": 3600,
+      "sun_direction_enu_unit": [
+        0.6,
+        0,
+        0.8
+      ],
+      "earth_direction_enu_unit": [
+        0.8,
+        0,
+        0.6
+      ],
+      "sun_angular_radius_rad": 0.00465,
+      "solar_irradiance_w_m2": 1361
+    },
+    {
+      "t_s": 7200,
+      "sun_direction_enu_unit": [
+        0.6,
+        0,
+        0.8
+      ],
+      "earth_direction_enu_unit": [
+        0.8,
+        0,
+        0.6
+      ],
+      "sun_angular_radius_rad": 0.00465,
+      "solar_irradiance_w_m2": 1361
+    },
+    {
+      "t_s": 10800,
+      "sun_direction_enu_unit": [
+        0.6,
+        0,
+        0.8
+      ],
+      "earth_direction_enu_unit": [
+        0.8,
+        0,
+        0.6
+      ],
+      "sun_angular_radius_rad": 0.00465,
+      "solar_irradiance_w_m2": 1361
+    }
+  ],
+  "horizon_model_id": "synthetic-not-computed",
+  "terrain_scenario_id": "synthetic-flat",
+  "provenance": {
+    "source_class": "synthetic_contract_fixture",
+    "model_id": "fixture-environment",
+    "model_version": "0.1.0",
+    "notes": "Synthetic geometry for decoding and coordinate checks; no ephemeris, horizon, or lunar observation was evaluated."
+  }
+}

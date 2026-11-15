@@ -1,0 +1,9 @@
+{
+  "software": "NASA GMAT",
+  "version": "R2026a",
+  "source_page": "https://github.com/nasa/GMAT/releases/tag/R2026a",
+  "url": "https://sourceforge.net/projects/gmat/files/GMAT/GMAT-R2026a/gmat-mac-x64-R2026a-signed.dmg/download",
+  "bytes": 455494809,
+  "sha256": "8a81d22ce2d39504eadc875d71494321adb49f60da92d266fdbe660de0f771d2",
+  "platform": "Official universal macOS distribution (Intel and Apple Silicon), signed by NASA"
+}

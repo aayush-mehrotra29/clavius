@@ -1,0 +1,130 @@
+******  Changes made to the mission will not be reflected ******
+******  in the data displayed until the mission is rerun  ******
+
+        Maneuver Command: CLAVIUS_CMD_020
+        Spacecraft       : InitSat
+        Coordinate System: EarthMJ2000Eq
+
+        Time System   Gregorian                     Modified Julian  
+        ----------------------------------------------------------------------    
+        UTC Epoch:    15 Jul 2022 01:07:06.978      29775.5466085417
+        TAI Epoch:    15 Jul 2022 01:07:43.978      29775.5470367824
+        TT  Epoch:    15 Jul 2022 01:08:16.162      29775.5474092824
+        TDB Epoch:    15 Jul 2022 01:08:16.162      29775.5474092793
+
+        Cartesian State                       Keplerian State
+        ---------------------------           -------------------------------- 
+        X  =  -799.02858721009 km             SMA  =   6563.0000000000 km
+        Y  =  -6507.5663232725 km             ECC  =   0.0010000000000
+        Z  =   0.0000469171264 km             INC  =   28.700000000000 deg
+        VX =   6.7916400270914 km/sec         RAAN =   263.00000000000 deg
+        VY =  -0.8339084215366 km/sec         AOP  =   360.00000000000 deg
+        VZ =   3.7462381875945 km/sec         TA   =   0.0000008537736 deg
+                                              MA   =   0.0000008520674 deg
+                                              EA   =   0.0000008529203 deg
+
+        Spherical State                       Other Orbit Data
+        ---------------------------           --------------------------------
+        RMAG =   6556.4370000000 km           Mean Motion        =   1.187449862e-03 deg/sec
+        RA   =  -96.999999251116 deg          Orbit Energy       =  -30.367243752857 km^2/s^2
+        DEC  =   0.0000004100022 deg          C3                 =  -60.734487505714 km^2/s^2
+        VMAG =   7.8010305775129 km/s         Semilatus Rectum   =   6562.9934370000 km   
+        AZI  =   61.300000000000 deg          Angular Momentum   =   51146.965516537 km^2/s
+        VFPA =   89.999999999147 deg          Beta Angle         =   33.581450154846 deg  
+        RAV  =  -6.9999990276185 deg          Periapsis Altitude =   178.30070000000 km   
+        DECV =   28.700000000000 deg          VelPeriapsis       =   7.8010305775129 km/s
+                                              VelApoapsis        =   7.7854441028325 km/s 
+                                              Orbit Period       =   5291.3268246998 s    
+
+        Planetodetic Properties 
+        ---------------------------
+        LST       =   263.28874897632 deg
+        MHA       =   309.65607023519 deg
+        Latitude  =  -0.0166153183709 deg
+        Longitude =  -46.367321258865 deg
+        Altitude  =   178.30070178344 km
+
+
+        Spacecraft Properties 
+        ------------------------------
+        Cd                    =   2.200000
+        Drag area             =   15.00000 m^2
+        Cr                    =   1.800000
+        Reflective (SRP) area =   20.00000 m^2
+        Dry mass              =   850.00000000000 kg
+        Total mass            =   850.00000000000 kg
+        SPADDragScaleFactor   =   1.000000
+        SPADSRPScaleFactor    =   1.000000
+
+
+   ========================================================================
+
+        Spacecraft       : MoonSat
+        Coordinate System: EarthMJ2000Eq
+
+        Time System   Gregorian                     Modified Julian  
+        ----------------------------------------------------------------------    
+        UTC Epoch:    15 Jul 2022 01:07:06.978      29775.5466085417
+        TAI Epoch:    15 Jul 2022 01:07:43.978      29775.5470367824
+        TT  Epoch:    15 Jul 2022 01:08:16.162      29775.5474092824
+        TDB Epoch:    15 Jul 2022 01:08:16.162      29775.5474092793
+
+        Cartesian State                       Keplerian State
+        ---------------------------           -------------------------------- 
+        X  =  -6205.5049337848 km             SMA  =   196186.61146060 km
+        Y  =  -2110.6619777954 km             ECC  =   0.9665806093944
+        Z  =  -153.88524045738 km             INC  =   28.700000000000 deg
+        VX =   2.9726772969285 km/sec         RAAN =   201.24229778239 deg
+        VY =  -9.1222730373921 km/sec         AOP  =   357.19855979965 deg
+        VZ =   5.2446304535315 km/sec         TA   =   359.99999914623 deg
+                                              MA   =   359.99999999628 deg
+                                              EA   =   359.99999988870 deg
+
+        Spherical State                       Other Orbit Data
+        ---------------------------           --------------------------------
+        RMAG =   6556.4370000000 km           Mean Motion        =   7.265488815e-06 deg/sec
+        RA   =  -161.21542625730 deg          Orbit Energy       =  -1.0158706512449 km^2/s^2
+        DEC  =  -1.3449049424690 deg          C3                 =  -2.0317413024897 km^2/s^2
+        VMAG =   10.934295783200 km/s         Semilatus Rectum   =   12893.761870916 km   
+        AZI  =   61.328850849855 deg          Angular Momentum   =   71690.021441919 km^2/s
+        VFPA =   90.000000000000 deg          Beta Angle         =   50.249981487888 deg  
+        RAV  =  -71.950752336323 deg          Periapsis Altitude =   178.30069999997 km   
+        DECV =   28.662518473772 deg          VelPeriapsis       =   10.934295783200 km/s
+                                              VelApoapsis        =   0.1858136401991 km/s 
+                                              Orbit Period       =   864798.70342562 s    
+
+        Planetodetic Properties 
+        ---------------------------
+        LST       =   199.07425264424 deg
+        MHA       =   309.65607023519 deg
+        Latitude  =  -1.4725424182244 deg
+        Longitude =  -110.58181759095 deg
+        Altitude  =   178.31470616630 km
+
+
+        Spacecraft Properties 
+        ------------------------------
+        Cd                    =   2.200000
+        Drag area             =   15.00000 m^2
+        Cr                    =   1.800000
+        Reflective (SRP) area =   20.00000 m^2
+        Dry mass              =   850.00000000000 kg
+        Total mass            =   850.00000000000 kg
+        SPADDragScaleFactor   =   1.000000
+        SPADSRPScaleFactor    =   1.000000
+
+
+
+        Maneuver Summary
+        -----------------
+        Impulsive Burn:     TOI
+        Spacecraft:         MoonSat
+        Origin:             Earth
+        Axes:               VNB
+        Delta V Vector:
+           Element 1:    3.1332652056876 km/s
+           Element 2:    0.0000000000000 km/s
+           Element 3:    0.0000000000000 km/s
+
+        No mass depletion
+

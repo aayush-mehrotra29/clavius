@@ -1,0 +1,33 @@
+{
+  "software_checks_passed": true,
+  "scientific_validation_complete": false,
+  "numerical_targets_all_met": false,
+  "tests": {
+    "python": 105,
+    "javascript": 7,
+    "production_build": "passed"
+  },
+  "observed_scene_dates_assessed_regionally": 2,
+  "observed_local_site_epochs": 1,
+  "local_sites_compared": [
+    "connecting-ridge",
+    "shackleton-rim"
+  ],
+  "unsupported_scene_retained": "M1311409938",
+  "reproduction": {
+    "illumination": "All numerical fields and 35 arrays exactly reproduced; wall time excluded.",
+    "mission": "f141b35b-9481-4f10-8d2e-0c000a89407c, no differences within relative/absolute 1e-6",
+    "native_gazebo": "599c416a-7587-4678-a2c8-5472bc12d66e, no differences within relative/absolute 1e-6"
+  },
+  "current_worker_source_sha256": "a0805fea622905276fa969f2044e918031697f5d9aa0990564fa2a73d01c8535",
+  "published_report_sha256": "0b853723ff6526d51976606639ae0955e89e120b2638259cf45dd0663db27b9f",
+  "browser_record": "docs/validation/observed-shadow-browser.json",
+  "numerical_record": "docs/validation/observed-shadow-comparison.json",
+  "limits": [
+    "Remaining radial-refinement target failures.",
+    "Only one observed epoch overlaps the curated local sites.",
+    "I/F thresholds are proxies, not independently annotated shadow truth.",
+    "No fitted registration or operational accuracy bound.",
+    "Rigid contact is not calibrated lunar regolith."
+  ]
+}

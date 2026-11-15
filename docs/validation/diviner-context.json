@@ -1,0 +1,504 @@
+{
+  "recorded_utc": "2026-11-15",
+  "kind": "historical_observation_context",
+  "source_manifest": {
+    "id": "LRO-DIVINER-PCP-SUMMER-LTIM01-LTIM49-240",
+    "title": "LRO Diviner polar cumulative bolometric brightness temperature composites",
+    "source_page": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm",
+    "source_directory": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/",
+    "citation": {
+      "authors": "Williams, J-P et al.",
+      "title": "Seasonal Polar Temperatures on the Moon",
+      "year": 2019,
+      "doi": "10.1029/2019JE006028"
+    },
+    "acquired_utc": "2026-11-15T15:09:37.456154+00:00",
+    "source_class": "historical_observation_composite",
+    "native_posting_m": 240,
+    "cell_edge_guard_m": 2,
+    "observation_interval_utc": [
+      "2009-07-05T16:50:26.195Z",
+      "2019-02-17T00:00:00.000Z"
+    ],
+    "season": "Southern summer: subsolar latitude < 0\u00b0",
+    "quantity": "Average bolometric brightness temperature from compiled nadir observations",
+    "units": "K",
+    "coordinates": {
+      "latitude": "planetocentric degrees",
+      "longitude": "positive east degrees",
+      "projection": "south polar stereographic; x/y normalized by lunar mean radius 1737400 m",
+      "label_note": "PDS4 labels attach deg to normalized x/y despite the normalized-coordinate description. Clavius uses explicit center latitude/longitude and checks x/y \u00d7 1737400 against an independent stereographic conversion.",
+      "registration_limit": "No external image-to-LOLA registration or absolute positional accuracy validation; 240 m posting is not guaranteed accuracy."
+    },
+    "limits": [
+      "Historical summer/local-time composites, not instantaneous temperatures for a requested mission epoch.",
+      "Bolometric brightness is not in-situ soil or robot battery temperature.",
+      "Only two local-time bins are loaded; neither a complete diurnal curve nor minimum/maximum temperatures.",
+      "Missing observations remain gaps; no temporal interpolation or distant nearest-neighbor filling.",
+      "Per-bin measurement counts and temperature error bars are not supplied in these tables.",
+      "Cell lookups conservatively reject a 2 m border near the nominal 240 m cell edge.",
+      "Copying a value into the thermal model declares a constant boundary for the entire mission; it does not validate that boundary in time or space."
+    ],
+    "selection": {
+      "latitude_deg": -89.44,
+      "longitude_deg": 222.8,
+      "half_extent_m": 2500,
+      "coordinate_system": "south polar stereographic metres",
+      "maximum_projection_residual_m": 0.1
+    },
+    "products": [
+      {
+        "id": "pcp_avg_tbol_pols_sum_ltim01_240",
+        "name": "Summer \u00b7 00:00\u201300:15 local time",
+        "local_time_hours": [
+          0,
+          0.25
+        ],
+        "logical_identifier": "urn:nasa:pds:lro_diviner_derived1:data_derived_pcp:pcp_avg_tbol_pols_sum_ltim01_240",
+        "product_version": "1.0",
+        "table_file": "pcp_avg_tbol_pols_sum_ltim01_240.tab",
+        "xml_file": "pcp_avg_tbol_pols_sum_ltim01_240.xml",
+        "label_file": "pcp_avg_tbol_pols_sum_ltim01_240.lbl"
+      },
+      {
+        "id": "pcp_avg_tbol_pols_sum_ltim49_240",
+        "name": "Summer \u00b7 12:00\u201312:15 local time",
+        "local_time_hours": [
+          12,
+          12.25
+        ],
+        "logical_identifier": "urn:nasa:pds:lro_diviner_derived1:data_derived_pcp:pcp_avg_tbol_pols_sum_ltim49_240",
+        "product_version": "1.0",
+        "table_file": "pcp_avg_tbol_pols_sum_ltim49_240.tab",
+        "xml_file": "pcp_avg_tbol_pols_sum_ltim49_240.xml",
+        "label_file": "pcp_avg_tbol_pols_sum_ltim49_240.lbl"
+      }
+    ],
+    "assets": [
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim01_240.tab",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim01_240.tab",
+        "sha256": "414354cb2334b62161e895fe0f36369fdee77af13b0c5f333b86ddb05a0f618b",
+        "bytes": 212653759,
+        "role": "source_table"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim01_240.xml",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim01_240.xml",
+        "sha256": "21d2ffad65c22e05c6878337d77b5217b3d9ce9431098a71bda8afdeef50c23a",
+        "bytes": 12210,
+        "role": "pds4_label"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim01_240.lbl",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim01_240.lbl",
+        "sha256": "17d9d1a8bac3963543aa59446d818253caa912b4dcf4edb4d9f45f51f1363538",
+        "bytes": 3637,
+        "role": "pds3_label"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim49_240.tab",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim49_240.tab",
+        "sha256": "35348174fb3d973fe3d43fa7777cb4a10055361c6313675f35b181079bad5ca3",
+        "bytes": 197367449,
+        "role": "source_table"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim49_240.xml",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim49_240.xml",
+        "sha256": "73e2a55db6743b5bbb5116fae9c51aa77a07743042b0284ea2bf8804fbbfd7b1",
+        "bytes": 12211,
+        "role": "pds4_label"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim49_240.lbl",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim49_240.lbl",
+        "sha256": "4523de3cc856cd1943d4d9e8f4e2f69f223c13be39a9d87453c7a7492227a718",
+        "bytes": 3639,
+        "role": "pds3_label"
+      }
+    ],
+    "derivative": {
+      "file": "data/diviner/connecting-ridge.json",
+      "sha256": "9c4c782f3aa9636a87555b16618c915766a54b931ee88b8af998795fe20ffb4b",
+      "method": "Preserve covered native records inside a 5 km stereographic square around Connecting Ridge, retaining original one-based table row IDs; no raster interpolation.",
+      "script": "scripts/prepare_diviner_context.py",
+      "bytes": 91221,
+      "products": [
+        {
+          "id": "pcp_avg_tbol_pols_sum_ltim01_240",
+          "samples": 437,
+          "source_records": 3604300,
+          "projection_check_maximum_residual_m": 0.015491
+        },
+        {
+          "id": "pcp_avg_tbol_pols_sum_ltim49_240",
+          "samples": 149,
+          "source_records": 3345210,
+          "projection_check_maximum_residual_m": 0.015491
+        }
+      ]
+    }
+  },
+  "checks": {
+    "native_record_counts": [
+      3604300,
+      3345210
+    ],
+    "native_clip_counts": [
+      437,
+      149
+    ],
+    "projection_tolerance_m": 0.1,
+    "maximum_projection_residual_m": 0.015491,
+    "origin_midnight_k": 148.724106,
+    "origin_midnight_source_row": 1751157,
+    "origin_midnight_cell_center_distance_m": 26.68326957496,
+    "origin_noon_bin": "missing; no substitute",
+    "raw_source_bytes": 410021208,
+    "derivative_bytes": 91221,
+    "derivative_sha256": "9c4c782f3aa9636a87555b16618c915766a54b931ee88b8af998795fe20ffb4b",
+    "special_constants_preserved_as_missing": true,
+    "mismatched_ground_reference_rejected": true,
+    "altered_derivative_rejected": true,
+    "optional_setup_command": "passed: .venv/bin/python scripts/setup_simulation.py --diviner",
+    "backend_tests_passed": 65,
+    "terrain_node_tests_passed": 7,
+    "build": "passed with pre-existing Three.js chunk advisory"
+  },
+  "browser": {
+    "desktop_viewport": [
+      1440,
+      900
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mobile_document_width_px": 390,
+    "modal_width_px": 358,
+    "modal_height_px": 759.59375,
+    "modal_scroll_height_px": 885,
+    "artifact_directory": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts",
+    "checks": [
+      "displayed actual midnight value and missing noon bin",
+      "copied native value to constant ground scenario and enabled thermal model",
+      "editing ground temperature to -100 C cleared NASA reference",
+      "ran complete 12 h mission with retained native ground reference",
+      "downloaded 214245-byte evidence ZIP with immutable context and manifest",
+      "reproduced all numerical metrics using captured source and context"
+    ]
+  },
+  "limits": [
+    "Historical summer/local-time composites, not instantaneous temperatures for a requested mission epoch.",
+    "Bolometric brightness is not in-situ soil or robot battery temperature.",
+    "Only two local-time bins are loaded; neither a complete diurnal curve nor minimum/maximum temperatures.",
+    "Missing observations remain gaps; no temporal interpolation or distant nearest-neighbor filling.",
+    "Per-bin measurement counts and temperature error bars are not supplied in these tables.",
+    "Cell lookups conservatively reject a 2 m border near the nominal 240 m cell edge.",
+    "Copying a value into the thermal model declares a constant boundary for the entire mission; it does not validate that boundary in time or space."
+  ],
+  "mission": {
+    "id": "bd4a989a-1d34-4cdf-b4ca-1d8d9d5006e7",
+    "input_sha256": "6734803c7eac0d5f2ed16900ba34701ab26d8a61e6fefdcd15facf20f9789162",
+    "artifact_sha256": "bd8bf2a27129b93d21c387ba2d06d109bdac34d2deb119464cbc566bd26e3572",
+    "status": "supported_under_assumptions",
+    "request": {
+      "activities": [
+        {
+          "duration_s": 600.0,
+          "kind": "science",
+          "waypoint": 1
+        }
+      ],
+      "duration_hours": 12.0,
+      "heater_enabled": true,
+      "max_earth_outage_s": 21600.0,
+      "name": "Clavius R1 \u00b7 01-01",
+      "observer_height_m": 0.5,
+      "robot_id": "afd6c5cad00ea2dd2efa2d12",
+      "scenario": {
+        "capacity_multiplier": 1.0,
+        "mobility_multiplier": 1.0,
+        "soil": "assumed_firm",
+        "solar_multiplier": 1.0,
+        "speed_multiplier": 1.0,
+        "terrain_error_sigma": 0.0
+      },
+      "seed": 42,
+      "site_id": "connecting-ridge",
+      "start_utc": "2028-01-01T00:00:00Z",
+      "thermal": {
+        "bus_heat_fraction": 0.1,
+        "charge_hysteresis_k": 1.0,
+        "charge_max_c": 45.0,
+        "charge_min_c": 0.0,
+        "conversion_loss_heat_fraction": 0.5,
+        "effective_emission_area_m2": 0.015,
+        "effective_solar_absorption_area_m2": 0.005,
+        "ground_conductance_w_k": 0.01,
+        "ground_reference": {
+          "derivative_sha256": "9c4c782f3aa9636a87555b16618c915766a54b931ee88b8af998795fe20ffb4b",
+          "product_id": "pcp_avg_tbol_pols_sum_ltim01_240",
+          "source_row": 1751157
+        },
+        "ground_temperature_c": -124.42589399999997,
+        "heat_capacity_j_k": 2700.0,
+        "heater_off_c": 5.0,
+        "heater_on_c": 0.0,
+        "initial_temperature_c": 20.0,
+        "max_step_s": 1.0,
+        "operating_max_c": 50.0,
+        "operating_min_c": -10.0,
+        "schema_version": "clavius-thermal-1",
+        "solar_normal_body_unit": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "space_temperature_k": 3.0,
+        "space_view_factor": 0.5
+      },
+      "waypoints": [
+        {
+          "east_m": 0.0,
+          "north_m": 0.0
+        },
+        {
+          "east_m": 60.0,
+          "north_m": 0.0
+        },
+        {
+          "east_m": 100.0,
+          "north_m": 35.0
+        }
+      ]
+    },
+    "metrics": {
+      "capacity_wh": 500.0,
+      "consumed_wh": 199.588074122182,
+      "distance_m": 113.2373277458786,
+      "final_battery_temperature_c": 3.0350358560445443,
+      "final_battery_wh": 215.18871877552732,
+      "generated_wh": 0.2673569589379854,
+      "heater_delivered_wh": 39.999583269671966,
+      "longest_earth_outage_s": 0,
+      "max_route_pitch_deg": 3.431054853446434,
+      "max_terrain_slope_deg": 4.429420338102939,
+      "maximum_battery_temperature_c": 20.0,
+      "minimum_battery_temperature_c": -5.684341886080802e-14,
+      "minimum_battery_wh": 215.18871877552732,
+      "operations_energy_supported": true,
+      "required_tasks_scheduled_complete": true,
+      "reserve_wh": 75,
+      "scheduled_completion_s": 2864.7465549175718,
+      "solar_curtailed_wh": 0.0,
+      "thermal_energy_residual_j": 8.280039764940739e-09,
+      "thermal_heat_integrals_j": {
+        "absorbed_solar_w": 93.56729685803953,
+        "conducted_heat_w": 55786.38985767617,
+        "conversion_heat_w": 18883.01531020219,
+        "heater_heat_w": 143998.49977081944,
+        "internal_heat_w": 57451.85670690357,
+        "radiated_heat_w": 210445.9524157951
+      },
+      "thermal_integrator_steps": 43242,
+      "unserved_load_wh": 0.0
+    },
+    "first_violation": null,
+    "ground_boundary": {
+      "policy": "A historical summer/local-time composite copied to one constant boundary for the entire mission. Not an instantaneous temperature forecast or a battery measurement.",
+      "product": {
+        "id": "pcp_avg_tbol_pols_sum_ltim01_240",
+        "label_file": "pcp_avg_tbol_pols_sum_ltim01_240.lbl",
+        "local_time_hours": [
+          0,
+          0.25
+        ],
+        "logical_identifier": "urn:nasa:pds:lro_diviner_derived1:data_derived_pcp:pcp_avg_tbol_pols_sum_ltim01_240",
+        "name": "Summer \u00b7 00:00\u201300:15 local time",
+        "product_version": "1.0",
+        "table_file": "pcp_avg_tbol_pols_sum_ltim01_240.tab",
+        "xml_file": "pcp_avg_tbol_pols_sum_ltim01_240.xml"
+      },
+      "reference": {
+        "derivative_sha256": "9c4c782f3aa9636a87555b16618c915766a54b931ee88b8af998795fe20ffb4b",
+        "product_id": "pcp_avg_tbol_pols_sum_ltim01_240",
+        "source_row": 1751157
+      },
+      "role": "constant_ground_boundary_scenario",
+      "sample": {
+        "latitude_deg": -89.439813,
+        "longitude_deg": -137.28796,
+        "polar_x_m": -11522.441388,
+        "polar_y_m": -12481.486501,
+        "source_row": 1751157,
+        "temperature_k": 148.724106
+      },
+      "source_manifest": {
+        "acquired_utc": "2026-11-15T15:09:37.456154+00:00",
+        "assets": [
+          {
+            "bytes": 212653759,
+            "file": "pcp_avg_tbol_pols_sum_ltim01_240.tab",
+            "role": "source_table",
+            "sha256": "414354cb2334b62161e895fe0f36369fdee77af13b0c5f333b86ddb05a0f618b",
+            "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim01_240.tab"
+          },
+          {
+            "bytes": 12210,
+            "file": "pcp_avg_tbol_pols_sum_ltim01_240.xml",
+            "role": "pds4_label",
+            "sha256": "21d2ffad65c22e05c6878337d77b5217b3d9ce9431098a71bda8afdeef50c23a",
+            "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim01_240.xml"
+          },
+          {
+            "bytes": 3637,
+            "file": "pcp_avg_tbol_pols_sum_ltim01_240.lbl",
+            "role": "pds3_label",
+            "sha256": "17d9d1a8bac3963543aa59446d818253caa912b4dcf4edb4d9f45f51f1363538",
+            "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim01_240.lbl"
+          },
+          {
+            "bytes": 197367449,
+            "file": "pcp_avg_tbol_pols_sum_ltim49_240.tab",
+            "role": "source_table",
+            "sha256": "35348174fb3d973fe3d43fa7777cb4a10055361c6313675f35b181079bad5ca3",
+            "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim49_240.tab"
+          },
+          {
+            "bytes": 12211,
+            "file": "pcp_avg_tbol_pols_sum_ltim49_240.xml",
+            "role": "pds4_label",
+            "sha256": "73e2a55db6743b5bbb5116fae9c51aa77a07743042b0284ea2bf8804fbbfd7b1",
+            "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim49_240.xml"
+          },
+          {
+            "bytes": 3639,
+            "file": "pcp_avg_tbol_pols_sum_ltim49_240.lbl",
+            "role": "pds3_label",
+            "sha256": "4523de3cc856cd1943d4d9e8f4e2f69f223c13be39a9d87453c7a7492227a718",
+            "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim49_240.lbl"
+          }
+        ],
+        "cell_edge_guard_m": 2,
+        "citation": {
+          "authors": "Williams, J-P et al.",
+          "doi": "10.1029/2019JE006028",
+          "title": "Seasonal Polar Temperatures on the Moon",
+          "year": 2019
+        },
+        "coordinates": {
+          "label_note": "PDS4 labels attach deg to normalized x/y despite the normalized-coordinate description. Clavius uses explicit center latitude/longitude and checks x/y \u00d7 1737400 against an independent stereographic conversion.",
+          "latitude": "planetocentric degrees",
+          "longitude": "positive east degrees",
+          "projection": "south polar stereographic; x/y normalized by lunar mean radius 1737400 m",
+          "registration_limit": "No external image-to-LOLA registration or absolute positional accuracy validation; 240 m posting is not guaranteed accuracy."
+        },
+        "derivative": {
+          "bytes": 91221,
+          "file": "data/diviner/connecting-ridge.json",
+          "method": "Preserve covered native records inside a 5 km stereographic square around Connecting Ridge, retaining original one-based table row IDs; no raster interpolation.",
+          "products": [
+            {
+              "id": "pcp_avg_tbol_pols_sum_ltim01_240",
+              "projection_check_maximum_residual_m": 0.015491,
+              "samples": 437,
+              "source_records": 3604300
+            },
+            {
+              "id": "pcp_avg_tbol_pols_sum_ltim49_240",
+              "projection_check_maximum_residual_m": 0.015491,
+              "samples": 149,
+              "source_records": 3345210
+            }
+          ],
+          "script": "scripts/prepare_diviner_context.py",
+          "sha256": "9c4c782f3aa9636a87555b16618c915766a54b931ee88b8af998795fe20ffb4b"
+        },
+        "id": "LRO-DIVINER-PCP-SUMMER-LTIM01-LTIM49-240",
+        "limits": [
+          "Historical summer/local-time composites, not instantaneous temperatures for a requested mission epoch.",
+          "Bolometric brightness is not in-situ soil or robot battery temperature.",
+          "Only two local-time bins are loaded; neither a complete diurnal curve nor minimum/maximum temperatures.",
+          "Missing observations remain gaps; no temporal interpolation or distant nearest-neighbor filling.",
+          "Per-bin measurement counts and temperature error bars are not supplied in these tables.",
+          "Cell lookups conservatively reject a 2 m border near the nominal 240 m cell edge.",
+          "Copying a value into the thermal model declares a constant boundary for the entire mission; it does not validate that boundary in time or space."
+        ],
+        "native_posting_m": 240,
+        "observation_interval_utc": [
+          "2009-07-05T16:50:26.195Z",
+          "2019-02-17T00:00:00.000Z"
+        ],
+        "products": [
+          {
+            "id": "pcp_avg_tbol_pols_sum_ltim01_240",
+            "label_file": "pcp_avg_tbol_pols_sum_ltim01_240.lbl",
+            "local_time_hours": [
+              0,
+              0.25
+            ],
+            "logical_identifier": "urn:nasa:pds:lro_diviner_derived1:data_derived_pcp:pcp_avg_tbol_pols_sum_ltim01_240",
+            "name": "Summer \u00b7 00:00\u201300:15 local time",
+            "product_version": "1.0",
+            "table_file": "pcp_avg_tbol_pols_sum_ltim01_240.tab",
+            "xml_file": "pcp_avg_tbol_pols_sum_ltim01_240.xml"
+          },
+          {
+            "id": "pcp_avg_tbol_pols_sum_ltim49_240",
+            "label_file": "pcp_avg_tbol_pols_sum_ltim49_240.lbl",
+            "local_time_hours": [
+              12,
+              12.25
+            ],
+            "logical_identifier": "urn:nasa:pds:lro_diviner_derived1:data_derived_pcp:pcp_avg_tbol_pols_sum_ltim49_240",
+            "name": "Summer \u00b7 12:00\u201312:15 local time",
+            "product_version": "1.0",
+            "table_file": "pcp_avg_tbol_pols_sum_ltim49_240.tab",
+            "xml_file": "pcp_avg_tbol_pols_sum_ltim49_240.xml"
+          }
+        ],
+        "quantity": "Average bolometric brightness temperature from compiled nadir observations",
+        "season": "Southern summer: subsolar latitude < 0\u00b0",
+        "selection": {
+          "coordinate_system": "south polar stereographic metres",
+          "half_extent_m": 2500,
+          "latitude_deg": -89.44,
+          "longitude_deg": 222.8,
+          "maximum_projection_residual_m": 0.1
+        },
+        "source_class": "historical_observation_composite",
+        "source_directory": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/",
+        "source_page": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm",
+        "title": "LRO Diviner polar cumulative bolometric brightness temperature composites",
+        "units": "K"
+      }
+    },
+    "implementation": {
+      "libraries": {
+        "mujoco": "4.0.1",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "scipy": "1.18.1",
+        "spiceypy": "8.4.0"
+      },
+      "source_sha256": "cd0379334830bbcd10f7fe2f4f69bc141feb731f757bfe480a6db566c8239926",
+      "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+    }
+  },
+  "export": {
+    "filename": "clavius-bd4a989a-1d34-4cdf-b4ca-1d8d9d5006e7.zip",
+    "bytes": 214245,
+    "sha256": "b82d3660dd79360e64aa784164fe61d9658d13558e0750ee3d3617834c322757",
+    "context_hash_verified": true,
+    "captured_context_bytes": 91221
+  },
+  "reproduction": {
+    "report": "diviner-reproduction.json",
+    "run_id": "bd4a989a-1d34-4cdf-b4ca-1d8d9d5006e7",
+    "reproduced": true,
+    "relative_absolute_tolerance": 1e-06,
+    "differences": []
+  }
+}

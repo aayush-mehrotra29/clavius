@@ -1,0 +1,33 @@
+{
+  "id": "clavius-viper-upstream-rigid-probe-v1",
+  "role": "component_development_probe",
+  "upstream_commit": "2617649bf687456328a122b63dc0bb64df91394a",
+  "duration_s": 20,
+  "steady_window_s": [10, 20],
+  "gravity_cases_m_s2": [9.81, 1.62],
+  "base_dt_s": 0.001,
+  "refined_dt_s": 0.0005,
+  "drive_start_s": 3,
+  "drive_ramp_s": 1,
+  "target_wheel_omega_rad_s": 0.4,
+  "envelope_rolling_speed_m_s": 0.1,
+  "nominal_rig_mass_kg": 434.92111389444585,
+  "floor": "Synthetic rigid plane, declared SMC friction 0.7 and Young modulus 2e7 Pa; no regolith or measured lunar terrain",
+  "checks": {
+    "maximum_speed_difference_from_envelope_m_s": 0.01,
+    "maximum_relative_normal_load_error": 0.05,
+    "maximum_abs_mean_vertical_speed_m_s": 0.002,
+    "maximum_abs_lateral_position_m": 0.02,
+    "maximum_quaternion_norm_error": 0.000001,
+    "maximum_refined_speed_change_m_s": 0.002,
+    "maximum_refined_final_position_change_m": 0.02,
+    "maximum_refined_normal_load_change_fraction": 0.02
+  },
+  "limits": [
+    "Ideal wheel-speed motors do not establish flight actuator capability, efficiency or electrical power.",
+    "The unmodified upstream model retains approximate mass distribution, suspension, steering and shaft properties.",
+    "The mass and steering differences from dated NASA hardware have not been reconciled.",
+    "These checks test an assembled model on a rigid floor, not experimental wheel-soil or lunar mission agreement.",
+    "No active app dynamics, rover support or lunar calibration is established by this probe."
+  ]
+}

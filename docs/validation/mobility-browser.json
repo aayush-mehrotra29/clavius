@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-15",
+  "url": "http://127.0.0.1:5173/app/simulation",
+  "path": "Data & models \u2192 Review wheel comparison & limits",
+  "report_sha256": "d1c76dce7b6cd88a21cd109376ad58882f23d938df79bca8aa7f2326420b4d81",
+  "download_bytes": 36184,
+  "download_hash_matches": true,
+  "desktop": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "dialog_client_width": 688,
+    "dialog_scroll_width": 688,
+    "screenshot": "docs/validation/mobility-browser-desktop.png",
+    "screenshot_sha256": "5f35eafb5b64dd2a7bf6b9f1e11eaf365c4f350faf6dafd94f35a212308aa3cc"
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "dialog_client_width": 356,
+    "dialog_scroll_width": 356,
+    "document_scroll_width": 390,
+    "expanded_table_client_width": 316,
+    "expanded_table_scroll_width": 561,
+    "screenshot": "docs/validation/mobility-browser-mobile.png",
+    "screenshot_sha256": "6b8e13699e0d703f3090aec18d1818486204502e6b17382dfc4b378e778f6c89"
+  },
+  "checks": {
+    "failed_physical_gate_visible": true,
+    "separate_control_and_numerical_checks": true,
+    "all_18_rows_expand": true,
+    "full_size_plot_link": true,
+    "published_points_and_sources_download": true,
+    "amber_unresolved_state": true
+  },
+  "limitations": [
+    "The original existing Aside tab did not respond to CDP; QA used a fresh temporary tab.",
+    "No new mission or rover dynamics job was created during this UI check."
+  ]
+}

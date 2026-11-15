@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spaceapps.invalid/contracts/v0.1/environment-package.schema.json",
+  "title": "Normalized environment package",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "environment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "site_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "global_frame": {
+      "const": "MOON_ME_DE421"
+    },
+    "local_axes": {
+      "const": "x_east_y_north_z_up"
+    },
+    "source_manifest_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "origin": {
+      "type": "object",
+      "properties": {
+        "latitude_deg": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude_east_deg": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 360
+        },
+        "position_body_fixed_m": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+        },
+        "enu_to_body_fixed_rotation": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/matrix3"
+        }
+      },
+      "required": [
+        "latitude_deg",
+        "longitude_east_deg",
+        "position_body_fixed_m",
+        "enu_to_body_fixed_rotation"
+      ],
+      "additionalProperties": false
+    },
+    "terrain": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+        },
+        "horizontal_frame": {
+          "const": "LOCAL_ENU"
+        },
+        "vertical_quantity": {
+          "const": "local_up_m"
+        },
+        "grid_spacing_m": {
+          "type": "number",
+          "minimum": 1e-06
+        },
+        "raw_vertical_definition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "normalization_notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "asset",
+        "horizontal_frame",
+        "vertical_quantity",
+        "grid_spacing_m",
+        "raw_vertical_definition",
+        "normalization_notes"
+      ],
+      "additionalProperties": false
+    },
+    "gravity_m_s2": {
+      "type": "number",
+      "minimum": 0
+    },
+    "time_origin_utc": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+    },
+    "elapsed_time_basis": {
+      "const": "SI_seconds_from_time_origin"
+    },
+    "geometry_convention": {
+      "const": "geometric_observer_to_body_unit_vectors"
+    },
+    "sky_samples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "t_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "sun_direction_enu_unit": {
+            "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+          },
+          "earth_direction_enu_unit": {
+            "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+          },
+          "sun_angular_radius_rad": {
+            "type": "number",
+            "minimum": 0
+          },
+          "solar_irradiance_w_m2": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "t_s",
+          "sun_direction_enu_unit",
+          "earth_direction_enu_unit",
+          "sun_angular_radius_rad",
+          "solar_irradiance_w_m2"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2
+    },
+    "horizon_model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "terrain_scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/provenance"
+    }
+  },
+  "required": [
+    "schema_version",
+    "environment_id",
+    "site_id",
+    "global_frame",
+    "local_axes",
+    "source_manifest_ref",
+    "origin",
+    "terrain",
+    "gravity_m_s2",
+    "time_origin_utc",
+    "elapsed_time_basis",
+    "geometry_convention",
+    "sky_samples",
+    "horizon_model_id",
+    "terrain_scenario_id",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

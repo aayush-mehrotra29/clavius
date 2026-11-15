@@ -1,0 +1,141 @@
+{
+  "case": "lunar-transfer",
+  "source": {
+    "file": "Ex_LunarTransfer.script",
+    "source_page": "https://github.com/nasa/GMAT/blob/R2026a/application/samples/Ex_LunarTransfer.script",
+    "url": "https://github.com/nasa/GMAT/raw/refs/tags/R2026a/application/samples/Ex_LunarTransfer.script",
+    "bytes": 12021,
+    "sha256": "abdddc5aedcb10b561e545fb0d92035ebdde6264e525018f3c582445555bc365",
+    "role": "Official unmodified executable reference case; source guesses are not solved outputs."
+  },
+  "runtime_identity": "97c3f208072e53654eeb5a7c46e721abe9c71c7bda779fd6f24ab336379d03ed",
+  "native": {
+    "case": "lunar-transfer",
+    "started_utc": "2026-11-15T19:02:19.235171+00:00",
+    "runtime_identity": "97c3f208072e53654eeb5a7c46e721abe9c71c7bda779fd6f24ab336379d03ed",
+    "version": "R2026a",
+    "distribution_sha256": "8a81d22ce2d39504eadc875d71494321adb49f60da92d266fdbe660de0f771d2",
+    "script": {
+      "file": "Ex_LunarTransfer.script",
+      "source_page": "https://github.com/nasa/GMAT/blob/R2026a/application/samples/Ex_LunarTransfer.script",
+      "url": "https://github.com/nasa/GMAT/raw/refs/tags/R2026a/application/samples/Ex_LunarTransfer.script",
+      "bytes": 12021,
+      "sha256": "abdddc5aedcb10b561e545fb0d92035ebdde6264e525018f3c582445555bc365",
+      "role": "Official unmodified executable reference case; source guesses are not solved outputs."
+    },
+    "script_unchanged": true,
+    "startup_sha256": "9c336fe7db9e8bcd743beaa41b8fd4d4a5ae7be7c1595f23a34cfd1246689c73",
+    "disabled_optional_plugins": [
+      "../plugins/libPythonInterface_py312",
+      "../plugins/libMatlabInterface",
+      "../plugins/libExternalForceModel_py312",
+      "../plugins/proprietary/libCsaltInterface",
+      "../plugins/proprietary/libEMTGModels",
+      "../plugins/proprietary/libMarsGRAM",
+      "../plugins/proprietary/libMsise86",
+      "../plugins/proprietary/libSNOptimizer",
+      "../plugins/proprietary/libVF13Optimizer"
+    ],
+    "python": "3.13.13",
+    "machine": "arm64",
+    "load_succeeded": true,
+    "run_succeeded": true,
+    "initial_spacecraft": {
+      "DateFormat": "UTCGregorian",
+      "Epoch": "22 Jul 2014 11:29:10.811",
+      "CoordinateSystem": "EarthMJ2000Eq",
+      "DisplayStateType": "Cartesian",
+      "X": "-137380.1984338506",
+      "Y": "75679.87867537055",
+      "Z": "21487.63875187856",
+      "VX": "-0.2324532014235503",
+      "VY": "-0.4462753967758019",
+      "VZ": "0.08561205662877103",
+      "DryMass": "1000"
+    },
+    "frames": {
+      "EarthMJ2000Eq": {
+        "Origin": "Earth",
+        "Axes": "MJ2000Eq"
+      },
+      "MoonMJ2000Eq": {
+        "Origin": "Luna",
+        "Axes": "MJ2000Eq"
+      }
+    },
+    "bodies": {
+      "Earth": {
+        "Mu": "398600.4415",
+        "EquatorialRadius": "6378.1363",
+        "Flattening": "0.0033527"
+      },
+      "Luna": {
+        "Mu": "4902.8005821478",
+        "EquatorialRadius": "1738.2",
+        "Flattening": "0"
+      }
+    },
+    "burns": {
+      "TOI": {
+        "CoordinateSystem": "Local",
+        "Origin": "Earth",
+        "Axes": "VNB",
+        "Element1": "0.146077640682937",
+        "Element2": "0.046042675892",
+        "Element3": "0.1169387092029522",
+        "DecrementMass": "false"
+      },
+      "LOI": {
+        "CoordinateSystem": "Local",
+        "Origin": "Luna",
+        "Axes": "VNB",
+        "Element1": "-0.5530339388434146",
+        "Element2": "0",
+        "Element3": "0",
+        "DecrementMass": "false"
+      }
+    },
+    "solver": {
+      "MaximumIterations": "25",
+      "DerivativeMethod": "ForwardDifference",
+      "Algorithm": "NewtonRaphson"
+    },
+    "final_spacecraft": {
+      "DateFormat": "UTCGregorian",
+      "Epoch": "12 Aug 2014 22:07:27.449",
+      "CoordinateSystem": "EarthMJ2000Eq",
+      "X": "354228.4863444049",
+      "Y": "-52240.92031992686",
+      "Z": "-4297.997870101215",
+      "VX": "-0.4850731865188159",
+      "VY": "0.8695038237290271",
+      "VZ": "0.2606170802132052",
+      "DryMass": "1000"
+    },
+    "elapsed_s": 2.8541680000000724,
+    "finished_utc": "2026-11-15T19:02:21.265941+00:00"
+  },
+  "state_files": {
+    "departure": {
+      "file": "006-EarthMJ2000Eq.txt",
+      "frame": "EarthMJ2000Eq",
+      "sha256": "6eefd49adaadc4a850470ce454cbdbf400992d6032eb5b146a7c0e1cf831a1ee"
+    },
+    "encounter": {
+      "file": "008-MoonMJ2000Eq.txt",
+      "frame": "MoonMJ2000Eq",
+      "sha256": "206f2f82ba8531f30b5b09efb5439986558599e60036c37949e571f69302a6df"
+    },
+    "capture": {
+      "file": "014-MoonMJ2000Eq.txt",
+      "frame": "MoonMJ2000Eq",
+      "sha256": "76c87d932c15ea3b247303d9c6554b8f64b03e67cbbf7acd0b0961af9252b697"
+    },
+    "post_capture": {
+      "file": "017-MoonMJ2000Eq.txt",
+      "frame": "MoonMJ2000Eq",
+      "sha256": "a978ac479b65ef5a29470124b837fb1ed7edcba93604c4b5796b0d8a3fe8cc65"
+    }
+  },
+  "recorded_utc": "2026-11-15T19:02:21.302522+00:00"
+}

@@ -1,0 +1,641 @@
+{
+  "model_id": "clavius-gmat-reference-benchmark-v1",
+  "created_utc": "2026-11-15T19:04:48.148357+00:00",
+  "runtime_identity": "97c3f208072e53654eeb5a7c46e721abe9c71c7bda779fd6f24ab336379d03ed",
+  "distribution": {
+    "software": "NASA GMAT",
+    "version": "R2026a",
+    "source_page": "https://github.com/nasa/GMAT/releases/tag/R2026a",
+    "url": "https://sourceforge.net/projects/gmat/files/GMAT/GMAT-R2026a/gmat-mac-x64-R2026a-signed.dmg/download",
+    "bytes": 455494809,
+    "sha256": "8a81d22ce2d39504eadc875d71494321adb49f60da92d266fdbe660de0f771d2",
+    "platform": "Official universal macOS distribution (Intel and Apple Silicon), signed by NASA"
+  },
+  "native_ephemeris": "DE405",
+  "native_build": "Mar 26 2026 19:40:07",
+  "passed": true,
+  "cases": [
+    {
+      "case": "fixed-epoch",
+      "reference_checks_passed": true,
+      "screening_candidate_accepted": false,
+      "source": {
+        "file": "Ex_GivenEpochGoToTheMoon.script",
+        "source_page": "https://github.com/nasa/GMAT/blob/R2026a/application/samples/Ex_GivenEpochGoToTheMoon.script",
+        "url": "https://github.com/nasa/GMAT/raw/refs/tags/R2026a/application/samples/Ex_GivenEpochGoToTheMoon.script",
+        "bytes": 19390,
+        "sha256": "9caae1962aa210540d96556041de4038161877253f6b596080953f2c3aba558d",
+        "role": "Official unmodified executable reference case; source guesses are not solved outputs."
+      },
+      "runtime_identity": "97c3f208072e53654eeb5a7c46e721abe9c71c7bda779fd6f24ab336379d03ed",
+      "states": {
+        "departure_earth": {
+          "spacecraft": "MoonSat",
+          "frame_id": "EarthMJ2000Eq",
+          "origin": "Earth",
+          "axes": "MJ2000Eq",
+          "epoch_utc": "2022-07-15T01:07:06.978Z",
+          "native_utc_gregorian": "15 Jul 2022 01:07:06.978",
+          "native_tai_gregorian": "15 Jul 2022 01:07:43.978",
+          "epoch_tai_gmat_mod_julian": 29775.5470367824,
+          "epoch_utc_gmat_mod_julian": 29775.5466085417,
+          "position_m": [
+            -6205504.933784801,
+            -2110661.9777954,
+            -153885.24045738002
+          ],
+          "velocity_m_s": [
+            2972.6772969285,
+            -9122.2730373921,
+            5244.6304535315
+          ]
+        },
+        "encounter_moon": {
+          "spacecraft": "MoonSat",
+          "frame_id": "MoonInertial",
+          "origin": "Luna",
+          "axes": "BodyInertial",
+          "epoch_utc": "2022-07-19T15:17:22.067Z",
+          "native_utc_gregorian": "19 Jul 2022 15:17:22.067",
+          "native_tai_gregorian": "19 Jul 2022 15:17:59.067",
+          "epoch_tai_gmat_mod_julian": 29780.1374892001,
+          "epoch_utc_gmat_mod_julian": 29780.1370609593,
+          "position_m": [
+            -3286325.6567048,
+            -1980012.5152023,
+            -14501021.546098
+          ],
+          "velocity_m_s": [
+            433.7966489674,
+            -1127.2400353798,
+            55.606584082199994
+          ]
+        },
+        "capture_moon": {
+          "spacecraft": "MoonSat",
+          "frame_id": "MoonInertial",
+          "origin": "Luna",
+          "axes": "BodyInertial",
+          "epoch_utc": "2022-07-19T15:17:22.067Z",
+          "native_utc_gregorian": "19 Jul 2022 15:17:22.067",
+          "native_tai_gregorian": "19 Jul 2022 15:17:59.067",
+          "epoch_tai_gmat_mod_julian": 29780.1374892001,
+          "epoch_utc_gmat_mod_julian": 29780.1370609593,
+          "position_m": [
+            -3286325.6567048,
+            -1980012.5152023,
+            -14501021.546098
+          ],
+          "velocity_m_s": [
+            206.1381361013,
+            -535.6591858998,
+            26.4239883479
+          ]
+        },
+        "post_capture_moon": {
+          "spacecraft": "MoonSat",
+          "frame_id": "MoonInertial",
+          "origin": "Luna",
+          "axes": "BodyInertial",
+          "epoch_utc": "2022-07-23T15:17:22.067Z",
+          "native_utc_gregorian": "23 Jul 2022 15:17:22.067",
+          "native_tai_gregorian": "23 Jul 2022 15:17:59.067",
+          "epoch_tai_gmat_mod_julian": 29784.1374892001,
+          "epoch_utc_gmat_mod_julian": 29784.1370609593,
+          "position_m": [
+            -169178.36422423,
+            -8278257.0100843,
+            -12615595.788971001
+          ],
+          "velocity_m_s": [
+            226.9341510507,
+            -438.02638110789997,
+            287.5643421735
+          ]
+        }
+      },
+      "endpoint_checks": {
+        "policy": {
+          "id": "clavius-gmat-reference-checks-v1",
+          "encounter_radial_velocity_tolerance_m_s": 0.01,
+          "encounter_osculating_periapsis_tolerance_m": 1.0,
+          "same_epoch_tolerance_s": 0.01,
+          "same_position_tolerance_m": 0.01,
+          "impulse_magnitude_tolerance_m_s": 1e-05,
+          "guard_time_margin_s": 1.0,
+          "guard_radius_margin_m": 1.0,
+          "full_trajectory_clearance_checked": false,
+          "tighter_repropagation_checked": false
+        },
+        "passed": true,
+        "checks": {
+          "positive_transfer_duration": true,
+          "encounter_stationary_radius": true,
+          "encounter_at_osculating_periapsis": true,
+          "capture_same_epoch": true,
+          "capture_same_position": true,
+          "insertion_impulse_matches": true,
+          "departure_outside_earth_sphere": true,
+          "post_capture_duration_matches_source": true,
+          "encounter_moon_outside_lunar_sphere": true,
+          "capture_moon_outside_lunar_sphere": true,
+          "capture_moon_negative_energy": true,
+          "capture_moon_elliptic": true,
+          "capture_moon_osculating_periapsis_clear": true,
+          "post_capture_moon_outside_lunar_sphere": true,
+          "post_capture_moon_negative_energy": true,
+          "post_capture_moon_elliptic": true,
+          "post_capture_moon_osculating_periapsis_clear": true,
+          "encounter_before_time_guard": true,
+          "encounter_above_radius_guard": true
+        },
+        "orbital_elements": {
+          "encounter_moon": {
+            "radius_m": 15000000.392089074,
+            "speed_m_s": 1209.1078207553244,
+            "radial_velocity_m_s": 3.100937436427783e-06,
+            "specific_energy_m2_s2": 404117.49750636704,
+            "eccentricity": 3.472775516555906,
+            "osculating_periapsis_radius_m": 15000000.39208907
+          },
+          "capture_moon": {
+            "radius_m": 15000000.392089074,
+            "speed_m_s": 574.5623741199597,
+            "radial_velocity_m_s": 1.4735286844050406e-06,
+            "specific_energy_m2_s2": -161792.40272229552,
+            "eccentricity": 0.010000075014960294,
+            "osculating_periapsis_radius_m": 15000000.392089069
+          },
+          "post_capture_moon": {
+            "radius_m": 15090109.925200488,
+            "speed_m_s": 571.0161734568146,
+            "radial_velocity_m_s": -2.656898646464404,
+            "specific_energy_m2_s2": -161871.8464871509,
+            "eccentricity": 0.005860909158553861,
+            "osculating_periapsis_radius_m": 15055322.525465295
+          }
+        },
+        "transfer_duration_s": 396615.08888946846,
+        "capture_offset_s": 0.0,
+        "post_capture_duration_s": 345600.0,
+        "native_moon_radius_m": 1738200.0,
+        "native_earth_radius_m": 6378136.3,
+        "observed_insertion_impulse_m_s": 634.5454466353644,
+        "declared_insertion_impulse_m_s": 634.5454466353831
+      },
+      "initialization": {
+        "role": "Procedural coarse initialization only; MoonSat is reset from InitSat before the fine solve. Excluded from physical transfer and delta-v.",
+        "duration_s": 388800.0,
+        "time_guard_reached": true
+      },
+      "limitations": [
+        "Reference benchmark only. Full trajectory Earth/Moon clearance and tighter independent repropagation are not yet checked.",
+        "The original solver tolerances are retained; the fixed-epoch eccentricity tolerance is 0.1.",
+        "Impulsive burns do not decrement mass. Launch, propellant and vehicle compatibility are unassessed.",
+        "No descent or landing-site access is solved. Surface DE421 geometry and its 1737.4 km sphere are distinct from this native GMAT DE405 model and 1738.2 km lunar radius."
+      ],
+      "native": {
+        "version": "R2026a",
+        "distribution_sha256": "8a81d22ce2d39504eadc875d71494321adb49f60da92d266fdbe660de0f771d2",
+        "python": "3.13.13",
+        "machine": "arm64",
+        "initial_spacecraft": {
+          "DateFormat": "UTCGregorian",
+          "Epoch": "15 Jul 2022 01:07:06.978",
+          "CoordinateSystem": "EarthMJ2000Eq",
+          "DisplayStateType": "Keplerian",
+          "X": "-799.0285872100923",
+          "Y": "-6507.566323272476",
+          "Z": "4.69171264045439e-05",
+          "VX": "6.791640027091389",
+          "VY": "-0.833908421536618",
+          "VZ": "3.746238187594493",
+          "DryMass": "850"
+        },
+        "frames": {
+          "EarthMJ2000Eq": {
+            "Origin": "Earth",
+            "Axes": "MJ2000Eq"
+          },
+          "MoonInertial": {
+            "Origin": "Luna",
+            "Axes": "BodyInertial"
+          }
+        },
+        "bodies": {
+          "Earth": {
+            "Mu": "398600.4415",
+            "EquatorialRadius": "6378.1363",
+            "Flattening": "0.0033527"
+          },
+          "Luna": {
+            "Mu": "4902.8005821478",
+            "EquatorialRadius": "1738.2",
+            "Flattening": "0"
+          }
+        },
+        "burns": {
+          "TOI": {
+            "CoordinateSystem": "Local",
+            "Origin": "Earth",
+            "Axes": "VNB",
+            "Element1": "3.133265205687565",
+            "Element2": "0",
+            "Element3": "0",
+            "DecrementMass": "false"
+          },
+          "LOI": {
+            "CoordinateSystem": "Local",
+            "Origin": "Luna",
+            "Axes": "VNB",
+            "Element1": "-0.634545446635383",
+            "Element2": "0",
+            "Element3": "0",
+            "DecrementMass": "false"
+          }
+        },
+        "solver": {
+          "MaximumIterations": "150",
+          "DerivativeMethod": "ForwardDifference",
+          "Algorithm": "NewtonRaphson"
+        }
+      },
+      "console_api_goals_agree": true,
+      "solver_loops": [
+        {
+          "iterations": 37,
+          "converged": true,
+          "final_goals": [
+            {
+              "name": "MoonSat.EarthMoonRot.RA",
+              "desired": 0.0,
+              "achieved": -0.00254599511073,
+              "residual": -0.00254599511073,
+              "native_variance": 0.00254599511073,
+              "tolerance": 1.0,
+              "unit": "deg",
+              "passed": true
+            },
+            {
+              "name": "MoonSat.EarthMoonRot.DEC",
+              "desired": 0.0,
+              "achieved": 0.00175362849958,
+              "residual": 0.00175362849958,
+              "native_variance": -0.00175362849958,
+              "tolerance": 1.0,
+              "unit": "deg",
+              "passed": true
+            }
+          ],
+          "final_variables": {
+            "MoonSat.RAAN": 199.202309817,
+            "MoonSat.AOP": -3.54806170775
+          }
+        },
+        {
+          "iterations": 7,
+          "converged": true,
+          "final_goals": [
+            {
+              "name": "MoonSat.Luna.RMAG",
+              "desired": 15000.0,
+              "achieved": 15000.0003921,
+              "residual": 0.0003921000006812392,
+              "native_variance": -0.000392089139496,
+              "tolerance": 0.1,
+              "unit": "km",
+              "passed": true
+            },
+            {
+              "name": "MoonSat.MoonInertial.BVectorAngle",
+              "desired": 75.0,
+              "achieved": 75.0000007733,
+              "residual": 7.733000018106395e-07,
+              "native_variance": -7.73319683844e-07,
+              "tolerance": 0.1,
+              "unit": "deg",
+              "passed": true
+            },
+            {
+              "name": "MoonSat.Luna.ECC",
+              "desired": 0.01,
+              "achieved": 0.0100000750149,
+              "residual": 7.501490000005884e-08,
+              "native_variance": -7.50149480658e-08,
+              "tolerance": 0.1,
+              "unit": "dimensionless",
+              "passed": true
+            }
+          ],
+          "final_variables": {
+            "MoonSat.RAAN": 201.242297782,
+            "MoonSat.AOP": 357.1985598,
+            "TOI.Element1": 3.13326520569,
+            "LOI.Element1": -0.634545446635
+          }
+        }
+      ]
+    },
+    {
+      "case": "lunar-transfer",
+      "reference_checks_passed": true,
+      "screening_candidate_accepted": false,
+      "source": {
+        "file": "Ex_LunarTransfer.script",
+        "source_page": "https://github.com/nasa/GMAT/blob/R2026a/application/samples/Ex_LunarTransfer.script",
+        "url": "https://github.com/nasa/GMAT/raw/refs/tags/R2026a/application/samples/Ex_LunarTransfer.script",
+        "bytes": 12021,
+        "sha256": "abdddc5aedcb10b561e545fb0d92035ebdde6264e525018f3c582445555bc365",
+        "role": "Official unmodified executable reference case; source guesses are not solved outputs."
+      },
+      "runtime_identity": "97c3f208072e53654eeb5a7c46e721abe9c71c7bda779fd6f24ab336379d03ed",
+      "states": {
+        "departure_earth": {
+          "spacecraft": "Sat",
+          "frame_id": "EarthMJ2000Eq",
+          "origin": "Earth",
+          "axes": "MJ2000Eq",
+          "epoch_utc": "2014-07-23T20:48:49.867Z",
+          "native_utc_gregorian": "23 Jul 2014 20:48:49.867",
+          "native_tai_gregorian": "23 Jul 2014 20:49:24.867",
+          "epoch_tai_gmat_mod_julian": 26862.367648925,
+          "epoch_utc_gmat_mod_julian": 26862.3672438324,
+          "position_m": [
+            7482854.363549,
+            -4114938.3012804003,
+            -1171258.3153436
+          ],
+          "velocity_m_s": [
+            4436.0466821268,
+            8268.590903455699,
+            -1569.6078104391
+          ]
+        },
+        "encounter_moon": {
+          "spacecraft": "Sat",
+          "frame_id": "MoonMJ2000Eq",
+          "origin": "Luna",
+          "axes": "MJ2000Eq",
+          "epoch_utc": "2014-07-28T22:07:27.449Z",
+          "native_utc_gregorian": "28 Jul 2014 22:07:27.449",
+          "native_tai_gregorian": "28 Jul 2014 22:08:02.449",
+          "epoch_tai_gmat_mod_julian": 26867.4222505661,
+          "epoch_utc_gmat_mod_julian": 26867.4218454735,
+          "position_m": [
+            9220753.415723601,
+            -348076.00305803,
+            -134681.93356598
+          ],
+          "velocity_m_s": [
+            51.4911438426,
+            1132.4284554941,
+            598.5649557622
+          ]
+        },
+        "capture_moon": {
+          "spacecraft": "Sat",
+          "frame_id": "MoonMJ2000Eq",
+          "origin": "Luna",
+          "axes": "MJ2000Eq",
+          "epoch_utc": "2014-07-28T22:07:27.449Z",
+          "native_utc_gregorian": "28 Jul 2014 22:07:27.449",
+          "native_tai_gregorian": "28 Jul 2014 22:08:02.449",
+          "epoch_tai_gmat_mod_julian": 26867.4222505661,
+          "epoch_utc_gmat_mod_julian": 26867.4218454735,
+          "position_m": [
+            9220753.415723601,
+            -348076.00305803,
+            -134681.93356598
+          ],
+          "velocity_m_s": [
+            29.2773611173,
+            643.8877514997,
+            340.338183505
+          ]
+        },
+        "post_capture_moon": {
+          "spacecraft": "Sat",
+          "frame_id": "MoonMJ2000Eq",
+          "origin": "Luna",
+          "axes": "MJ2000Eq",
+          "epoch_utc": "2014-08-12T22:07:27.449Z",
+          "native_utc_gregorian": "12 Aug 2014 22:07:27.449",
+          "native_tai_gregorian": "12 Aug 2014 22:08:02.449",
+          "epoch_tai_gmat_mod_julian": 26882.4222505661,
+          "epoch_utc_gmat_mod_julian": 26882.4218454735,
+          "position_m": [
+            -2039337.7569582001,
+            7960331.8057663,
+            4199204.4436692
+          ],
+          "velocity_m_s": [
+            -709.789065566,
+            -136.6653313924,
+            -87.19363984719999
+          ]
+        }
+      },
+      "endpoint_checks": {
+        "policy": {
+          "id": "clavius-gmat-reference-checks-v1",
+          "encounter_radial_velocity_tolerance_m_s": 0.01,
+          "encounter_osculating_periapsis_tolerance_m": 1.0,
+          "same_epoch_tolerance_s": 0.01,
+          "same_position_tolerance_m": 0.01,
+          "impulse_magnitude_tolerance_m_s": 1e-05,
+          "guard_time_margin_s": 1.0,
+          "guard_radius_margin_m": 1.0,
+          "full_trajectory_clearance_checked": false,
+          "tighter_repropagation_checked": false
+        },
+        "passed": true,
+        "checks": {
+          "positive_transfer_duration": true,
+          "encounter_stationary_radius": true,
+          "encounter_at_osculating_periapsis": true,
+          "capture_same_epoch": true,
+          "capture_same_position": true,
+          "insertion_impulse_matches": true,
+          "departure_outside_earth_sphere": true,
+          "post_capture_duration_matches_source": true,
+          "encounter_moon_outside_lunar_sphere": true,
+          "capture_moon_outside_lunar_sphere": true,
+          "capture_moon_negative_energy": true,
+          "capture_moon_elliptic": true,
+          "capture_moon_osculating_periapsis_clear": true,
+          "post_capture_moon_outside_lunar_sphere": true,
+          "post_capture_moon_negative_energy": true,
+          "post_capture_moon_elliptic": true,
+          "post_capture_moon_osculating_periapsis_clear": true
+        },
+        "orbital_elements": {
+          "encounter_moon": {
+            "radius_m": 9228303.72715985,
+            "speed_m_s": 1281.922599447243,
+            "radial_velocity_m_s": 9.137293139824664e-06,
+            "specific_energy_m2_s2": 290384.1432373588,
+            "eccentricity": 2.093151975669996,
+            "osculating_periapsis_radius_m": 9228303.727159848
+          },
+          "capture_moon": {
+            "radius_m": 9228303.72715985,
+            "speed_m_s": 728.8886606038094,
+            "radial_velocity_m_s": 5.195417749315246e-06,
+            "specific_energy_m2_s2": -265639.29247102205,
+            "eccentricity": 8.932922871747646e-08,
+            "osculating_periapsis_radius_m": 9228303.724531338
+          },
+          "post_capture_moon": {
+            "radius_m": 9228168.773087163,
+            "speed_m_s": 728.0663851816352,
+            "radial_velocity_m_s": -0.7093133438167682,
+            "specific_energy_m2_s2": -266246.07112913794,
+            "eccentricity": 0.0024697479138031495,
+            "osculating_periapsis_radius_m": 9184533.465408592
+          }
+        },
+        "transfer_duration_s": 436717.5817909534,
+        "capture_offset_s": 0.0,
+        "post_capture_duration_s": 1296000.0,
+        "native_moon_radius_m": 1738200.0,
+        "native_earth_radius_m": 6378136.3,
+        "observed_insertion_impulse_m_s": 553.0339388434336,
+        "declared_insertion_impulse_m_s": 553.0339388434146
+      },
+      "initialization": null,
+      "limitations": [
+        "Reference benchmark only. Full trajectory Earth/Moon clearance and tighter independent repropagation are not yet checked.",
+        "The original solver tolerances are retained; the fixed-epoch eccentricity tolerance is 0.1.",
+        "Impulsive burns do not decrement mass. Launch, propellant and vehicle compatibility are unassessed.",
+        "No descent or landing-site access is solved. Surface DE421 geometry and its 1737.4 km sphere are distinct from this native GMAT DE405 model and 1738.2 km lunar radius."
+      ],
+      "native": {
+        "version": "R2026a",
+        "distribution_sha256": "8a81d22ce2d39504eadc875d71494321adb49f60da92d266fdbe660de0f771d2",
+        "python": "3.13.13",
+        "machine": "arm64",
+        "initial_spacecraft": {
+          "DateFormat": "UTCGregorian",
+          "Epoch": "22 Jul 2014 11:29:10.811",
+          "CoordinateSystem": "EarthMJ2000Eq",
+          "DisplayStateType": "Cartesian",
+          "X": "-137380.1984338506",
+          "Y": "75679.87867537055",
+          "Z": "21487.63875187856",
+          "VX": "-0.2324532014235503",
+          "VY": "-0.4462753967758019",
+          "VZ": "0.08561205662877103",
+          "DryMass": "1000"
+        },
+        "frames": {
+          "EarthMJ2000Eq": {
+            "Origin": "Earth",
+            "Axes": "MJ2000Eq"
+          },
+          "MoonMJ2000Eq": {
+            "Origin": "Luna",
+            "Axes": "MJ2000Eq"
+          }
+        },
+        "bodies": {
+          "Earth": {
+            "Mu": "398600.4415",
+            "EquatorialRadius": "6378.1363",
+            "Flattening": "0.0033527"
+          },
+          "Luna": {
+            "Mu": "4902.8005821478",
+            "EquatorialRadius": "1738.2",
+            "Flattening": "0"
+          }
+        },
+        "burns": {
+          "TOI": {
+            "CoordinateSystem": "Local",
+            "Origin": "Earth",
+            "Axes": "VNB",
+            "Element1": "0.146077640682937",
+            "Element2": "0.046042675892",
+            "Element3": "0.1169387092029522",
+            "DecrementMass": "false"
+          },
+          "LOI": {
+            "CoordinateSystem": "Local",
+            "Origin": "Luna",
+            "Axes": "VNB",
+            "Element1": "-0.5530339388434146",
+            "Element2": "0",
+            "Element3": "0",
+            "DecrementMass": "false"
+          }
+        },
+        "solver": {
+          "MaximumIterations": "25",
+          "DerivativeMethod": "ForwardDifference",
+          "Algorithm": "NewtonRaphson"
+        }
+      },
+      "console_api_goals_agree": true,
+      "solver_loops": [
+        {
+          "iterations": 6,
+          "converged": true,
+          "final_goals": [
+            {
+              "name": "Sat.MoonMJ2000Eq.BdotT",
+              "desired": 15000.4401777,
+              "achieved": 14998.6063605,
+              "residual": -1.8338172000003397,
+              "native_variance": 1.83381724349,
+              "tolerance": 3.0,
+              "unit": "km",
+              "passed": true
+            },
+            {
+              "name": "Sat.MoonMJ2000Eq.BdotR",
+              "desired": 4000.59308992,
+              "achieved": 4001.57939844,
+              "residual": 0.9863085200004207,
+              "native_variance": -0.986308521457,
+              "tolerance": 3.0,
+              "unit": "km",
+              "passed": true
+            }
+          ],
+          "final_variables": {
+            "TOI.Element1": 0.146077640683,
+            "TOI.Element3": 0.116938709203
+          }
+        },
+        {
+          "iterations": 4,
+          "converged": true,
+          "final_goals": [
+            {
+              "name": "Sat.Luna.ECC",
+              "desired": 0.0,
+              "achieved": 8.93292756747e-08,
+              "residual": 8.93292756747e-08,
+              "native_variance": -8.93292756747e-08,
+              "tolerance": 0.0001,
+              "unit": "dimensionless",
+              "passed": true
+            }
+          ],
+          "final_variables": {
+            "LOI.Element1": -0.553033938843
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Executed original NASA reference cases. No accepted bounded-search candidate, continuous clearance guarantee, launch/propellant compatibility or descent is established.",
+  "evidence": {
+    "directory": "data/runtime/gmat/benchmark-2026-11-15-v3",
+    "benchmark_sha256": "c6e4658a81e045b1db67374eafc237e7eb71284d70460d4e40615bea502d8623",
+    "archive": "data/runtime/gmat/benchmark-2026-11-15-v3.zip",
+    "archive_sha256": "374041f6a902d57e178ea8105b7a3afcb7eb74bec9bd3778778080749760d959",
+    "archive_bytes": 284872,
+    "report": "docs/GMAT_REFERENCES.md"
+  }
+}

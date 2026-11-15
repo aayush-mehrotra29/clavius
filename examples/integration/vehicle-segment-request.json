@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1.0",
+  "segment_id": "independent-synthetic-driving-segment",
+  "robot_ref": {
+    "uri": "robot-capability.json",
+    "sha256": "4cb9354aa1f384e350aa6e7591192e5760f0fe8d7ef0c29a906e658d74c80c58"
+  },
+  "environment_ref": {
+    "uri": "environment-package.json",
+    "sha256": "face53148ae395baaf3d4bfa22b13c708995e71c3e4ba4ca6d22f0eb9f3cdfba"
+  },
+  "time_origin_utc": "2028-01-01T00:00:00Z",
+  "scenario_id": "fixture-flat-driving",
+  "seed": 42,
+  "soil_category": "synthetic_flat",
+  "start_t_s": 0,
+  "duration_s": 200,
+  "initial_state": {
+    "position_enu_m": [
+      0,
+      0,
+      0
+    ],
+    "orientation_body_to_enu_xyzw": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "speed_m_s": 0.05
+  },
+  "controls": [
+    {
+      "start_t_s": 0,
+      "duration_s": 200,
+      "mode": "drive",
+      "speed_setpoint_m_s": 0.05
+    }
+  ],
+  "provenance": {
+    "source_class": "synthetic_contract_fixture",
+    "model_id": "fixture-driving-request",
+    "model_version": "0.1.0",
+    "notes": "Independent constant-speed flat-ground integration fixture; no dynamics or soil experiment."
+  }
+}

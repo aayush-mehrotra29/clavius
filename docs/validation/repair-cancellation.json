@@ -1,0 +1,45 @@
+{
+  "recorded_utc": "2026-11-15",
+  "job_id": "50a3dd79-cdcb-4341-9136-a3d40ebf8e98",
+  "job_state": "cancelled",
+  "completed_parent_result_id": null,
+  "checkpoint_sha256": "7d5313ed0a9526e3b32b6aba7deedef948ff6e5062355fdff00ae8a764aa4337",
+  "metrics": {
+    "audit_candidates_frozen": 3,
+    "audit_cases_per_candidate": 3,
+    "candidate_budget_exhausted": true,
+    "candidate_space_size": 28,
+    "nominal_checked": 12,
+    "nominal_supported": 4,
+    "requested_work_complete": false,
+    "search_complete": false,
+    "simulation_evaluations": 13,
+    "unsearched_candidates": 16,
+    "verified_candidates": 0
+  },
+  "checkpoint_search_state": "running_partial",
+  "selected_candidate_count": 3,
+  "recommended_candidate_id": null,
+  "child_run_ids": [
+    "93670ea5-9903-42f0-9e08-6ea6f5af51da",
+    "e6a269f3-5609-4468-96a4-6fca9df32727",
+    "95098371-e811-4e52-a666-885c764ed8d8",
+    "eb1a6bdf-3fc7-4728-8e7d-021b5922dfa1",
+    "f9ea1d76-e3d2-4213-870b-5dd5d38443ab",
+    "e904c074-94e9-4f11-b2bf-235baf882c8f",
+    "8bdd195c-d622-4d82-80f9-a7e98dbc9c8e",
+    "36e4ac95-9c68-425d-9bd7-c43e79ab2950",
+    "549b3c8b-f042-4084-8f33-7ec517dcd2c2",
+    "b61c03cf-e43e-47d7-95b6-be05ccab1bd6",
+    "f6af1a35-89ff-4031-8cef-96b30962e0e7",
+    "0b9d7ebd-e840-46c7-b084-8425bb071de0"
+  ],
+  "policy": "Browser cancellation retained an immutable checkpoint and completed child missions; no completed parent search was accepted.",
+  "browser_checkpoint_download": {
+    "filename": "clavius-partial-50a3dd79-cdcb-4341-9136-a3d40ebf8e98.json",
+    "bytes": 61119,
+    "sha256": "44e5612cfe8964c9d69276b20fe39fa1321dac5797c2ac0b8778a843277086f7",
+    "checkpoint_hash_verified": true
+  },
+  "partial_url_reload_verified": true
+}

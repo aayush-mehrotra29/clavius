@@ -1,0 +1,346 @@
+{
+  "paired_surface_cases": [
+    {
+      "run_id": "fb6f347e-5216-4fde-a3bb-c9da5cb6b95f",
+      "site_id": "connecting-ridge",
+      "surface": "nominal",
+      "status": "supported_under_assumptions",
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 255.58849085251285,
+        "distance_m": 113.2373277458786,
+        "final_battery_wh": 156.24091169096977,
+        "generated_wh": 0.2673569589379854,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 3.431054853446434,
+        "max_terrain_slope_deg": 4.429420338102939,
+        "minimum_battery_wh": 156.24091169096977,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2864.7465549175718
+      },
+      "first_row": {
+        "up_m": 1.4009576950618152e-14,
+        "slope_deg": 1.7700414339675323,
+        "sun_horizon_deg": -0.26851706510508394,
+        "earth_horizon_deg": -1.4204186474038725,
+        "nominal_lola_return_count": 0.0
+      }
+    },
+    {
+      "run_id": "5015748f-0eaa-4072-a402-b5e7d69d198c",
+      "site_id": "connecting-ridge",
+      "surface": "pgda78-0001",
+      "status": "supported_under_assumptions",
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 255.60941305333938,
+        "distance_m": 113.31864718550042,
+        "final_battery_wh": 156.5359025185619,
+        "generated_wh": 0.5685204459769858,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 5.666036704244927,
+        "max_terrain_slope_deg": 6.121956120113597,
+        "minimum_battery_wh": 156.5359025185619,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2866.372943710008
+      },
+      "first_row": {
+        "up_m": -0.16052246096001474,
+        "slope_deg": 4.408641615505063,
+        "sun_horizon_deg": -0.05336501105715785,
+        "earth_horizon_deg": 0.15688697077796845,
+        "nominal_lola_return_count": 0.0
+      }
+    },
+    {
+      "run_id": "7cf137fc-3ac5-4078-913c-288db5bee01d",
+      "site_id": "connecting-ridge",
+      "surface": "pgda78-0002",
+      "status": "supported_under_assumptions",
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 255.58730403115993,
+        "distance_m": 113.24636118738155,
+        "final_battery_wh": 156.13787392372416,
+        "generated_wh": 0.16828425870145286,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 5.264294616123414,
+        "max_terrain_slope_deg": 5.896973908605609,
+        "minimum_battery_wh": 156.13787392372416,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2864.9272237476307
+      },
+      "first_row": {
+        "up_m": -0.1912841798400566,
+        "slope_deg": 2.588955403552409,
+        "sun_horizon_deg": 0.0007586550634423688,
+        "earth_horizon_deg": -1.4203380681491355,
+        "nominal_lola_return_count": 0.0
+      }
+    },
+    {
+      "run_id": "7567f210-cd42-4078-80fa-5ff42dcaf78b",
+      "site_id": "connecting-ridge",
+      "surface": "pgda78-0003",
+      "status": "supported_under_assumptions",
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 255.58774977542336,
+        "distance_m": 113.2432423030746,
+        "final_battery_wh": 156.08038287929833,
+        "generated_wh": 0.11411351076042525,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 4.460699584034892,
+        "max_terrain_slope_deg": 7.132560518569169,
+        "minimum_battery_wh": 156.08038287929833,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2864.8648460614913
+      },
+      "first_row": {
+        "up_m": 0.12341308578839078,
+        "slope_deg": 4.619010143462437,
+        "sun_horizon_deg": -0.3492783593932317,
+        "earth_horizon_deg": -1.104917813816611,
+        "nominal_lola_return_count": 0.0
+      }
+    },
+    {
+      "run_id": "221b85f2-40ca-4cad-ae00-f5e5b29276c3",
+      "site_id": "shackleton-rim",
+      "surface": "nominal",
+      "status": "supported_under_assumptions",
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 255.60631928620828,
+        "distance_m": 113.27701431377791,
+        "final_battery_wh": 155.94071654082978,
+        "generated_wh": 0.0,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 5.223251028468241,
+        "max_terrain_slope_deg": 5.92694182592862,
+        "minimum_battery_wh": 155.94071654082978,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2865.5402862755577
+      },
+      "first_row": {
+        "up_m": 1.0319069369457258e-15,
+        "slope_deg": 2.291964414605017,
+        "sun_horizon_deg": -0.5098714189480821,
+        "earth_horizon_deg": -0.7670711192703211,
+        "nominal_lola_return_count": 0.0
+      }
+    },
+    {
+      "run_id": "517afa48-02f5-4efd-ae35-35aec5f5f355",
+      "site_id": "shackleton-rim",
+      "surface": "pgda78-0001",
+      "status": "supported_under_assumptions",
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 255.60382822815112,
+        "distance_m": 113.26568350764511,
+        "final_battery_wh": 155.94333870720556,
+        "generated_wh": 0.0,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 4.801584010321487,
+        "max_terrain_slope_deg": 7.579798986506034,
+        "minimum_battery_wh": 155.94333870720556,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2865.3136701529024
+      },
+      "first_row": {
+        "up_m": -0.46044921866932076,
+        "slope_deg": 4.0068736363109165,
+        "sun_horizon_deg": 1.0189208353388746,
+        "earth_horizon_deg": -0.7668603417930574,
+        "nominal_lola_return_count": 0.0
+      }
+    },
+    {
+      "run_id": "c28a849d-56e8-4eed-954c-a7e8187f552b",
+      "site_id": "shackleton-rim",
+      "surface": "pgda78-0002",
+      "status": "supported_under_assumptions",
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 255.62111872550008,
+        "distance_m": 113.3413230712301,
+        "final_battery_wh": 155.9798134986819,
+        "generated_wh": 0.0519415492517378,
+        "longest_earth_outage_s": 107.13011763202553,
+        "max_route_pitch_deg": 6.87192655261427,
+        "max_terrain_slope_deg": 8.090300247524562,
+        "minimum_battery_wh": 155.9798134986819,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2866.826461424601
+      },
+      "first_row": {
+        "up_m": -0.5769042969257617,
+        "slope_deg": 5.017992852987359,
+        "sun_horizon_deg": 2.7861893855301916,
+        "earth_horizon_deg": -0.7668071542593532,
+        "nominal_lola_return_count": 0.0
+      }
+    },
+    {
+      "run_id": "a6f77a1b-2c58-40db-ac2f-e54b4f0bc4b0",
+      "site_id": "shackleton-rim",
+      "surface": "pgda78-0003",
+      "status": "supported_under_assumptions",
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 255.6162040722818,
+        "distance_m": 113.31272434274631,
+        "final_battery_wh": 155.9478529364688,
+        "generated_wh": 0.016664361930801064,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 5.685174536616476,
+        "max_terrain_slope_deg": 7.887937096993249,
+        "minimum_battery_wh": 155.9478529364688,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2866.254486854926
+      },
+      "first_row": {
+        "up_m": -0.2875976561894864,
+        "slope_deg": 3.9733332510627624,
+        "sun_horizon_deg": 0.796564180787106,
+        "earth_horizon_deg": -0.7669395205573263,
+        "nominal_lola_return_count": 0.0
+      }
+    }
+  ],
+  "campaign": {
+    "run_id": "05c79cec-6d4e-48b6-9e90-7abb89044d74",
+    "export_bytes": 791193,
+    "export_sha256": "d0f1945e4ca7541429ff7d6ee4ca79cc416fe2b19f645d26b5fa664d29092669",
+    "reproduced": true,
+    "metrics": {
+      "distance_m": 113.26568350764511,
+      "distance_range_m": [
+        113.26568350764511,
+        113.27701431377791
+      ],
+      "minimum_battery_wh": 33.07423780742389,
+      "samples": 6,
+      "unsupported_scenarios": 0,
+      "violating_scenarios": 2
+    }
+  },
+  "campaign_pool": {
+    "allowed_ids": [
+      "nominal",
+      "pgda78-0001"
+    ],
+    "case_sequence": [
+      "pgda78-0001",
+      "nominal",
+      "nominal",
+      "pgda78-0001",
+      "nominal",
+      "pgda78-0001"
+    ],
+    "default_audit_reserved_ids": [
+      "pgda78-0002",
+      "pgda78-0003"
+    ],
+    "id": "published-clones-sweep-v0.1",
+    "limits": "Only three predeclared clones per site are loaded. Regional terrain stays nominal; this is not the complete 100-member distribution. A user-selected source clone can also appear in this testing pool.",
+    "terrain_rng": "NumPy SeedSequence [seed, 0x54455252, 1]"
+  },
+  "repair": {
+    "run_id": "bb6fd526-ca22-42dd-a682-d7e1d3756a77",
+    "export_bytes": 1288292,
+    "export_sha256": "e4a31c504bf6e87c954ffe8a560e18891ea29a47827a1e55a68b10e70229db16",
+    "reproduced": true,
+    "metrics": {
+      "audit_candidates_frozen": 2,
+      "audit_cases_per_candidate": 3,
+      "candidate_budget_exhausted": false,
+      "candidate_space_size": 3,
+      "nominal_checked": 3,
+      "nominal_supported": 2,
+      "requested_work_complete": true,
+      "search_complete": true,
+      "simulation_evaluations": 9,
+      "unsearched_candidates": 0,
+      "verified_candidates": 1
+    }
+  },
+  "repair_audit_cases": [
+    {
+      "capacity_factor": 0.9363535699724587,
+      "index": 1,
+      "initial_temperature_delta_c": 1.3689653081430972,
+      "mobility_factor": 1.22925562558658,
+      "solar_factor": 0.9035019228110942,
+      "speed_factor": 0.8611130587742513,
+      "start_delay_s": 332,
+      "terrain_realization_id": "pgda78-0002"
+    },
+    {
+      "capacity_factor": 0.9712790624761657,
+      "index": 2,
+      "initial_temperature_delta_c": -1.2606843604396982,
+      "mobility_factor": 1.0399828285736792,
+      "solar_factor": 0.7879191299488322,
+      "speed_factor": 0.9935878086764549,
+      "start_delay_s": 197,
+      "terrain_realization_id": "pgda78-0003"
+    },
+    {
+      "capacity_factor": 0.9155476470420573,
+      "index": 3,
+      "initial_temperature_delta_c": 2.7301028273780936,
+      "mobility_factor": 1.0855369616818145,
+      "solar_factor": 0.7669797905464356,
+      "speed_factor": 0.8691755202300008,
+      "start_delay_s": 881,
+      "terrain_realization_id": "pgda78-0002"
+    }
+  ],
+  "repair_preserved_requirements": {
+    "duration_hours": 12.0,
+    "max_earth_outage_s": 21600.0,
+    "required_activities": [
+      {
+        "duration_s": 600.0,
+        "kind": "science",
+        "waypoint": 1
+      }
+    ],
+    "robot_id": "afd6c5cad00ea2dd2efa2d12",
+    "signature": "1354bdbdd22d51f059606d381615b4318e6c989d75934be22f9fe49f7c0ec087",
+    "site_id": "shackleton-rim",
+    "waypoints": [
+      {
+        "east_m": 0.0,
+        "north_m": 0.0
+      },
+      {
+        "east_m": 60.0,
+        "north_m": 0.0
+      },
+      {
+        "east_m": 100.0,
+        "north_m": 35.0
+      }
+    ]
+  },
+  "repair_status": "verified_repair_found"
+}

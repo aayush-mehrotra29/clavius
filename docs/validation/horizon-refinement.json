@@ -1,0 +1,11 @@
+{
+  "site": "connecting-ridge",
+  "dates_utc": ["2028-01-01T00:00:00Z", "2028-01-14T00:00:00Z"],
+  "positions_enu_m": [[0, 0], [60, 0], [100, 35]],
+  "directions": "Exact geometric Sun and Earth-center azimuths from pinned DE421; observer 0.5 m above measured surface",
+  "baseline": "5 m radial step from 5 to 1000 m; 80 m step to 16 km; 130 logarithmic samples to 220 km",
+  "refinement": "Half the near/regional steps, double far sample count; same DEM and ray azimuth",
+  "maximum_horizon_difference_deg": 0.01569703699224778,
+  "differences_by_date_position_deg": [0.013543620217109142, 0.006612070797769043, 0.006718448895422391, 0.01569703699224778, 0.01358508132919578, 0.015614601020702334],
+  "interpretation": "A limited sampled numerical refinement check. Not an absolute accuracy claim, global bound, independent ephemeris validation, or observed-shadow validation."
+}

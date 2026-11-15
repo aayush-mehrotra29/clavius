@@ -1,0 +1,36 @@
+{
+  "name": "clavius",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.js",
+    "dev:simulation": "node scripts/dev_simulation.mjs",
+    "gazebo:start": "python3 scripts/gazebo_local.py start",
+    "gazebo:status": "python3 scripts/gazebo_local.py status",
+    "gazebo:benchmark": "python3 scripts/gazebo_local.py benchmark",
+    "gazebo:stop": "python3 scripts/gazebo_local.py stop",
+    "test:simulation": "PYTHONPATH=backend OPENBLAS_NUM_THREADS=1 .venv/bin/python -m pytest backend/tests tests/test_observed_shadows.py -q tests/test_gmat_references.py tests/test_mobility_reference.py tests/test_scm_reference.py tests/test_viper_rigid_probe.py tests/test_viper_frames.py",
+    "validate:illumination": "PYTHONPATH=backend OPENBLAS_NUM_THREADS=1 .venv/bin/python scripts/validate_observed_shadows.py",
+    "gmat:references": ".venv/bin/python -m planner.orbital.references",
+    "test:orbital": ".venv/bin/python -m pytest tests/test_gmat_references.py -q",
+    "validate:mobility": "OPENBLAS_NUM_THREADS=1 .venv/bin/python -m scripts.benchmark_mobility_reference",
+    "test:mobility": "OPENBLAS_NUM_THREADS=1 .venv/bin/python -m pytest tests/test_mobility_reference.py tests/test_scm_reference.py tests/test_viper_rigid_probe.py -q tests/test_viper_frames.py",
+    "chrono:build": ".venv/bin/python -m scripts.build_chrono_worker",
+    "validate:scm": "OPENBLAS_NUM_THREADS=1 .venv/bin/python -m scripts.benchmark_scm_reference",
+    "audit:viper": ".venv/bin/python -m scripts.audit_viper_reference",
+    "validate:viper-rigid": "OPENBLAS_NUM_THREADS=1 .venv/bin/python -m scripts.benchmark_viper_rigid",
+    "chrono:viper-build": ".venv/bin/python -m scripts.build_viper_adapted",
+    "validate:viper-frames": "OPENBLAS_NUM_THREADS=1 .venv/bin/python -m scripts.validate_viper_adapted"
+  },
+  "dependencies": {
+    "three": "^0.181.0",
+    "lucide": "^0.468.0"
+  },
+  "devDependencies": {
+    "vite": "^7.2.2"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-15",
+  "python_tests": {
+    "passed": 145,
+    "command": "npm run test:simulation",
+    "log": "work/simulation-mobility-final.log"
+  },
+  "frontend_tests": {
+    "passed": 9,
+    "command": "npm test",
+    "log": "work/frontend-tests-mobility-final2.log"
+  },
+  "production_build": {
+    "passed": true,
+    "log": "work/build-mobility-final2.log"
+  },
+  "contracts": {
+    "schemas": 8,
+    "messages": 7,
+    "invalid_rejections": 4,
+    "log": "work/contracts-mobility.log"
+  },
+  "report_sha256": "d1c76dce7b6cd88a21cd109376ad58882f23d938df79bca8aa7f2326420b4d81",
+  "physical_traction_targets_met": false,
+  "lunar_soil_calibration_established": false,
+  "curated_nasa_flight_rover_model_implemented": false,
+  "active_goal_complete": false
+}

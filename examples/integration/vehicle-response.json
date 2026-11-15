@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1.0",
+  "response_id": "fixture-vehicle-response-001",
+  "segment_id": "independent-synthetic-driving-segment",
+  "segment_request_ref": {
+    "uri": "vehicle-segment-request.json",
+    "sha256": "f06138e099022221717c211f69c13524c60cd5d3beab0a16c3f30355073e98d8"
+  },
+  "robot_ref": {
+    "uri": "robot-capability.json",
+    "sha256": "4cb9354aa1f384e350aa6e7591192e5760f0fe8d7ef0c29a906e658d74c80c58"
+  },
+  "environment_ref": {
+    "uri": "environment-package.json",
+    "sha256": "face53148ae395baaf3d4bfa22b13c708995e71c3e4ba4ca6d22f0eb9f3cdfba"
+  },
+  "time_origin_utc": "2028-01-01T00:00:00Z",
+  "local_axes": "x_east_y_north_z_up",
+  "quaternion_convention": "xyzw_body_to_enu",
+  "response_model_id": "fixture-constant-mobility",
+  "response_model_version": "0.1.0",
+  "power_basis": "base_plus_mobility_excludes_payload_radio_heater",
+  "mobility_bus_energy_wh": 6.666666666666667,
+  "validity_status": "within_domain",
+  "samples": [
+    {
+      "t_s": 0,
+      "position_enu_m": [
+        0.0,
+        0,
+        0
+      ],
+      "orientation_body_to_enu_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "actual_speed_m_s": 0.05,
+      "mobility_bus_power_w": 120,
+      "flags": []
+    },
+    {
+      "t_s": 100,
+      "position_enu_m": [
+        5.0,
+        0,
+        0
+      ],
+      "orientation_body_to_enu_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "actual_speed_m_s": 0.05,
+      "mobility_bus_power_w": 120,
+      "flags": []
+    },
+    {
+      "t_s": 200,
+      "position_enu_m": [
+        10.0,
+        0,
+        0
+      ],
+      "orientation_body_to_enu_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "actual_speed_m_s": 0.05,
+      "mobility_bus_power_w": 120,
+      "flags": []
+    }
+  ],
+  "provenance": {
+    "source_class": "synthetic_contract_fixture",
+    "model_id": "fixture-constant-mobility",
+    "model_version": "0.1.0",
+    "notes": "Independent analytical 10 m driving segment at 0.05 m/s and 120 W. Not the stationary planning mission."
+  }
+}

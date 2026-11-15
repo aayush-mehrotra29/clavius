@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1.0",
+  "request_id": "fixture-planning-request-001",
+  "robot_ref": {
+    "uri": "robot-capability.json",
+    "sha256": "4cb9354aa1f384e350aa6e7591192e5760f0fe8d7ef0c29a906e658d74c80c58"
+  },
+  "environment_ref": {
+    "uri": "environment-package.json",
+    "sha256": "face53148ae395baaf3d4bfa22b13c708995e71c3e4ba4ca6d22f0eb9f3cdfba"
+  },
+  "surface": {
+    "site_id": "synthetic-connecting-ridge-location",
+    "touchdown_utc": "2028-01-01T00:00:00Z",
+    "duration_s": 10800,
+    "route_points_enu_m": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "required_tasks": [
+      {
+        "task_id": "monitor",
+        "duration_s": 10800,
+        "location_enu_m": [
+          0,
+          0,
+          0
+        ],
+        "power_mode": "base"
+      }
+    ],
+    "constraints": {
+      "max_slope_deg": 15,
+      "max_geometric_earth_outage_s": 3600,
+      "contact_model": "earth_center_geometric"
+    }
+  },
+  "departure_screening": {
+    "enabled": true,
+    "mode": "reference_transfer_family",
+    "reference_case_id": "GMAT_R2026a_fixed_epoch_family",
+    "departure_start_utc": "2027-12-26T00:00:00Z",
+    "departure_end_utc": "2027-12-28T00:00:00Z",
+    "epoch_step_s": 86400,
+    "spacecraft_wet_mass_kg": null,
+    "vehicle_performance_status": "not_assessed",
+    "permitted_variables": [
+      "epoch",
+      "raan",
+      "aop",
+      "departure_burn",
+      "capture_burn"
+    ],
+    "launch_to_departure_offset_s": null,
+    "capture_to_touchdown": {
+      "min_s": 43200,
+      "max_s": 172800,
+      "evidence": "assumed_not_dynamically_validated"
+    }
+  },
+  "scenario": {
+    "scenario_id": "fixture-scenario-001",
+    "seed": 42,
+    "terrain_realization_id": "synthetic-flat",
+    "solar_output_multiplier": 1,
+    "battery_capacity_multiplier": 1,
+    "drive_delay_multiplier": 1,
+    "touchdown_delay_s": 0
+  },
+  "search_budget": {
+    "surface_max_runs": 200,
+    "orbital_max_runs": 20,
+    "transfer_timeout_s": 120
+  },
+  "provenance": {
+    "source_class": "synthetic_contract_fixture",
+    "model_id": "fixture-request",
+    "model_version": "0.1.0",
+    "notes": "A synthetic stationary surface mission and unexecuted transfer search, for interface testing only."
+  }
+}

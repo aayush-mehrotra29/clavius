@@ -1,0 +1,119 @@
+# NASA datasets actually used by Clavius
+
+Updated 15 November 2026. This is the durable source record for the running lunar explorer. The machine-readable counterparts, including SHA-256 checksums, are `public/data/manifest.json` and `public/data/simulation-manifest.json`. The interface exposes the same sources under **Data & sources**.
+
+## Active source 1: lunar elevation
+
+- Mission/instrument: Lunar Reconnaissance Orbiter / Lunar Orbiter Laser Altimeter (LRO / LOLA).
+- Distribution: NASA Scientific Visualization Studio **CGI Moon Kit**, 2019 elevation maps. [Source page](https://svs.gsfc.nasa.gov/4720/).
+- Exact source asset: [`ldem_16_uint.tif`](https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_16_uint.tif).
+- Dimensions: 5,760 × 2,880; 16 pixels per degree; cylindrical longitude/latitude grid centered on 0° longitude.
+- Reference surface: sphere of radius **1,737,400 m**. Decode unsigned integer samples as **height in meters = sample × 0.5 − 10,000**. The NASA unsigned TIFF's own reference is 1,727,400 m; the subtraction expresses heights against the LRO reference sphere.
+- Row order: north to south; column order: west to east. Our importer treats cells as pixel centers, wraps longitude, clamps polar edges and bilinearly interpolates.
+- Served elevation asset: `public/data/lola-elevation.bin`, original samples as little-endian uint16, with no extra height quantization.
+- Uses: globe displacement, regional 400 km mesh, numerical elevation inspector, and elevation-derived shading.
+- Sample spacing: about **1.9 km north–south and at the equator**; east–west physical spacing decreases toward the poles. Grid spacing is not guaranteed measurement accuracy.
+
+## Active source 2: surface imagery
+
+- Mission/instrument: LRO / Lunar Reconnaissance Orbiter Camera Wide Angle Camera (LROC WAC).
+- Distribution: the **2019** natural-color NASA Moon Kit mosaic, adapted from the Natural Color Hapke Normalized WAC Mosaic. This is not the newer 2025 mosaic offered on the same page.
+- Exact source asset: [`lroc_color_poles_4k.tif`](https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_4k.tif).
+- Dimensions: 4,096 × 2,048, centered on 0° longitude.
+- Served asset: `public/data/lroc-color.jpg`, converted to RGB JPEG at quality 94 with no chroma subsampling.
+- Uses: globe/regional albedo texture and region thumbnail previews.
+- Limits: NASA adjusts color/dynamic range and inpaints small dropouts. Beyond ±70° latitude it fills missing WAC coverage with monochromatic LOLA albedo. This is a visualization texture, not calibrated scientific reflectance or high-resolution polar imaging.
+
+## Our display derivative: surface normals
+
+- Asset: `public/data/lola-normals.png`, 5,760 × 2,880, linear RGB8 encoded object-space normals.
+- Input: the exact `lola-elevation.bin` above, with its hash linked in the manifest.
+- Method: finite differences at native DEM pixel centers using spherical metric factors and radius plus elevation. Longitude differences wrap at the antimeridian; latitude edges use one-sided differences.
+- Purpose: shade the existing measured topography per pixel instead of relying only on coarse mesh vertex normals. The regional renderer rotates global normals into its east/up/south coordinates. Vertical exaggeration scales the tangential normal component consistently with the mesh.
+- Reproduce: `python3 scripts/derive_lunar_normals.py` with Pillow and NumPy installed. To re-import original TIFFs first, use `python3 scripts/prepare_lunar_assets.py <dem.tif> <color.tif>`; it also regenerates the normals.
+- Limits: a rendering derivative, **not additional measured detail or a scientific slope dataset**. RGB8 normals introduce small quantization errors. Lower-angle lighting and regional shadow maps are illustrative, not date-specific illumination, actual permanent shadows, or validated hazard assessments. Default vertical exaggeration stays **1×**.
+
+The landing dataset illustration at `public/images/landing-moon.webp` shows an orthographic near-side view. It samples the existing color mosaic and surface normals with a fixed illustrative light direction. Run `python3 scripts/render_landing_moon.py` to regenerate it. Its source files and output hash are recorded under `landingPreview` in the explorer manifest.
+
+## Active simulation sources: PGDA78, PGDA90 and DE421 SPICE
+
+The `/app/simulation` workspace now loads and uses the following independently of the global Moon Kit explorer:
+
+- **PGDA Product 78 / Site01 Connecting Ridge:** `Site01_final_adj_5mpp_surf.tif` and `Site01_final_adj_5mpp_toterr.tif`, each 3,200 × 3,200, 5 m posting. URLs and SHA-256 hashes are in the simulation manifest. The error grid supplies height RMS, not rock/traction labels.
+- **PGDA Product 78 / Site04 Shackleton rim:** `Site04_final_adj_5mpp_surf.tif` and `Site04_final_adj_5mpp_toterr.tif`, each 3,200 × 3,200 with 5 m posting. The pinned `Site04_ROIs.tgz` supplies the selected analysis origin: DBF record 4, X = −2,657.5 m, Y = −5,957.5 m. Its converted location is 89.784873915° S, 204.040521234° E, native column 1268 / row 1391. This is an analysis reference, not a surveyed safe landing point. Original asset hashes and the NASA README identity are retained in the simulation manifest. [NASA product page](https://pgda.gsfc.nasa.gov/products/78).
+- **PGDA Product 90 regional terrain:** `LDEM_80S_80MPP_ADJ.TIF`, 7,600 × 7,600, 80 m posting; used for regional horizon context to 220 km, rather than treating a small local patch as a complete horizon.
+- **SPICE DE421 bundle:** `de421.bsp`, `moon_pa_de421_1900-2050.bpc`, `moon_080317.tf`, `naif0012.tls`, `pck00011.tpc`. Exact hashes and original NAIF URLs are retained in the simulation manifest. Surface directions use `MOON_ME_DE421`, geometric `NONE` aberration convention, and elapsed ET/SI seconds from a UTC origin. The current API bounds mission epochs to 2000–2049. Future UTC conversion assumes no new leap seconds beyond the pinned LSK.
+
+The local and regional GeoTIFFs define south polar stereographic coordinates with the 1,737,400 m lunar sphere. Both sites’ height values are interpreted as elevations relative to that sphere; at Site01, five matching-coordinate comparisons against PGDA90 differed by less than 2 m. For Site04, five matching-coordinate checks at the origin and ±200 m in source X/Y differ by at most 4.460449 m. These checks use a predeclared 30 m tolerance and are recorded in `data/sites/connecting-ridge-manifest.json` and `data/sites/shackleton-rim-manifest.json`; they check height conventions against a coarser 80 m surface, not absolute accuracy. Many 5 m source cells interpolate between LOLA tracks; posting is not independent measurement density. Pixel-center sampling preserves NaNs and rejects uncovered positions. Physics uses local ENU in metres and the actual curved surface transformed into that frame.
+
+Route evaluation samples native local terrain along segments. Horizons trace the exact Sun/Earth-center azimuths at each actual route position, retaining native 5 m posting across each curated local footprint, with finer interpolation samples in the first kilometre, regional 80 m context and curvature to 220 km. The observer height is explicit (0.5 m by default). Solar disk visibility is the circular-disk fraction above a locally straight horizon. The earlier six-position/date 0.0157° refinement result belongs to the previous sampling implementation and is historical evidence, not a current global error bound. New dated NAC comparisons exposed missed local ridges, led to the sampling correction and retain remaining numerical target failures. Two regional dates and one epoch at both local sites are recorded; wider convergence and independent observed validation remain incomplete. See [ILLUMINATION_VALIDATION.md](ILLUMINATION_VALIDATION.md). The legacy `terrain_error_sigma` input still varies observer height only and is separate from the published cloned surfaces. It cannot be combined with a clone. Three predeclared PGDA78 statistical surfaces per site recompute slopes, local horizons and rover contact in the fixed nominal ENU frame; regional PGDA90 remains nominal. This subset is not the full 100-member distribution or a calibrated failure probability.
+
+Neither local site is a rover-scale hazard map. No sub-grid rocks, soil strengths or temperatures have been measured by these inputs. Detailed native dynamics executes MuJoCo locally or Gazebo Harmonic / DART in a local Linux VM under declared friction; these are separate from the mission's declared speed/power model. Numerical samples, dataset hashes, model assumptions, the original robot upload and recorded backend source are included in new exported runs. Replayable scenario children retain their individual evidence. Older development runs may predate source snapshots and are labeled in the export README.
+
+The Gazebo input exporter derives a bounded 81 × 81 local ENU grid from that same measured surface, using bilinear interpolation. A 40 m patch has 0.5 m mesh spacing; this does not improve the original 5 m measured posting. It records the source manifest and grid hash, and writes a metre-unit, Z-up Collada/SDF review package. Per-vertex normals come from the conditioned grid's height gradient and are explicitly indexed for DART's mesh consumer. The Linux worker reconstructs mesh paths from the packet. Analytical flat-drive/free-fall inputs are explicitly synthetic benchmark fixtures and cannot carry a NASA source label. Native benchmarks and a linked 20-second NASA-terrain probe executed on the Mac's Colima ARM64 Linux VM on 15 November 2026. No new NASA dataset was added for this adapter. Gazebo contact force/count channels remain uninstrumented and null; the observed trajectory is not calibrated regolith or wheel-scale terrain validation.
+
+Raw source files and kernels are cached under ignored `data/raw/` and `data/kernels/`. Reproduce downloads with `python scripts/setup_simulation.py` in the simulation environment. Source checksums are verified before use. These files are never replaced with synthetic terrain when missing.
+
+## Dated LROC NAC validation inputs
+
+PGDA90 projected NAC camera halves and matching published renderings are pinned for **M1188426614**, **M1311409938** and **M139729686**. The observed `M*E_20MPP.TIF` quantity is I/F; `M*_20MPP_MODEL.TIF` is modeled irradiance in W/m². They are never compared as equal brightness units. Six original PDS4 acquisition labels supply exact UTC intervals and product versions. Nine small ODE catalog-query responses retain the coverage-based scene selection. All original URLs, hashes, bytes, CRS, native transforms, nodata and labels are in `simulation-manifest.json#observed_shadow_validation`.
+
+These images are validation-only inputs, not new rover imagery or a loaded 20 m DEM. The 200 m comparison lattice uses the existing 80 m regional terrain, plus separate 5 m site comparisons where footprints overlap. The observed reflectance thresholds are proxies, not independent shadow truth. M1311409938 lacks complete supported rays and remains unassessed. The other two provide regional comparisons; only M139729686 overlaps the curated sites. Remaining numerical target failures prevent an operational accuracy claim. The app's **Data & models** dialog links the hash-recorded snapshot. See [protocol, results, correction and reproduction](ILLUMINATION_VALIDATION.md).
+
+## Thermal model reference, not another loaded dataset
+
+Optional battery/enclosure thermal screening uses SPICE Sun direction, distance and measured-terrain solar visibility from the active sources above. Its lumped heat balance follows radiation and conduction in vacuum, with thermostat/internal heat. [NASA's thermal-control guide](https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/) was read on 15 November 2026 as a conceptual reference. It supplies no lunar temperature raster or Clavius robot properties. Effective areas, heat capacity, heat fractions, initial temperature, charging/operating limits and a constant ground temperature are user-declared engineering assumptions. Exact properties and model identity are retained in each enabled mission request/export. See `docs/THERMAL_MODEL.md`.
+
+## Active historical thermal context: Diviner PCP
+
+Two [LRO Diviner Polar Cumulative Products](https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/) are ingested as **historical observation composites**, independently of the declared thermal hardware model:
+
+- `pcp_avg_tbol_pols_sum_ltim01_240.tab`: southern summer, local time 00:00–00:15, 3,604,300 data records, 212,653,759 bytes; SHA-256 `414354cb2334b62161e895fe0f36369fdee77af13b0c5f333b86ddb05a0f618b`.
+- `pcp_avg_tbol_pols_sum_ltim49_240.tab`: southern summer, local time 12:00–12:15, 3,345,210 data records, 197,367,449 bytes; SHA-256 `35348174fb3d973fe3d43fa7777cb4a10055361c6313675f35b181079bad5ca3`.
+- Quantity: average **bolometric brightness temperature in Kelvin**, binned at nominal 240 m posting and 0.25 hours of lunar local time, from nadir observations acquired 5 July 2009–17 February 2019 while subsolar latitude was negative. These are not mission-date forecasts, daily extrema, in-situ soil measurements or robot battery temperatures. PDS4 logical identifiers/version, original PDS3/PDS4 labels, acquisition metadata and all file hashes are in the simulation manifest.
+- A 5 km square clip near Connecting Ridge preserves 437 midnight and 149 noon native records with their original one-based table-row indices. No spatial or temporal interpolation is added. The 91,221-byte derivative is `public/data/diviner/connecting-ridge.json`, SHA-256 `9c4c782f3aa9636a87555b16618c915766a54b931ee88b8af998795fe20ffb4b`.
+- A separate 5 km clip around Shackleton rim preserves 386 midnight and 327 noon native records. `public/data/diviner/shackleton-rim.json` is 109,382 bytes, SHA-256 `c8595cd744864186c014ac92635236e0ab9349950c78c035c16b201990859eb9`. The origin has 181.582886 K at midnight (row 1,824,598) and 91.110558 K at noon (row 1,644,797). These are separate historical composites; the labels do not imply ordered extrema or a single observed day. A site change clears copied ground references.
+- Lunar coordinates are planetocentric, east-positive, radius 1,737,400 m. Explicit latitude/longitude drive the lookup; normalized x/y are independently cross-checked after multiplication by that radius. The PDS4 labels attach `deg` to normalized x/y, so that unit string is not interpreted literally as an angular coordinate. The maximum conversion residual across valid source records is 0.015491 m against a predeclared 0.1 m tolerance; this checks the format, not external registration accuracy.
+- Lookups require a containing observed native bin and conservatively exclude 2 m near cell edges, plus the prepared clip's outer guard. At the origin, the midnight bin contains **148.724106 K** (row 1,751,157); the noon bin is missing. A nearby noon value is never substituted. Per-bin counts and uncertainty are not supplied by these tables.
+- The context picker may copy a covered value to a **constant** ground boundary for a scenario. It retains the source row, exact value, manifests and hashes; manual edits clear the reference. The mission export captures the clip and source manifest. This does not validate a constant boundary across the future route or duration.
+- Reproduce preparation with `.venv/bin/python scripts/setup_simulation.py --diviner` and `scripts/prepare_diviner_context.py`. Full original tables/labels stay in ignored `data/raw/diviner/`. [Implementation and limits](DIVINER_CONTEXT.md). Citation: Williams et al. (2019), *Seasonal Polar Temperatures on the Moon*, DOI [10.1029/2019JE006028](https://doi.org/10.1029/2019JE006028).
+
+The Diviner Polar Resource Product (PRP) was also inspected but **not ingested**. Its modeled surface maximum and 2 cm subsurface annual mean are different quantities; they are not substituted for these observed composites.
+
+## Published mobility validation inputs
+
+[NASA NTRS 20250001809](https://ntrs.nasa.gov/citations/20250001809) and the pinned author's supplementary repository supply published plotting coordinates for NASA Glenn **TREC GRC-3** single-wheel tests and **MGRU3 GRC-1** 2021/2022 rover tests. `public/data/mobility-reference-manifest.json` records the original PDF, plotting source, rig definition and reproduction README URLs, commit, hashes and byte counts. Our derivative `mobility-reference.json` preserves 18/6/7 points, full numerical precision, repeats and negative values, converting slip percent to fraction. These are published plot points, not raw telemetry, new lunar terrain or measured local regolith properties.
+
+An independent MuJoCo rigid-plane wheel fixture uses the published 0.25 m radius, 0.2 m width, 24 grousers, 17.5 kg normal load and 0.2 m/s translation under Earth gravity. Its source-pinned comparison is linked under `mobility_validation` in both dataset manifests and exposed in the app. Rig control/numerical checks and physical agreement remain separate: traction discrepancy is **12.83° RMS**, failing its declared target. No lunar calibration or active NASA flight-rover dynamics is implied. Full details, earlier failed numerical preflights and reproduction are in [MOBILITY_VALIDATION.md](MOBILITY_VALIDATION.md). Surface terrain, SPICE, robot mechanics and mission response inputs are unchanged.
+
+An additional **offline Project Chrono 9.0.1 CPU SCM** campaign uses those same TREC observations, with no new lunar measurements. Both manifests pin its report under `scm_validation`. Four material candidates are ranked on ten training points and frozen before eight held-out points; native traces and separate time/grid refinements are verified. Held-out RMS is **9.6846°** (rigid baseline **15.6027° on the same eight points**), missing the 5° target; maximum discrepancy and two refinement targets also fail. Soil pressure/sinkage parameters remain assumptions, and fitted values are not measured GRC-3 properties. This model is distinct from the paper's GPU continuum/SPH engine and from active MuJoCo/Gazebo dynamics. [Methods, sources, hashes and limits](SCM_VALIDATION.md).
+
+A separate [NASA VIPER hardware/model audit](NASA_ROBOT_MODELS.md) retains the dated NASA briefing, original Chrono software/mesh hashes and four rigid-floor component cases. It is a candidate audit, not another loaded lunar dataset or active flight model. Its mass, steering and left-wheel mass-frame discrepancies require reconciliation before robot-specific predictions.
+
+## Offline orbital reference inputs
+
+Both original NASA GMAT R2026a lunar reference scripts now execute using the complete signed macOS distribution and its native **DE405** ephemeris/supporting files. Their software/data hashes, frames, residuals, event and capture endpoint checks are in [GMAT_REFERENCES.md](GMAT_REFERENCES.md) and `public/data/gmat-reference-validation.json`; the explorer manifest links the hash-pinned summary under `orbital_references`. The full local evidence contains the installed-file inventory. GMAT's 1,738.2 km lunar radius is separate from the surface DEM's 1,737.4 km sphere; the surface SPICE DE421 bundle is unchanged. This is an offline benchmark. Bounded departure searches, continuous clearance, tighter repropagation and descent remain pending.
+
+## Considered or planned, not loaded
+
+NASA's `ldem_64_uint.tif` is available at 64 pixels/degree (approximately 531 MB uncompressed). It was checked during the terrain-clarity update but is **not used**. The current update improves display of the existing 16-pixel/degree data.
+
+Additional PGDA sites beyond Site01/Site04, LROC NAC `SHACKRDGE02`, further Diviner products, ShadowCam and other environmental datasets remain planned integrations. The global explorer still uses the Moon Kit; the simulation uses only the active sources listed above.
+
+Credit: **NASA’s Scientific Visualization Studio, Ernie Wright, and the LRO / LOLA / LROC instrument teams**. Neither visual definition nor mesh interpolation establishes wheel-scale terrain, rock locations, landing safety, rover dynamics or mission feasibility.
+
+### Landing atlas previews
+
+The elevation globe projects the near hemisphere from the same LOLA grid as the explorer. Color spans −4.5 to +4.5 km relative to the 1737.4 km sphere, saturating outside that range. Normals supply illustrative shading. Regenerate it with `python3 scripts/render_landing_moon.py`.
+
+The oblique Connecting Ridge relief samples every sixteenth posting of the PGDA78 surface and uses 200 m elevation contours and a 2.4× vertical scale for display. The skyline samples terrain horizons every degree from a point 0.5 m above the simulation site origin, with local and regional terrain extending out to 220 km. Markers show the geometric center directions from DE421 for 2026-11-15 at 12:00 UTC. Marker sizes are symbolic. Regenerate both with `python -m scripts.render_landing_polar` from the project root using the simulation dependencies and Pillow. The explorer manifest records the preview hashes and refers to the simulation manifest for source identities.
+
+## Active terrain uncertainty surfaces and return-count masks
+
+For each curated PGDA78 site, Clavius now loads published clone indices **0001, 0002 and 0003**, chosen before inspecting simulation outcomes, plus `Site01_final_adj_5mpp_ldec.tif` / `Site04_final_adj_5mpp_ldec.tif`. The eight original URLs, byte counts, SHA-256 identities and native metadata are pinned in the simulation manifest. [NASA distribution](https://pgda.gsfc.nasa.gov/products/78).
+
+Despite their `_err.tif` names, these files contain complete cloned elevations in metres, not additive height offsets. This agrees with the clone construction in Barker et al., Figure 11 (panel G) and Section 4; numerical checks compare each file directly against its matching nominal grid. [Accepted manuscript](https://ntrs.nasa.gov/api/citations/20205009660/downloads/Mike%20Barker_%20Paper_%20Improved%20Lola.pdf). Numerical projection parameters and pixel registration match; native WKT labels differ between nominal and clone files. Both forms are preserved.
+
+The surfaces are NASA-published **statistical modeled realizations**, not additional measurements. The nominal surface, fixed local origin, surrounding regional grid and loaded clone catalogue are retained in exported provenance. Nominal and clone 001 form the default testing pool; repair audits use distinct 002/003 surfaces (excluding a source surface if necessary). A missing local clone cell cannot silently use the nominal regional grid. Only three of the published 100 members per site are loaded, with no claim of complete tails or calibrated mission-risk probabilities.
+
+The nominal count maps each contain 10,240,000 finite native cells. Site01 has 972,204 cells with LOLA returns and 9,267,796 empty/interpolated cells; Site04 has 937,381 and 9,302,619. Count lookup uses the containing native cell without bilinear averaging. Positive return counts do not establish exact heights throughout the cell, wheel-scale rocks or safe rover contact. The viewport maps full 3,200 × 3,200 native-cell RGB display textures through the source polar coordinates, with nearest filtering and no mipmaps. This avoids interpolating return-support colors across terrain vertices. The point inspector returns the containing native count. The two PNGs and their source/output hashes are recorded under `terrain.support_derivatives`; they are our categorical display derivatives, not new NASA measurements. See `docs/TERRAIN_UNCERTAINTY.md` for model behavior and evidence.

@@ -1,0 +1,16 @@
+{
+  "run_id": "798b8f8f-c871-4416-8605-df8172b0aee5",
+  "reproduced": true,
+  "metric_tolerance": "relative/absolute 1e-6",
+  "differences": [],
+  "metrics": {
+    "duration_s": 20.0,
+    "distance_m": 1.0645950967136002,
+    "displacement_m": 1.0645935128812307,
+    "maximum_roll_deg": 0.7576875323378375,
+    "maximum_pitch_deg": 3.1428409906431467,
+    "maximum_abs_slip_ratio": 0.9550241747973975,
+    "mobility_bus_energy_wh": 0.06768482178869663,
+    "contacts_observed": null
+  }
+}

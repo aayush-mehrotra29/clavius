@@ -1,0 +1,23 @@
+Handoff validation record
+Date: 2026-11-14
+
+PASS: 8 JSON Schema files checked against Draft 2020-12.
+PASS: 7 synthetic example messages validate against their schemas.
+PASS: referenced local fixture assets exist and their SHA-256 hashes match.
+PASS: ENU rotation is orthonormal and right handed; vectors/quaternions are normalized.
+PASS: shared request IDs, immutable references, clocks, segment spans and controls align.
+PASS: synthetic solar/battery accounting and mobility-bus energy are consistent.
+PASS: 4 representative invalid cases are rejected.
+PASS: local Markdown documentation links resolve.
+
+Validator environment: jsonschema 4.26.0; referencing 0.37.0.
+Requirements for this validator are in requirements-contracts.txt.
+
+Scope: interface and analytical fixtures only. No GMAT propagation, ephemeris
+generation, observed-shadow comparison, terrain normalization, mobility physics,
+ML training, or hosted application was executed or implemented by this handoff.
+Those checks and implementation tasks are specified in the build backlog.
+
+GMAT reference scripts and official data/API documentation were inspected.
+Numerical GMAT convergence and solved reference outputs must be established
+by the planning developer before publishing Earth-departure screening results.

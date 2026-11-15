@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "policy": "Exact comparison of every captured input, numerical result, refinement sample and array; only measured elapsed wall time is ignored. No result tolerances were relaxed.",
+  "original_report_sha256": "0b853723ff6526d51976606639ae0955e89e120b2638259cf45dd0663db27b9f",
+  "reproduced_report_sha256": "f471ce2eeb653b40c2d53ce1172480af3da4086ed8ea4e944f6ab8331b3c5e2c",
+  "compared_arrays": 35,
+  "scene_samples": [
+    {
+      "file": "M1188426614-shadow-samples.npz",
+      "byte_identical": true
+    },
+    {
+      "file": "M1311409938-shadow-samples.npz",
+      "byte_identical": true
+    },
+    {
+      "file": "M139729686-shadow-samples.npz",
+      "byte_identical": true
+    }
+  ]
+}

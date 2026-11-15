@@ -1,0 +1,73 @@
+******  Changes made to the mission will not be reflected ******
+******  in the data displayed until the mission is rerun  ******
+
+        Maneuver Command: CLAVIUS_CMD_014
+        Spacecraft       : Sat
+        Coordinate System: MoonMJ2000Eq
+
+        Time System   Gregorian                     Modified Julian  
+        ----------------------------------------------------------------------    
+        UTC Epoch:    28 Jul 2014 22:07:27.449      26867.4218454735
+        TAI Epoch:    28 Jul 2014 22:08:02.449      26867.4222505661
+        TT  Epoch:    28 Jul 2014 22:08:34.633      26867.4226230661
+        TDB Epoch:    28 Jul 2014 22:08:34.632      26867.4226230586
+
+        Cartesian State                       Keplerian State
+        ---------------------------           -------------------------------- 
+        X  =   9220.7534157236 km             SMA  =   9228.3045488891 km
+        Y  =  -348.07600305803 km             ECC  =   0.0000000893293
+        Z  =  -134.68193356598 km             INC  =   27.849815686425 deg
+        VX =   0.0292773611173 km/sec         RAAN =   359.42118426140 deg
+        VY =   0.6438877514997 km/sec         AOP  =   353.63307162208 deg
+        VZ =   0.3403381835050 km/sec         TA   =   4.5766554549139 deg
+                                              MA   =   4.5766546381245 deg
+                                              EA   =   4.5766550465192 deg
+
+        Spherical State                       Other Orbit Data
+        ---------------------------           --------------------------------
+        RMAG =   9228.3037271598 km           Mean Motion        =   7.898402050e-05 deg/sec
+        RA   =  -2.1618429694530 deg          Orbit Energy       =  -0.2656392924710 km^2/s^2
+        DEC  =  -0.8362295568649 deg          C3                 =  -0.5312785849420 km^2/s^2
+        VMAG =   0.7288886606038 km/s         Semilatus Rectum   =   89507790.713132 km   
+        AZI  =   62.161737362363 deg          Angular Momentum   =   6726.4059433348 km^2/s
+        VFPA =   89.999999591605 deg          Beta Angle         =  -3.4219402141959 deg  
+        RAV  =   87.396573230709 deg          Periapsis Altitude =   7490.1037245313 km   
+        DECV =   27.835040112370 deg          VelPeriapsis       =   0.7288886608114 km/s
+                                              VelApoapsis        =   0.7288885305893 km/s 
+                                              Orbit Period       =   79550.081993046 s    
+
+        Planetodetic Properties 
+        ---------------------------
+        LST       =   356.31739500900 deg
+        MHA       =   327.10017834039 deg
+        Latitude  =   0.7965104960550 deg
+        Longitude =   29.217216668605 deg
+        Altitude  =   7490.1037271598 km
+
+
+        Spacecraft Properties 
+        ------------------------------
+        Cd                    =   2.200000
+        Drag area             =   15.00000 m^2
+        Cr                    =   1.700000
+        Reflective (SRP) area =   1.000000 m^2
+        Dry mass              =  1000.00000000000 kg
+        Total mass            =  1000.00000000000 kg
+        SPADDragScaleFactor   =   1.000000
+        SPADSRPScaleFactor    =   1.000000
+
+
+
+        Maneuver Summary
+        -----------------
+        Impulsive Burn:     LOI
+        Spacecraft:         Sat
+        Origin:             Luna
+        Axes:               VNB
+        Delta V Vector:
+           Element 1:   -0.5530339388434 km/s
+           Element 2:    0.0000000000000 km/s
+           Element 3:    0.0000000000000 km/s
+
+        No mass depletion
+

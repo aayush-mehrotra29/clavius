@@ -1,0 +1,105 @@
+{
+  "recorded_date": "2026-11-15",
+  "tool": "Aside browser",
+  "url": "http://127.0.0.1:5173/app/simulation",
+  "desktop": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "documentOverflow": false,
+    "dialogOverflow": false,
+    "images": [
+      {
+        "loaded": true,
+        "width": 1800,
+        "height": 1440
+      },
+      {
+        "loaded": true,
+        "width": 1620,
+        "height": 1260
+      }
+    ],
+    "tables": [
+      {
+        "rows": 8,
+        "columns": 4
+      },
+      {
+        "rows": 6,
+        "columns": 5
+      },
+      {
+        "rows": 18,
+        "columns": 4
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "documentOverflow": false,
+    "dialogOverflow": false,
+    "expandedSections": [
+      true,
+      true,
+      false
+    ],
+    "tableScrollers": [
+      {
+        "width": 316,
+        "contentWidth": 561
+      },
+      {
+        "width": 316,
+        "contentWidth": 701
+      },
+      {
+        "width": 316,
+        "contentWidth": 561
+      }
+    ],
+    "refinementStatuses": [
+      {
+        "controls": "Passed",
+        "target": "Met"
+      },
+      {
+        "controls": "Passed",
+        "target": "Met"
+      },
+      {
+        "controls": "Passed",
+        "target": "Not met"
+      },
+      {
+        "controls": "Passed",
+        "target": "Not met"
+      },
+      {
+        "controls": "Passed",
+        "target": "Met"
+      },
+      {
+        "controls": "Passed",
+        "target": "Met"
+      }
+    ]
+  },
+  "download": {
+    "filename": "clavius-soil-contact-validation.json",
+    "bytes": 53233,
+    "sha256": "5b608ab2118bc5a57911358227ef8479103ae452327ce44a7014e3daffc7c3b9",
+    "byte_identical": true
+  },
+  "status_separation": "Both failed refinement targets display Not met beside Passed rig controls; physical targets and lunar limit remain explicit.",
+  "static_asset_fix": {
+    "problem": "Broad **/data/** watch ignore prevented newly published public reports from registering; byte pin rejected the HTML fallback.",
+    "fix": "Ignore only root private data; public/data stays watched.",
+    "new_asset_without_restart_verified": true
+  },
+  "active_goal_complete": false
+}

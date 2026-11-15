@@ -1,0 +1,17 @@
+{
+  "comparison_sha256": "0b853723ff6526d51976606639ae0955e89e120b2638259cf45dd0663db27b9f",
+  "renderer_sha256": "774154821da2daf5c5e8e5cf68181e13b066d0c0388b154b0a7e8ced18a39b3f",
+  "matplotlib": "3.10.9",
+  "figures": [
+    {
+      "file": "observed-shadows-regional.png",
+      "sha256": "c51f2e831627f740c9b15aaa3aa85d20dc0422cb096aeecfcd0a440362971e48",
+      "bytes": 160172
+    },
+    {
+      "file": "observed-shadows-sites.png",
+      "sha256": "4ce63a297a93f306638ac5c6b118a65c5fe4843ecdd095c9a21a3a6afe7d832b",
+      "bytes": 151110
+    }
+  ]
+}

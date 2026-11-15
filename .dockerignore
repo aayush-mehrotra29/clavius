@@ -1,0 +1,19 @@
+# Only source and the reference robot enter the worker image.
+**
+!requirements-simulation.txt
+!backend/
+!backend/clavius/
+!backend/clavius/*.py
+!contracts/
+!contracts/**
+!public/
+!public/robots/
+!public/robots/**
+!public/data/
+!public/data/simulation-manifest.json
+!scripts/
+!scripts/benchmark_gazebo_worker.py
+!workers/
+!workers/gazebo/
+!workers/gazebo/Dockerfile
+!workers/gazebo/entrypoint.sh

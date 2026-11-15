@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1.0",
+  "candidate_id": "fixture-transfer-not-run",
+  "request_id": "fixture-planning-request-001",
+  "reference_case_id": "GMAT_R2026a_fixed_epoch_family",
+  "candidate_status": "not_run",
+  "solver_status": "not_run",
+  "termination_event": "NOT_EXECUTED",
+  "departure_utc": null,
+  "encounter_utc": null,
+  "capture_utc": null,
+  "departure_state": null,
+  "capture_state": null,
+  "maneuvers": [],
+  "total_maneuver_delta_v_m_s": null,
+  "minimum_lunar_clearance_m": null,
+  "capture_eccentricity": null,
+  "target_residuals": [],
+  "verification_status": "not_run",
+  "gmat_version": "R2026a-reference-not-executed",
+  "script_sha256": null,
+  "supporting_assets": [],
+  "assumptions": [
+    "No orbital output is fabricated for this handoff.",
+    "Trajectory screening and launch-vehicle capability are separate assessments."
+  ],
+  "provenance": {
+    "source_class": "synthetic_contract_fixture",
+    "model_id": "fixture-transfer-not-run",
+    "model_version": "0.1.0",
+    "notes": "Structured not-run result; use an actual GMAT run to populate states, burns, residuals and hashes."
+  }
+}

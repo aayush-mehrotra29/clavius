@@ -1,0 +1,32 @@
+{
+  "id": "clavius-viper-frame-repair-validation-v1",
+  "role": "mechanical_model_consistency_and_component_dynamics",
+  "model_id": "clavius-viper-mechanical-frame-repair-v1",
+  "poses": ["identity", "tilted"],
+  "tilted_pose_radians_zyx": [0.7, -0.15, 0.2],
+  "frame_cases": [
+    {"variant":"original","mode":"static"},
+    {"variant":"original","mode":"torque"},
+    {"variant":"repaired","mode":"static"},
+    {"variant":"repaired","mode":"torque"},
+    {"variant":"repaired","mode":"wrong-axis","role":"deliberate_negative_control"}
+  ],
+  "torque_case": {"gravity_m_s2":0,"chassis_fixed":true,"constant_shaft_load_nm":-1,"dt_s":0.0005,"duration_s":0.2},
+  "checks": {
+    "maximum_cog_difference_m":0.000001,
+    "maximum_relative_tensor_difference":0.00000001,
+    "maximum_shaft_axis_difference":0.00000001,
+    "maximum_mass_accounting_error_kg":0.000000001,
+    "maximum_joint_constraint_residual":0.000001,
+    "maximum_shaft_speed_relation_error_rad_s":0.000001,
+    "minimum_forward_wheel_speed_rad_s":0.001
+  },
+  "rigid_floor_protocol":"planner/validation/viper_rigid_protocol.json",
+  "rigid_floor_role":"Repeat the same Earth/lunar gravity and two-step component cases on the repaired model; all original criteria retained.",
+  "limitations":[
+    "Correct mass frames make the source-derived geometry internally consistent; they do not provide measured flight tensors.",
+    "The original approximate 434.9211 kg system mass, 30 degree steering, spring and drive properties remain for this isolated correction.",
+    "The constant torque and rigid-floor speed drivers are component test inputs, not flight actuator maps or control validation.",
+    "No active app robot, calibrated lunar soil, battery, thermal or mission prediction is established."
+  ]
+}

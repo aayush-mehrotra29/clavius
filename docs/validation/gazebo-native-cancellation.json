@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-15",
+  "app_job": {
+    "id": "19f1de35-2199-4a36-b318-94a0b615ee82",
+    "kind": "dynamics",
+    "message": "Cancelled",
+    "progress": 0.0325,
+    "request": {
+      "duration_s": 180.0,
+      "east_m": 60.0,
+      "engine": "gazebo",
+      "friction_coefficient": 0.7,
+      "heading_deg": 41.185925165709655,
+      "mission_offset_s": 1800.6628330622323,
+      "motor_efficiency": 0.65,
+      "north_m": 0.0,
+      "robot_id": "afd6c5cad00ea2dd2efa2d12",
+      "seed": 42,
+      "source_run_id": "14b8145e-c6df-4f5a-b37a-3e148aaebcac",
+      "speed_m_s": 0.05,
+      "turn_rate_rad_s": 0.0
+    },
+    "result_id": null,
+    "state": "cancelled",
+    "worker_input_sha256": "4105e1a0230e5a4e9bde8f564abaaeffb4bee7e5de2af19654bb6c87b12c5c7e",
+    "worker_job_id": "7e21e894-dc78-490c-a473-906952df767f",
+    "worker_url": "http://127.0.0.1:8002"
+  },
+  "observed_worker_progress": {
+    "id": "7e21e894-dc78-490c-a473-906952df767f",
+    "input_sha256": "4105e1a0230e5a4e9bde8f564abaaeffb4bee7e5de2af19654bb6c87b12c5c7e",
+    "message": "Gazebo rigid-contact integration \u00b7 0.5 / 180 s",
+    "progress": 0.002777777777777778,
+    "runtime_identity": "9798618ce4acc6128cae2877c2e060149593d190777d67e74d7f6f423942593a",
+    "state": "running",
+    "worker_kind": "gazebo",
+    "worker_source_sha256": "03668ba634732c292d5f63a6be6c5b9b28ebca789f9f2b776fc187f1d6c7b4bc"
+  },
+  "final_worker_job": {
+    "id": "7e21e894-dc78-490c-a473-906952df767f",
+    "input_sha256": "4105e1a0230e5a4e9bde8f564abaaeffb4bee7e5de2af19654bb6c87b12c5c7e",
+    "message": "Gazebo cancellation acknowledged.",
+    "progress": 0.0,
+    "runtime_identity": "9798618ce4acc6128cae2877c2e060149593d190777d67e74d7f6f423942593a",
+    "state": "cancelled",
+    "worker_kind": "gazebo",
+    "worker_source_sha256": "03668ba634732c292d5f63a6be6c5b9b28ebca789f9f2b776fc187f1d6c7b4bc"
+  },
+  "partial_result_sha256": "29745f72e7b1a6937f1b06775307bc99af949d7ccfc57cafbe4c6db40a371607",
+  "partial_status": "cancelled_partial",
+  "partial_duration_s": 5.5,
+  "requested_duration_s": 180,
+  "app_accepted_completed_run": false
+}

@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "worker_source_sha256": "fc67f18e53a47d4653d9adc140210db88a18f3491d6a78e0616f017ab0ed8d3e",
+  "runtime_identity": "c2864b693f6b8dcb938c24c76527b51567ee38937b445dc1a981b872a9a75260",
+  "cases": {
+    "flat_drive": {
+      "job_id": "7f262131-d2cb-4569-ae58-45a997704513",
+      "input_bundle_sha256": "cd62b36beedac54ef6db29dfdb59df3f91d4c58ed92ac11002d00becfa5e43c8",
+      "result_sha256": "bc8bb31b8fd43b4736024fe92d1aaf97352a12a013b489e78a2232a4914fea62",
+      "checks": {
+        "speed_m_s": 0.049900203522872236,
+        "distance_m": 0.23929241561364128,
+        "settled_root_up_m": -5.3538954979244804e-08,
+        "maximum_roll_deg": 3.27198083229554e-13,
+        "maximum_pitch_deg": 0.059494658178953434
+      },
+      "ros2_clock_messages": 51
+    },
+    "free_fall": {
+      "job_id": "5a0e48bf-c7f5-4113-b709-20eda735b3e8",
+      "input_bundle_sha256": "7344ea570b71ccd57f279cb67c8cabaf5e3b42c7e84d2166c786cd7834c12c6b",
+      "result_sha256": "f29bf2f0eae0bf4c740c7246603b393d4912d867cd75c3cdf0c2de0e5a5e38eb",
+      "checks": {
+        "expected_root_up_m": -0.17750000000000002,
+        "actual_root_up_m": -0.17952499999979998,
+        "expected_vertical_velocity_m_s": -0.81,
+        "actual_vertical_velocity_m_s": -0.8099999999999997
+      },
+      "ros2_clock_messages": 6
+    }
+  },
+  "scope": "Executed native gravity, placement, bounded drive and ROS 2 telemetry benchmark; no measured lunar soil/contact-reaction calibration is implied."
+}

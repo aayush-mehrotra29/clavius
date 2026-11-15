@@ -1,0 +1,100 @@
+{
+  "inspected_date": "2026-11-15",
+  "records": [
+    {
+      "repository": "https://github.com/nasa-jpl/m2020-urdf-models",
+      "commit": "c422fc6d96f2684521fb64049448d611e670f140",
+      "inspection_scope": "Official JPL operations visualization. All 115 rover masses and inertias are zero; no colliders. Not executable physical support.",
+      "files": [
+        {
+          "file": "README.md",
+          "sha256": "fe0877c4add309b545f8b253303d118c260d0fd108d8cc751adbdd01acaf5a42",
+          "bytes": 526,
+          "url": "https://github.com/nasa-jpl/m2020-urdf-models/blob/c422fc6d96f2684521fb64049448d611e670f140/README.md"
+        },
+        {
+          "file": "rover/m2020.urdf",
+          "sha256": "f47006381573671411dbd4fcaf8b7400f9a753ef74a5b008eaf6e9f1df0315b0",
+          "bytes": 53249,
+          "url": "https://github.com/nasa-jpl/m2020-urdf-models/blob/c422fc6d96f2684521fb64049448d611e670f140/rover/m2020.urdf"
+        },
+        {
+          "file": "mhs/MHS.urdf",
+          "sha256": "d3c5ba74442c4c15f777006bb566651076d7e93e5fb5f70b063efd5d31b0f56b",
+          "bytes": 7133,
+          "url": "https://github.com/nasa-jpl/m2020-urdf-models/blob/c422fc6d96f2684521fb64049448d611e670f140/mhs/MHS.urdf"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/nasa-jpl/open-source-rover",
+      "commit": "49b40f127852f0315e675f4df8ad38259ec02927",
+      "inspection_scope": "Educational/research ground rover; not lunar flight hardware. Hardware/control source for future curated model.",
+      "files": [
+        {
+          "file": "README.md",
+          "sha256": "b838d589ed6c5e84e49edd825758072e8cff86effbe63230839ad0e8bb6763c7",
+          "bytes": 12357,
+          "url": "https://github.com/nasa-jpl/open-source-rover/blob/49b40f127852f0315e675f4df8ad38259ec02927/README.md"
+        },
+        {
+          "file": "LICENSE.txt",
+          "sha256": "74227c34e68957a55d4d16091aeca5bcd240ec15883e5dee71f4b25139064413",
+          "bytes": 10363,
+          "url": "https://github.com/nasa-jpl/open-source-rover/blob/49b40f127852f0315e675f4df8ad38259ec02927/LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/nasa-jpl/osr-rover-code",
+      "commit": "7aaf18512c9e8a997931f0caae28b63c8c6e9a78",
+      "inspection_scope": "Official repository contains a Gazebo Classic model with estimated mesh inertias. Native Harmonic adaptation and physical/kinematic reconciliation are required; not active yet.",
+      "files": [
+        {
+          "file": "README.md",
+          "sha256": "90bdb7fd1bbd0103e9a79ec98b4df5de47bfb33e7f736eb7a2aed937f27b57af",
+          "bytes": 1737,
+          "url": "https://github.com/nasa-jpl/osr-rover-code/blob/7aaf18512c9e8a997931f0caae28b63c8c6e9a78/README.md"
+        },
+        {
+          "file": "LICENSE.txt",
+          "sha256": "b7b162dc0c49fa92b0d612754d4649888ae7c543b8c157e73c4110341389f3c4",
+          "bytes": 10362,
+          "url": "https://github.com/nasa-jpl/osr-rover-code/blob/7aaf18512c9e8a997931f0caae28b63c8c6e9a78/LICENSE.txt"
+        },
+        {
+          "file": "ROS/osr_gazebo/README.md",
+          "sha256": "50538d70079422862c897bc82b71b5a0b0f95fa8847552a334fe10ed6fd62da7",
+          "bytes": 3667,
+          "url": "https://github.com/nasa-jpl/osr-rover-code/blob/7aaf18512c9e8a997931f0caae28b63c8c6e9a78/ROS/osr_gazebo/README.md"
+        },
+        {
+          "file": "ROS/osr_gazebo/urdf/osr.urdf.xacro",
+          "sha256": "736edec20fb430cdd08028366ed5a6445f9c749a29cf8a76e547003de24d3476",
+          "bytes": 18784,
+          "url": "https://github.com/nasa-jpl/osr-rover-code/blob/7aaf18512c9e8a997931f0caae28b63c8c6e9a78/ROS/osr_gazebo/urdf/osr.urdf.xacro"
+        },
+        {
+          "file": "ROS/osr_bringup/config/osr_params.yaml",
+          "sha256": "48ca139846c41a6d8107f7ba1e640908a4e28b53eb30388be628ef8128c2a3b4",
+          "bytes": 294,
+          "url": "https://github.com/nasa-jpl/osr-rover-code/blob/7aaf18512c9e8a997931f0caae28b63c8c6e9a78/ROS/osr_bringup/config/osr_params.yaml"
+        },
+        {
+          "file": "ROS/osr_control/osr_control/kinematics.py",
+          "sha256": "b9a6cf9e149548c26801b6e7ca6a89b39b1aaed01ccf39a06275208ff89b54e6",
+          "bytes": 8292,
+          "url": "https://github.com/nasa-jpl/osr-rover-code/blob/7aaf18512c9e8a997931f0caae28b63c8c6e9a78/ROS/osr_control/osr_control/kinematics.py"
+        }
+      ]
+    }
+  ],
+  "decision": "Prioritize VIPER-related TREC/MGRU3 ground-test validation, then a documented curated rover. Do not silently replace missing NASA masses, tensors, limits, soil or power data with R1 defaults.",
+  "chrono_viper_audit": {
+    "software": "Project Chrono 9.0.1",
+    "upstream_commit": "2617649bf687456328a122b63dc0bb64df91394a",
+    "record": "docs/validation/viper-model-audit.json",
+    "hardware_source": "https://ntrs.nasa.gov/citations/20240013903",
+    "decision": "Executed candidate audit and four passing rigid-floor component cases only. Mass 434.9211 kg and 30 degree steering differ from dated NASA 447 kg / 50 degree hardware. A separate native collider calculation detects 27.5917 mm left-wheel COG-frame discrepancies. Reconcile mechanics before active app support; flight, soil, power and thermal validation remain unresolved."
+  }
+}

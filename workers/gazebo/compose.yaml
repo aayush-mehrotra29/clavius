@@ -1,0 +1,18 @@
+services:
+  gazebo:
+    image: clavius-gazebo:local
+    build:
+      context: ../..
+      dockerfile: workers/gazebo/Dockerfile
+      args:
+        ROS_IMAGE: ${CLAVIUS_ROS_IMAGE:-ros:jazzy-ros-base-noble}
+    ports:
+      - "127.0.0.1:8002:8002"
+    environment:
+      CLAVIUS_GAZEBO_TOKEN: ${CLAVIUS_GAZEBO_TOKEN:?Set a private worker token}
+    volumes:
+      - gazebo-state:/var/lib/clavius
+    init: true
+    stop_grace_period: 30s
+volumes:
+  gazebo-state:

@@ -1,0 +1,26 @@
+<robot name="Clavius R1 (hypothetical)">
+<link name="base_link">
+<inertial><origin xyz="0 0 0.4"/><mass value="20"/><inertia ixx="1.45" ixy="0" ixz="0" iyy="2.1" iyz="0" izz="2.8"/></inertial>
+<visual><origin xyz="0 0 0.4"/><geometry><box size="0.85 0.56 0.22"/></geometry></visual>
+<collision><origin xyz="0 0 0.4"/><geometry><box size="0.85 0.56 0.22"/></geometry></collision>
+</link><link name="front_left_wheel">
+<inertial><mass value="1"/><inertia ixx="0.00693" ixy="0" ixz="0" iyy="0.0128" iyz="0" izz="0.00693"/></inertial>
+<visual><origin rpy="1.57079632679 0 0"/><geometry><cylinder radius="0.16" length="0.08"/></geometry></visual>
+<collision><origin rpy="1.57079632679 0 0"/><geometry><cylinder radius="0.16" length="0.08"/></geometry></collision>
+</link>
+<joint name="front_left_drive" type="continuous"><origin xyz="0.32 0.37 0.16"/><parent link="base_link"/><child link="front_left_wheel"/><axis xyz="0 1 0"/><limit effort="3" velocity="3"/></joint><link name="front_right_wheel">
+<inertial><mass value="1"/><inertia ixx="0.00693" ixy="0" ixz="0" iyy="0.0128" iyz="0" izz="0.00693"/></inertial>
+<visual><origin rpy="1.57079632679 0 0"/><geometry><cylinder radius="0.16" length="0.08"/></geometry></visual>
+<collision><origin rpy="1.57079632679 0 0"/><geometry><cylinder radius="0.16" length="0.08"/></geometry></collision>
+</link>
+<joint name="front_right_drive" type="continuous"><origin xyz="0.32 -0.37 0.16"/><parent link="base_link"/><child link="front_right_wheel"/><axis xyz="0 1 0"/><limit effort="3" velocity="3"/></joint><link name="rear_left_wheel">
+<inertial><mass value="1"/><inertia ixx="0.00693" ixy="0" ixz="0" iyy="0.0128" iyz="0" izz="0.00693"/></inertial>
+<visual><origin rpy="1.57079632679 0 0"/><geometry><cylinder radius="0.16" length="0.08"/></geometry></visual>
+<collision><origin rpy="1.57079632679 0 0"/><geometry><cylinder radius="0.16" length="0.08"/></geometry></collision>
+</link>
+<joint name="rear_left_drive" type="continuous"><origin xyz="-0.32 0.37 0.16"/><parent link="base_link"/><child link="rear_left_wheel"/><axis xyz="0 1 0"/><limit effort="3" velocity="3"/></joint><link name="rear_right_wheel">
+<inertial><mass value="1"/><inertia ixx="0.00693" ixy="0" ixz="0" iyy="0.0128" iyz="0" izz="0.00693"/></inertial>
+<visual><origin rpy="1.57079632679 0 0"/><geometry><cylinder radius="0.16" length="0.08"/></geometry></visual>
+<collision><origin rpy="1.57079632679 0 0"/><geometry><cylinder radius="0.16" length="0.08"/></geometry></collision>
+</link>
+<joint name="rear_right_drive" type="continuous"><origin xyz="-0.32 -0.37 0.16"/><parent link="base_link"/><child link="rear_right_wheel"/><axis xyz="0 1 0"/><limit effort="3" velocity="3"/></joint></robot>

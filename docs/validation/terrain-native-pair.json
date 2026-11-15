@@ -1,0 +1,70 @@
+{
+  "common_physical_request": {
+    "duration_s": 20.0,
+    "east_m": 0.0,
+    "engine": "gazebo",
+    "friction_coefficient": 0.7,
+    "heading_deg": 0.0,
+    "mission_offset_s": 0.0,
+    "motor_efficiency": 0.65,
+    "north_m": 0.0,
+    "robot_id": "afd6c5cad00ea2dd2efa2d12",
+    "seed": 42,
+    "site_id": "shackleton-rim",
+    "speed_m_s": 0.05,
+    "turn_rate_rad_s": 0.0
+  },
+  "same_runtime_identity": "9378c590235b4ad65452290f93d5fbe582b90f3f58bbedf5d20a9506dd41b5f2",
+  "same_worker_source_sha256": "682382e6e5d6d798588ecb116d717966b8e7632c551af9a4ca609c2c6990caca",
+  "same_time_origin_utc": "2028-01-01T00:00:00.000Z",
+  "nominal": {
+    "run_id": "fcf5e4f4-5a14-4177-9772-e9cb2a7e1c10",
+    "metrics": {
+      "contacts_observed": null,
+      "displacement_m": 1.0645935128812307,
+      "distance_m": 1.0645950967136002,
+      "duration_s": 20.0,
+      "maximum_abs_slip_ratio": 0.9550241747973975,
+      "maximum_pitch_deg": 3.1428409906431467,
+      "maximum_roll_deg": 0.7576875323378375,
+      "mobility_bus_energy_wh": 0.06768482178869663
+    },
+    "ros2": {
+      "domain_id": 52,
+      "received_clock_messages": 201,
+      "time_basis": "Gazebo simulation time; source mission UTC is attached by Clavius",
+      "topics": [
+        "/clock",
+        "/clavius/pose",
+        "/clavius/joints"
+      ]
+    },
+    "export_bytes": 298950,
+    "export_sha256": "0310789aa8fdb10f28d66a5a2646d51848bc7683b74fdf95bccf30cdd73b66ce",
+    "reproduced": true
+  },
+  "clone_001": {
+    "run_id": "19c4e62b-efdc-4b55-86e7-410fe887e873",
+    "metrics": {
+      "contacts_observed": null,
+      "displacement_m": 1.0989318580211354,
+      "distance_m": 1.0989588201068563,
+      "duration_s": 20.0,
+      "maximum_abs_slip_ratio": 0.952464841349449,
+      "maximum_pitch_deg": 5.552231541810801,
+      "maximum_roll_deg": 2.466293166653518,
+      "mobility_bus_energy_wh": 0.06818340778199966
+    },
+    "ros2": {
+      "domain_id": 104,
+      "received_clock_messages": 201,
+      "time_basis": "Gazebo simulation time; source mission UTC is attached by Clavius",
+      "topics": [
+        "/clock",
+        "/clavius/pose",
+        "/clavius/joints"
+      ]
+    }
+  },
+  "scope": "Matched commands, robot version, source-frame origin, epoch and native runtime; only the scientific surface differs. This is a rigid-contact sensitivity example, not measured lunar contact or soil validation."
+}

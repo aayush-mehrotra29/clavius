@@ -1,0 +1,94 @@
+--- a/src/chrono_models/robot/viper/Viper.cpp
++++ b/src/chrono_models/robot/viper/Viper.cpp
+@@ -46,10 +46,10 @@
+ 
+ #include "chrono/utils/ChUtils.h"
+ 
+-#include "chrono_models/robot/viper/Viper.h"
++#include "Viper.h"
+ 
+ namespace chrono {
+-namespace viper {
++namespace clavius_viper {
+ 
+ // =============================================================================
+ 
+@@ -402,6 +402,11 @@
+     m_wheels[V_LF]->m_mesh_xform = ChFrame<>(VNULL, QuatFromAngleZ(CH_PI));
+     m_wheels[V_LB]->m_mesh_xform = ChFrame<>(VNULL, QuatFromAngleZ(CH_PI));
+ 
++    // Clavius: transform the COG and principal frame with the collider, before
++    // bodies and joints are constructed. Principal moments and mass are invariant.
++    for (auto id : {V_LF, V_LB})
++        m_wheels[id]->m_cog = m_wheels[id]->m_mesh_xform * m_wheels[id]->m_cog;
++
+     // create rover upper and lower suspension arms
+     double cr_lx = 0.5618 + 0.08;
+     double cr_ly = 0.2067;  // + 0.32/2;
+@@ -548,6 +553,7 @@
+         auto steer_rod = chrono_types::make_shared<ChBodyEasyBox>(0.1, 0.1, 0.1, 1000, true, false);
+         steer_rod->SetPos(m_wheels[i]->GetPos());
+         steer_rod->SetFixed(false);
++        m_steering_rods[i] = steer_rod;
+         m_system->Add(steer_rod);
+ 
+         ChQuaternion<> z2y;
+@@ -580,7 +586,11 @@
+         // Connect shaft aligned with the wheel's axis of rotation (local wheel Y).
+         // Set connection such that a positive torque applied to the shaft results in forward rover motion.
+         auto shaftbody_connection = chrono_types::make_shared<ChShaftBodyRotation>();
+-        shaftbody_connection->Initialize(m_drive_shafts[i], m_wheels[i]->GetBody(), ChVector3d(0, 0, -1));
++        // Clavius: the shaft direction is local to COM, not the CAD reference.
++        // Negative reference-Y matches the existing negative-load drive convention.
++        auto wheel_body = m_wheels[i]->GetBody();
++        auto shaft_axis_com = wheel_body->GetFrameCOMToRef().TransformDirectionParentToLocal(ChVector3d(0, -1, 0));
++        shaftbody_connection->Initialize(m_drive_shafts[i], wheel_body, shaft_axis_com);
+         m_system->Add(shaftbody_connection);
+     }
+ }
+@@ -647,6 +657,7 @@
+         tot_mass += m_upper_arms[i]->GetBody()->GetMass();
+         tot_mass += m_lower_arms[i]->GetBody()->GetMass();
+         tot_mass += m_uprights[i]->GetBody()->GetMass();
++        tot_mass += m_steering_rods[i]->GetMass();
+     }
+     return tot_mass;
+ }
+@@ -726,5 +737,5 @@
+     drive_speeds = {speed, speed, speed, speed};
+ }
+ 
+-}  // namespace viper
++}  // namespace clavius_viper
+ }  // namespace chrono
+--- a/src/chrono_models/robot/viper/Viper.h
++++ b/src/chrono_models/robot/viper/Viper.h
+@@ -18,8 +18,8 @@
+ //
+ // =============================================================================
+ 
+-#ifndef VIPER_H
+-#define VIPER_H
++#ifndef CLAVIUS_VIPER_ADAPTED_H
++#define CLAVIUS_VIPER_ADAPTED_H
+ 
+ #include <string>
+ #include <array>
+@@ -34,7 +34,7 @@
+ namespace chrono {
+ 
+ /// Namespace with classes for the Viper model.
+-namespace viper {
++namespace clavius_viper {
+ 
+ /// @addtogroup robot_models_viper
+ /// @{
+@@ -429,7 +429,7 @@
+ 
+ /// @} robot_models_viper
+ 
+-}  // namespace viper
++}  // namespace clavius_viper
+ }  // namespace chrono
+ 
+ #endif

@@ -1,0 +1,54 @@
+{
+  "worker_source_sha256": "682382e6e5d6d798588ecb116d717966b8e7632c551af9a4ca609c2c6990caca",
+  "runtime_identity": "9378c590235b4ad65452290f93d5fbe582b90f3f58bbedf5d20a9506dd41b5f2",
+  "gazebo_version": "8.15.0",
+  "ros_distro": "jazzy",
+  "request_site_identity_version": 1,
+  "terrain_realization_version": 1,
+  "supported_site_ids": [
+    "connecting-ridge",
+    "shackleton-rim"
+  ],
+  "benchmark": {
+    "passed": true,
+    "worker_source_sha256": "682382e6e5d6d798588ecb116d717966b8e7632c551af9a4ca609c2c6990caca",
+    "runtime_identity": "9378c590235b4ad65452290f93d5fbe582b90f3f58bbedf5d20a9506dd41b5f2",
+    "cases": {
+      "flat_drive": {
+        "job_id": "2bb08147-8979-4074-bb31-7fb42599d1ab",
+        "input_bundle_sha256": "5a6090657b69c671c0eeaee8e325891ea241512928045e4c50e3a7289235843b",
+        "result_sha256": "2b74039b3c4c33a014fae88864c6a025affd274a687ddb12783d202f24b20eb2",
+        "checks": {
+          "speed_m_s": 0.049900203522872236,
+          "distance_m": 0.23929241561364128,
+          "settled_root_up_m": -5.3538954979244804e-08,
+          "maximum_roll_deg": 3.27198083229554e-13,
+          "maximum_pitch_deg": 0.059494658178953434
+        },
+        "ros2_clock_messages": 51
+      },
+      "free_fall": {
+        "job_id": "efff770e-cc36-466b-abaa-0345c90b4880",
+        "input_bundle_sha256": "10a9e6028c71ac770ec4e4a37e37d77b9c4ca74d3eb3cabf96c0c7674638078b",
+        "result_sha256": "8e8da01870b9b1981d4de492834cf95daeb9312f2fd14378d42b4bb431c59732",
+        "checks": {
+          "expected_root_up_m": -0.17750000000000002,
+          "actual_root_up_m": -0.17952499999979998,
+          "expected_vertical_velocity_m_s": -0.81,
+          "actual_vertical_velocity_m_s": -0.8099999999999997
+        },
+        "ros2_clock_messages": 6
+      }
+    },
+    "scope": "Executed native gravity, placement, bounded drive and ROS 2 telemetry benchmark; no measured lunar soil/contact-reaction calibration is implied.",
+    "reason": "Benchmark passed for this runtime."
+  },
+  "image_id": "sha256:f41048e475eddd7458d607cd344a9709e4479024ee07242e1c19f9e8f950fb47",
+  "preserved_previous_source_image_tags": [
+    "clavius-gazebo:source-03668ba63473",
+    "clavius-gazebo:source-fc67f18e53a4",
+    "clavius-gazebo:source-e867ac439202"
+  ],
+  "clone_probe_run_id": "19c4e62b-efdc-4b55-86e7-410fe887e873",
+  "nominal_probe_run_id": "fcf5e4f4-5a14-4177-9772-e9cb2a7e1c10"
+}

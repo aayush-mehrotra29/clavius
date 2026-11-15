@@ -1,0 +1,341 @@
+{
+  "recorded_utc": "2026-11-15",
+  "kind": "declared_thermal_screening_acceptance",
+  "robot_id": "afd6c5cad00ea2dd2efa2d12",
+  "site": "connecting-ridge",
+  "purpose": "Same route/date/hardware assumptions, toggle only the thermostat heater; not a calibrated hardware prediction.",
+  "source_implementation": {
+    "libraries": {
+      "mujoco": "4.0.1",
+      "numpy": "2.5.4",
+      "rasterio": "1.5.2",
+      "scipy": "1.18.1",
+      "spiceypy": "8.4.0"
+    },
+    "source_sha256": "87975c82754d0a33e0ce4ead2703da03212e27b11efbf154d0eeb1394f02d462",
+    "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+  },
+  "properties": {
+    "id": "lumped-vacuum-battery-v0.1",
+    "limitations": [
+      "One uniform battery/enclosure temperature; no internal gradients or separate chassis model.",
+      "Constant declared ground temperature; no instantaneous Diviner surface prediction.",
+      "Solar absorption area is net effective heat absorption after electrical conversion.",
+      "Available solar serves loads first; unserved demand proportionally reduces delivered heater/electronics heat after depletion.",
+      "Capacity and voltage are not functions of temperature; charging is inhibited by declared thresholds with hysteresis."
+    ],
+    "properties": {
+      "bus_heat_fraction": 0.1,
+      "charge_hysteresis_k": 1.0,
+      "charge_max_c": 45.0,
+      "charge_min_c": 0.0,
+      "conversion_loss_heat_fraction": 0.5,
+      "effective_emission_area_m2": 0.015,
+      "effective_solar_absorption_area_m2": 0.005,
+      "ground_conductance_w_k": 0.01,
+      "ground_temperature_c": -173.15,
+      "heat_capacity_j_k": 2700.0,
+      "heater_off_c": 5.0,
+      "heater_on_c": 0.0,
+      "initial_temperature_c": 20.0,
+      "max_step_s": 1.0,
+      "operating_max_c": 50.0,
+      "operating_min_c": -10.0,
+      "schema_version": "clavius-thermal-1",
+      "solar_normal_body_unit": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "space_temperature_k": 3.0,
+      "space_view_factor": 0.5
+    },
+    "reference": "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/",
+    "source_class": "declared_engineering_scenario",
+    "stefan_boltzmann_w_m2_k4": 5.670374419e-08
+  },
+  "runs": [
+    {
+      "id": "bafd2795-640d-4c10-9d6b-2ace9ecc2a25",
+      "request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": false,
+        "max_earth_outage_s": 21600.0,
+        "name": "Thermal screening \u00b7 heater off",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-01T00:00:00Z",
+        "thermal": {
+          "bus_heat_fraction": 0.1,
+          "charge_hysteresis_k": 1.0,
+          "charge_max_c": 45.0,
+          "charge_min_c": 0.0,
+          "conversion_loss_heat_fraction": 0.5,
+          "effective_emission_area_m2": 0.015,
+          "effective_solar_absorption_area_m2": 0.005,
+          "ground_conductance_w_k": 0.01,
+          "ground_temperature_c": -173.15,
+          "heat_capacity_j_k": 2700.0,
+          "heater_off_c": 5.0,
+          "heater_on_c": 0.0,
+          "initial_temperature_c": 20.0,
+          "max_step_s": 1.0,
+          "operating_max_c": 50.0,
+          "operating_min_c": -10.0,
+          "schema_version": "clavius-thermal-1",
+          "solar_normal_body_unit": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "space_temperature_k": 3.0,
+          "space_view_factor": 0.5
+        },
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "input_sha256": "f0a856199b8d3db524c5a298bb4dc645338c525d07ae43498d997e92b7c34e96",
+      "artifact_sha256": "ac0528594db1a5558c42b86ec3106a1beb7d104c2ba39ef3ecd05ae238defd1c",
+      "status": "constraint_violated",
+      "first_violation": {
+        "code": "BATTERY_TOO_COLD",
+        "message": "Battery temperature crosses the declared lower operating limit.",
+        "severity": "violation",
+        "state": {
+          "battery_temperature_c": -10.000000000000057
+        },
+        "t_s": 16548.498967130494
+      },
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 159.58849085250947,
+        "distance_m": 113.2373277458786,
+        "final_battery_temperature_c": -40.298911289810945,
+        "final_battery_wh": 257.2935432699198,
+        "generated_wh": 0.2673569589379854,
+        "heater_delivered_wh": 0.0,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 3.431054853446434,
+        "max_terrain_slope_deg": 4.429420338102939,
+        "maximum_battery_temperature_c": 20.0,
+        "minimum_battery_temperature_c": -40.298911289810945,
+        "minimum_battery_wh": 257.2935432699198,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2864.7465549175718,
+        "solar_curtailed_wh": 0.0,
+        "thermal_energy_residual_j": -1.5192199498414993e-08,
+        "thermal_heat_integrals_j": {
+          "absorbed_solar_w": 93.56729685803953,
+          "conducted_heat_w": 68482.26734771453,
+          "conversion_heat_w": 15093.581105707048,
+          "heater_heat_w": 0.0,
+          "internal_heat_w": 57451.85670690357,
+          "radiated_heat_w": 166963.7982442285
+        },
+        "thermal_integrator_steps": 43229,
+        "unserved_load_wh": 0.0
+      }
+    },
+    {
+      "id": "fbb2ad67-059c-4c93-bbdc-5fb7f2cc4c64",
+      "request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Thermal screening \u00b7 heater on",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-01T00:00:00Z",
+        "thermal": {
+          "bus_heat_fraction": 0.1,
+          "charge_hysteresis_k": 1.0,
+          "charge_max_c": 45.0,
+          "charge_min_c": 0.0,
+          "conversion_loss_heat_fraction": 0.5,
+          "effective_emission_area_m2": 0.015,
+          "effective_solar_absorption_area_m2": 0.005,
+          "ground_conductance_w_k": 0.01,
+          "ground_temperature_c": -173.15,
+          "heat_capacity_j_k": 2700.0,
+          "heater_off_c": 5.0,
+          "heater_on_c": 0.0,
+          "initial_temperature_c": 20.0,
+          "max_step_s": 1.0,
+          "operating_max_c": 50.0,
+          "operating_min_c": -10.0,
+          "schema_version": "clavius-thermal-1",
+          "solar_normal_body_unit": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "space_temperature_k": 3.0,
+          "space_view_factor": 0.5
+        },
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "input_sha256": "8e482ca75a9c0bfa174b5bca0943c6fe44c42035a340ef5cb839716326b986b8",
+      "artifact_sha256": "8ea2ce0ef57ed3f38ad936df4ff5171de2538d821bc6d24f27bcb52c83d787b4",
+      "status": "supported_under_assumptions",
+      "first_violation": null,
+      "metrics": {
+        "capacity_wh": 500.0,
+        "consumed_wh": 208.03049228808098,
+        "distance_m": 113.2373277458786,
+        "final_battery_temperature_c": 4.4883161159640395,
+        "final_battery_wh": 206.30196281142318,
+        "generated_wh": 0.2673569589379854,
+        "heater_delivered_wh": 48.442001435570354,
+        "longest_earth_outage_s": 0,
+        "max_route_pitch_deg": 3.431054853446434,
+        "max_terrain_slope_deg": 4.429420338102939,
+        "maximum_battery_temperature_c": 20.0,
+        "minimum_battery_temperature_c": -5.684341886080802e-14,
+        "minimum_battery_wh": 206.30196281142318,
+        "operations_energy_supported": true,
+        "required_tasks_scheduled_complete": true,
+        "reserve_wh": 75,
+        "scheduled_completion_s": 2864.7465549175718,
+        "solar_curtailed_wh": 0.0,
+        "thermal_energy_residual_j": -7.807102520018816e-09,
+        "thermal_heat_integrals_j": {
+          "absorbed_solar_w": 93.56729685803953,
+          "conducted_heat_w": 76726.94581796737,
+          "conversion_heat_w": 19682.823346971498,
+          "heater_heat_w": 174391.20516805374,
+          "internal_heat_w": 57451.85670690357,
+          "radiated_heat_w": 216774.05318770878
+        },
+        "thermal_integrator_steps": 43242,
+        "unserved_load_wh": 0.0
+      }
+    }
+  ],
+  "checks": {
+    "backend_tests_passed": 58,
+    "terrain_node_tests_passed": 7,
+    "build": "passed; pre-existing Three.js chunk size advisory",
+    "analytical_cases": [
+      "isolated node",
+      "conductive exponential cooling",
+      "radiative inverse-cube cooling",
+      "thermostat root/cycling and ledger",
+      "charging inhibition and curtailment",
+      "no phantom heating after depletion",
+      "operating limit touched while warming",
+      "1 s versus 0.5 s convergence",
+      "exact depleted boundary and negligible remainder",
+      "exact full boundary; curtailed surplus produces no conversion heat"
+    ],
+    "hardware_calibration": false,
+    "active_diviner_temperature_dataset": false
+  },
+  "browser": {
+    "run_id": "b20e9f2d-d32f-4d3b-b424-2646eb219a23",
+    "checks": [
+      "enabled coupled thermal model",
+      "rejected heater off equal to heater on",
+      "accepted valid properties",
+      "ran full 12 h mission",
+      "clicked first HEATER_ON event; temperature approximately 0 C, 8 W delivered, charging inhibited",
+      "downloaded evidence ZIP",
+      "390 px property modal scrolling and horizontal overflow check",
+      "390 px linked replay chart",
+      "compared paired heater runs; minimum temperature, heater delivery and first violation displayed"
+    ],
+    "desktop_viewport": [
+      1440,
+      900
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mobile_document_width_px": 390,
+    "modal_width_px": 358,
+    "modal_height_px": 759.59375,
+    "modal_scroll_height_px": 1444,
+    "artifact_directory": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts",
+    "export": {
+      "filename": "clavius-b20e9f2d-d32f-4d3b-b424-2646eb219a23.zip",
+      "bytes": 187170,
+      "sha256": "cc2cd7ac85974d3b170c7a11aa92deb55b4387aa7f7f14f7de722178e945f3fd"
+    },
+    "reproduction": {
+      "reproduced": true,
+      "relative_absolute_tolerance": 1e-06,
+      "differences": []
+    }
+  },
+  "electrical_boundary_policy": "Full and depleted integration boundaries are snapped exactly; sub-nanosecond remainder is discarded to avoid stalled integration or phantom SOC.",
+  "final_replay": {
+    "run_id": "fbb2ad67-059c-4c93-bbdc-5fb7f2cc4c64",
+    "export_bytes": 187316,
+    "export_sha256": "bade3090ac7b03fa3195d990a5f4b0aaa0d79ad189328e1d29890bc56e105b97",
+    "reproduction_report": "thermal-reproduction.json",
+    "reproduced": true,
+    "differences": [],
+    "first_heater_event_checked": true
+  }
+}

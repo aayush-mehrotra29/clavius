@@ -1,0 +1,860 @@
+{
+  "recorded_utc": "2026-11-15",
+  "kind": "bounded_surface_repair_acceptance",
+  "run_id": "edd76b4b-6ddf-4293-9939-24f7414a9d5e",
+  "input_sha256": "50303104ebe5cd82bab228883b88ad14d9eaa2159ca0629ddf48847c4d5a5fcc",
+  "artifact_sha256": "1e9715066414d378fcadf8620da0ada29ededbba6a0833454795d520efe8b602",
+  "request": {
+    "audit_bounds": {
+      "capacity_factor": [
+        0.85,
+        1.0
+      ],
+      "initial_temperature_delta_c": [
+        -3.0,
+        3.0
+      ],
+      "mobility_factor": [
+        1.0,
+        1.25
+      ],
+      "solar_factor": [
+        0.75,
+        1.0
+      ],
+      "speed_factor": [
+        0.8,
+        1.0
+      ],
+      "start_delay_s": [
+        0,
+        1800
+      ]
+    },
+    "audit_samples": 3,
+    "audit_seed": 53142,
+    "capacity_factors": [
+      1.0
+    ],
+    "costs": {
+      "capacity_percent": 0.25,
+      "date_day": 1.0,
+      "heater_toggle": 5.0,
+      "solar_percent": 0.25,
+      "wait_hour": 2.0
+    },
+    "date_offsets_days": [
+      -13,
+      0
+    ],
+    "heater_choices": null,
+    "max_audit_candidates": 1,
+    "max_candidates": 2,
+    "solar_factors": [
+      1.0
+    ],
+    "source_run_id": "02d915c7-5b8f-4e25-a6fe-6d39557455ac",
+    "wait_at_start_s": [
+      0.0
+    ]
+  },
+  "source_mission": {
+    "artifact_sha256": "386128c6ec1375a0b7e205d55a279d8bd3a71c5d6a6722ada9a5f04d1c57567c",
+    "id": "02d915c7-5b8f-4e25-a6fe-6d39557455ac",
+    "input_sha256": "833808e78bea579996f2f943a8b00f7d70afa05aa53a8c4f57109b68e2c48698",
+    "policy": "Source request is rerun under the current recorded implementation before alternatives are compared.",
+    "recorded_first_violation": {
+      "code": "CONTACT_OUTAGE_LIMIT",
+      "message": "Continuous geometric Earth-center outage exceeds the declared 6 h limit.",
+      "severity": "violation",
+      "t_s": 21600.0
+    }
+  },
+  "baseline": {
+    "current_status": "constraint_violated",
+    "first_violation": {
+      "code": "CONTACT_OUTAGE_LIMIT",
+      "message": "Continuous geometric Earth-center outage exceeds the declared 6 h limit.",
+      "severity": "violation",
+      "t_s": 21600.0
+    },
+    "input_sha256": "985a9de81f503463584d5174f843c5ac6a27a7a5865b34f71d55a75e3a8f9243",
+    "margins": {
+      "battery_reserve_wh": 148.26404838031723,
+      "deadline_s": 40335.25344508243,
+      "earth_outage_s": -21600.0
+    },
+    "metrics": {
+      "capacity_wh": 500.0,
+      "consumed_wh": 255.58849085251285,
+      "distance_m": 113.2373277458786,
+      "final_battery_wh": 223.26404838031723,
+      "generated_wh": 63.93933681381133,
+      "longest_earth_outage_s": 43200.0,
+      "max_route_pitch_deg": 3.431054853446434,
+      "max_terrain_slope_deg": 4.429420338102939,
+      "minimum_battery_wh": 223.26404838031723,
+      "operations_energy_supported": true,
+      "required_tasks_scheduled_complete": true,
+      "reserve_wh": 75,
+      "scheduled_completion_s": 2864.7465549175718
+    },
+    "provenance": {
+      "implementation": {
+        "libraries": {
+          "mujoco": "4.0.1",
+          "numpy": "2.5.4",
+          "rasterio": "1.5.2",
+          "scipy": "1.18.1",
+          "spiceypy": "8.4.0"
+        },
+        "source_sha256": "d9fa85bbb94fefcd86936cbd071d752fbe657d55e1e5de8f0124f5dbc0ec4244",
+        "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+      },
+      "integration": "left-constant loads; 60 s base grid; activity boundaries; visibility transitions refined to <=1 s",
+      "kernels": {
+        "assets": [
+          {
+            "bytes": 16790528,
+            "file": "de421.bsp",
+            "sha256": "08b20db2ae22488650641c5a9033e5bfda4b1c4b440cfeaf20f621cfa18ecdb3",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de421.bsp"
+          },
+          {
+            "bytes": 1770496,
+            "file": "moon_pa_de421_1900-2050.bpc",
+            "sha256": "656f90616403d75a75f0cd6c8830fc5b44f8cb4facb5ccb8915e752b397520cf",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+          },
+          {
+            "bytes": 21437,
+            "file": "moon_080317.tf",
+            "sha256": "78732477b96f9863e7b0d65bcee3c22b8707ca5ed0db56d1173319cb2e8c7993",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+          },
+          {
+            "bytes": 5257,
+            "file": "naif0012.tls",
+            "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+          },
+          {
+            "bytes": 131226,
+            "file": "pck00011.tpc",
+            "sha256": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc"
+          }
+        ],
+        "ephemeris": "DE421",
+        "frame": "MOON_ME_DE421"
+      },
+      "models": {
+        "energy": "single-ledger-v0.1",
+        "environment": "spice-de421-directional-horizon-v0.2",
+        "mobility": "r1-declared-baseline",
+        "regolith": "declared-mobility-scenario",
+        "thermal": "declared-heater-load"
+      },
+      "seed": 42,
+      "terrain": {
+        "assets": [
+          {
+            "bytes": 40980810,
+            "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+            "file": "Site01_final_adj_5mpp_surf.tif",
+            "id": "PGDA78-Site01",
+            "nodata": "NaN",
+            "pixel_registration": "pixel centers",
+            "resolution_m": 5.0,
+            "sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+            "shape": [
+              3200,
+              3200
+            ],
+            "transform": [
+              5.0,
+              0.0,
+              -19000.0,
+              0.0,
+              -5.0,
+              -4000.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif"
+          },
+          {
+            "bytes": 40980810,
+            "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+            "file": "Site01_final_adj_5mpp_toterr.tif",
+            "id": "PGDA78-Site01-height-error",
+            "nodata": "NaN",
+            "pixel_registration": "pixel centers",
+            "resolution_m": 5.0,
+            "sha256": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c",
+            "shape": [
+              3200,
+              3200
+            ],
+            "transform": [
+              5.0,
+              0.0,
+              -19000.0,
+              0.0,
+              -5.0,
+              -4000.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_toterr.tif"
+          },
+          {
+            "bytes": 189158392,
+            "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+            "file": "LDEM_80S_80MPP_ADJ.TIF",
+            "id": "PGDA90-80m",
+            "nodata": "NaN",
+            "pixel_registration": "pixel centers",
+            "resolution_m": 80.0,
+            "sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a",
+            "shape": [
+              7600,
+              7600
+            ],
+            "transform": [
+              80.0,
+              0.0,
+              -304000.0,
+              0.0,
+              -80.0,
+              304000.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF"
+          }
+        ],
+        "frame": "MOON_ME_DE421",
+        "limits": [
+          "5 m posting does not resolve wheel-scale hazards",
+          "height RMS is not a complete terrain error model",
+          "horizon sampling requires numerical convergence/observed-shadow validation before mission reliance"
+        ],
+        "reference_radius_m": 1737400.0,
+        "site_id": "connecting-ridge",
+        "vertical_checks": [
+          {
+            "difference_m": 0.7501220703125,
+            "lat_deg": -89.44,
+            "local_elevation_m": 1958.1793212890625,
+            "lon_deg": 222.8,
+            "regional_elevation_m": 1957.42919921875
+          },
+          {
+            "difference_m": 1.75341796875,
+            "lat_deg": -89.45,
+            "local_elevation_m": 1956.777099609375,
+            "lon_deg": 222.8,
+            "regional_elevation_m": 1955.023681640625
+          },
+          {
+            "difference_m": -0.314697265625,
+            "lat_deg": -89.44,
+            "local_elevation_m": 1952.8533935546875,
+            "lon_deg": 223.2,
+            "regional_elevation_m": 1953.1680908203125
+          },
+          {
+            "difference_m": 0.0880126953125,
+            "lat_deg": -89.43,
+            "local_elevation_m": 1942.9156494140625,
+            "lon_deg": 222.5,
+            "regional_elevation_m": 1942.82763671875
+          },
+          {
+            "difference_m": 0.9193115234375,
+            "lat_deg": -89.46,
+            "local_elevation_m": 1948.8848876953125,
+            "lon_deg": 222.7,
+            "regional_elevation_m": 1947.965576171875
+          }
+        ],
+        "vertical_definition": "metres above 1737400 m sphere, checked against regional PGDA90 at five matching coordinates"
+      }
+    },
+    "recorded_status": "constraint_violated",
+    "run_id": "4144acb9-2cf7-4ffb-bf9f-cf0a9715c335",
+    "status": "constraint_violated"
+  },
+  "metrics": {
+    "audit_candidates_frozen": 1,
+    "audit_cases_per_candidate": 3,
+    "candidate_budget_exhausted": false,
+    "candidate_space_size": 2,
+    "nominal_checked": 2,
+    "nominal_supported": 1,
+    "requested_work_complete": true,
+    "search_complete": true,
+    "simulation_evaluations": 5,
+    "unsearched_candidates": 0,
+    "verified_candidates": 1
+  },
+  "candidates": [
+    {
+      "audit": null,
+      "candidate_request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Reference traverse \u00b7 Jan 14 2028",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-14T00:00:00Z",
+        "thermal": null,
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "capacity_factor": 1.0,
+      "cost": 0.0,
+      "cost_components": {
+        "capacity": 0.0,
+        "date": 0.0,
+        "heater": 0.0,
+        "solar": 0.0,
+        "wait": 0.0
+      },
+      "date_offset_days": 0,
+      "heater_enabled": true,
+      "id": "c1f8f30bbd29c2f30366c1df28f7667e670accb89db893005a9818ace8fda508",
+      "is_baseline": true,
+      "nominal": {
+        "first_violation": {
+          "code": "CONTACT_OUTAGE_LIMIT",
+          "message": "Continuous geometric Earth-center outage exceeds the declared 6 h limit.",
+          "severity": "violation",
+          "t_s": 21600.0
+        },
+        "input_sha256": "985a9de81f503463584d5174f843c5ac6a27a7a5865b34f71d55a75e3a8f9243",
+        "margins": {
+          "battery_reserve_wh": 148.26404838031723,
+          "deadline_s": 40335.25344508243,
+          "earth_outage_s": -21600.0
+        },
+        "metrics": {
+          "capacity_wh": 500.0,
+          "consumed_wh": 255.58849085251285,
+          "distance_m": 113.2373277458786,
+          "final_battery_wh": 223.26404838031723,
+          "generated_wh": 63.93933681381133,
+          "longest_earth_outage_s": 43200.0,
+          "max_route_pitch_deg": 3.431054853446434,
+          "max_terrain_slope_deg": 4.429420338102939,
+          "minimum_battery_wh": 223.26404838031723,
+          "operations_energy_supported": true,
+          "required_tasks_scheduled_complete": true,
+          "reserve_wh": 75,
+          "scheduled_completion_s": 2864.7465549175718
+        },
+        "run_id": "4144acb9-2cf7-4ffb-bf9f-cf0a9715c335",
+        "status": "constraint_violated"
+      },
+      "solar_factor": 1.0,
+      "wait_at_start_s": 0.0
+    },
+    {
+      "audit": {
+        "cases": [
+          {
+            "case_index": 1,
+            "first_violation": null,
+            "input_sha256": "939c5ea07d8b26c744243aba7a24bf0d80993cdfa5e947c9aec2c08c8f369c6a",
+            "margins": {
+              "battery_reserve_wh": 48.54023915418152,
+              "deadline_s": 39969.97769126702,
+              "earth_outage_s": 21600.0
+            },
+            "metrics": {
+              "capacity_wh": 468.17678498622934,
+              "consumed_wh": 260.9675084275717,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 123.54023915418152,
+              "generated_wh": 0.2779817476680244,
+              "longest_earth_outage_s": 0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 123.54023915418152,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 3230.022308732977
+            },
+            "run_id": "4342a7ce-bb96-4ab2-8086-f01fed1cbe92",
+            "status": "supported_under_assumptions"
+          },
+          {
+            "case_index": 2,
+            "first_violation": null,
+            "input_sha256": "07361644806387b2531f8db7971da46763fa9131aa3493d6d371e169730635f3",
+            "margins": {
+              "battery_reserve_wh": 68.35774348931398,
+              "deadline_s": 40320.63773816387,
+              "earth_outage_s": 21600.0
+            },
+            "metrics": {
+              "capacity_wh": 485.63953123808284,
+              "consumed_wh": 256.1759967274622,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 143.35774348931398,
+              "generated_wh": 0.2119315675623888,
+              "longest_earth_outage_s": 0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 143.35774348931398,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 2879.362261836134
+            },
+            "run_id": "e1972986-d624-4369-a3a7-0fcab815730d",
+            "status": "supported_under_assumptions"
+          },
+          {
+            "case_index": 3,
+            "first_violation": null,
+            "input_sha256": "4f66d27b841ad6406da03c250e9388a3e11ad85b43bdb909813423beb7a0f44f",
+            "margins": {
+              "battery_reserve_wh": 42.016425582537124,
+              "deadline_s": 39994.373745916964,
+              "earth_outage_s": 21600.0
+            },
+            "metrics": {
+              "capacity_wh": 457.77382352102865,
+              "consumed_wh": 258.72047447594656,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 117.01642558253712,
+              "generated_wh": 0.23371628612922182,
+              "longest_earth_outage_s": 0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 117.01642558253712,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 3205.626254083037
+            },
+            "run_id": "2b73b1b9-fc3b-4686-85fb-3153b8ecd582",
+            "status": "supported_under_assumptions"
+          }
+        ],
+        "completed": true,
+        "supported_all_cases": true
+      },
+      "candidate_request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Reference traverse \u00b7 Jan 14 2028 \u00b7 repair 0eb90d",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-01T00:00:00Z",
+        "thermal": null,
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "capacity_factor": 1.0,
+      "cost": 13.0,
+      "cost_components": {
+        "capacity": 0.0,
+        "date": 13.0,
+        "heater": 0.0,
+        "solar": 0.0,
+        "wait": 0.0
+      },
+      "date_offset_days": -13,
+      "heater_enabled": true,
+      "id": "0eb90dfa0c5609c150853587aa535a923dd781135dfc6060c4e9159ab36853b1",
+      "is_baseline": false,
+      "nominal": {
+        "first_violation": null,
+        "input_sha256": "7e92370a1cc463f4cb07cb07242db115ac30d859f1f0ee3e9e21a21401aa4c05",
+        "margins": {
+          "battery_reserve_wh": 81.24091169096977,
+          "deadline_s": 40335.25344508243,
+          "earth_outage_s": 21600.0
+        },
+        "metrics": {
+          "capacity_wh": 500.0,
+          "consumed_wh": 255.58849085251285,
+          "distance_m": 113.2373277458786,
+          "final_battery_wh": 156.24091169096977,
+          "generated_wh": 0.2673569589379854,
+          "longest_earth_outage_s": 0,
+          "max_route_pitch_deg": 3.431054853446434,
+          "max_terrain_slope_deg": 4.429420338102939,
+          "minimum_battery_wh": 156.24091169096977,
+          "operations_energy_supported": true,
+          "required_tasks_scheduled_complete": true,
+          "reserve_wh": 75,
+          "scheduled_completion_s": 2864.7465549175718
+        },
+        "run_id": "cf36f395-9fa8-4a4d-9476-e3a37a3677cd",
+        "status": "supported_under_assumptions"
+      },
+      "solar_factor": 1.0,
+      "wait_at_start_s": 0.0
+    }
+  ],
+  "recommended_candidate_id": "0eb90dfa0c5609c150853587aa535a923dd781135dfc6060c4e9159ab36853b1",
+  "audit_cases": [
+    {
+      "capacity_factor": 0.9363535699724587,
+      "index": 1,
+      "initial_temperature_delta_c": 1.3689653081430972,
+      "mobility_factor": 1.22925562558658,
+      "solar_factor": 0.9035019228110942,
+      "speed_factor": 0.8611130587742513,
+      "start_delay_s": 332
+    },
+    {
+      "capacity_factor": 0.9712790624761657,
+      "index": 2,
+      "initial_temperature_delta_c": -1.2606843604396982,
+      "mobility_factor": 1.0399828285736792,
+      "solar_factor": 0.7879191299488322,
+      "speed_factor": 0.9935878086764549,
+      "start_delay_s": 197
+    },
+    {
+      "capacity_factor": 0.9155476470420573,
+      "index": 3,
+      "initial_temperature_delta_c": 2.7301028273780936,
+      "mobility_factor": 1.0855369616818145,
+      "solar_factor": 0.7669797905464356,
+      "speed_factor": 0.8691755202300008,
+      "start_delay_s": 881
+    }
+  ],
+  "audit_cases_sha256": "0f4b27d06b8a0f69e7fdfb8df9c6944d5f9153112a7083ede8d2e4a4c724908a",
+  "preserved_requirements": {
+    "duration_hours": 12.0,
+    "max_earth_outage_s": 21600.0,
+    "required_activities": [
+      {
+        "duration_s": 600.0,
+        "kind": "science",
+        "waypoint": 1
+      }
+    ],
+    "robot_id": "afd6c5cad00ea2dd2efa2d12",
+    "signature": "7948a512246118cc91e18ffc73ce07ad8dd724599761a5e641937f5abed83270",
+    "site_id": "connecting-ridge",
+    "waypoints": [
+      {
+        "east_m": 0.0,
+        "north_m": 0.0
+      },
+      {
+        "east_m": 60.0,
+        "north_m": 0.0
+      },
+      {
+        "east_m": 100.0,
+        "north_m": 35.0
+      }
+    ]
+  },
+  "provenance": {
+    "audit_rng": "NumPy SeedSequence [audit_seed, 0x52455041, 1]; no audit outcome used for nominal candidate selection",
+    "implementation": {
+      "libraries": {
+        "mujoco": "4.0.1",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "scipy": "1.18.1",
+        "spiceypy": "8.4.0"
+      },
+      "source_sha256": "d9fa85bbb94fefcd86936cbd071d752fbe657d55e1e5de8f0124f5dbc0ec4244",
+      "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+    },
+    "integration": "left-constant loads; 60 s base grid; activity boundaries; visibility transitions refined to <=1 s",
+    "kernels": {
+      "assets": [
+        {
+          "bytes": 16790528,
+          "file": "de421.bsp",
+          "sha256": "08b20db2ae22488650641c5a9033e5bfda4b1c4b440cfeaf20f621cfa18ecdb3",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de421.bsp"
+        },
+        {
+          "bytes": 1770496,
+          "file": "moon_pa_de421_1900-2050.bpc",
+          "sha256": "656f90616403d75a75f0cd6c8830fc5b44f8cb4facb5ccb8915e752b397520cf",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+        },
+        {
+          "bytes": 21437,
+          "file": "moon_080317.tf",
+          "sha256": "78732477b96f9863e7b0d65bcee3c22b8707ca5ed0db56d1173319cb2e8c7993",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+        },
+        {
+          "bytes": 5257,
+          "file": "naif0012.tls",
+          "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+        },
+        {
+          "bytes": 131226,
+          "file": "pck00011.tpc",
+          "sha256": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc"
+        }
+      ],
+      "ephemeris": "DE421",
+      "frame": "MOON_ME_DE421"
+    },
+    "models": {
+      "energy": "single-ledger-v0.1",
+      "environment": "spice-de421-directional-horizon-v0.2",
+      "mobility": "r1-declared-baseline",
+      "regolith": "declared-mobility-scenario",
+      "repair": "bounded-surface-repair-v0.1",
+      "thermal": "declared-heater-load"
+    },
+    "seed": 42,
+    "terrain": {
+      "assets": [
+        {
+          "bytes": 40980810,
+          "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+          "file": "Site01_final_adj_5mpp_surf.tif",
+          "id": "PGDA78-Site01",
+          "nodata": "NaN",
+          "pixel_registration": "pixel centers",
+          "resolution_m": 5.0,
+          "sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+          "shape": [
+            3200,
+            3200
+          ],
+          "transform": [
+            5.0,
+            0.0,
+            -19000.0,
+            0.0,
+            -5.0,
+            -4000.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif"
+        },
+        {
+          "bytes": 40980810,
+          "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+          "file": "Site01_final_adj_5mpp_toterr.tif",
+          "id": "PGDA78-Site01-height-error",
+          "nodata": "NaN",
+          "pixel_registration": "pixel centers",
+          "resolution_m": 5.0,
+          "sha256": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c",
+          "shape": [
+            3200,
+            3200
+          ],
+          "transform": [
+            5.0,
+            0.0,
+            -19000.0,
+            0.0,
+            -5.0,
+            -4000.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_toterr.tif"
+        },
+        {
+          "bytes": 189158392,
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "file": "LDEM_80S_80MPP_ADJ.TIF",
+          "id": "PGDA90-80m",
+          "nodata": "NaN",
+          "pixel_registration": "pixel centers",
+          "resolution_m": 80.0,
+          "sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a",
+          "shape": [
+            7600,
+            7600
+          ],
+          "transform": [
+            80.0,
+            0.0,
+            -304000.0,
+            0.0,
+            -80.0,
+            304000.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF"
+        }
+      ],
+      "frame": "MOON_ME_DE421",
+      "limits": [
+        "5 m posting does not resolve wheel-scale hazards",
+        "height RMS is not a complete terrain error model",
+        "horizon sampling requires numerical convergence/observed-shadow validation before mission reliance"
+      ],
+      "reference_radius_m": 1737400.0,
+      "site_id": "connecting-ridge",
+      "vertical_checks": [
+        {
+          "difference_m": 0.7501220703125,
+          "lat_deg": -89.44,
+          "local_elevation_m": 1958.1793212890625,
+          "lon_deg": 222.8,
+          "regional_elevation_m": 1957.42919921875
+        },
+        {
+          "difference_m": 1.75341796875,
+          "lat_deg": -89.45,
+          "local_elevation_m": 1956.777099609375,
+          "lon_deg": 222.8,
+          "regional_elevation_m": 1955.023681640625
+        },
+        {
+          "difference_m": -0.314697265625,
+          "lat_deg": -89.44,
+          "local_elevation_m": 1952.8533935546875,
+          "lon_deg": 223.2,
+          "regional_elevation_m": 1953.1680908203125
+        },
+        {
+          "difference_m": 0.0880126953125,
+          "lat_deg": -89.43,
+          "local_elevation_m": 1942.9156494140625,
+          "lon_deg": 222.5,
+          "regional_elevation_m": 1942.82763671875
+        },
+        {
+          "difference_m": 0.9193115234375,
+          "lat_deg": -89.46,
+          "local_elevation_m": 1948.8848876953125,
+          "lon_deg": 222.7,
+          "regional_elevation_m": 1947.965576171875
+        }
+      ],
+      "vertical_definition": "metres above 1737400 m sphere, checked against regional PGDA90 at five matching coordinates"
+    }
+  },
+  "checks": {
+    "backend_tests_passed": 76,
+    "terrain_tests_passed": 7,
+    "build": "passed; pre-existing Three.js chunk advisory",
+    "required_science_preserved": true,
+    "audit_selection_frozen_before_case_evaluation": true,
+    "thermal_heater_repair_with_fresh_audits": "passed",
+    "parent_and_child_with_captured_diviner_context": "reproduced"
+  },
+  "export": {
+    "filename": "clavius-edd76b4b-6ddf-4293-9939-24f7414a9d5e.zip",
+    "bytes": 751637,
+    "sha256": "d720131f9b6568eb97c27548ed52e24c95a262fb95639202e8ec9ddb78243c6c"
+  },
+  "reproduction": {
+    "reproduced": true,
+    "candidate_and_audit_outcomes_compared": true,
+    "relative_absolute_metric_tolerance": 1e-06,
+    "differences": []
+  },
+  "browser": {
+    "desktop_viewport": [
+      1440,
+      900
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mobile_document_width_px": 390,
+    "modal_width_px": 358,
+    "form_scroll_height_px": 926,
+    "results_scroll_height_px": 881,
+    "artifact_directory": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts",
+    "checks": [
+      "rejected invalid date offsets inline",
+      "preserved heater toggle disabled without thermal model",
+      "completed 12-hour failed-mission search",
+      "recommended -13 calendar days; required science preserved",
+      "three independent audit cases supported",
+      "audit replay opened at 2028-01-01 00:05:32 UTC",
+      "exported full parent evidence ZIP"
+    ],
+    "shared_report_reload_verified": true
+  }
+}

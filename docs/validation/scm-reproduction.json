@@ -1,0 +1,18 @@
+{
+  "recorded_date": "2026-11-15",
+  "native_repeat": {
+    "reference": "data/runtime/scm/preflight-v1/trace.csv",
+    "repeat": "data/runtime/scm/trec-development-v1/candidate-0/training-04/trace.csv",
+    "source_index": 4,
+    "trace_sha256": "b084a1c0e88502b515b001a6be779ce593c2db3490f37d6b2c375aa150637702",
+    "byte_identical": true,
+    "scope": "One repeated native Earth-gravity case, not a full campaign reproduction or lunar validation."
+  },
+  "viper_assembly_repeat": {
+    "first": "data/runtime/viper-upstream-audit.json",
+    "repeat": "data/runtime/viper-model-audit-v1/native-model.json",
+    "byte_identical": true,
+    "scope": "Static native assembly inventory only."
+  },
+  "lunar_calibration_established": false
+}

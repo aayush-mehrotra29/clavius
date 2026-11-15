@@ -1,0 +1,37 @@
+{
+  "id": "clavius-viper-mechanical-frame-repair-v1",
+  "upstream_repository": "https://github.com/projectchrono/chrono",
+  "upstream_commit": "2617649bf687456328a122b63dc0bb64df91394a",
+  "upstream_version": "9.0.1",
+  "namespace": "chrono::clavius_viper",
+  "source_files": [
+    {
+      "file": "src/chrono_models/robot/viper/Viper.cpp",
+      "sha256": "4a6156c947445bbcdf8d5ecb0c6e59465f4232bb2349141a1c529e34f88a5e86"
+    },
+    {
+      "file": "src/chrono_models/robot/viper/Viper.h",
+      "sha256": "ecb757be4e9e2bf7a5bedd144f184f9b80792535d0e2394a2ef9c2e337b5079f"
+    }
+  ],
+  "patch": {
+    "file": "workers/chrono/viper-adapted/model.patch",
+    "sha256": "3696d35eac23a9ad10b09e41d3b9d359942547f7e7231dafd939cfca34737580"
+  },
+  "baseline_fixture": {
+    "file": "workers/chrono/rover-probe/viper-rigid.cpp",
+    "sha256": "1c6244658c600e6b5534ef75360c792dd19e246e8ef7776509a0359e8314a008"
+  },
+  "changes": [
+    "Rotate left-wheel COG and principal frame with the collider before body/joint construction.",
+    "Resolve shaft directions in each actual COM frame, with the existing negative-shaft-load forward convention.",
+    "Store the four existing steering connector bodies and include them in GetRoverMass.",
+    "Use a separate namespace and build, leaving original source and libraries unchanged."
+  ],
+  "unchanged_assumptions": [
+    "Original estimated mesh-density masses, inertias, suspension and motor parameters remain; no measured flight tensors are added.",
+    "Original 30 degree steering limit and 434.9211 kg system mass remain for this isolated mechanical correction.",
+    "No soil, flight actuator, thermal or power calibration is established."
+  ],
+  "active_app_model": false
+}

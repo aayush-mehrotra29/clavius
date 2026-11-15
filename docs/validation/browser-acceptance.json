@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-14",
+  "url": "http://127.0.0.1:5173/app/simulation",
+  "browser": "Aside controlled Chromium",
+  "desktop_viewport_css_px": [
+    1440,
+    900
+  ],
+  "mobile_viewport_css_px": [
+    390,
+    844
+  ],
+  "accepted": [
+    "Reference URDF ZIP selected through the file input, submitted and inspected",
+    "Base link mass changed from 20 to 21 kg; new robot total mass 25 kg and original version retained",
+    "Capability form saved a named 25 kg study with 550 Wh battery and 80 W array",
+    "Two mission dates compared with identical reference rover, route and implementation",
+    "First geometric outage violation appears at elapsed 21600 s",
+    "Activity event seeks the shared replay clock",
+    "Detailed MuJoCo probe launched at the selected mission cursor and preserved source position, heading and UTC",
+    "Physical rover follow camera, plots and joint replay inspected",
+    "Six-scenario sweep completed; a scenario child opened in replay",
+    "Relief, slope and height-RMS layer controls operated",
+    "Mobile terrain, timeline, setup and assessment stack; setup controls remain reachable by scrolling",
+    "Mobile document scroll width equals viewport width at 390 CSS pixels",
+    "Browser evidence export downloaded a 146688-byte ZIP for the verified January 1 reference run"
+  ],
+  "numerical_checks": {
+    "simulation_pytest": "31 passed",
+    "global_dem_node_tests": "7 passed",
+    "normal_derivation_unittest": "4 passed using the documented python3 environment",
+    "production_build": "passed; Three.js chunk-size advisory remains",
+    "exported_reference_reproduction": "all recorded metrics reproduced within relative/absolute 1e-6"
+  },
+  "limitations": [
+    "Browser evidence applies to the implemented MuJoCo/mission-screening path",
+    "No Gazebo/ROS 2 benchmark, calibrated regolith/thermal model or observed-shadow validation is claimed"
+  ]
+}

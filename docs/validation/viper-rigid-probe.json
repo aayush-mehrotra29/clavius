@@ -1,0 +1,304 @@
+{
+  "id": "clavius-viper-upstream-rigid-probe-v1",
+  "recorded_utc": "2026-11-15T21:22:42.237250+00:00",
+  "protocol": {
+    "id": "clavius-viper-upstream-rigid-probe-v1",
+    "role": "component_development_probe",
+    "upstream_commit": "2617649bf687456328a122b63dc0bb64df91394a",
+    "duration_s": 20,
+    "steady_window_s": [
+      10,
+      20
+    ],
+    "gravity_cases_m_s2": [
+      9.81,
+      1.62
+    ],
+    "base_dt_s": 0.001,
+    "refined_dt_s": 0.0005,
+    "drive_start_s": 3,
+    "drive_ramp_s": 1,
+    "target_wheel_omega_rad_s": 0.4,
+    "envelope_rolling_speed_m_s": 0.1,
+    "nominal_rig_mass_kg": 434.92111389444585,
+    "floor": "Synthetic rigid plane, declared SMC friction 0.7 and Young modulus 2e7 Pa; no regolith or measured lunar terrain",
+    "checks": {
+      "maximum_speed_difference_from_envelope_m_s": 0.01,
+      "maximum_relative_normal_load_error": 0.05,
+      "maximum_abs_mean_vertical_speed_m_s": 0.002,
+      "maximum_abs_lateral_position_m": 0.02,
+      "maximum_quaternion_norm_error": 1e-06,
+      "maximum_refined_speed_change_m_s": 0.002,
+      "maximum_refined_final_position_change_m": 0.02,
+      "maximum_refined_normal_load_change_fraction": 0.02
+    },
+    "limits": [
+      "Ideal wheel-speed motors do not establish flight actuator capability, efficiency or electrical power.",
+      "The unmodified upstream model retains approximate mass distribution, suspension, steering and shaft properties.",
+      "The mass and steering differences from dated NASA hardware have not been reconciled.",
+      "These checks test an assembled model on a rigid floor, not experimental wheel-soil or lunar mission agreement.",
+      "No active app dynamics, rover support or lunar calibration is established by this probe."
+    ]
+  },
+  "reference_runtime_identity": "b6893013760304c5d046a33fc9c27068e070eade0584278f97fb2865c5bae9cf",
+  "evidence_files": [
+    {
+      "file": "data/runtime/chrono-rover-probe-build/clavius_viper_rigid_probe",
+      "sha256": "59a94f122637755bd10448491382a77fda531386398e9633534ac9b34453f4dc",
+      "bytes": 123816
+    },
+    {
+      "file": "planner/validation/viper_rigid_protocol.json",
+      "sha256": "ef2760ef8a8f54620f2c84cca1ed5277d89e9739a9a1b61bbfaeef721e66d7d5",
+      "bytes": 1554
+    },
+    {
+      "file": "workers/chrono/rover-probe/viper-rigid.cpp",
+      "sha256": "1c6244658c600e6b5534ef75360c792dd19e246e8ef7776509a0359e8314a008",
+      "bytes": 4260
+    },
+    {
+      "file": "workers/chrono/rover-probe/CMakeLists.txt",
+      "sha256": "a9d66149d21c66429e61ab1910ffdcac15455787d08a213c06f3a915a5c264b3",
+      "bytes": 610
+    },
+    {
+      "file": "scripts/recover_viper_rigid_probe.py",
+      "sha256": "79f880ef549a29263f4564cfc4a2daf379b3b29503a55ad95f0360abfe3d6455",
+      "bytes": 7115
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_L_bt_sus.obj",
+      "sha256": "6288061c0c13055c36af8d86148b58fd79cf5ae59c0c48620c7be8ad55df9c7d",
+      "bytes": 27033
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_L_steer.obj",
+      "sha256": "41bd6eb648f9290151b35bee3d7073109c368fd229c7aa7d5cb6b59e51a59b55",
+      "bytes": 71387
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_L_up_sus.obj",
+      "sha256": "68890af782e7e2a2789f7a7134e24e11f64567721f5313d0ed4a7e056b51abe2",
+      "bytes": 27799
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_R_bt_sus.obj",
+      "sha256": "81c45060db0a3c1599b327db23a06062389d67cc942bb585c99d061759f42b24",
+      "bytes": 27121
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_R_steer.obj",
+      "sha256": "57c5766399752d92330df40305c49ff3af2e50794e097f5b856c1829b86357f5",
+      "bytes": 71037
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_R_up_sus.obj",
+      "sha256": "d22975a201f3bef1f33dccfbeaf77867fb4a5e1ec42d29c066f597a718411c56",
+      "bytes": 27893
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_chassis.obj",
+      "sha256": "1dca0c3b06a2cb3e04acf6c1090a0e743f94f0d112bb4ab45913a2bb92ddcf2f",
+      "bytes": 1020412
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_cylwheel.obj",
+      "sha256": "3ddbf5ce53464bcebb012e7d5823088a6a25e598a8c85cce85fa240da19e5b53",
+      "bytes": 8721
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_simplewheel.obj",
+      "sha256": "96272086e97c77caed9031023d5681e4c3b6bd98ba0170392842167316cf6d0c",
+      "bytes": 41246
+    },
+    {
+      "file": "data/raw/robots/chrono/data/robot/viper/col/viper_wheel.obj",
+      "sha256": "0056b34fc18369521e9d2d629b822570f7936d9ff02a6f8e869f8be1b6709739",
+      "bytes": 183730
+    }
+  ],
+  "cases": [
+    {
+      "gravity_m_s2": 9.81,
+      "dt_s": 0.001,
+      "mean_speed_m_s": 0.1018716057928802,
+      "mean_vertical_speed_m_s": -2.6789498543928037e-05,
+      "mean_normal_force_n": 4269.705064150229,
+      "nominal_weight_n": 4266.576127304514,
+      "maximum_steady_lateral_position_m": 0.00012142835791617649,
+      "maximum_quaternion_norm_error": 3.397282455352979e-14,
+      "mean_wheel_omega_rad_s": 0.399983841898789,
+      "final_position_m": [
+        1.6801912124462803,
+        -5.3473506868572445e-05,
+        0.25382963665355607
+      ],
+      "checks": {
+        "speed_matches_wheel_envelope": true,
+        "normal_load_balance": true,
+        "vertical_settling": true,
+        "lateral_drift": true,
+        "quaternion_normalization": true
+      },
+      "checks_passed": true,
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "label": "earth",
+      "kind": "base",
+      "trace_sha256": "5ad5ffc3a0031cbb94fc7c8144fefcc7bd9ea1dc0c56d461538e789ae7be8d69"
+    },
+    {
+      "gravity_m_s2": 9.81,
+      "dt_s": 0.0005,
+      "mean_speed_m_s": 0.10186003216266443,
+      "mean_vertical_speed_m_s": -3.530158449095483e-05,
+      "mean_normal_force_n": 4264.411648108769,
+      "nominal_weight_n": 4266.576127304514,
+      "maximum_steady_lateral_position_m": 0.00012125350471406851,
+      "maximum_quaternion_norm_error": 1.4865886299730846e-13,
+      "mean_wheel_omega_rad_s": 0.3999971405714196,
+      "final_position_m": [
+        1.6801978246381495,
+        -5.497350956384162e-05,
+        0.25382773501173983
+      ],
+      "checks": {
+        "speed_matches_wheel_envelope": true,
+        "normal_load_balance": true,
+        "vertical_settling": true,
+        "lateral_drift": true,
+        "quaternion_normalization": true
+      },
+      "checks_passed": true,
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "label": "earth",
+      "kind": "refined",
+      "trace_sha256": "8ab2412c65ed7e308704227a27aa86ec6076294d085919e2ec9374e6c7d552ff"
+    },
+    {
+      "gravity_m_s2": 1.62,
+      "dt_s": 0.001,
+      "mean_speed_m_s": 0.10191774403702926,
+      "mean_vertical_speed_m_s": -5.296641249936768e-05,
+      "mean_normal_force_n": 702.780258109499,
+      "nominal_weight_n": 704.5722045090023,
+      "maximum_steady_lateral_position_m": 0.00014033940943586104,
+      "maximum_quaternion_norm_error": 4.118927421359331e-14,
+      "mean_wheel_omega_rad_s": 0.40000169023412957,
+      "final_position_m": [
+        1.680859849713654,
+        3.2817568235880842e-06,
+        0.25433105950653845
+      ],
+      "checks": {
+        "speed_matches_wheel_envelope": true,
+        "normal_load_balance": true,
+        "vertical_settling": true,
+        "lateral_drift": true,
+        "quaternion_normalization": true
+      },
+      "checks_passed": true,
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "label": "moon",
+      "kind": "base",
+      "trace_sha256": "276cb9b65068609b31970b16785ffd25dc59d4fbaaaa79102df40869f45dfa50"
+    },
+    {
+      "gravity_m_s2": 1.62,
+      "dt_s": 0.0005,
+      "mean_speed_m_s": 0.10191766802530229,
+      "mean_vertical_speed_m_s": -5.083499941648628e-05,
+      "mean_normal_force_n": 704.9686721243746,
+      "nominal_weight_n": 704.5722045090023,
+      "maximum_steady_lateral_position_m": 0.00014524195145780886,
+      "maximum_quaternion_norm_error": 6.927791673660977e-14,
+      "mean_wheel_omega_rad_s": 0.400001635590824,
+      "final_position_m": [
+        1.6808676839541499,
+        -1.2245709684676432e-05,
+        0.25433071539168495
+      ],
+      "checks": {
+        "speed_matches_wheel_envelope": true,
+        "normal_load_balance": true,
+        "vertical_settling": true,
+        "lateral_drift": true,
+        "quaternion_normalization": true
+      },
+      "checks_passed": true,
+      "flight_prediction_validated": false,
+      "lunar_soil_validated": false,
+      "label": "moon",
+      "kind": "refined",
+      "trace_sha256": "9fc47ef081ef266b2cadd2f5b2cc1fde2c866635ef4150906d605d8b150a062f"
+    }
+  ],
+  "refinements": [
+    {
+      "label": "earth",
+      "mean_speed_change_m_s": -1.1573630215769293e-05,
+      "final_position_change_m": 7.041827248485556e-06,
+      "normal_load_change_fraction": 0.0012406707119518715,
+      "checks": {
+        "speed": true,
+        "final_position": true,
+        "normal_load": true
+      },
+      "checks_passed": true
+    },
+    {
+      "label": "moon",
+      "mean_speed_change_m_s": -7.601172696825031e-08,
+      "final_position_change_m": 1.739528543442291e-05,
+      "normal_load_change_fraction": 0.00310601809278115,
+      "checks": {
+        "speed": true,
+        "final_position": true,
+        "normal_load": true
+      },
+      "checks_passed": true
+    }
+  ],
+  "component_targets_met": true,
+  "active_app_robot": false,
+  "flight_prediction_validated": false,
+  "lunar_soil_validated": false,
+  "limits": [
+    "Ideal wheel-speed motors do not establish flight actuator capability, efficiency or electrical power.",
+    "The unmodified upstream model retains approximate mass distribution, suspension, steering and shaft properties.",
+    "The mass and steering differences from dated NASA hardware have not been reconciled.",
+    "These checks test an assembled model on a rigid floor, not experimental wheel-soil or lunar mission agreement.",
+    "No active app dynamics, rover support or lunar calibration is established by this probe."
+  ],
+  "recovery": {
+    "previous_archive": "data/runtime/viper-rigid-probe-v1.zip",
+    "previous_archive_sha256": "a3d6b35d1c3b5204df47c1d4e72bc03ac5fe491d84f48e2b02c5461c0ef69be9",
+    "imported_completed_cases": 3,
+    "repeated_case": "moon-refined",
+    "change": "Only wall-clock allowance from 300 to 900 seconds; native model, numerical settings and criteria unchanged.",
+    "original_timeout": {
+      "state": "timed_out",
+      "wall_limit_s": 300,
+      "last_fully_recorded_simulation_time_s": 14.890500000006707,
+      "command": [
+        "data/runtime/chrono-rover-probe-build/clavius_viper_rigid_probe",
+        "data/raw/robots/chrono/data",
+        "1.62",
+        "0.0005",
+        "moon-refined.csv"
+      ],
+      "command_record_role": "Reconstructed from the retained orchestrator and observed TimeoutExpired; exact native start/exit status was not recorded for the failed case.",
+      "physics_or_thresholds_changed": false
+    },
+    "identity_record_limit": "Original completed cases retain their library-runtime/command/trace identities; the probe executable hash was first retained by this recovery, not retroactively claimed at their launches."
+  },
+  "archive": {
+    "file": "data/runtime/viper-rigid-probe-v2.zip",
+    "sha256": "0e593777438befa7403fdbfef21cc18dfab55f0970bea26adecf0ca406011f61",
+    "bytes": 1049502,
+    "evidence_index_sha256": "d46fb4a22be25311ef1cdd68871d6b437bfb19245508917ca05f725f11826e65"
+  }
+}

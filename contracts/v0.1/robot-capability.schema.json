@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spaceapps.invalid/contracts/v0.1/robot-capability.schema.json",
+  "title": "Robot capability profile",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "robot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "family": {
+      "const": "wheeled_rover"
+    },
+    "body_axes": {
+      "const": "x_forward_y_left_z_up"
+    },
+    "mass_kg": {
+      "type": "number",
+      "minimum": 0.001
+    },
+    "dimensions_m": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+    },
+    "center_of_mass_body_m": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+    },
+    "wheel_count": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "ground_clearance_m": {
+      "type": "number",
+      "minimum": 0
+    },
+    "power": {
+      "type": "object",
+      "properties": {
+        "battery_capacity_wh": {
+          "type": "number",
+          "minimum": 0.001
+        },
+        "initial_soc_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reserve_wh": {
+          "type": "number",
+          "minimum": 0
+        },
+        "charge_efficiency": {
+          "type": "number",
+          "minimum": 1e-06,
+          "maximum": 1
+        },
+        "discharge_efficiency": {
+          "type": "number",
+          "minimum": 1e-06,
+          "maximum": 1
+        },
+        "base_bus_power_w": {
+          "type": "number",
+          "minimum": 0
+        },
+        "science_increment_w": {
+          "type": "number",
+          "minimum": 0
+        },
+        "downlink_increment_w": {
+          "type": "number",
+          "minimum": 0
+        },
+        "heater_increment_w": {
+          "type": "number",
+          "minimum": 0
+        },
+        "solar_rated_power_w": {
+          "type": "number",
+          "minimum": 0
+        },
+        "solar_reference_irradiance_w_m2": {
+          "type": "number",
+          "minimum": 0.001
+        },
+        "array_normal_body_unit": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+        }
+      },
+      "required": [
+        "battery_capacity_wh",
+        "initial_soc_fraction",
+        "reserve_wh",
+        "charge_efficiency",
+        "discharge_efficiency",
+        "base_bus_power_w",
+        "science_increment_w",
+        "downlink_increment_w",
+        "heater_increment_w",
+        "solar_rated_power_w",
+        "solar_reference_irradiance_w_m2",
+        "array_normal_body_unit"
+      ],
+      "additionalProperties": false
+    },
+    "mobility": {
+      "type": "object",
+      "properties": {
+        "response_model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response_model_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response_model_kind": {
+          "enum": [
+            "declared_constant",
+            "lookup_table",
+            "surrogate"
+          ]
+        },
+        "nominal_speed_m_s": {
+          "type": "number",
+          "minimum": 1e-06
+        },
+        "max_supported_slope_deg": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 90
+        },
+        "driving_bus_power_w": {
+          "type": "number",
+          "minimum": 0
+        },
+        "power_basis": {
+          "const": "base_plus_mobility_excludes_payload_radio_heater"
+        },
+        "validity_domain": {
+          "type": "object",
+          "properties": {
+            "slope_min_deg": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "slope_max_deg": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "speed_min_m_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "speed_max_m_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "soil_categories": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "slope_min_deg",
+            "slope_max_deg",
+            "speed_min_m_s",
+            "speed_max_m_s",
+            "soil_categories"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "response_model_id",
+        "response_model_version",
+        "response_model_kind",
+        "nominal_speed_m_s",
+        "max_supported_slope_deg",
+        "driving_bus_power_w",
+        "power_basis",
+        "validity_domain"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/provenance"
+    }
+  },
+  "required": [
+    "schema_version",
+    "robot_id",
+    "name",
+    "family",
+    "body_axes",
+    "mass_kg",
+    "dimensions_m",
+    "center_of_mass_body_m",
+    "wheel_count",
+    "ground_clearance_m",
+    "power",
+    "mobility",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

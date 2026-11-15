@@ -1,0 +1,11 @@
+{
+  "run_id": "c501781f-258f-4e2e-a19d-030d16d80ffc",
+  "filename": "clavius-c501781f-258f-4e2e-a19d-030d16d80ffc.zip",
+  "bytes": 2020419,
+  "sha256": "e0ee7e326e8b44800d88111a38cb17e71b12ddc80a46fff9c9b1dbc19fa7aa23",
+  "shared_url_reload_verified": true,
+  "reproduced": true,
+  "candidate_and_audit_outcomes_compared": true,
+  "metric_tolerance": "relative/absolute 1e-6",
+  "differences": []
+}

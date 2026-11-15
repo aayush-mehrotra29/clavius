@@ -1,0 +1,258 @@
+{
+  "id": "nasa-glenn-published-mobility-reference-v1",
+  "prepared_utc": "2026-11-15T20:12:13.449845+00:00",
+  "role": "validation_only",
+  "paper": {
+    "title": "A study demonstrating that using gravitational offset to prepare extraterrestrial mobility missions is misleading",
+    "ntrs_record": "https://ntrs.nasa.gov/citations/20250001809",
+    "publication_date": "2025-03-31",
+    "downloaded_version": "2025-02-15 preprint",
+    "relevant_pages": [
+      3,
+      4,
+      10,
+      11,
+      12,
+      13,
+      21
+    ]
+  },
+  "author_code": {
+    "repository": "https://github.com/sjtumsd/crm_sim_nasa_exp_scripts",
+    "commit": "54f74dc514b394d3a02e15d7508b1bf27a88d1a6",
+    "license_scope": "Chrono declares BSD-3-Clause; the supplementary scripts repository has no top-level license. Original research scripts are not redistributed by this derivative."
+  },
+  "sources": [
+    {
+      "role": "NASA-hosted paper preprint; 15 February 2025 PDF",
+      "url": "https://ntrs.nasa.gov/api/citations/20250001809/downloads/main-20250215.pdf",
+      "local_file": "data/raw/robots/research/mobility-gravity-2025.pdf",
+      "sha256": "12a95d406c4e371847263a5ab06ae93f178044e1cd05b11e0e7d17356e4f5854",
+      "bytes": 36125917
+    },
+    {
+      "role": "Author experimental plot-point arrays",
+      "url": "https://github.com/sjtumsd/crm_sim_nasa_exp_scripts/blob/54f74dc514b394d3a02e15d7508b1bf27a88d1a6/images/figure4b.py",
+      "local_file": "data/raw/robots/crm_sim_nasa_exp_scripts/images/figure4b.py",
+      "sha256": "9c924e0df50ac6aadb27e9eed2d70520c0e77eee7514468f6dbba4a7b7fdb592",
+      "bytes": 4320
+    },
+    {
+      "role": "Author single-wheel rig definition",
+      "url": "https://github.com/sjtumsd/crm_sim_nasa_exp_scripts/blob/54f74dc514b394d3a02e15d7508b1bf27a88d1a6/demos/single_wheel_vv_mode/demo_FSI_SingleWheelTest_VV_mode.cpp",
+      "local_file": "data/raw/robots/crm_sim_nasa_exp_scripts/demos/single_wheel_vv_mode/demo_FSI_SingleWheelTest_VV_mode.cpp",
+      "sha256": "fb2c3e540d8a721f26f7c127b241e2ba66a4bd7f7c3f9f425e54cb4ad8d8117e",
+      "bytes": 18109
+    },
+    {
+      "role": "Author reproduction requirements",
+      "url": "https://github.com/sjtumsd/crm_sim_nasa_exp_scripts/blob/54f74dc514b394d3a02e15d7508b1bf27a88d1a6/README.md",
+      "local_file": "data/raw/robots/crm_sim_nasa_exp_scripts/README.md",
+      "sha256": "d5fc14006ec9b31bcfaed1a207d870de0dd6f61329ff2472eba36c89bdb42129",
+      "bytes": 3279
+    }
+  ],
+  "rig": {
+    "wheel_outer_radius_m": 0.25,
+    "wheel_width_m": 0.2,
+    "grouser_height_m": 0.025,
+    "grouser_tangential_width_m": 0.005,
+    "grouser_count": 24,
+    "normal_loaded_mass_kg": 17.5,
+    "translation_m_s": 0.2,
+    "slip_definition": "s = 1 - v / (omega * outer_radius), positive driving direction",
+    "support": "Wheel plus vertically free axle each carry half the normal-loaded mass. Horizontal carriage weight is supported by its guide."
+  },
+  "series": [
+    {
+      "id": "trec-grc3-vv",
+      "label": "TREC nominal tests, GRC-3",
+      "source_array": "experimental1",
+      "soil": "GRC-3",
+      "gravity_m_s2": 9.81,
+      "mode": "controlled_translation_and_rotation",
+      "points": [
+        {
+          "source_index": 0,
+          "slip_fraction": -0.002059177840988298,
+          "traction_slope_deg": -1.6592712566932661
+        },
+        {
+          "source_index": 1,
+          "slip_fraction": 0.049194457558859456,
+          "traction_slope_deg": 8.099645658773934
+        },
+        {
+          "source_index": 2,
+          "slip_fraction": 0.09798837008076429,
+          "traction_slope_deg": 13.81841734306245
+        },
+        {
+          "source_index": 3,
+          "slip_fraction": 0.0988365040348528,
+          "traction_slope_deg": 16.932806217856843
+        },
+        {
+          "source_index": 4,
+          "slip_fraction": 0.2002846154750844,
+          "traction_slope_deg": 20.120785162360185
+        },
+        {
+          "source_index": 5,
+          "slip_fraction": 0.30008081466559355,
+          "traction_slope_deg": 19.857759468000914
+        },
+        {
+          "source_index": 6,
+          "slip_fraction": 0.30011979388059923,
+          "traction_slope_deg": 22.298832807729973
+        },
+        {
+          "source_index": 7,
+          "slip_fraction": 0.39990792840593486,
+          "traction_slope_deg": 21.530757456875037
+        },
+        {
+          "source_index": 8,
+          "slip_fraction": 0.4015584965447951,
+          "traction_slope_deg": 24.897587152988372
+        },
+        {
+          "source_index": 9,
+          "slip_fraction": 0.40073186836450275,
+          "traction_slope_deg": 23.129997362182422
+        },
+        {
+          "source_index": 10,
+          "slip_fraction": 0.5013506634027175,
+          "traction_slope_deg": 24.382036630381265
+        },
+        {
+          "source_index": 11,
+          "slip_fraction": 0.6011724006996099,
+          "traction_slope_deg": 25.718334848258273
+        },
+        {
+          "source_index": 12,
+          "slip_fraction": 0.6011092274890834,
+          "traction_slope_deg": 21.762112539042214
+        },
+        {
+          "source_index": 13,
+          "slip_fraction": 0.6003726547365628,
+          "traction_slope_deg": 25.63424391243789
+        },
+        {
+          "source_index": 14,
+          "slip_fraction": 0.7009618793358077,
+          "traction_slope_deg": 25.034434440152616
+        },
+        {
+          "source_index": 15,
+          "slip_fraction": 0.7010371495440944,
+          "traction_slope_deg": 29.748231234112183
+        },
+        {
+          "source_index": 16,
+          "slip_fraction": 0.8016613210257583,
+          "traction_slope_deg": 31.336970273308133
+        },
+        {
+          "source_index": 17,
+          "slip_fraction": 0.8008992101668545,
+          "traction_slope_deg": 33.60977773446753
+        }
+      ],
+      "limits": "Published author plotting coordinates. Replicates, small negative values and full numeric precision retained. Raw telemetry, sample counts, error bars and exact soil preparation for each point are not supplied here."
+    },
+    {
+      "id": "mgru3-grc1-2021",
+      "label": "MGRU3 SLOPE lab tests, 2021",
+      "source_array": "experimental2",
+      "soil": "GRC-1",
+      "gravity_m_s2": 9.81,
+      "mode": "free_translation_fixed_wheel_speed_on_slope",
+      "points": [
+        {
+          "source_index": 0,
+          "slip_fraction": 0.03150461450060402,
+          "terrain_slope_deg": 0.27322413552669644
+        },
+        {
+          "source_index": 1,
+          "slip_fraction": 0.05154396334609679,
+          "terrain_slope_deg": 5.237445584511807
+        },
+        {
+          "source_index": 2,
+          "slip_fraction": 0.13465437029246174,
+          "terrain_slope_deg": 10.026680600615933
+        },
+        {
+          "source_index": 3,
+          "slip_fraction": 0.4341343674026234,
+          "terrain_slope_deg": 14.961499624489019
+        },
+        {
+          "source_index": 4,
+          "slip_fraction": 0.7559749928174078,
+          "terrain_slope_deg": 20.23066622535026
+        },
+        {
+          "source_index": 5,
+          "slip_fraction": 0.8845956494491667,
+          "terrain_slope_deg": 25.09928778925685
+        }
+      ],
+      "limits": "Published author plotting coordinates. Replicates, small negative values and full numeric precision retained. Raw telemetry, sample counts, error bars and exact soil preparation for each point are not supplied here."
+    },
+    {
+      "id": "mgru3-grc1-2022",
+      "label": "MGRU3 SLOPE lab tests, 2022",
+      "source_array": "experimental3",
+      "soil": "GRC-1",
+      "gravity_m_s2": 9.81,
+      "mode": "free_translation_fixed_wheel_speed_on_slope",
+      "points": [
+        {
+          "source_index": 0,
+          "slip_fraction": 0.02511739968312586,
+          "terrain_slope_deg": 0.2738961909578279
+        },
+        {
+          "source_index": 1,
+          "slip_fraction": 0.05075093793736109,
+          "terrain_slope_deg": 5.5742293624378085
+        },
+        {
+          "source_index": 2,
+          "slip_fraction": 0.10431509990944055,
+          "terrain_slope_deg": 10.029872863913809
+        },
+        {
+          "source_index": 3,
+          "slip_fraction": 0.35509796047978043,
+          "terrain_slope_deg": 15.30651608144639
+        },
+        {
+          "source_index": 4,
+          "slip_fraction": 0.7384061197367561,
+          "terrain_slope_deg": 19.97998954953804
+        },
+        {
+          "source_index": 5,
+          "slip_fraction": 0.8382896861333122,
+          "terrain_slope_deg": 25.188335133881836
+        },
+        {
+          "source_index": 6,
+          "slip_fraction": 0.896652323883674,
+          "terrain_slope_deg": 30.148524250280154
+        }
+      ],
+      "limits": "Published author plotting coordinates. Replicates, small negative values and full numeric precision retained. Raw telemetry, sample counts, error bars and exact soil preparation for each point are not supplied here."
+    }
+  ],
+  "lunar_transfer_of_calibration": "Not established. Earth simulant tests do not directly calibrate local lunar regolith, and changing vehicle gravity alone does not model soil gravity.",
+  "robot_scope": "TREC is a single-wheel laboratory rig. MGRU3 is a reduced-mass VIPER prototype, not final flight hardware. No VIPER battery/thermal/actuator certification is supplied."
+}

@@ -1,0 +1,1689 @@
+{
+  "schema_version": "0.2.0",
+  "terrain": {
+    "site_id": "connecting-ridge",
+    "frame": "MOON_ME_DE421",
+    "reference_radius_m": 1737400.0,
+    "vertical_definition": "metres above 1737400 m sphere, checked against regional PGDA90 at five matching coordinates",
+    "assets": [
+      {
+        "id": "PGDA78-Site01",
+        "file": "Site01_final_adj_5mpp_surf.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif",
+        "sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+        "bytes": 40980810,
+        "shape": [
+          3200,
+          3200
+        ],
+        "resolution_m": 5.0,
+        "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "transform": [
+          5.0,
+          0.0,
+          -19000.0,
+          0.0,
+          -5.0,
+          -4000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "pixel_registration": "pixel centers"
+      },
+      {
+        "id": "PGDA78-Site01-height-error",
+        "file": "Site01_final_adj_5mpp_toterr.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_toterr.tif",
+        "sha256": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c",
+        "bytes": 40980810,
+        "shape": [
+          3200,
+          3200
+        ],
+        "resolution_m": 5.0,
+        "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "transform": [
+          5.0,
+          0.0,
+          -19000.0,
+          0.0,
+          -5.0,
+          -4000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "pixel_registration": "pixel centers"
+      },
+      {
+        "id": "PGDA90-80m",
+        "file": "LDEM_80S_80MPP_ADJ.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF",
+        "sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a",
+        "bytes": 189158392,
+        "shape": [
+          7600,
+          7600
+        ],
+        "resolution_m": 80.0,
+        "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+        "transform": [
+          80.0,
+          0.0,
+          -304000.0,
+          0.0,
+          -80.0,
+          304000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "pixel_registration": "pixel centers"
+      },
+      {
+        "file": "Site04_final_adj_5mpp_surf.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_final_adj_5mpp_surf.tif",
+        "sha256": "38ff70dbdf2f066c2cfa94a646c3a59d653ce7f6b4528b15fc1b43ee397ce758",
+        "bytes": 40980806,
+        "id": "PGDA78-Site04",
+        "role": "surface_height",
+        "shape": [
+          3200,
+          3200
+        ],
+        "resolution_m": 5.0,
+        "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "transform": [
+          5.0,
+          0.0,
+          -9000.0,
+          0.0,
+          -5.0,
+          1000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "pixel_registration": "pixel centers",
+        "acquired_utc": "2026-11-15T15:57:39.137445+00:00"
+      },
+      {
+        "file": "Site04_final_adj_5mpp_toterr.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_final_adj_5mpp_toterr.tif",
+        "sha256": "416c4baa3b64def0182bb3379a1a9228482efd8ce32a39309ea8de5d0330fbe6",
+        "bytes": 40980808,
+        "id": "PGDA78-Site04-height-error",
+        "role": "height_rms",
+        "shape": [
+          3200,
+          3200
+        ],
+        "resolution_m": 5.0,
+        "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "transform": [
+          5.0,
+          0.0,
+          -9000.0,
+          0.0,
+          -5.0,
+          1000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "pixel_registration": "pixel centers",
+        "acquired_utc": "2026-11-15T15:57:39.137454+00:00"
+      },
+      {
+        "file": "Site04_ROIs.tgz",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_ROIs.tgz",
+        "sha256": "8e8b788f9fdf6400f23fd36dad02138102bd1a905b4b71a5739a9a4fd8a0e07a",
+        "bytes": 1712,
+        "id": "PGDA78-Site04-rois",
+        "role": "roi_archive",
+        "acquired_utc": "2026-11-15T15:57:39.137455+00:00"
+      },
+      {
+        "file": "Site01_final_adj_5mpp_ldec.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_ldec.tif",
+        "sha256": "16d6ed21020ad48fa71d94e7437492acf5bf04118f52bcd292f57f22ead4cd23",
+        "bytes": 40980744,
+        "id": "PGDA78-Site01-counts",
+        "role": "nominal_lola_return_count",
+        "resolution_m": 5,
+        "width": 3200,
+        "height": 3200,
+        "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "projection": {
+          "proj": "stere",
+          "lat_0": -90,
+          "lat_ts": -90,
+          "lon_0": 0,
+          "x_0": 0,
+          "y_0": 0,
+          "R": 1737400,
+          "units": "m",
+          "no_defs": true
+        },
+        "transform": [
+          5.0,
+          0.0,
+          -19000.0,
+          0.0,
+          -5.0,
+          -4000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "acquired_utc": "2026-11-15T16:24:14.035435+00:00",
+        "units": "LOLA returns per nominal native cell"
+      },
+      {
+        "file": "Site01_final_adj_5mpp_0001_err.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Clones/Site01_final_adj_5mpp_0001_err.tif",
+        "sha256": "242de9e3da624a276864cc4fa7c499e96981c95fd27583565e68e92434faf05b",
+        "bytes": 40987165,
+        "id": "PGDA78-Site01-clone-0001",
+        "role": "terrain_realization_surface",
+        "resolution_m": 5,
+        "width": 3200,
+        "height": 3200,
+        "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "projection": {
+          "proj": "stere",
+          "lat_0": -90,
+          "lat_ts": -90,
+          "lon_0": 0,
+          "x_0": 0,
+          "y_0": 0,
+          "R": 1737400,
+          "units": "m",
+          "no_defs": true
+        },
+        "transform": [
+          5.0,
+          0.0,
+          -19000.0,
+          0.0,
+          -5.0,
+          -4000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "acquired_utc": "2026-11-15T16:24:14.044030+00:00",
+        "units": "metres above 1737400 m sphere",
+        "realization_index": 1,
+        "source_class": "published_statistical_terrain_realization",
+        "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+      },
+      {
+        "file": "Site01_final_adj_5mpp_0002_err.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Clones/Site01_final_adj_5mpp_0002_err.tif",
+        "sha256": "97b2c05633e308c72eddfc5a337089836d80b5edb7469321976973f7eeb7dcad",
+        "bytes": 40987165,
+        "id": "PGDA78-Site01-clone-0002",
+        "role": "terrain_realization_surface",
+        "resolution_m": 5,
+        "width": 3200,
+        "height": 3200,
+        "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "projection": {
+          "proj": "stere",
+          "lat_0": -90,
+          "lat_ts": -90,
+          "lon_0": 0,
+          "x_0": 0,
+          "y_0": 0,
+          "R": 1737400,
+          "units": "m",
+          "no_defs": true
+        },
+        "transform": [
+          5.0,
+          0.0,
+          -19000.0,
+          0.0,
+          -5.0,
+          -4000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "acquired_utc": "2026-11-15T16:24:14.050913+00:00",
+        "units": "metres above 1737400 m sphere",
+        "realization_index": 2,
+        "source_class": "published_statistical_terrain_realization",
+        "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+      },
+      {
+        "file": "Site01_final_adj_5mpp_0003_err.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Clones/Site01_final_adj_5mpp_0003_err.tif",
+        "sha256": "2e79f90fcc6b28b06cc5524ac80601ace4ed2ea3b875e18deede92903b64f06c",
+        "bytes": 40987165,
+        "id": "PGDA78-Site01-clone-0003",
+        "role": "terrain_realization_surface",
+        "resolution_m": 5,
+        "width": 3200,
+        "height": 3200,
+        "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "projection": {
+          "proj": "stere",
+          "lat_0": -90,
+          "lat_ts": -90,
+          "lon_0": 0,
+          "x_0": 0,
+          "y_0": 0,
+          "R": 1737400,
+          "units": "m",
+          "no_defs": true
+        },
+        "transform": [
+          5.0,
+          0.0,
+          -19000.0,
+          0.0,
+          -5.0,
+          -4000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "acquired_utc": "2026-11-15T16:24:14.058046+00:00",
+        "units": "metres above 1737400 m sphere",
+        "realization_index": 3,
+        "source_class": "published_statistical_terrain_realization",
+        "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+      },
+      {
+        "file": "Site04_final_adj_5mpp_ldec.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_final_adj_5mpp_ldec.tif",
+        "sha256": "fcc8c2219ae2368d5b2a1f6aec05fcf96cf725f3035ac8d80efc312a4ff29227",
+        "bytes": 40980740,
+        "id": "PGDA78-Site04-counts",
+        "role": "nominal_lola_return_count",
+        "resolution_m": 5,
+        "width": 3200,
+        "height": 3200,
+        "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "projection": {
+          "proj": "stere",
+          "lat_0": -90,
+          "lat_ts": -90,
+          "lon_0": 0,
+          "x_0": 0,
+          "y_0": 0,
+          "R": 1737400,
+          "units": "m",
+          "no_defs": true
+        },
+        "transform": [
+          5.0,
+          0.0,
+          -9000.0,
+          0.0,
+          -5.0,
+          1000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "acquired_utc": "2026-11-15T16:24:14.065158+00:00",
+        "units": "LOLA returns per nominal native cell"
+      },
+      {
+        "file": "Site04_final_adj_5mpp_0001_err.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Clones/Site04_final_adj_5mpp_0001_err.tif",
+        "sha256": "8d6efbddbfde8aa98a4a2454b6f79636ce307138360f3b38b6243cb76a585963",
+        "bytes": 40987161,
+        "id": "PGDA78-Site04-clone-0001",
+        "role": "terrain_realization_surface",
+        "resolution_m": 5,
+        "width": 3200,
+        "height": 3200,
+        "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "projection": {
+          "proj": "stere",
+          "lat_0": -90,
+          "lat_ts": -90,
+          "lon_0": 0,
+          "x_0": 0,
+          "y_0": 0,
+          "R": 1737400,
+          "units": "m",
+          "no_defs": true
+        },
+        "transform": [
+          5.0,
+          0.0,
+          -9000.0,
+          0.0,
+          -5.0,
+          1000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "acquired_utc": "2026-11-15T16:24:14.072671+00:00",
+        "units": "metres above 1737400 m sphere",
+        "realization_index": 1,
+        "source_class": "published_statistical_terrain_realization",
+        "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+      },
+      {
+        "file": "Site04_final_adj_5mpp_0002_err.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Clones/Site04_final_adj_5mpp_0002_err.tif",
+        "sha256": "a3b58f9000a75c7ed0156ee8222a8bcd66112748fbe8d89fc2de7e248d41bf0f",
+        "bytes": 40987159,
+        "id": "PGDA78-Site04-clone-0002",
+        "role": "terrain_realization_surface",
+        "resolution_m": 5,
+        "width": 3200,
+        "height": 3200,
+        "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "projection": {
+          "proj": "stere",
+          "lat_0": -90,
+          "lat_ts": -90,
+          "lon_0": 0,
+          "x_0": 0,
+          "y_0": 0,
+          "R": 1737400,
+          "units": "m",
+          "no_defs": true
+        },
+        "transform": [
+          5.0,
+          0.0,
+          -9000.0,
+          0.0,
+          -5.0,
+          1000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "acquired_utc": "2026-11-15T16:24:14.079476+00:00",
+        "units": "metres above 1737400 m sphere",
+        "realization_index": 2,
+        "source_class": "published_statistical_terrain_realization",
+        "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+      },
+      {
+        "file": "Site04_final_adj_5mpp_0003_err.tif",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Clones/Site04_final_adj_5mpp_0003_err.tif",
+        "sha256": "07dad75a48f1f4acf9f9084408bcf0bb3a80a0a5368613da425ad462baad8c89",
+        "bytes": 40987161,
+        "id": "PGDA78-Site04-clone-0003",
+        "role": "terrain_realization_surface",
+        "resolution_m": 5,
+        "width": 3200,
+        "height": 3200,
+        "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+        "projection": {
+          "proj": "stere",
+          "lat_0": -90,
+          "lat_ts": -90,
+          "lon_0": 0,
+          "x_0": 0,
+          "y_0": 0,
+          "R": 1737400,
+          "units": "m",
+          "no_defs": true
+        },
+        "transform": [
+          5.0,
+          0.0,
+          -9000.0,
+          0.0,
+          -5.0,
+          1000.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nodata": "NaN",
+        "acquired_utc": "2026-11-15T16:24:14.086251+00:00",
+        "units": "metres above 1737400 m sphere",
+        "realization_index": 3,
+        "source_class": "published_statistical_terrain_realization",
+        "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+      }
+    ],
+    "vertical_checks": [
+      {
+        "lat_deg": -89.44,
+        "lon_deg": 222.8,
+        "local_elevation_m": 1958.1793212890625,
+        "regional_elevation_m": 1957.42919921875,
+        "difference_m": 0.7501220703125
+      },
+      {
+        "lat_deg": -89.45,
+        "lon_deg": 222.8,
+        "local_elevation_m": 1956.777099609375,
+        "regional_elevation_m": 1955.023681640625,
+        "difference_m": 1.75341796875
+      },
+      {
+        "lat_deg": -89.44,
+        "lon_deg": 223.2,
+        "local_elevation_m": 1952.8533935546875,
+        "regional_elevation_m": 1953.1680908203125,
+        "difference_m": -0.314697265625
+      },
+      {
+        "lat_deg": -89.43,
+        "lon_deg": 222.5,
+        "local_elevation_m": 1942.9156494140625,
+        "regional_elevation_m": 1942.82763671875,
+        "difference_m": 0.0880126953125
+      },
+      {
+        "lat_deg": -89.46,
+        "lon_deg": 222.7,
+        "local_elevation_m": 1948.8848876953125,
+        "regional_elevation_m": 1947.965576171875,
+        "difference_m": 0.9193115234375
+      }
+    ],
+    "limits": [
+      "5 m posting does not resolve wheel-scale hazards",
+      "height RMS is not a complete terrain error model",
+      "horizon sampling requires numerical convergence/observed-shadow validation before mission reliance"
+    ],
+    "documentation": {
+      "file": "LOLA_5mpp_README.txt",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/README",
+      "sha256": "e985a2337c9de1cd665b0ddad8b7f1fac88d65c96d1e47d1b975a91c8e53e7bd",
+      "bytes": 1829,
+      "role": "Native frame, pixel registration and product definitions; consulted during site ingestion."
+    },
+    "realization_convention": {
+      "method": "Use the published cloned surface directly. The _err.tif files contain the original DEM plus a spatially correlated error realization (Figure 11 panel G), not just panel F error offsets.",
+      "reference": "Barker et al. 2021, DOI 10.1016/j.pss.2020.105119; Figure 11 and Section 4",
+      "reference_url": "https://ntrs.nasa.gov/api/citations/20205009660/downloads/Mike%20Barker_%20Paper_%20Improved%20Lola.pdf",
+      "selection": "Published 0001, 0002 and 0003 per site; not selected on any simulation outcome.",
+      "loaded_indices": [
+        1,
+        2,
+        3
+      ],
+      "published_ensemble_size": 100,
+      "limits": [
+        "Three predeclared surfaces per site are a bounded sensitivity subset, not the complete 100-clone ensemble or a calibrated failure probability.",
+        "All surfaces share the nominal analysis origin and frame. Regional PGDA90 terrain remains nominal.",
+        "LOLA count masks describe nominal-cell return support; a return in a 5 m cell does not establish wheel-scale hazards or exact height throughout that cell."
+      ]
+    },
+    "support_derivatives": {
+      "connecting-ridge": {
+        "file": "data/lola-support/connecting-ridge.png",
+        "url": "/data/lola-support/connecting-ridge.png",
+        "sha256": "7dd9941bd2ba8bb8d4368621c713ff152ba8b467b363b8a4df26e32ebb654f49",
+        "bytes": 1010931,
+        "width": 3200,
+        "height": 3200,
+        "source_asset_id": "PGDA78-Site01-counts",
+        "source_sha256": "16d6ed21020ad48fa71d94e7437492acf5bf04118f52bcd292f57f22ead4cd23",
+        "colors_srgb8": {
+          "returns": [
+            173,
+            203,
+            151
+          ],
+          "interpolated": [
+            148,
+            154,
+            159
+          ],
+          "unknown": [
+            193,
+            147,
+            88
+          ]
+        },
+        "script": "scripts/derive_lola_support.py",
+        "encoding": "RGB8 PNG, filter 0, zlib level 9; north-to-south native row order",
+        "registration": "One image pixel per native nominal LDEC cell. Map via source south-polar stereographic coordinates; nearest filtering, no mipmaps.",
+        "limit": "A nominal-cell return-support display, not a terrain safety or wheel-scale coverage map."
+      },
+      "shackleton-rim": {
+        "file": "data/lola-support/shackleton-rim.png",
+        "url": "/data/lola-support/shackleton-rim.png",
+        "sha256": "b282304cebec1c9566976ec5a96897a3630cffbe3e24aab0ce3b8533220e040a",
+        "bytes": 987681,
+        "width": 3200,
+        "height": 3200,
+        "source_asset_id": "PGDA78-Site04-counts",
+        "source_sha256": "fcc8c2219ae2368d5b2a1f6aec05fcf96cf725f3035ac8d80efc312a4ff29227",
+        "colors_srgb8": {
+          "returns": [
+            173,
+            203,
+            151
+          ],
+          "interpolated": [
+            148,
+            154,
+            159
+          ],
+          "unknown": [
+            193,
+            147,
+            88
+          ]
+        },
+        "script": "scripts/derive_lola_support.py",
+        "encoding": "RGB8 PNG, filter 0, zlib level 9; north-to-south native row order",
+        "registration": "One image pixel per native nominal LDEC cell. Map via source south-polar stereographic coordinates; nearest filtering, no mipmaps.",
+        "limit": "A nominal-cell return-support display, not a terrain safety or wheel-scale coverage map."
+      }
+    }
+  },
+  "kernels": {
+    "frame": "MOON_ME_DE421",
+    "ephemeris": "DE421",
+    "assets": [
+      {
+        "file": "de421.bsp",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de421.bsp",
+        "sha256": "08b20db2ae22488650641c5a9033e5bfda4b1c4b440cfeaf20f621cfa18ecdb3",
+        "bytes": 16790528
+      },
+      {
+        "file": "moon_pa_de421_1900-2050.bpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc",
+        "sha256": "656f90616403d75a75f0cd6c8830fc5b44f8cb4facb5ccb8915e752b397520cf",
+        "bytes": 1770496
+      },
+      {
+        "file": "moon_080317.tf",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf",
+        "sha256": "78732477b96f9863e7b0d65bcee3c22b8707ca5ed0db56d1173319cb2e8c7993",
+        "bytes": 21437
+      },
+      {
+        "file": "naif0012.tls",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls",
+        "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+        "bytes": 5257
+      },
+      {
+        "file": "pck00011.tpc",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc",
+        "sha256": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1",
+        "bytes": 131226
+      }
+    ]
+  },
+  "limits": [
+    "Declared rover response and rigid friction are not calibrated lunar mobility.",
+    "5 m posting does not establish wheel-scale clearance.",
+    "Thermal screening is optional: declared uniform battery/enclosure properties and a constant assumed ground boundary, not calibrated hardware or an instantaneous lunar-temperature forecast.",
+    "Numerical horizon convergence and observed-shadow validation remain pending."
+  ],
+  "derivatives": {
+    "physics_input_grid": {
+      "source": "PGDA78-Site01 surface height, transformed to local ENU metres",
+      "shape": [
+        81,
+        81
+      ],
+      "half_extent_m": "max(20, abs(commanded speed) \u00d7 duration + 5)",
+      "interpolation": "bilinear; finite source coverage required",
+      "mesh_spacing_m": "2 \u00d7 half_extent / 80; 0.5 m on a 40 m patch",
+      "native_measured_posting_m": 5,
+      "gazebo_mesh": "Collada 1.4.1; metre units; Z_UP; 12800 upward-facing triangles",
+      "identity": "SHA-256 of canonical packet and conditioned terrain; each packet retains the source manifest",
+      "limits": "Interpolation adds no measured detail. Analytical flat-drive/free-fall fixtures are explicitly synthetic and carry no NASA source manifest.",
+      "normals": "Normalized (-dh/dEast, -dh/dNorth, 1) from finite differences on the conditioned grid, explicitly indexed per vertex in Collada for DART; not added measured detail"
+    }
+  },
+  "thermal_model": {
+    "id": "lumped-vacuum-battery-v0.1",
+    "enabled_by_default": false,
+    "source_class": "declared_engineering_scenario",
+    "conceptual_reference": "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/",
+    "active_temperature_dataset": "Diviner PCP historical context (two southern-summer local-time bins), used only when explicitly selected as a constant boundary scenario.",
+    "forcing": "Pinned SPICE solar direction/distance and terrain visibility; no convection.",
+    "properties": "Explicit mission inputs retained with each run; defaults are hypothetical.",
+    "limits": "One uniform node, constant ground boundary (declared or copied from historical Diviner context), fixed electrical capacity/voltage, threshold charging inhibition; no hardware calibration or instantaneous lunar temperature forecast."
+  },
+  "diviner": {
+    "id": "LRO-DIVINER-PCP-SUMMER-LTIM01-LTIM49-240",
+    "title": "LRO Diviner polar cumulative bolometric brightness temperature composites",
+    "source_page": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm",
+    "source_directory": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/",
+    "citation": {
+      "authors": "Williams, J-P et al.",
+      "title": "Seasonal Polar Temperatures on the Moon",
+      "year": 2019,
+      "doi": "10.1029/2019JE006028"
+    },
+    "acquired_utc": "2026-11-15T15:09:37.456154+00:00",
+    "source_class": "historical_observation_composite",
+    "native_posting_m": 240,
+    "cell_edge_guard_m": 2,
+    "observation_interval_utc": [
+      "2009-07-05T16:50:26.195Z",
+      "2019-02-17T00:00:00.000Z"
+    ],
+    "season": "Southern summer: subsolar latitude < 0\u00b0",
+    "quantity": "Average bolometric brightness temperature from compiled nadir observations",
+    "units": "K",
+    "coordinates": {
+      "latitude": "planetocentric degrees",
+      "longitude": "positive east degrees",
+      "projection": "south polar stereographic; x/y normalized by lunar mean radius 1737400 m",
+      "label_note": "PDS4 labels attach deg to normalized x/y despite the normalized-coordinate description. Clavius uses explicit center latitude/longitude and checks x/y \u00d7 1737400 against an independent stereographic conversion.",
+      "registration_limit": "No external image-to-LOLA registration or absolute positional accuracy validation; 240 m posting is not guaranteed accuracy."
+    },
+    "limits": [
+      "Historical summer/local-time composites, not instantaneous temperatures for a requested mission epoch.",
+      "Bolometric brightness is not in-situ soil or robot battery temperature.",
+      "Only two local-time bins are loaded; neither a complete diurnal curve nor minimum/maximum temperatures.",
+      "Missing observations remain gaps; no temporal interpolation or distant nearest-neighbor filling.",
+      "Per-bin measurement counts and temperature error bars are not supplied in these tables.",
+      "Cell lookups conservatively reject a 2 m border near the nominal 240 m cell edge.",
+      "Copying a value into the thermal model declares a constant boundary for the entire mission; it does not validate that boundary in time or space."
+    ],
+    "selection": {
+      "latitude_deg": -89.44,
+      "longitude_deg": 222.8,
+      "half_extent_m": 2500,
+      "coordinate_system": "south polar stereographic metres",
+      "maximum_projection_residual_m": 0.1
+    },
+    "products": [
+      {
+        "id": "pcp_avg_tbol_pols_sum_ltim01_240",
+        "name": "Summer \u00b7 00:00\u201300:15 local time",
+        "local_time_hours": [
+          0,
+          0.25
+        ],
+        "logical_identifier": "urn:nasa:pds:lro_diviner_derived1:data_derived_pcp:pcp_avg_tbol_pols_sum_ltim01_240",
+        "product_version": "1.0",
+        "table_file": "pcp_avg_tbol_pols_sum_ltim01_240.tab",
+        "xml_file": "pcp_avg_tbol_pols_sum_ltim01_240.xml",
+        "label_file": "pcp_avg_tbol_pols_sum_ltim01_240.lbl"
+      },
+      {
+        "id": "pcp_avg_tbol_pols_sum_ltim49_240",
+        "name": "Summer \u00b7 12:00\u201312:15 local time",
+        "local_time_hours": [
+          12,
+          12.25
+        ],
+        "logical_identifier": "urn:nasa:pds:lro_diviner_derived1:data_derived_pcp:pcp_avg_tbol_pols_sum_ltim49_240",
+        "product_version": "1.0",
+        "table_file": "pcp_avg_tbol_pols_sum_ltim49_240.tab",
+        "xml_file": "pcp_avg_tbol_pols_sum_ltim49_240.xml",
+        "label_file": "pcp_avg_tbol_pols_sum_ltim49_240.lbl"
+      }
+    ],
+    "assets": [
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim01_240.tab",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim01_240.tab",
+        "sha256": "414354cb2334b62161e895fe0f36369fdee77af13b0c5f333b86ddb05a0f618b",
+        "bytes": 212653759,
+        "role": "source_table"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim01_240.xml",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim01_240.xml",
+        "sha256": "21d2ffad65c22e05c6878337d77b5217b3d9ce9431098a71bda8afdeef50c23a",
+        "bytes": 12210,
+        "role": "pds4_label"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim01_240.lbl",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim01_240.lbl",
+        "sha256": "17d9d1a8bac3963543aa59446d818253caa912b4dcf4edb4d9f45f51f1363538",
+        "bytes": 3637,
+        "role": "pds3_label"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim49_240.tab",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim49_240.tab",
+        "sha256": "35348174fb3d973fe3d43fa7777cb4a10055361c6313675f35b181079bad5ca3",
+        "bytes": 197367449,
+        "role": "source_table"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim49_240.xml",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim49_240.xml",
+        "sha256": "73e2a55db6743b5bbb5116fae9c51aa77a07743042b0284ea2bf8804fbbfd7b1",
+        "bytes": 12211,
+        "role": "pds4_label"
+      },
+      {
+        "file": "pcp_avg_tbol_pols_sum_ltim49_240.lbl",
+        "url": "https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_pcp/diurnal/ltim/pols/pcp_avg_tbol_pols_sum_ltim49_240.lbl",
+        "sha256": "4523de3cc856cd1943d4d9e8f4e2f69f223c13be39a9d87453c7a7492227a718",
+        "bytes": 3639,
+        "role": "pds3_label"
+      }
+    ],
+    "derivative": {
+      "file": "data/diviner/connecting-ridge.json",
+      "sha256": "9c4c782f3aa9636a87555b16618c915766a54b931ee88b8af998795fe20ffb4b",
+      "method": "Preserve covered native records inside a 5 km stereographic square around Connecting Ridge, retaining original one-based table row IDs; no raster interpolation.",
+      "script": "scripts/prepare_diviner_context.py",
+      "bytes": 91221,
+      "products": [
+        {
+          "id": "pcp_avg_tbol_pols_sum_ltim01_240",
+          "samples": 437,
+          "source_records": 3604300,
+          "projection_check_maximum_residual_m": 0.015491
+        },
+        {
+          "id": "pcp_avg_tbol_pols_sum_ltim49_240",
+          "samples": 149,
+          "source_records": 3345210,
+          "projection_check_maximum_residual_m": 0.015491
+        }
+      ]
+    },
+    "additional_derivatives": {
+      "shackleton-rim": {
+        "selection": {
+          "latitude_deg": -89.78487391500357,
+          "longitude_deg": 204.04052123431973,
+          "half_extent_m": 2500,
+          "coordinate_system": "south polar stereographic metres",
+          "maximum_projection_residual_m": 0.1
+        },
+        "derivative": {
+          "file": "data/diviner/shackleton-rim.json",
+          "sha256": "c8595cd744864186c014ac92635236e0ab9349950c78c035c16b201990859eb9",
+          "method": "Preserve covered native records inside a 5 km stereographic square around Shackleton rim, retaining original one-based table row IDs; no raster interpolation.",
+          "script": "scripts/prepare_diviner_context.py",
+          "bytes": 109382,
+          "products": [
+            {
+              "id": "pcp_avg_tbol_pols_sum_ltim01_240",
+              "samples": 386,
+              "source_records": 3604300,
+              "projection_check_maximum_residual_m": 0.015491
+            },
+            {
+              "id": "pcp_avg_tbol_pols_sum_ltim49_240",
+              "samples": 327,
+              "source_records": 3345210,
+              "projection_check_maximum_residual_m": 0.015491
+            }
+          ]
+        }
+      }
+    }
+  },
+  "sites": [
+    {
+      "id": "connecting-ridge",
+      "name": "Connecting Ridge",
+      "latitude_deg": -89.44,
+      "longitude_deg": 222.8,
+      "local_asset_id": "PGDA78-Site01",
+      "error_asset_id": "PGDA78-Site01-height-error",
+      "regional_asset_id": "PGDA90-80m",
+      "manifest_file": "connecting-ridge-manifest.json",
+      "source_id": "PGDA78-Site01",
+      "origin_selection": {
+        "method": "Existing curated Connecting Ridge reference point; approximate navigation origin, not a surveyed landing location."
+      },
+      "count_asset_id": "PGDA78-Site01-counts",
+      "terrain_realizations": [
+        {
+          "id": "pgda78-0001",
+          "asset_id": "PGDA78-Site01-clone-0001",
+          "label": "NASA uncertainty clone 001"
+        },
+        {
+          "id": "pgda78-0002",
+          "asset_id": "PGDA78-Site01-clone-0002",
+          "label": "NASA uncertainty clone 002"
+        },
+        {
+          "id": "pgda78-0003",
+          "asset_id": "PGDA78-Site01-clone-0003",
+          "label": "NASA uncertainty clone 003"
+        }
+      ]
+    },
+    {
+      "id": "shackleton-rim",
+      "name": "Shackleton rim",
+      "latitude_deg": -89.78487391500357,
+      "longitude_deg": 204.04052123431973,
+      "local_asset_id": "PGDA78-Site04",
+      "error_asset_id": "PGDA78-Site04-height-error",
+      "regional_asset_id": "PGDA90-80m",
+      "roi_asset_id": "PGDA78-Site04-rois",
+      "manifest_file": "shackleton-rim-manifest.json",
+      "source_id": "PGDA78-Site04",
+      "origin_selection": {
+        "method": "Published Site04_ROIs.dbf record 4 X/Y attributes, converted from source south polar stereographic metres.",
+        "source_archive": "Site04_ROIs.tgz",
+        "source_archive_sha256": "8e8b788f9fdf6400f23fd36dad02138102bd1a905b4b71a5739a9a4fd8a0e07a",
+        "record": 4,
+        "polar_x_m": -2657.5,
+        "polar_y_m": -5957.5,
+        "limit": "A curated analysis origin inside the published ROI, not proof of landing or rover safety."
+      },
+      "count_asset_id": "PGDA78-Site04-counts",
+      "terrain_realizations": [
+        {
+          "id": "pgda78-0001",
+          "asset_id": "PGDA78-Site04-clone-0001",
+          "label": "NASA uncertainty clone 001"
+        },
+        {
+          "id": "pgda78-0002",
+          "asset_id": "PGDA78-Site04-clone-0002",
+          "label": "NASA uncertainty clone 002"
+        },
+        {
+          "id": "pgda78-0003",
+          "asset_id": "PGDA78-Site04-clone-0003",
+          "label": "NASA uncertainty clone 003"
+        }
+      ]
+    }
+  ],
+  "observed_shadow_validation": {
+    "source_page": "https://pgda.gsfc.nasa.gov/products/90",
+    "citation_doi": "10.3847/PSJ/acf3e1",
+    "purpose": "Validation only: two regional scene dates, one overlapping epoch at the curated 5 m sites; not active rover-site imagery.",
+    "frame": "MOON_ME_DE421",
+    "protocol_file": "docs/validation/observed-shadow-protocol.json",
+    "protocol_sha256": "33aedda6e822758df6fd6f16a3f756769f6f5001a42bf8ba45fefeee23c85f35",
+    "catalogue_archives": [
+      {
+        "file": "docs/validation/lroc-metadata/M1188426614-ode.json",
+        "sha256": "d78c7d76460365f5bdf1247f284702f39e6d652c1e1e6f6236f9dd2205fc70d2",
+        "bytes": 31312,
+        "query_url": "https://oderest.rsl.wustl.edu/live2?query=product&odemetadb=moon&results=cpmfl&output=JSON&pdsid=%2A1188426614%2A",
+        "role": "Archived catalog query for geographic coverage selection only; exact LabelFileName matching required."
+      },
+      {
+        "file": "docs/validation/lroc-metadata/M1311409938-ode.json",
+        "sha256": "b20f7ba8caad73f7fd6f499b211b9b9abe966c798e3f742f776a8de9eb18d5e4",
+        "bytes": 31448,
+        "query_url": "https://oderest.rsl.wustl.edu/live2?query=product&odemetadb=moon&results=cpmfl&output=JSON&pdsid=%2A1311409938%2A",
+        "role": "Archived catalog query for geographic coverage selection only; exact LabelFileName matching required."
+      },
+      {
+        "file": "docs/validation/lroc-metadata/M1312308500-ode.json",
+        "sha256": "fbe039f7a39599af3c1bf4d289a7378ca1365465612a513e7d48c23b557c9eba",
+        "bytes": 31432,
+        "query_url": "https://oderest.rsl.wustl.edu/live2?query=product&odemetadb=moon&results=cpmfl&output=JSON&pdsid=%2A1312308500%2A",
+        "role": "Archived catalog query for geographic coverage selection only; exact LabelFileName matching required."
+      },
+      {
+        "file": "docs/validation/lroc-metadata/M139356343-ode.json",
+        "sha256": "2bbbc4ce7b5650ba749099c7d3f9aa7ba6168e87eb16327d5df5d7068a319b03",
+        "bytes": 30991,
+        "query_url": "https://oderest.rsl.wustl.edu/live2?query=product&odemetadb=moon&results=cpmfl&output=JSON&pdsid=%2A139356343%2A",
+        "role": "Archived catalog query for geographic coverage selection only; exact LabelFileName matching required."
+      },
+      {
+        "file": "docs/validation/lroc-metadata/M139729686-ode.json",
+        "sha256": "35e60c2194893a2e8302a24fb4c20ee855a0175061e4a6f7cdcdf1a14fb24931",
+        "bytes": 62569,
+        "query_url": "https://oderest.rsl.wustl.edu/live2?query=product&odemetadb=moon&results=cpmfl&output=JSON&pdsid=%2A139729686%2A",
+        "role": "Archived catalog query for geographic coverage selection only; exact LabelFileName matching required."
+      },
+      {
+        "file": "docs/validation/lroc-metadata/M151364517-ode.json",
+        "sha256": "15f15763ba19f7a7cb574596d020ecfcfbed0f9f4c4984bd9a451d5476097b1d",
+        "bytes": 31103,
+        "query_url": "https://oderest.rsl.wustl.edu/live2?query=product&odemetadb=moon&results=cpmfl&output=JSON&pdsid=%2A151364517%2A",
+        "role": "Archived catalog query for geographic coverage selection only; exact LabelFileName matching required."
+      },
+      {
+        "file": "docs/validation/lroc-metadata/M154940551-ode.json",
+        "sha256": "75cd426d2d90f42dc8d410c007321f955c1d4c2634046ea7a86950452dfb4924",
+        "bytes": 30587,
+        "query_url": "https://oderest.rsl.wustl.edu/live2?query=product&odemetadb=moon&results=cpmfl&output=JSON&pdsid=%2A154940551%2A",
+        "role": "Archived catalog query for geographic coverage selection only; exact LabelFileName matching required."
+      },
+      {
+        "file": "docs/validation/lroc-metadata/M155368056-ode.json",
+        "sha256": "1ad5b559fa9755d4b9be5d56b8f70343b795c01592f01517f1f96fc83ddcebd2",
+        "bytes": 31041,
+        "query_url": "https://oderest.rsl.wustl.edu/live2?query=product&odemetadb=moon&results=cpmfl&output=JSON&pdsid=%2A155368056%2A",
+        "role": "Archived catalog query for geographic coverage selection only; exact LabelFileName matching required."
+      },
+      {
+        "file": "docs/validation/lroc-metadata/M184288222-ode.json",
+        "sha256": "87657d3b51b7b0f96409b15cc3d54688104bff6f95f739cabfb44af1e530160e",
+        "bytes": 31101,
+        "query_url": "https://oderest.rsl.wustl.edu/live2?query=product&odemetadb=moon&results=cpmfl&output=JSON&pdsid=%2A184288222%2A",
+        "role": "Archived catalog query for geographic coverage selection only; exact LabelFileName matching required."
+      }
+    ],
+    "coverage_preflight_file": "docs/validation/observed-shadow-coverage-selection.json",
+    "coverage_preflight_sha256": "97ade20d1599a64717ef2a515625f36d70426a7662caafec9eb5727f4f88bf25",
+    "scenes": [
+      {
+        "id": "M1188426614",
+        "cameras": {
+          "LE": {
+            "image_file": "M1188426614LE_20MPP.TIF",
+            "label_file": "M1188426614LE.xml"
+          },
+          "RE": {
+            "image_file": "M1188426614RE_20MPP.TIF",
+            "label_file": "M1188426614RE.xml"
+          }
+        },
+        "model_file": "M1188426614_20MPP_MODEL.TIF",
+        "selection": "initial_archive_order_pair"
+      },
+      {
+        "id": "M1311409938",
+        "cameras": {
+          "LE": {
+            "image_file": "M1311409938LE_20MPP.TIF",
+            "label_file": "M1311409938LE.xml"
+          },
+          "RE": {
+            "image_file": "M1311409938RE_20MPP.TIF",
+            "label_file": "M1311409938RE.xml"
+          }
+        },
+        "model_file": "M1311409938_20MPP_MODEL.TIF",
+        "selection": "initial_archive_order_pair"
+      },
+      {
+        "id": "M139729686",
+        "cameras": {
+          "LE": {
+            "image_file": "M139729686LE_20MPP.TIF",
+            "label_file": "M139729686LE.xml"
+          },
+          "RE": {
+            "image_file": "M139729686RE_20MPP.TIF",
+            "label_file": "M139729686RE.xml"
+          }
+        },
+        "model_file": "M139729686_20MPP_MODEL.TIF",
+        "selection": "first_additional_scene_with_complete_center_ray_coverage"
+      }
+    ],
+    "assets": [
+      {
+        "file": "M1188426614_20MPP_MODEL.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/M1188426614_20MPP_MODEL.TIF",
+        "bytes": 30978768,
+        "last_modified": "Wed, 07 Jun 2023 20:43:02 GMT",
+        "content_type": "image/tiff",
+        "sha256": "c0548d36a0e715035fa86a13d6138c132c3d2994a76c90361ac5b9d2c3b3b6e6",
+        "source_role": "published_rendering_w_m2_not_observation",
+        "native_metadata": {
+          "width": 5000,
+          "height": 5000,
+          "transform": [
+            20.0,
+            0.0,
+            -1000.0,
+            0.0,
+            -20.0,
+            175000.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "numeric_crs": {
+            "proj": "stere",
+            "lat_0": -90,
+            "lat_ts": -90,
+            "lon_0": 0,
+            "x_0": 0,
+            "y_0": 0,
+            "R": 1737400,
+            "units": "m",
+            "no_defs": true
+          },
+          "nodata": "nan",
+          "tags": {
+            "NC_GLOBAL#Conventions": "CF-1.7",
+            "NC_GLOBAL#GMT_version": "6.5.0_2402709_2023.01.09 [64-bit]",
+            "NC_GLOBAL#history": "gmt xyz2grd -R-1.00000/99.00000/75.00000/175.00000 -ZTLa -I.02 -GM1188426614_20mpp_lamb_incintB.grd -r",
+            "NC_GLOBAL#node_offset": "1",
+            "x#actual_range": "{-1,99}",
+            "x#axis": "X",
+            "x#long_name": "x",
+            "y#actual_range": "{75,175}",
+            "y#axis": "Y",
+            "y#long_name": "y",
+            "z#actual_range": "{0,30.66299057006836}",
+            "z#long_name": "z",
+            "z#_FillValue": "nan",
+            "AREA_OR_POINT": "Area"
+          },
+          "bounds_m": [
+            -1000.0,
+            75000.0,
+            99000.0,
+            175000.0
+          ]
+        }
+      },
+      {
+        "file": "M1188426614LE_20MPP.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/M1188426614LE_20MPP.TIF",
+        "bytes": 1411548,
+        "last_modified": "Sat, 03 Jun 2023 14:24:40 GMT",
+        "content_type": "image/tiff",
+        "sha256": "143055eae9a8c6c1d420260207c93415fb94217d5a985c3280b86119de588eb8",
+        "source_role": "observed_nac_if",
+        "native_metadata": {
+          "width": 856,
+          "height": 4380,
+          "transform": [
+            20.0,
+            0.0,
+            40240.85821175575,
+            0.0,
+            -20.0,
+            169215.13333153725,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "numeric_crs": {
+            "proj": "stere",
+            "lat_0": -90,
+            "lat_ts": -90,
+            "lon_0": 0,
+            "x_0": 0,
+            "y_0": 0,
+            "R": 1737400,
+            "units": "m",
+            "no_defs": true
+          },
+          "nodata": "-3.402820018375656e+38",
+          "tags": {
+            "NC_GLOBAL#Conventions": "CF-1.7",
+            "NC_GLOBAL#GMT_version": "6.5.0_2402709_2023.01.09 [64-bit]",
+            "NC_GLOBAL#history": "gmt xyz2grd -bi3 -RM1188426614LE.cal_5mpp.tif -I20= -GM1188426614LE.cal_20mppC.grd",
+            "NC_GLOBAL#node_offset": "1",
+            "x#actual_range": "{40240.85821175575,57360.85821175575}",
+            "x#axis": "X",
+            "x#long_name": "x",
+            "y#actual_range": "{81615.13333153725,169215.1333315372}",
+            "y#axis": "Y",
+            "y#long_name": "y",
+            "z#actual_range": "{0.0003826058527920395,0.09030086547136307}",
+            "z#long_name": "z",
+            "z#_FillValue": "nan",
+            "AREA_OR_POINT": "Area"
+          },
+          "bounds_m": [
+            40240.85821175575,
+            81615.13333153725,
+            57360.85821175575,
+            169215.13333153725
+          ]
+        }
+      },
+      {
+        "file": "M1188426614RE_20MPP.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/M1188426614RE_20MPP.TIF",
+        "bytes": 1403811,
+        "last_modified": "Sat, 03 Jun 2023 14:24:40 GMT",
+        "content_type": "image/tiff",
+        "sha256": "2fb56d7010da08552dec4d026b9bb87dad769672d47e043dce5500ad06a99c34",
+        "source_role": "observed_nac_if",
+        "native_metadata": {
+          "width": 860,
+          "height": 4379,
+          "transform": [
+            20.0,
+            0.0,
+            41480.60353946686,
+            0.0,
+            -20.0,
+            169473.41352176666,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "numeric_crs": {
+            "proj": "stere",
+            "lat_0": -90,
+            "lat_ts": -90,
+            "lon_0": 0,
+            "x_0": 0,
+            "y_0": 0,
+            "R": 1737400,
+            "units": "m",
+            "no_defs": true
+          },
+          "nodata": "-3.402820018375656e+38",
+          "tags": {
+            "NC_GLOBAL#Conventions": "CF-1.7",
+            "NC_GLOBAL#GMT_version": "6.5.0_2402709_2023.01.09 [64-bit]",
+            "NC_GLOBAL#history": "gmt xyz2grd -bi3 -RM1188426614RE.cal_5mpp.tif -I20= -GM1188426614RE.cal_20mppC.grd",
+            "NC_GLOBAL#node_offset": "1",
+            "x#actual_range": "{41480.60353946686,58680.60353946686}",
+            "x#axis": "X",
+            "x#long_name": "x",
+            "y#actual_range": "{81893.41352176666,169473.4135217667}",
+            "y#axis": "Y",
+            "y#long_name": "y",
+            "z#actual_range": "{0.0002583882887847722,0.07925336062908173}",
+            "z#long_name": "z",
+            "z#_FillValue": "nan",
+            "AREA_OR_POINT": "Area"
+          },
+          "bounds_m": [
+            41480.60353946686,
+            81893.41352176666,
+            58680.60353946686,
+            169473.41352176666
+          ]
+        }
+      },
+      {
+        "file": "M1311409938_20MPP_MODEL.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/M1311409938_20MPP_MODEL.TIF",
+        "bytes": 72170866,
+        "last_modified": "Wed, 07 Jun 2023 20:43:09 GMT",
+        "content_type": "image/tiff",
+        "sha256": "bbad95ea3f4a235ce4c1ceb108701a216a09b2b270efeb90b4492f6e7992051a",
+        "source_role": "published_rendering_w_m2_not_observation",
+        "native_metadata": {
+          "width": 4700,
+          "height": 5000,
+          "transform": [
+            20.0,
+            0.0,
+            -304000.0,
+            0.0,
+            -20.0,
+            84000.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "numeric_crs": {
+            "proj": "stere",
+            "lat_0": -90,
+            "lat_ts": -90,
+            "lon_0": 0,
+            "x_0": 0,
+            "y_0": 0,
+            "R": 1737400,
+            "units": "m",
+            "no_defs": true
+          },
+          "nodata": "nan",
+          "tags": {
+            "NC_GLOBAL#Conventions": "CF-1.7",
+            "NC_GLOBAL#GMT_version": "6.5.0_2402709_2023.01.09 [64-bit]",
+            "NC_GLOBAL#history": "gmt xyz2grd -R-304.00000/-210.00000/-16.00000/84.00000 -ZTLa -I.02 -GM1311409938_20mpp_lamb_incintB.grd -r",
+            "NC_GLOBAL#node_offset": "1",
+            "x#actual_range": "{-304,-210}",
+            "x#axis": "X",
+            "x#long_name": "x",
+            "y#actual_range": "{-16,84}",
+            "y#axis": "Y",
+            "y#long_name": "y",
+            "z#actual_range": "{0,38.08546829223633}",
+            "z#long_name": "z",
+            "z#_FillValue": "nan",
+            "AREA_OR_POINT": "Area"
+          },
+          "bounds_m": [
+            -304000.0,
+            -16000.0,
+            -210000.0,
+            84000.0
+          ]
+        }
+      },
+      {
+        "file": "M1311409938LE_20MPP.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/M1311409938LE_20MPP.TIF",
+        "bytes": 3010744,
+        "last_modified": "Sat, 03 Jun 2023 14:24:52 GMT",
+        "content_type": "image/tiff",
+        "sha256": "455f45ca146f44e9ebe60d7641ed20c0cf5f31e67e2965153a6043a0a4454fd1",
+        "source_role": "observed_nac_if",
+        "native_metadata": {
+          "width": 4027,
+          "height": 1824,
+          "transform": [
+            20.0,
+            0.0,
+            -298923.2726390362,
+            0.0,
+            -20.0,
+            49305.91922879219,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "numeric_crs": {
+            "proj": "stere",
+            "lat_0": -90,
+            "lat_ts": -90,
+            "lon_0": 0,
+            "x_0": 0,
+            "y_0": 0,
+            "R": 1737400,
+            "units": "m",
+            "no_defs": true
+          },
+          "nodata": "-3.402820018375656e+38",
+          "tags": {
+            "NC_GLOBAL#Conventions": "CF-1.7",
+            "NC_GLOBAL#GMT_version": "6.5.0_2402709_2023.01.09 [64-bit]",
+            "NC_GLOBAL#history": "gmt xyz2grd -bi3 -RM1311409938LE.cal_5mpp.tif -I20= -GM1311409938LE.cal_20mppC.grd",
+            "NC_GLOBAL#node_offset": "1",
+            "x#actual_range": "{-298923.2726390362,-218383.2726390362}",
+            "x#axis": "X",
+            "x#long_name": "x",
+            "y#actual_range": "{12825.91922879219,49305.91922879219}",
+            "y#axis": "Y",
+            "y#long_name": "y",
+            "z#actual_range": "{0.0001113415783038363,0.0763954371213913}",
+            "z#long_name": "z",
+            "z#_FillValue": "nan",
+            "AREA_OR_POINT": "Area"
+          },
+          "bounds_m": [
+            -298923.2726390362,
+            12825.91922879219,
+            -218383.27263903618,
+            49305.91922879219
+          ]
+        }
+      },
+      {
+        "file": "M1311409938RE_20MPP.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/M1311409938RE_20MPP.TIF",
+        "bytes": 3009940,
+        "last_modified": "Sat, 03 Jun 2023 14:24:53 GMT",
+        "content_type": "image/tiff",
+        "sha256": "e8d8d8dcc2d9ab7573ec005ef25e4950eb0dc504db3539376dba6f2eb2a26896",
+        "source_role": "observed_nac_if",
+        "native_metadata": {
+          "width": 4030,
+          "height": 1817,
+          "transform": [
+            20.0,
+            0.0,
+            -300193.10634350777,
+            0.0,
+            -20.0,
+            51935.45283007622,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "numeric_crs": {
+            "proj": "stere",
+            "lat_0": -90,
+            "lat_ts": -90,
+            "lon_0": 0,
+            "x_0": 0,
+            "y_0": 0,
+            "R": 1737400,
+            "units": "m",
+            "no_defs": true
+          },
+          "nodata": "-3.402820018375656e+38",
+          "tags": {
+            "NC_GLOBAL#Conventions": "CF-1.7",
+            "NC_GLOBAL#GMT_version": "6.5.0_2402709_2023.01.09 [64-bit]",
+            "NC_GLOBAL#history": "gmt xyz2grd -bi3 -RM1311409938RE.cal_5mpp.tif -I20= -GM1311409938RE.cal_20mppC.grd",
+            "NC_GLOBAL#node_offset": "1",
+            "x#actual_range": "{-300193.1063435078,-219593.1063435078}",
+            "x#axis": "X",
+            "x#long_name": "x",
+            "y#actual_range": "{15595.45283007622,51935.45283007622}",
+            "y#axis": "Y",
+            "y#long_name": "y",
+            "z#actual_range": "{-8.525393059244379e-05,0.09786459058523178}",
+            "z#long_name": "z",
+            "z#_FillValue": "nan",
+            "AREA_OR_POINT": "Area"
+          },
+          "bounds_m": [
+            -300193.10634350777,
+            15595.452830076218,
+            -219593.10634350777,
+            51935.45283007622
+          ]
+        }
+      },
+      {
+        "file": "M139729686_20MPP_MODEL.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/M139729686_20MPP_MODEL.TIF",
+        "bytes": 36130178,
+        "sha256": "46be583c3d9eca21c1a23736fa67f96ff6728a8b8729ac02afb418be0e406db4",
+        "source_role": "published_rendering_w_m2_not_observation",
+        "native_metadata": {
+          "width": 5000,
+          "height": 5000,
+          "transform": [
+            20.0,
+            0.0,
+            -44000.0,
+            0.0,
+            -20.0,
+            63000.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "numeric_crs": {
+            "proj": "stere",
+            "lat_0": -90,
+            "lat_ts": -90,
+            "lon_0": 0,
+            "x_0": 0,
+            "y_0": 0,
+            "R": 1737400,
+            "units": "m",
+            "no_defs": true
+          },
+          "nodata": "nan",
+          "tags": {
+            "NC_GLOBAL#Conventions": "CF-1.7",
+            "NC_GLOBAL#GMT_version": "6.5.0_2402709_2023.01.09 [64-bit]",
+            "NC_GLOBAL#history": "gmt xyz2grd -R-44.00000/56.00000/-37.00000/63.00000 -ZTLa -I.02 -GM139729686_20mpp_lamb_incintB.grd -r",
+            "NC_GLOBAL#node_offset": "1",
+            "x#actual_range": "{-44,56}",
+            "x#axis": "X",
+            "x#long_name": "x",
+            "y#actual_range": "{-37,63}",
+            "y#axis": "Y",
+            "y#long_name": "y",
+            "z#actual_range": "{0,27.39426040649414}",
+            "z#long_name": "z",
+            "z#_FillValue": "nan",
+            "AREA_OR_POINT": "Area"
+          },
+          "bounds_m": [
+            -44000.0,
+            -37000.0,
+            56000.0,
+            63000.0
+          ]
+        }
+      },
+      {
+        "file": "M139729686LE_20MPP.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/M139729686LE_20MPP.TIF",
+        "bytes": 2372130,
+        "sha256": "cb367460b69b8e83d2b68f732f8247f25c3adeb13045d4bd8cf98fabd8e1996a",
+        "source_role": "observed_nac_if",
+        "native_metadata": {
+          "width": 1692,
+          "height": 3095,
+          "transform": [
+            20.0,
+            0.0,
+            -13170.17990231514,
+            0.0,
+            -20.0,
+            45583.94519686699,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "numeric_crs": {
+            "proj": "stere",
+            "lat_0": -90,
+            "lat_ts": -90,
+            "lon_0": 0,
+            "x_0": 0,
+            "y_0": 0,
+            "R": 1737400,
+            "units": "m",
+            "no_defs": true
+          },
+          "nodata": "-3.402820018375656e+38",
+          "tags": {
+            "NC_GLOBAL#Conventions": "CF-1.7",
+            "NC_GLOBAL#GMT_version": "6.5.0_2402709_2023.01.09 [64-bit]",
+            "NC_GLOBAL#history": "gmt xyz2grd -bi3 -RM139729686LE.cal_5mpp.tif -I20= -GM139729686LE.cal_20mppC.grd",
+            "NC_GLOBAL#node_offset": "1",
+            "x#actual_range": "{-13170.17990231514,20669.82009768486}",
+            "x#axis": "X",
+            "x#long_name": "x",
+            "y#actual_range": "{-16316.05480313301,45583.94519686699}",
+            "y#axis": "Y",
+            "y#long_name": "y",
+            "z#actual_range": "{-8.477276423946023e-06,0.09579497575759888}",
+            "z#long_name": "z",
+            "z#_FillValue": "nan",
+            "AREA_OR_POINT": "Area"
+          },
+          "bounds_m": [
+            -13170.17990231514,
+            -16316.05480313301,
+            20669.82009768486,
+            45583.94519686699
+          ]
+        }
+      },
+      {
+        "file": "M139729686RE_20MPP.TIF",
+        "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/M139729686RE_20MPP.TIF",
+        "bytes": 2374175,
+        "sha256": "65918b3e6100361fc609705fc633d5ca03d0c5ec77916123512323ee1b92402f",
+        "source_role": "observed_nac_if",
+        "native_metadata": {
+          "width": 1701,
+          "height": 3092,
+          "transform": [
+            20.0,
+            0.0,
+            -10575.660825490952,
+            0.0,
+            -20.0,
+            44277.24490046501,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "numeric_crs": {
+            "proj": "stere",
+            "lat_0": -90,
+            "lat_ts": -90,
+            "lon_0": 0,
+            "x_0": 0,
+            "y_0": 0,
+            "R": 1737400,
+            "units": "m",
+            "no_defs": true
+          },
+          "nodata": "-3.402820018375656e+38",
+          "tags": {
+            "NC_GLOBAL#Conventions": "CF-1.7",
+            "NC_GLOBAL#GMT_version": "6.5.0_2402709_2023.01.09 [64-bit]",
+            "NC_GLOBAL#history": "gmt xyz2grd -bi3 -RM139729686RE.cal_5mpp.tif -I20= -GM139729686RE.cal_20mppC.grd",
+            "NC_GLOBAL#node_offset": "1",
+            "x#actual_range": "{-10575.66082549095,23444.33917450905}",
+            "x#axis": "X",
+            "x#long_name": "x",
+            "y#actual_range": "{-17562.75509953499,44277.24490046501}",
+            "y#axis": "Y",
+            "y#long_name": "y",
+            "z#actual_range": "{-0.0002908544265665114,0.08478046208620071}",
+            "z#long_name": "z",
+            "z#_FillValue": "nan",
+            "AREA_OR_POINT": "Area"
+          },
+          "bounds_m": [
+            -10575.660825490952,
+            -17562.75509953499,
+            23444.33917450905,
+            44277.24490046501
+          ]
+        }
+      },
+      {
+        "file": "M1188426614LE.xml",
+        "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-2-EDR-V1.0/LROLRC_0023/DATA/ESM2/2015159/NAC/M1188426614LE.xml",
+        "bytes": 12746,
+        "sha256": "8f2fa7166fde9cfc288ef8b44684b596adfa8aabc4d84b01e1edae66c7e1b787",
+        "source_role": "original_pds4_acquisition_label",
+        "clock": {
+          "start_utc": "2015-06-08T18:15:48.050000Z",
+          "stop_utc": "2015-06-08T18:16:41.124000Z",
+          "midpoint_utc": "2015-06-08T18:16:14.587Z",
+          "midpoint_et_s": 487059441.7717254,
+          "span_si_s": 53.074000000953674,
+          "logical_identifier": "urn:nasa:pds:lro-l-lroc-2-edr:lrolrc_0023_data:nac.m1188426614le",
+          "version_id": "2.0"
+        }
+      },
+      {
+        "file": "M1188426614RE.xml",
+        "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-2-EDR-V1.0/LROLRC_0023/DATA/ESM2/2015159/NAC/M1188426614RE.xml",
+        "bytes": 12747,
+        "sha256": "b607d89824735a950e4225c53d5d7dcca9375643fc610c8dcafe187d62c90cfe",
+        "source_role": "original_pds4_acquisition_label",
+        "clock": {
+          "start_utc": "2015-06-08T18:15:48.050000Z",
+          "stop_utc": "2015-06-08T18:16:41.124000Z",
+          "midpoint_utc": "2015-06-08T18:16:14.587Z",
+          "midpoint_et_s": 487059441.7717254,
+          "span_si_s": 53.074000000953674,
+          "logical_identifier": "urn:nasa:pds:lro-l-lroc-2-edr:lrolrc_0023_data:nac.m1188426614re",
+          "version_id": "2.0"
+        }
+      },
+      {
+        "file": "M1311409938LE.xml",
+        "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-2-EDR-V1.0/LROLRC_0039B/DATA/ESM3/2019122/NAC/M1311409938LE.xml",
+        "bytes": 12743,
+        "sha256": "551d390308f7c69bfd87d92d5ad011284fdff8ca3ba167558e9a592610fc2e28",
+        "source_role": "original_pds4_acquisition_label",
+        "clock": {
+          "start_utc": "2019-05-02T04:17:51.263000Z",
+          "stop_utc": "2019-05-02T04:18:44.338000Z",
+          "midpoint_utc": "2019-05-02T04:18:17.801Z",
+          "midpoint_et_s": 610042766.9859713,
+          "span_si_s": 53.075000047683716,
+          "logical_identifier": "urn:nasa:pds:lro-l-lroc-2-edr:lrolrc_0039b_data:nac.m1311409938le",
+          "version_id": "2.0"
+        }
+      },
+      {
+        "file": "M1311409938RE.xml",
+        "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-2-EDR-V1.0/LROLRC_0039B/DATA/ESM3/2019122/NAC/M1311409938RE.xml",
+        "bytes": 12747,
+        "sha256": "33aa15039e277640abee89c8cab7dc87d175963c7e062777f99da6c966539670",
+        "source_role": "original_pds4_acquisition_label",
+        "clock": {
+          "start_utc": "2019-05-02T04:17:51.263000Z",
+          "stop_utc": "2019-05-02T04:18:44.338000Z",
+          "midpoint_utc": "2019-05-02T04:18:17.801Z",
+          "midpoint_et_s": 610042766.9859713,
+          "span_si_s": 53.075000047683716,
+          "logical_identifier": "urn:nasa:pds:lro-l-lroc-2-edr:lrolrc_0039b_data:nac.m1311409938re",
+          "version_id": "2.0"
+        }
+      },
+      {
+        "file": "M139729686LE.xml",
+        "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-2-EDR-V1.0/LROLRC_0005/DATA/SCI/2010264/NAC/M139729686LE.xml",
+        "bytes": 12728,
+        "sha256": "4f5297a8be482bd916f78ab79bbd996eacd69f1b225463abc8c6a28b985e3b80",
+        "source_role": "original_pds4_acquisition_label",
+        "clock": {
+          "start_utc": "2010-09-21T17:33:39.822000Z",
+          "stop_utc": "2010-09-21T17:34:22.601000Z",
+          "midpoint_utc": "2010-09-21T17:34:01.212Z",
+          "midpoint_et_s": 338362507.3938893,
+          "span_si_s": 42.778999984264374,
+          "logical_identifier": "urn:nasa:pds:lro-l-lroc-2-edr:lrolrc_0005_data:nac.m139729686le",
+          "version_id": "2.0"
+        }
+      },
+      {
+        "file": "M139729686RE.xml",
+        "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-2-EDR-V1.0/LROLRC_0005/DATA/SCI/2010264/NAC/M139729686RE.xml",
+        "bytes": 12726,
+        "sha256": "5f437a2cd35ab50a6811e5d6c93c8955ff94771ca8d1fedd542b4bc966a6aa3d",
+        "source_role": "original_pds4_acquisition_label",
+        "clock": {
+          "start_utc": "2010-09-21T17:33:39.822000Z",
+          "stop_utc": "2010-09-21T17:34:22.601000Z",
+          "midpoint_utc": "2010-09-21T17:34:01.212Z",
+          "midpoint_et_s": 338362507.3938893,
+          "span_si_s": 42.778999984264374,
+          "logical_identifier": "urn:nasa:pds:lro-l-lroc-2-edr:lrolrc_0005_data:nac.m139729686re",
+          "version_id": "2.0"
+        }
+      }
+    ]
+  },
+  "mobility_validation": {
+    "role": "validation_only",
+    "source": "NASA Glenn TREC / MGRU3 published experimental plot points and author rig definitions",
+    "source_manifest": "/data/mobility-reference-manifest.json",
+    "report": {
+      "url": "/data/mobility-validation.json",
+      "sha256": "d1c76dce7b6cd88a21cd109376ad58882f23d938df79bca8aa7f2326420b4d81",
+      "bytes": 36184,
+      "model_id": "clavius-trec-rigid-contact-discrepancy-v4"
+    },
+    "status": "Independent rigid-contact discrepancy test; no lunar soil calibration established",
+    "terrain_role": "No new lunar terrain, regolith map or mission mobility response added."
+  },
+  "scm_validation": {
+    "role": "offline_experimental_development",
+    "source": "Same NASA Glenn TREC Earth-gravity published plot points; no new lunar measurements",
+    "source_manifest": "/data/mobility-reference-manifest.json",
+    "software": {
+      "name": "Project Chrono CPU SCM",
+      "version": "9.0.1",
+      "upstream_commit": "2617649bf687456328a122b63dc0bb64df91394a",
+      "source": "https://github.com/projectchrono/chrono"
+    },
+    "report": {
+      "url": "/data/scm-validation.json",
+      "sha256": "5b608ab2118bc5a57911358227ef8479103ae452327ce44a7014e3daffc7c3b9",
+      "bytes": 53233,
+      "model_id": "clavius-trec-scm-development-v1"
+    },
+    "status": "development_targets_not_met",
+    "active_app_dynamics": false,
+    "lunar_validation_established": false
+  }
+}

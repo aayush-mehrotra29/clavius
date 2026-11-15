@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spaceapps.invalid/contracts/v0.1/planning-request.schema.json",
+  "title": "Departure and surface planning request",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "robot_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "environment_ref": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/asset_ref"
+    },
+    "surface": {
+      "type": "object",
+      "properties": {
+        "site_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "touchdown_utc": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+        },
+        "duration_s": {
+          "type": "number",
+          "minimum": 0.001
+        },
+        "route_points_enu_m": {
+          "type": "array",
+          "items": {
+            "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+          },
+          "minItems": 1
+        },
+        "required_tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "task_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "duration_s": {
+                "type": "number",
+                "minimum": 0.001
+              },
+              "location_enu_m": {
+                "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/vec3"
+              },
+              "power_mode": {
+                "enum": [
+                  "base",
+                  "science",
+                  "downlink"
+                ]
+              }
+            },
+            "required": [
+              "task_id",
+              "duration_s",
+              "location_enu_m",
+              "power_mode"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "constraints": {
+          "type": "object",
+          "properties": {
+            "max_slope_deg": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 90
+            },
+            "max_geometric_earth_outage_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "contact_model": {
+              "const": "earth_center_geometric"
+            }
+          },
+          "required": [
+            "max_slope_deg",
+            "max_geometric_earth_outage_s",
+            "contact_model"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "site_id",
+        "touchdown_utc",
+        "duration_s",
+        "route_points_enu_m",
+        "required_tasks",
+        "constraints"
+      ],
+      "additionalProperties": false
+    },
+    "departure_screening": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "const": true
+        },
+        "mode": {
+          "const": "reference_transfer_family"
+        },
+        "reference_case_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "departure_start_utc": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+        },
+        "departure_end_utc": {
+          "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/utc"
+        },
+        "epoch_step_s": {
+          "type": "number",
+          "minimum": 0.001
+        },
+        "spacecraft_wet_mass_kg": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0.001
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "vehicle_performance_status": {
+          "const": "not_assessed"
+        },
+        "permitted_variables": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "epoch",
+              "raan",
+              "aop",
+              "departure_burn",
+              "capture_burn"
+            ]
+          },
+          "minItems": 1
+        },
+        "launch_to_departure_offset_s": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "capture_to_touchdown": {
+          "type": "object",
+          "properties": {
+            "min_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "evidence": {
+              "const": "assumed_not_dynamically_validated"
+            }
+          },
+          "required": [
+            "min_s",
+            "max_s",
+            "evidence"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "enabled",
+        "mode",
+        "reference_case_id",
+        "departure_start_utc",
+        "departure_end_utc",
+        "epoch_step_s",
+        "spacecraft_wet_mass_kg",
+        "vehicle_performance_status",
+        "permitted_variables",
+        "launch_to_departure_offset_s",
+        "capture_to_touchdown"
+      ],
+      "additionalProperties": false
+    },
+    "scenario": {
+      "type": "object",
+      "properties": {
+        "scenario_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "terrain_realization_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "solar_output_multiplier": {
+          "type": "number",
+          "minimum": 0
+        },
+        "battery_capacity_multiplier": {
+          "type": "number",
+          "minimum": 1e-06
+        },
+        "drive_delay_multiplier": {
+          "type": "number",
+          "minimum": 1
+        },
+        "touchdown_delay_s": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "scenario_id",
+        "seed",
+        "terrain_realization_id",
+        "solar_output_multiplier",
+        "battery_capacity_multiplier",
+        "drive_delay_multiplier",
+        "touchdown_delay_s"
+      ],
+      "additionalProperties": false
+    },
+    "search_budget": {
+      "type": "object",
+      "properties": {
+        "surface_max_runs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "orbital_max_runs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "transfer_timeout_s": {
+          "type": "number",
+          "minimum": 0.001
+        }
+      },
+      "required": [
+        "surface_max_runs",
+        "orbital_max_runs",
+        "transfer_timeout_s"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "$ref": "https://spaceapps.invalid/contracts/v0.1/common.schema.json#/$defs/provenance"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "robot_ref",
+    "environment_ref",
+    "surface",
+    "departure_screening",
+    "scenario",
+    "search_budget",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

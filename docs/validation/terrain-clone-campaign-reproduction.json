@@ -1,0 +1,17 @@
+{
+  "run_id": "05c79cec-6d4e-48b6-9e90-7abb89044d74",
+  "reproduced": true,
+  "metric_tolerance": "relative/absolute 1e-6",
+  "differences": [],
+  "metrics": {
+    "samples": 6,
+    "violating_scenarios": 2,
+    "unsupported_scenarios": 0,
+    "minimum_battery_wh": 33.07423780742389,
+    "distance_m": 113.26568350764511,
+    "distance_range_m": [
+      113.26568350764511,
+      113.27701431377791
+    ]
+  }
+}

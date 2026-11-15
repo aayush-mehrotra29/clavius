@@ -1,0 +1,49 @@
+{
+  "checked_utc_date": "2026-11-15",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "site04_mission_id": "56d45cde-1221-473d-a756-505cabe75d88",
+  "site04_gazebo_id": "798b8f8f-c871-4416-8605-df8172b0aee5",
+  "observed_checks": [
+    "Connecting Ridge to Shackleton selector updates source identity, coordinates, terrain and draft state.",
+    "Saved Shackleton mission restores Site04 after reload.",
+    "Gazebo selectable only after matching benchmark.",
+    "Linked native segment replays to 20 s / 2028-01-01T00:00:20 UTC on Shackleton.",
+    "Follow rover and overview controls operate on selected terrain.",
+    "Site04 source disclosure names PGDA78-Site04.",
+    "Mobile Diviner dialog shows both exact native row identities; applying midnight enables thermal screening.",
+    "Switching to Connecting Ridge clears copied Diviner reference and restores default constant ground boundary.",
+    "Mobile document clientWidth and scrollWidth both 390 px.",
+    "History labels each recorded site.",
+    "Browser comparison selected the paired Site04 and Site01 missions; Site row names Shackleton rim / Connecting Ridge and shows the recorded different energy/distance metrics.",
+    "Loading the Site04 repair search from history first restores its source mission and Shackleton terrain, then shows the verified 1.20\u00d7 capacity candidate and all 3 audit links."
+  ],
+  "screenshots": {
+    "desktop": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts/shackleton-mission-desktop.png",
+    "native": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts/shackleton-gazebo-desktop.png",
+    "mobile_context": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts/shackleton-context-mobile.png",
+    "comparison": "/Users/Aayush/.aside/u/0/sessions/2026-11-15_QT317aLEOMbTSNuR/artifacts/multisite-comparison-desktop.png"
+  },
+  "browser_downloads": [
+    {
+      "kind": "mission",
+      "bytes": 191342,
+      "sha256": "242742b29649a1d1bb0163385face6080a98198124d0a02e6e8df5c0b22057eb",
+      "reproduction_report": "shackleton-mission-reproduction.json"
+    },
+    {
+      "kind": "Gazebo segment",
+      "bytes": 292538,
+      "sha256": "ee614e6c99197b40f4d6af2e005cc37b56140eae090eb8ee294440b62ef516ee",
+      "reproduction_report": "shackleton-gazebo-reproduction.json"
+    }
+  ]
+}

@@ -1,0 +1,1452 @@
+{
+  "artifact_sha256": "ca94eaf36bab11c2da542b674a6cf3566b347549b6d9e98828cbf42c7ecf5107",
+  "assessment_scope": "Bounded surface input alternatives, fixed required route/activities and independent declared-assumption audits. No global optimum, physical mission certification or failure probability.",
+  "audit_cases": [
+    {
+      "capacity_factor": 0.9363535699724587,
+      "index": 1,
+      "initial_temperature_delta_c": 1.3689653081430972,
+      "mobility_factor": 1.22925562558658,
+      "solar_factor": 0.9035019228110942,
+      "speed_factor": 0.8611130587742513,
+      "start_delay_s": 332
+    },
+    {
+      "capacity_factor": 0.9712790624761657,
+      "index": 2,
+      "initial_temperature_delta_c": -1.2606843604396982,
+      "mobility_factor": 1.0399828285736792,
+      "solar_factor": 0.7879191299488322,
+      "speed_factor": 0.9935878086764549,
+      "start_delay_s": 197
+    },
+    {
+      "capacity_factor": 0.9155476470420573,
+      "index": 3,
+      "initial_temperature_delta_c": 2.7301028273780936,
+      "mobility_factor": 1.0855369616818145,
+      "solar_factor": 0.7669797905464356,
+      "speed_factor": 0.8691755202300008,
+      "start_delay_s": 881
+    }
+  ],
+  "audit_cases_sha256": "0f4b27d06b8a0f69e7fdfb8df9c6944d5f9153112a7083ede8d2e4a4c724908a",
+  "baseline": {
+    "current_status": "constraint_violated",
+    "first_violation": {
+      "code": "CONTACT_OUTAGE_LIMIT",
+      "message": "Continuous geometric Earth-center outage exceeds the declared 6 h limit.",
+      "severity": "violation",
+      "t_s": 21600.0
+    },
+    "input_sha256": "985a9de81f503463584d5174f843c5ac6a27a7a5865b34f71d55a75e3a8f9243",
+    "margins": {
+      "battery_reserve_wh": 148.26404838031723,
+      "deadline_s": 40335.25344508243,
+      "earth_outage_s": -21600.0
+    },
+    "metrics": {
+      "capacity_wh": 500.0,
+      "consumed_wh": 255.58849085251285,
+      "distance_m": 113.2373277458786,
+      "final_battery_wh": 223.26404838031723,
+      "generated_wh": 63.93933681381133,
+      "longest_earth_outage_s": 43200.0,
+      "max_route_pitch_deg": 3.431054853446434,
+      "max_terrain_slope_deg": 4.429420338102939,
+      "minimum_battery_wh": 223.26404838031723,
+      "operations_energy_supported": true,
+      "required_tasks_scheduled_complete": true,
+      "reserve_wh": 75,
+      "scheduled_completion_s": 2864.7465549175718
+    },
+    "provenance": {
+      "implementation": {
+        "libraries": {
+          "mujoco": "4.0.1",
+          "numpy": "2.5.4",
+          "rasterio": "1.5.2",
+          "scipy": "1.18.1",
+          "spiceypy": "8.4.0"
+        },
+        "source_sha256": "d9fa85bbb94fefcd86936cbd071d752fbe657d55e1e5de8f0124f5dbc0ec4244",
+        "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+      },
+      "integration": "left-constant loads; 60 s base grid; activity boundaries; visibility transitions refined to <=1 s",
+      "kernels": {
+        "assets": [
+          {
+            "bytes": 16790528,
+            "file": "de421.bsp",
+            "sha256": "08b20db2ae22488650641c5a9033e5bfda4b1c4b440cfeaf20f621cfa18ecdb3",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de421.bsp"
+          },
+          {
+            "bytes": 1770496,
+            "file": "moon_pa_de421_1900-2050.bpc",
+            "sha256": "656f90616403d75a75f0cd6c8830fc5b44f8cb4facb5ccb8915e752b397520cf",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+          },
+          {
+            "bytes": 21437,
+            "file": "moon_080317.tf",
+            "sha256": "78732477b96f9863e7b0d65bcee3c22b8707ca5ed0db56d1173319cb2e8c7993",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+          },
+          {
+            "bytes": 5257,
+            "file": "naif0012.tls",
+            "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+          },
+          {
+            "bytes": 131226,
+            "file": "pck00011.tpc",
+            "sha256": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc"
+          }
+        ],
+        "ephemeris": "DE421",
+        "frame": "MOON_ME_DE421"
+      },
+      "models": {
+        "energy": "single-ledger-v0.1",
+        "environment": "spice-de421-directional-horizon-v0.2",
+        "mobility": "r1-declared-baseline",
+        "regolith": "declared-mobility-scenario",
+        "thermal": "declared-heater-load"
+      },
+      "seed": 42,
+      "terrain": {
+        "assets": [
+          {
+            "bytes": 40980810,
+            "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+            "file": "Site01_final_adj_5mpp_surf.tif",
+            "id": "PGDA78-Site01",
+            "nodata": "NaN",
+            "pixel_registration": "pixel centers",
+            "resolution_m": 5.0,
+            "sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+            "shape": [
+              3200,
+              3200
+            ],
+            "transform": [
+              5.0,
+              0.0,
+              -19000.0,
+              0.0,
+              -5.0,
+              -4000.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif"
+          },
+          {
+            "bytes": 40980810,
+            "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+            "file": "Site01_final_adj_5mpp_toterr.tif",
+            "id": "PGDA78-Site01-height-error",
+            "nodata": "NaN",
+            "pixel_registration": "pixel centers",
+            "resolution_m": 5.0,
+            "sha256": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c",
+            "shape": [
+              3200,
+              3200
+            ],
+            "transform": [
+              5.0,
+              0.0,
+              -19000.0,
+              0.0,
+              -5.0,
+              -4000.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_toterr.tif"
+          },
+          {
+            "bytes": 189158392,
+            "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+            "file": "LDEM_80S_80MPP_ADJ.TIF",
+            "id": "PGDA90-80m",
+            "nodata": "NaN",
+            "pixel_registration": "pixel centers",
+            "resolution_m": 80.0,
+            "sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a",
+            "shape": [
+              7600,
+              7600
+            ],
+            "transform": [
+              80.0,
+              0.0,
+              -304000.0,
+              0.0,
+              -80.0,
+              304000.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF"
+          }
+        ],
+        "frame": "MOON_ME_DE421",
+        "limits": [
+          "5 m posting does not resolve wheel-scale hazards",
+          "height RMS is not a complete terrain error model",
+          "horizon sampling requires numerical convergence/observed-shadow validation before mission reliance"
+        ],
+        "reference_radius_m": 1737400.0,
+        "site_id": "connecting-ridge",
+        "vertical_checks": [
+          {
+            "difference_m": 0.7501220703125,
+            "lat_deg": -89.44,
+            "local_elevation_m": 1958.1793212890625,
+            "lon_deg": 222.8,
+            "regional_elevation_m": 1957.42919921875
+          },
+          {
+            "difference_m": 1.75341796875,
+            "lat_deg": -89.45,
+            "local_elevation_m": 1956.777099609375,
+            "lon_deg": 222.8,
+            "regional_elevation_m": 1955.023681640625
+          },
+          {
+            "difference_m": -0.314697265625,
+            "lat_deg": -89.44,
+            "local_elevation_m": 1952.8533935546875,
+            "lon_deg": 223.2,
+            "regional_elevation_m": 1953.1680908203125
+          },
+          {
+            "difference_m": 0.0880126953125,
+            "lat_deg": -89.43,
+            "local_elevation_m": 1942.9156494140625,
+            "lon_deg": 222.5,
+            "regional_elevation_m": 1942.82763671875
+          },
+          {
+            "difference_m": 0.9193115234375,
+            "lat_deg": -89.46,
+            "local_elevation_m": 1948.8848876953125,
+            "lon_deg": 222.7,
+            "regional_elevation_m": 1947.965576171875
+          }
+        ],
+        "vertical_definition": "metres above 1737400 m sphere, checked against regional PGDA90 at five matching coordinates"
+      }
+    },
+    "recorded_status": "constraint_violated",
+    "run_id": "0881fcae-7566-4106-b23f-86b1a543d62d",
+    "status": "constraint_violated"
+  },
+  "candidates": [
+    {
+      "audit": null,
+      "candidate_request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Reference traverse \u00b7 Jan 14 2028",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-14T00:00:00Z",
+        "thermal": null,
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "capacity_factor": 1.0,
+      "cost": 0.0,
+      "cost_components": {
+        "capacity": 0.0,
+        "date": 0,
+        "heater": 0,
+        "solar": 0.0,
+        "wait": 0.0
+      },
+      "date_offset_days": 0,
+      "heater_enabled": true,
+      "id": "c1f8f30bbd29c2f30366c1df28f7667e670accb89db893005a9818ace8fda508",
+      "is_baseline": true,
+      "nominal": {
+        "first_violation": {
+          "code": "CONTACT_OUTAGE_LIMIT",
+          "message": "Continuous geometric Earth-center outage exceeds the declared 6 h limit.",
+          "severity": "violation",
+          "t_s": 21600.0
+        },
+        "input_sha256": "985a9de81f503463584d5174f843c5ac6a27a7a5865b34f71d55a75e3a8f9243",
+        "margins": {
+          "battery_reserve_wh": 148.26404838031723,
+          "deadline_s": 40335.25344508243,
+          "earth_outage_s": -21600.0
+        },
+        "metrics": {
+          "capacity_wh": 500.0,
+          "consumed_wh": 255.58849085251285,
+          "distance_m": 113.2373277458786,
+          "final_battery_wh": 223.26404838031723,
+          "generated_wh": 63.93933681381133,
+          "longest_earth_outage_s": 43200.0,
+          "max_route_pitch_deg": 3.431054853446434,
+          "max_terrain_slope_deg": 4.429420338102939,
+          "minimum_battery_wh": 223.26404838031723,
+          "operations_energy_supported": true,
+          "required_tasks_scheduled_complete": true,
+          "reserve_wh": 75,
+          "scheduled_completion_s": 2864.7465549175718
+        },
+        "run_id": "0881fcae-7566-4106-b23f-86b1a543d62d",
+        "status": "constraint_violated"
+      },
+      "solar_factor": 1.0,
+      "wait_at_start_s": 0.0
+    },
+    {
+      "audit": {
+        "cases": [
+          {
+            "case_index": 1,
+            "first_violation": null,
+            "input_sha256": "56466f07612aa1fb3d413f3d0ecb7faf7085506432aae3e35fdac8cf78cf1254",
+            "margins": {
+              "battery_reserve_wh": 103.70392298018345,
+              "deadline_s": 39969.97769126702,
+              "earth_outage_s": 1530.0
+            },
+            "metrics": {
+              "capacity_wh": 468.17678498622934,
+              "consumed_wh": 260.9675084275717,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 178.70392298018345,
+              "generated_wh": 52.68348138236324,
+              "longest_earth_outage_s": 20070.0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 178.70392298018345,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 3230.022308732977
+            },
+            "run_id": "6bd349e5-0195-4daf-8f91-e458cd7320a8",
+            "status": "supported_under_assumptions"
+          },
+          {
+            "case_index": 2,
+            "first_violation": null,
+            "input_sha256": "96c34e2f3fde4958ab310d2ba64bc13a13b2446469ca2bcc9767bda67ed10938",
+            "margins": {
+              "battery_reserve_wh": 116.62641338264615,
+              "deadline_s": 40320.63773816387,
+              "earth_outage_s": 1665.0
+            },
+            "metrics": {
+              "capacity_wh": 485.63953123808284,
+              "consumed_wh": 256.1759967274622,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 191.62641338264615,
+              "generated_wh": 46.06716796622163,
+              "longest_earth_outage_s": 19935.0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 191.62641338264615,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 2879.362261836134
+            },
+            "run_id": "d062e56a-590d-41e9-8317-25929ef9a1c8",
+            "status": "supported_under_assumptions"
+          },
+          {
+            "case_index": 3,
+            "first_violation": null,
+            "input_sha256": "c20ced5fd25b93e061c6267ae613c18208e1dbd4f6c16de89ab6034541738780",
+            "margins": {
+              "battery_reserve_wh": 88.89143276589013,
+              "deadline_s": 39994.373745916964,
+              "earth_outage_s": 981.5625
+            },
+            "metrics": {
+              "capacity_wh": 457.77382352102865,
+              "consumed_wh": 258.72047447594656,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 163.89143276589013,
+              "generated_wh": 44.76497311030901,
+              "longest_earth_outage_s": 20618.4375,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 163.89143276589013,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 3205.626254083037
+            },
+            "run_id": "5b5d9030-61c4-46ef-8446-8590fea9e514",
+            "status": "supported_under_assumptions"
+          }
+        ],
+        "completed": true,
+        "supported_all_cases": true
+      },
+      "candidate_request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Reference traverse \u00b7 Jan 14 2028 \u00b7 repair 2bf50f",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-13T00:00:00Z",
+        "thermal": null,
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "capacity_factor": 1.0,
+      "cost": 1.0,
+      "cost_components": {
+        "capacity": 0.0,
+        "date": 1,
+        "heater": 0,
+        "solar": 0.0,
+        "wait": 0.0
+      },
+      "date_offset_days": -1,
+      "heater_enabled": true,
+      "id": "2bf50f4ccbc36994e8a3286e22e3853dbcdefd08e8d3eeaa5f8165c798a58040",
+      "is_baseline": false,
+      "nominal": {
+        "first_violation": null,
+        "input_sha256": "2fab2dbc4cc1ae3147de4f1da1ac7d1ad7c3c1493d4cba4c44e66f2d24401b32",
+        "margins": {
+          "battery_reserve_wh": 142.49417617959702,
+          "deadline_s": 40335.25344508243,
+          "earth_outage_s": 1861.875
+        },
+        "metrics": {
+          "capacity_wh": 500.0,
+          "consumed_wh": 255.58849085251285,
+          "distance_m": 113.2373277458786,
+          "final_battery_wh": 217.49417617959702,
+          "generated_wh": 58.45795822312647,
+          "longest_earth_outage_s": 19738.125,
+          "max_route_pitch_deg": 3.431054853446434,
+          "max_terrain_slope_deg": 4.429420338102939,
+          "minimum_battery_wh": 217.49417617959702,
+          "operations_energy_supported": true,
+          "required_tasks_scheduled_complete": true,
+          "reserve_wh": 75,
+          "scheduled_completion_s": 2864.7465549175718
+        },
+        "run_id": "ecae65cd-c06b-46ad-a4b9-9e0ef73292eb",
+        "status": "supported_under_assumptions"
+      },
+      "solar_factor": 1.0,
+      "wait_at_start_s": 0.0
+    },
+    {
+      "audit": null,
+      "candidate_request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Reference traverse \u00b7 Jan 14 2028 \u00b7 repair 9e96fe",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-15T00:00:00Z",
+        "thermal": null,
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "capacity_factor": 1.0,
+      "cost": 1.0,
+      "cost_components": {
+        "capacity": 0.0,
+        "date": 1,
+        "heater": 0,
+        "solar": 0.0,
+        "wait": 0.0
+      },
+      "date_offset_days": 1,
+      "heater_enabled": true,
+      "id": "9e96fe9233edf041cf03b36399f93f349983bdb2657257c1f83aa806b0db46b6",
+      "is_baseline": false,
+      "nominal": {
+        "first_violation": {
+          "code": "CONTACT_OUTAGE_LIMIT",
+          "message": "Continuous geometric Earth-center outage exceeds the declared 6 h limit.",
+          "severity": "violation",
+          "t_s": 21600.0
+        },
+        "input_sha256": "e4c415abc18561478f788fc177b80b3669dc519bf8a4cfd8d7f729e085ec5044",
+        "margins": {
+          "battery_reserve_wh": 151.2328685514777,
+          "deadline_s": 40335.25344508243,
+          "earth_outage_s": -21600.0
+        },
+        "metrics": {
+          "capacity_wh": 500.0,
+          "consumed_wh": 255.58849085251285,
+          "distance_m": 113.2373277458786,
+          "final_battery_wh": 226.2328685514777,
+          "generated_wh": 66.75971597641342,
+          "longest_earth_outage_s": 43200.0,
+          "max_route_pitch_deg": 3.431054853446434,
+          "max_terrain_slope_deg": 4.429420338102939,
+          "minimum_battery_wh": 226.2328685514777,
+          "operations_energy_supported": true,
+          "required_tasks_scheduled_complete": true,
+          "reserve_wh": 75,
+          "scheduled_completion_s": 2864.7465549175718
+        },
+        "run_id": "193acc8b-4266-4b3c-a8e8-58c2f3208a25",
+        "status": "constraint_violated"
+      },
+      "solar_factor": 1.0,
+      "wait_at_start_s": 0.0
+    },
+    {
+      "audit": {
+        "cases": [
+          {
+            "case_index": 1,
+            "first_violation": null,
+            "input_sha256": "f2d8a870581711fb87b5604fb7baeb7e8b1e06a2d2823e3843eb963de4fc541a",
+            "margins": {
+              "battery_reserve_wh": 48.59940116892507,
+              "deadline_s": 39969.97769126702,
+              "earth_outage_s": 21600.0
+            },
+            "metrics": {
+              "capacity_wh": 468.17678498622934,
+              "consumed_wh": 260.9675084275717,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 123.59940116892507,
+              "generated_wh": 0.33418566167434116,
+              "longest_earth_outage_s": 0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 123.59940116892507,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 3230.022308732977
+            },
+            "run_id": "f6be5515-9d2f-4213-8248-5e9bf6809409",
+            "status": "supported_under_assumptions"
+          },
+          {
+            "case_index": 2,
+            "first_violation": null,
+            "input_sha256": "ee9c577d1da99d65f07e0cc184dbb2d133450e5711b55055e96efa8238d3acbf",
+            "margins": {
+              "battery_reserve_wh": 68.40076643985634,
+              "deadline_s": 40320.63773816387,
+              "earth_outage_s": 21600.0
+            },
+            "metrics": {
+              "capacity_wh": 485.63953123808284,
+              "consumed_wh": 256.1759967274622,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 143.40076643985634,
+              "generated_wh": 0.25280337057729496,
+              "longest_earth_outage_s": 0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 143.40076643985634,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 2879.362261836134
+            },
+            "run_id": "18d0db11-6a08-4567-8a48-b334a7b20a51",
+            "status": "supported_under_assumptions"
+          },
+          {
+            "case_index": 3,
+            "first_violation": null,
+            "input_sha256": "842b1ee79504daa5a59c67fa217e8f991cbc15050729c16e7c2230f3d916b910",
+            "margins": {
+              "battery_reserve_wh": 42.06537167600351,
+              "deadline_s": 39994.373745916964,
+              "earth_outage_s": 21600.0
+            },
+            "metrics": {
+              "capacity_wh": 457.77382352102865,
+              "consumed_wh": 258.72047447594656,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 117.06537167600351,
+              "generated_wh": 0.28021507492231523,
+              "longest_earth_outage_s": 0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 117.06537167600351,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 3205.626254083037
+            },
+            "run_id": "dcaaaa78-4850-4a50-b942-9c6f09dd5c7e",
+            "status": "supported_under_assumptions"
+          }
+        ],
+        "completed": true,
+        "supported_all_cases": true
+      },
+      "candidate_request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Reference traverse \u00b7 Jan 14 2028 \u00b7 repair 066d2b",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-07T00:00:00Z",
+        "thermal": null,
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "capacity_factor": 1.0,
+      "cost": 7.0,
+      "cost_components": {
+        "capacity": 0.0,
+        "date": 7,
+        "heater": 0,
+        "solar": 0.0,
+        "wait": 0.0
+      },
+      "date_offset_days": -7,
+      "heater_enabled": true,
+      "id": "066d2bac077db561c6f6eb74090b0e445bd6fa514264d1ef9adc1615526a7e14",
+      "is_baseline": false,
+      "nominal": {
+        "first_violation": null,
+        "input_sha256": "e99caeba14df6cfbfb66b8ace97de56218dc3ca91b1a7d514c0e18ad396fc6f8",
+        "margins": {
+          "battery_reserve_wh": 81.29594606368636,
+          "deadline_s": 40335.25344508243,
+          "earth_outage_s": 21600.0
+        },
+        "metrics": {
+          "capacity_wh": 500.0,
+          "consumed_wh": 255.58849085251285,
+          "distance_m": 113.2373277458786,
+          "final_battery_wh": 156.29594606368636,
+          "generated_wh": 0.3196396130188453,
+          "longest_earth_outage_s": 0,
+          "max_route_pitch_deg": 3.431054853446434,
+          "max_terrain_slope_deg": 4.429420338102939,
+          "minimum_battery_wh": 156.29594606368636,
+          "operations_energy_supported": true,
+          "required_tasks_scheduled_complete": true,
+          "reserve_wh": 75,
+          "scheduled_completion_s": 2864.7465549175718
+        },
+        "run_id": "09a0ea5e-8468-4fc8-8480-56d1354c7322",
+        "status": "supported_under_assumptions"
+      },
+      "solar_factor": 1.0,
+      "wait_at_start_s": 0.0
+    },
+    {
+      "audit": null,
+      "candidate_request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Reference traverse \u00b7 Jan 14 2028 \u00b7 repair 0d8e83",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-21T00:00:00Z",
+        "thermal": null,
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "capacity_factor": 1.0,
+      "cost": 7.0,
+      "cost_components": {
+        "capacity": 0.0,
+        "date": 7,
+        "heater": 0,
+        "solar": 0.0,
+        "wait": 0.0
+      },
+      "date_offset_days": 7,
+      "heater_enabled": true,
+      "id": "0d8e83096a0c84608e6a64ebf280b4c4412f201cea46042ee83768c391f5e389",
+      "is_baseline": false,
+      "nominal": {
+        "first_violation": {
+          "code": "CONTACT_OUTAGE_LIMIT",
+          "message": "Continuous geometric Earth-center outage exceeds the declared 6 h limit.",
+          "severity": "violation",
+          "t_s": 21600.0
+        },
+        "input_sha256": "6c06585076321607062c7b1c4a6179c42968fb9878cde9ba909346f10ca6b63f",
+        "margins": {
+          "battery_reserve_wh": 110.30706580294083,
+          "deadline_s": 40335.25344508243,
+          "earth_outage_s": -21600.0
+        },
+        "metrics": {
+          "capacity_wh": 500.0,
+          "consumed_wh": 255.58849085251285,
+          "distance_m": 113.2373277458786,
+          "final_battery_wh": 185.30706580294083,
+          "generated_wh": 27.880203365303434,
+          "longest_earth_outage_s": 43200.0,
+          "max_route_pitch_deg": 3.431054853446434,
+          "max_terrain_slope_deg": 4.429420338102939,
+          "minimum_battery_wh": 185.30706580294083,
+          "operations_energy_supported": true,
+          "required_tasks_scheduled_complete": true,
+          "reserve_wh": 75,
+          "scheduled_completion_s": 2864.7465549175718
+        },
+        "run_id": "20bb3a86-396b-4e58-80ca-0ef0ccbc0d4c",
+        "status": "constraint_violated"
+      },
+      "solar_factor": 1.0,
+      "wait_at_start_s": 0.0
+    },
+    {
+      "audit": {
+        "cases": [
+          {
+            "case_index": 1,
+            "first_violation": null,
+            "input_sha256": "f1e3ba5b85e4759c7506f2ce6be1a7f4cad31afaa8e0ff2332bcd3ed03257217",
+            "margins": {
+              "battery_reserve_wh": 48.33460726450184,
+              "deadline_s": 39969.97769126702,
+              "earth_outage_s": 21600.0
+            },
+            "metrics": {
+              "capacity_wh": 468.17678498622934,
+              "consumed_wh": 260.9675084275717,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 123.33460726450184,
+              "generated_wh": 0.08263145247232873,
+              "longest_earth_outage_s": 0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 123.33460726450184,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 3230.022308732977
+            },
+            "run_id": "1d8560c9-ebc4-46a7-8186-36334e733aed",
+            "status": "supported_under_assumptions"
+          },
+          {
+            "case_index": 2,
+            "first_violation": null,
+            "input_sha256": "deaa2313de2df338e12a410a2b02e1c948e423a728fe8b5796f3ecc9e88da6e2",
+            "margins": {
+              "battery_reserve_wh": 68.20144416694768,
+              "deadline_s": 40320.63773816387,
+              "earth_outage_s": 21600.0
+            },
+            "metrics": {
+              "capacity_wh": 485.63953123808284,
+              "consumed_wh": 256.1759967274622,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 143.20144416694768,
+              "generated_wh": 0.06344721131425206,
+              "longest_earth_outage_s": 0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 143.20144416694768,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 2879.362261836134
+            },
+            "run_id": "86763afa-2b2e-41c6-8325-85159f80aad2",
+            "status": "supported_under_assumptions"
+          },
+          {
+            "case_index": 3,
+            "first_violation": null,
+            "input_sha256": "a6a06daf4c77354c28869da4fa08d500285d747a2d2396685e709e822562d2ab",
+            "margins": {
+              "battery_reserve_wh": 41.843405267513106,
+              "deadline_s": 39994.373745916964,
+              "earth_outage_s": 21600.0
+            },
+            "metrics": {
+              "capacity_wh": 457.77382352102865,
+              "consumed_wh": 258.72047447594656,
+              "distance_m": 113.2373277458786,
+              "final_battery_wh": 116.8434052675131,
+              "generated_wh": 0.06934698685624263,
+              "longest_earth_outage_s": 0,
+              "max_route_pitch_deg": 3.431054853446434,
+              "max_terrain_slope_deg": 4.429420338102939,
+              "minimum_battery_wh": 116.8434052675131,
+              "operations_energy_supported": true,
+              "required_tasks_scheduled_complete": true,
+              "reserve_wh": 75,
+              "scheduled_completion_s": 3205.626254083037
+            },
+            "run_id": "fd87b1d7-5892-4392-9a21-f07591b59ae5",
+            "status": "supported_under_assumptions"
+          }
+        ],
+        "completed": true,
+        "supported_all_cases": true
+      },
+      "candidate_request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Reference traverse \u00b7 Jan 14 2028 \u00b7 repair a886b6",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2028-01-28T00:00:00Z",
+        "thermal": null,
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "capacity_factor": 1.0,
+      "cost": 14.0,
+      "cost_components": {
+        "capacity": 0.0,
+        "date": 14,
+        "heater": 0,
+        "solar": 0.0,
+        "wait": 0.0
+      },
+      "date_offset_days": 14,
+      "heater_enabled": true,
+      "id": "a886b63ddec4912ec1611b45801744422bc984a99784d9d6d0a2182e5fe386bf",
+      "is_baseline": false,
+      "nominal": {
+        "first_violation": null,
+        "input_sha256": "c4a2f9e142dc0306c4acaca440342d16f3bb4ec977c8a7b0a746ac1d986e3f07",
+        "margins": {
+          "battery_reserve_wh": 81.04406314747752,
+          "deadline_s": 40335.25344508243,
+          "earth_outage_s": 21600.0
+        },
+        "metrics": {
+          "capacity_wh": 500.0,
+          "consumed_wh": 255.58849085251285,
+          "distance_m": 113.2373277458786,
+          "final_battery_wh": 156.04406314747752,
+          "generated_wh": 0.08035084262039562,
+          "longest_earth_outage_s": 0,
+          "max_route_pitch_deg": 3.431054853446434,
+          "max_terrain_slope_deg": 4.429420338102939,
+          "minimum_battery_wh": 156.04406314747752,
+          "operations_energy_supported": true,
+          "required_tasks_scheduled_complete": true,
+          "reserve_wh": 75,
+          "scheduled_completion_s": 2864.7465549175718
+        },
+        "run_id": "f08f69b5-8603-46e8-8212-e1fd86ac0e86",
+        "status": "supported_under_assumptions"
+      },
+      "solar_factor": 1.0,
+      "wait_at_start_s": 0.0
+    },
+    {
+      "audit": null,
+      "candidate_request": {
+        "activities": [
+          {
+            "duration_s": 600.0,
+            "kind": "science",
+            "waypoint": 1
+          }
+        ],
+        "duration_hours": 12.0,
+        "heater_enabled": true,
+        "max_earth_outage_s": 21600.0,
+        "name": "Reference traverse \u00b7 Jan 14 2028 \u00b7 repair b602b4",
+        "observer_height_m": 0.5,
+        "robot_id": "afd6c5cad00ea2dd2efa2d12",
+        "scenario": {
+          "capacity_multiplier": 1.0,
+          "mobility_multiplier": 1.0,
+          "soil": "assumed_firm",
+          "solar_multiplier": 1.0,
+          "speed_multiplier": 1.0,
+          "terrain_error_sigma": 0.0
+        },
+        "seed": 42,
+        "site_id": "connecting-ridge",
+        "start_utc": "2027-12-31T00:00:00Z",
+        "thermal": null,
+        "waypoints": [
+          {
+            "east_m": 0.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 60.0,
+            "north_m": 0.0
+          },
+          {
+            "east_m": 100.0,
+            "north_m": 35.0
+          }
+        ]
+      },
+      "capacity_factor": 1.0,
+      "cost": 14.0,
+      "cost_components": {
+        "capacity": 0.0,
+        "date": 14,
+        "heater": 0,
+        "solar": 0.0,
+        "wait": 0.0
+      },
+      "date_offset_days": -14,
+      "heater_enabled": true,
+      "id": "b602b46e168687f7533fefc013bacc567065d8f1d074e33b2974c352f66362e5",
+      "is_baseline": false,
+      "nominal": {
+        "first_violation": null,
+        "input_sha256": "85d01df39411fcceeebb1bbbab8c47968268fa244df821a171e4fe22bc85d603",
+        "margins": {
+          "battery_reserve_wh": 81.2116048590575,
+          "deadline_s": 40335.25344508243,
+          "earth_outage_s": 21600.0
+        },
+        "metrics": {
+          "capacity_wh": 500.0,
+          "consumed_wh": 255.58849085251285,
+          "distance_m": 113.2373277458786,
+          "final_battery_wh": 156.2116048590575,
+          "generated_wh": 0.23951546862116402,
+          "longest_earth_outage_s": 0,
+          "max_route_pitch_deg": 3.431054853446434,
+          "max_terrain_slope_deg": 4.429420338102939,
+          "minimum_battery_wh": 156.2116048590575,
+          "operations_energy_supported": true,
+          "required_tasks_scheduled_complete": true,
+          "reserve_wh": 75,
+          "scheduled_completion_s": 2864.7465549175718
+        },
+        "run_id": "328b7720-b07a-4247-8f79-f3514c236be5",
+        "status": "supported_under_assumptions"
+      },
+      "solar_factor": 1.0,
+      "wait_at_start_s": 0.0
+    }
+  ],
+  "id": "c501781f-258f-4e2e-a19d-030d16d80ffc",
+  "input_sha256": "1e4783e40a824745ee92a904e146b3c073bafeb84f117af2d65d3fb3f9de90ea",
+  "kind": "repair",
+  "limitations": [
+    "Only date, initial wait, usable-capacity/solar scenario multipliers and explicitly allowed thermostat changes are searched. No second site, route generation or arbitrary hardware redesign.",
+    "Capacity/solar gains are declared scenarios; mass, mechanical geometry and thermal properties are not redesigned.",
+    "No correlated terrain realizations, calibrated soil/dust distributions or radio-link budget.",
+    "Audit draws are engineering sensitivity cases, not measured lunar distributions or estimated real-world failure probabilities.",
+    "Required activities remain fixed; extra waiting consumes the same declared mission duration."
+  ],
+  "metrics": {
+    "audit_candidates_frozen": 3,
+    "audit_cases_per_candidate": 3,
+    "candidate_budget_exhausted": false,
+    "candidate_space_size": 7,
+    "nominal_checked": 7,
+    "nominal_supported": 4,
+    "requested_work_complete": true,
+    "search_complete": true,
+    "simulation_evaluations": 16,
+    "unsearched_candidates": 0,
+    "verified_candidates": 3
+  },
+  "name": "Reference traverse \u00b7 Jan 14 2028 \u00b7 bounded repair search",
+  "preserved_requirements": {
+    "duration_hours": 12.0,
+    "max_earth_outage_s": 21600.0,
+    "required_activities": [
+      {
+        "duration_s": 600.0,
+        "kind": "science",
+        "waypoint": 1
+      }
+    ],
+    "robot_id": "afd6c5cad00ea2dd2efa2d12",
+    "signature": "7948a512246118cc91e18ffc73ce07ad8dd724599761a5e641937f5abed83270",
+    "site_id": "connecting-ridge",
+    "waypoints": [
+      {
+        "east_m": 0.0,
+        "north_m": 0.0
+      },
+      {
+        "east_m": 60.0,
+        "north_m": 0.0
+      },
+      {
+        "east_m": 100.0,
+        "north_m": 35.0
+      }
+    ]
+  },
+  "provenance": {
+    "audit_rng": "NumPy SeedSequence [audit_seed, 0x52455041, 1]; no audit outcome used for nominal candidate selection",
+    "implementation": {
+      "libraries": {
+        "mujoco": "4.0.1",
+        "numpy": "2.5.4",
+        "rasterio": "1.5.2",
+        "scipy": "1.18.1",
+        "spiceypy": "8.4.0"
+      },
+      "source_sha256": "d9fa85bbb94fefcd86936cbd071d752fbe657d55e1e5de8f0124f5dbc0ec4244",
+      "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+    },
+    "integration": "left-constant loads; 60 s base grid; activity boundaries; visibility transitions refined to <=1 s",
+    "kernels": {
+      "assets": [
+        {
+          "bytes": 16790528,
+          "file": "de421.bsp",
+          "sha256": "08b20db2ae22488650641c5a9033e5bfda4b1c4b440cfeaf20f621cfa18ecdb3",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de421.bsp"
+        },
+        {
+          "bytes": 1770496,
+          "file": "moon_pa_de421_1900-2050.bpc",
+          "sha256": "656f90616403d75a75f0cd6c8830fc5b44f8cb4facb5ccb8915e752b397520cf",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de421_1900-2050.bpc"
+        },
+        {
+          "bytes": 21437,
+          "file": "moon_080317.tf",
+          "sha256": "78732477b96f9863e7b0d65bcee3c22b8707ca5ed0db56d1173319cb2e8c7993",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_080317.tf"
+        },
+        {
+          "bytes": 5257,
+          "file": "naif0012.tls",
+          "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls"
+        },
+        {
+          "bytes": 131226,
+          "file": "pck00011.tpc",
+          "sha256": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc"
+        }
+      ],
+      "ephemeris": "DE421",
+      "frame": "MOON_ME_DE421"
+    },
+    "models": {
+      "energy": "single-ledger-v0.1",
+      "environment": "spice-de421-directional-horizon-v0.2",
+      "mobility": "r1-declared-baseline",
+      "regolith": "declared-mobility-scenario",
+      "repair": "bounded-surface-repair-v0.1",
+      "thermal": "declared-heater-load"
+    },
+    "seed": 42,
+    "terrain": {
+      "assets": [
+        {
+          "bytes": 40980810,
+          "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+          "file": "Site01_final_adj_5mpp_surf.tif",
+          "id": "PGDA78-Site01",
+          "nodata": "NaN",
+          "pixel_registration": "pixel centers",
+          "resolution_m": 5.0,
+          "sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+          "shape": [
+            3200,
+            3200
+          ],
+          "transform": [
+            5.0,
+            0.0,
+            -19000.0,
+            0.0,
+            -5.0,
+            -4000.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_surf.tif"
+        },
+        {
+          "bytes": 40980810,
+          "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+          "file": "Site01_final_adj_5mpp_toterr.tif",
+          "id": "PGDA78-Site01-height-error",
+          "nodata": "NaN",
+          "pixel_registration": "pixel centers",
+          "resolution_m": 5.0,
+          "sha256": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c",
+          "shape": [
+            3200,
+            3200
+          ],
+          "transform": [
+            5.0,
+            0.0,
+            -19000.0,
+            0.0,
+            -5.0,
+            -4000.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_toterr.tif"
+        },
+        {
+          "bytes": 189158392,
+          "crs_wkt": "PROJCS[\"Moon (2015) - Sphere / Ocentric / South Polar\",GEOGCS[\"Moon (2015) - Sphere / Ocentric\",DATUM[\"Moon (2015) - Sphere\",SPHEROID[\"Moon (2015) - Sphere\",1737400,0,AUTHORITY[\"IAU\",\"30100\"]],AUTHORITY[\"IAU\",\"30100\"]],PRIMEM[\"Reference Meridian\",0,AUTHORITY[\"IAU\",\"30100\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"IAU\",\"30100\"]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH],AUTHORITY[\"IAU\",\"30135\"]]",
+          "file": "LDEM_80S_80MPP_ADJ.TIF",
+          "id": "PGDA90-80m",
+          "nodata": "NaN",
+          "pixel_registration": "pixel centers",
+          "resolution_m": 80.0,
+          "sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a",
+          "shape": [
+            7600,
+            7600
+          ],
+          "transform": [
+            80.0,
+            0.0,
+            -304000.0,
+            0.0,
+            -80.0,
+            304000.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_80MPP_ADJ.TIF"
+        }
+      ],
+      "frame": "MOON_ME_DE421",
+      "limits": [
+        "5 m posting does not resolve wheel-scale hazards",
+        "height RMS is not a complete terrain error model",
+        "horizon sampling requires numerical convergence/observed-shadow validation before mission reliance"
+      ],
+      "reference_radius_m": 1737400.0,
+      "site_id": "connecting-ridge",
+      "vertical_checks": [
+        {
+          "difference_m": 0.7501220703125,
+          "lat_deg": -89.44,
+          "local_elevation_m": 1958.1793212890625,
+          "lon_deg": 222.8,
+          "regional_elevation_m": 1957.42919921875
+        },
+        {
+          "difference_m": 1.75341796875,
+          "lat_deg": -89.45,
+          "local_elevation_m": 1956.777099609375,
+          "lon_deg": 222.8,
+          "regional_elevation_m": 1955.023681640625
+        },
+        {
+          "difference_m": -0.314697265625,
+          "lat_deg": -89.44,
+          "local_elevation_m": 1952.8533935546875,
+          "lon_deg": 223.2,
+          "regional_elevation_m": 1953.1680908203125
+        },
+        {
+          "difference_m": 0.0880126953125,
+          "lat_deg": -89.43,
+          "local_elevation_m": 1942.9156494140625,
+          "lon_deg": 222.5,
+          "regional_elevation_m": 1942.82763671875
+        },
+        {
+          "difference_m": 0.9193115234375,
+          "lat_deg": -89.46,
+          "local_elevation_m": 1948.8848876953125,
+          "lon_deg": 222.7,
+          "regional_elevation_m": 1947.965576171875
+        }
+      ],
+      "vertical_definition": "metres above 1737400 m sphere, checked against regional PGDA90 at five matching coordinates"
+    }
+  },
+  "recommended_candidate_id": "2bf50f4ccbc36994e8a3286e22e3853dbcdefd08e8d3eeaa5f8165c798a58040",
+  "request": {
+    "audit_bounds": {
+      "capacity_factor": [
+        0.85,
+        1.0
+      ],
+      "initial_temperature_delta_c": [
+        -3.0,
+        3.0
+      ],
+      "mobility_factor": [
+        1.0,
+        1.25
+      ],
+      "solar_factor": [
+        0.75,
+        1.0
+      ],
+      "speed_factor": [
+        0.8,
+        1.0
+      ],
+      "start_delay_s": [
+        0,
+        1800
+      ]
+    },
+    "audit_samples": 3,
+    "audit_seed": 53142,
+    "capacity_factors": [
+      1.0
+    ],
+    "costs": {
+      "capacity_percent": 0.25,
+      "date_day": 1,
+      "heater_toggle": 5,
+      "solar_percent": 0.25,
+      "wait_hour": 2
+    },
+    "date_offsets_days": [
+      -14,
+      -7,
+      -1,
+      0,
+      1,
+      7,
+      14
+    ],
+    "heater_choices": null,
+    "max_audit_candidates": 3,
+    "max_candidates": 12,
+    "solar_factors": [
+      1.0
+    ],
+    "source_run_id": "02d915c7-5b8f-4e25-a6fe-6d39557455ac",
+    "wait_at_start_s": [
+      0.0
+    ]
+  },
+  "robot_id": "afd6c5cad00ea2dd2efa2d12",
+  "schema_version": "0.2.0",
+  "search_state": "complete",
+  "selection_policy": {
+    "audit_selection": "Freeze the lowest-cost nominally supported candidates before viewing any audit outcomes. Use identical independently generated audit perturbations across the frozen candidates.",
+    "cost_formula": {
+      "capacity_percent": 0.25,
+      "date_day": 1,
+      "heater_toggle": 5,
+      "solar_percent": 0.25,
+      "wait_hour": 2
+    },
+    "cost_units": "User-weighted score: absolute UTC calendar days; hours of added wait; percent capacity/solar scenario gain; heater toggle.",
+    "label": "Smallest verified repair found within the evaluated candidate and audit budgets.",
+    "not_audited_nominal_candidates": 1
+  },
+  "source_mission": {
+    "artifact_sha256": "386128c6ec1375a0b7e205d55a279d8bd3a71c5d6a6722ada9a5f04d1c57567c",
+    "id": "02d915c7-5b8f-4e25-a6fe-6d39557455ac",
+    "input_sha256": "833808e78bea579996f2f943a8b00f7d70afa05aa53a8c4f57109b68e2c48698",
+    "policy": "Source request is rerun under the current recorded implementation before alternatives are compared.",
+    "recorded_first_violation": {
+      "code": "CONTACT_OUTAGE_LIMIT",
+      "message": "Continuous geometric Earth-center outage exceeds the declared 6 h limit.",
+      "severity": "violation",
+      "t_s": 21600.0
+    }
+  },
+  "status": "verified_repair_found"
+}

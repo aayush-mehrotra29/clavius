@@ -1,0 +1,495 @@
+{
+  "selection": {
+    "method": "Use the published cloned surface directly. The _err.tif files contain the original DEM plus a spatially correlated error realization (Figure 11 panel G), not just panel F error offsets.",
+    "reference": "Barker et al. 2021, DOI 10.1016/j.pss.2020.105119; Figure 11 and Section 4",
+    "reference_url": "https://ntrs.nasa.gov/api/citations/20205009660/downloads/Mike%20Barker_%20Paper_%20Improved%20Lola.pdf",
+    "selection": "Published 0001, 0002 and 0003 per site; not selected on any simulation outcome.",
+    "loaded_indices": [
+      1,
+      2,
+      3
+    ],
+    "published_ensemble_size": 100,
+    "limits": [
+      "Three predeclared surfaces per site are a bounded sensitivity subset, not the complete 100-clone ensemble or a calibrated failure probability.",
+      "All surfaces share the nominal analysis origin and frame. Regional PGDA90 terrain remains nominal.",
+      "LOLA count masks describe nominal-cell return support; a return in a 5 m cell does not establish wheel-scale hazards or exact height throughout that cell."
+    ]
+  },
+  "new_assets": [
+    {
+      "file": "Site01_final_adj_5mpp_ldec.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Site01_final_adj_5mpp_ldec.tif",
+      "sha256": "16d6ed21020ad48fa71d94e7437492acf5bf04118f52bcd292f57f22ead4cd23",
+      "bytes": 40980744,
+      "id": "PGDA78-Site01-counts",
+      "role": "nominal_lola_return_count",
+      "resolution_m": 5,
+      "width": 3200,
+      "height": 3200,
+      "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+      "projection": {
+        "proj": "stere",
+        "lat_0": -90,
+        "lat_ts": -90,
+        "lon_0": 0,
+        "x_0": 0,
+        "y_0": 0,
+        "R": 1737400,
+        "units": "m",
+        "no_defs": true
+      },
+      "transform": [
+        5.0,
+        0.0,
+        -19000.0,
+        0.0,
+        -5.0,
+        -4000.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "nodata": "NaN",
+      "acquired_utc": "2026-11-15T16:24:14.035435+00:00",
+      "units": "LOLA returns per nominal native cell"
+    },
+    {
+      "file": "Site01_final_adj_5mpp_0001_err.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Clones/Site01_final_adj_5mpp_0001_err.tif",
+      "sha256": "242de9e3da624a276864cc4fa7c499e96981c95fd27583565e68e92434faf05b",
+      "bytes": 40987165,
+      "id": "PGDA78-Site01-clone-0001",
+      "role": "terrain_realization_surface",
+      "resolution_m": 5,
+      "width": 3200,
+      "height": 3200,
+      "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+      "projection": {
+        "proj": "stere",
+        "lat_0": -90,
+        "lat_ts": -90,
+        "lon_0": 0,
+        "x_0": 0,
+        "y_0": 0,
+        "R": 1737400,
+        "units": "m",
+        "no_defs": true
+      },
+      "transform": [
+        5.0,
+        0.0,
+        -19000.0,
+        0.0,
+        -5.0,
+        -4000.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "nodata": "NaN",
+      "acquired_utc": "2026-11-15T16:24:14.044030+00:00",
+      "units": "metres above 1737400 m sphere",
+      "realization_index": 1,
+      "source_class": "published_statistical_terrain_realization",
+      "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+    },
+    {
+      "file": "Site01_final_adj_5mpp_0002_err.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Clones/Site01_final_adj_5mpp_0002_err.tif",
+      "sha256": "97b2c05633e308c72eddfc5a337089836d80b5edb7469321976973f7eeb7dcad",
+      "bytes": 40987165,
+      "id": "PGDA78-Site01-clone-0002",
+      "role": "terrain_realization_surface",
+      "resolution_m": 5,
+      "width": 3200,
+      "height": 3200,
+      "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+      "projection": {
+        "proj": "stere",
+        "lat_0": -90,
+        "lat_ts": -90,
+        "lon_0": 0,
+        "x_0": 0,
+        "y_0": 0,
+        "R": 1737400,
+        "units": "m",
+        "no_defs": true
+      },
+      "transform": [
+        5.0,
+        0.0,
+        -19000.0,
+        0.0,
+        -5.0,
+        -4000.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "nodata": "NaN",
+      "acquired_utc": "2026-11-15T16:24:14.050913+00:00",
+      "units": "metres above 1737400 m sphere",
+      "realization_index": 2,
+      "source_class": "published_statistical_terrain_realization",
+      "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+    },
+    {
+      "file": "Site01_final_adj_5mpp_0003_err.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site01/Clones/Site01_final_adj_5mpp_0003_err.tif",
+      "sha256": "2e79f90fcc6b28b06cc5524ac80601ace4ed2ea3b875e18deede92903b64f06c",
+      "bytes": 40987165,
+      "id": "PGDA78-Site01-clone-0003",
+      "role": "terrain_realization_surface",
+      "resolution_m": 5,
+      "width": 3200,
+      "height": 3200,
+      "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+      "projection": {
+        "proj": "stere",
+        "lat_0": -90,
+        "lat_ts": -90,
+        "lon_0": 0,
+        "x_0": 0,
+        "y_0": 0,
+        "R": 1737400,
+        "units": "m",
+        "no_defs": true
+      },
+      "transform": [
+        5.0,
+        0.0,
+        -19000.0,
+        0.0,
+        -5.0,
+        -4000.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "nodata": "NaN",
+      "acquired_utc": "2026-11-15T16:24:14.058046+00:00",
+      "units": "metres above 1737400 m sphere",
+      "realization_index": 3,
+      "source_class": "published_statistical_terrain_realization",
+      "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+    },
+    {
+      "file": "Site04_final_adj_5mpp_ldec.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Site04_final_adj_5mpp_ldec.tif",
+      "sha256": "fcc8c2219ae2368d5b2a1f6aec05fcf96cf725f3035ac8d80efc312a4ff29227",
+      "bytes": 40980740,
+      "id": "PGDA78-Site04-counts",
+      "role": "nominal_lola_return_count",
+      "resolution_m": 5,
+      "width": 3200,
+      "height": 3200,
+      "crs_wkt": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+      "projection": {
+        "proj": "stere",
+        "lat_0": -90,
+        "lat_ts": -90,
+        "lon_0": 0,
+        "x_0": 0,
+        "y_0": 0,
+        "R": 1737400,
+        "units": "m",
+        "no_defs": true
+      },
+      "transform": [
+        5.0,
+        0.0,
+        -9000.0,
+        0.0,
+        -5.0,
+        1000.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "nodata": "NaN",
+      "acquired_utc": "2026-11-15T16:24:14.065158+00:00",
+      "units": "LOLA returns per nominal native cell"
+    },
+    {
+      "file": "Site04_final_adj_5mpp_0001_err.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Clones/Site04_final_adj_5mpp_0001_err.tif",
+      "sha256": "8d6efbddbfde8aa98a4a2454b6f79636ce307138360f3b38b6243cb76a585963",
+      "bytes": 40987161,
+      "id": "PGDA78-Site04-clone-0001",
+      "role": "terrain_realization_surface",
+      "resolution_m": 5,
+      "width": 3200,
+      "height": 3200,
+      "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+      "projection": {
+        "proj": "stere",
+        "lat_0": -90,
+        "lat_ts": -90,
+        "lon_0": 0,
+        "x_0": 0,
+        "y_0": 0,
+        "R": 1737400,
+        "units": "m",
+        "no_defs": true
+      },
+      "transform": [
+        5.0,
+        0.0,
+        -9000.0,
+        0.0,
+        -5.0,
+        1000.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "nodata": "NaN",
+      "acquired_utc": "2026-11-15T16:24:14.072671+00:00",
+      "units": "metres above 1737400 m sphere",
+      "realization_index": 1,
+      "source_class": "published_statistical_terrain_realization",
+      "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+    },
+    {
+      "file": "Site04_final_adj_5mpp_0002_err.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Clones/Site04_final_adj_5mpp_0002_err.tif",
+      "sha256": "a3b58f9000a75c7ed0156ee8222a8bcd66112748fbe8d89fc2de7e248d41bf0f",
+      "bytes": 40987159,
+      "id": "PGDA78-Site04-clone-0002",
+      "role": "terrain_realization_surface",
+      "resolution_m": 5,
+      "width": 3200,
+      "height": 3200,
+      "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+      "projection": {
+        "proj": "stere",
+        "lat_0": -90,
+        "lat_ts": -90,
+        "lon_0": 0,
+        "x_0": 0,
+        "y_0": 0,
+        "R": 1737400,
+        "units": "m",
+        "no_defs": true
+      },
+      "transform": [
+        5.0,
+        0.0,
+        -9000.0,
+        0.0,
+        -5.0,
+        1000.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "nodata": "NaN",
+      "acquired_utc": "2026-11-15T16:24:14.079476+00:00",
+      "units": "metres above 1737400 m sphere",
+      "realization_index": 2,
+      "source_class": "published_statistical_terrain_realization",
+      "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+    },
+    {
+      "file": "Site04_final_adj_5mpp_0003_err.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/Site04/Clones/Site04_final_adj_5mpp_0003_err.tif",
+      "sha256": "07dad75a48f1f4acf9f9084408bcf0bb3a80a0a5368613da425ad462baad8c89",
+      "bytes": 40987161,
+      "id": "PGDA78-Site04-clone-0003",
+      "role": "terrain_realization_surface",
+      "resolution_m": 5,
+      "width": 3200,
+      "height": 3200,
+      "crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+      "projection": {
+        "proj": "stere",
+        "lat_0": -90,
+        "lat_ts": -90,
+        "lon_0": 0,
+        "x_0": 0,
+        "y_0": 0,
+        "R": 1737400,
+        "units": "m",
+        "no_defs": true
+      },
+      "transform": [
+        5.0,
+        0.0,
+        -9000.0,
+        0.0,
+        -5.0,
+        1000.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "nodata": "NaN",
+      "acquired_utc": "2026-11-15T16:24:14.086251+00:00",
+      "units": "metres above 1737400 m sphere",
+      "realization_index": 3,
+      "source_class": "published_statistical_terrain_realization",
+      "value_convention": "Complete cloned elevation surface, not an additive error raster; use directly as height."
+    }
+  ],
+  "site_checks": [
+    {
+      "site_id": "connecting-ridge",
+      "clone_registration_checks": [
+        {
+          "id": "pgda78-0001",
+          "asset_sha256": "242de9e3da624a276864cc4fa7c499e96981c95fd27583565e68e92434faf05b",
+          "grid_aligned": true,
+          "clone_minus_nominal_rms_m": 0.4435362074117176,
+          "clone_minus_nominal_range_m": [
+            -4.62701416015625,
+            5.45660400390625
+          ],
+          "format_check_rms_limit_m": 20,
+          "limit": "Format/convention check, not an accuracy estimate or the complete 100-member error distribution."
+        },
+        {
+          "id": "pgda78-0002",
+          "asset_sha256": "97b2c05633e308c72eddfc5a337089836d80b5edb7469321976973f7eeb7dcad",
+          "grid_aligned": true,
+          "clone_minus_nominal_rms_m": 0.44371704977976006,
+          "clone_minus_nominal_range_m": [
+            -4.946044921875,
+            5.7379150390625
+          ],
+          "format_check_rms_limit_m": 20,
+          "limit": "Format/convention check, not an accuracy estimate or the complete 100-member error distribution."
+        },
+        {
+          "id": "pgda78-0003",
+          "asset_sha256": "2e79f90fcc6b28b06cc5524ac80601ace4ed2ea3b875e18deede92903b64f06c",
+          "grid_aligned": true,
+          "clone_minus_nominal_rms_m": 0.4432578471518316,
+          "clone_minus_nominal_range_m": [
+            -5.2486572265625,
+            5.34033203125
+          ],
+          "format_check_rms_limit_m": 20,
+          "limit": "Format/convention check, not an accuracy estimate or the complete 100-member error distribution."
+        }
+      ],
+      "count_map_check": {
+        "finite_cells": 10240000,
+        "cells_with_returns": 972204,
+        "empty_interpolated_cells": 9267796,
+        "sampling": "Native containing cell, no interpolation of count categories."
+      }
+    },
+    {
+      "site_id": "shackleton-rim",
+      "clone_registration_checks": [
+        {
+          "id": "pgda78-0001",
+          "asset_sha256": "8d6efbddbfde8aa98a4a2454b6f79636ce307138360f3b38b6243cb76a585963",
+          "grid_aligned": true,
+          "clone_minus_nominal_rms_m": 0.46711169744501824,
+          "clone_minus_nominal_range_m": [
+            -6.323486328125,
+            7.0361328125
+          ],
+          "format_check_rms_limit_m": 20,
+          "limit": "Format/convention check, not an accuracy estimate or the complete 100-member error distribution."
+        },
+        {
+          "id": "pgda78-0002",
+          "asset_sha256": "a3b58f9000a75c7ed0156ee8222a8bcd66112748fbe8d89fc2de7e248d41bf0f",
+          "grid_aligned": true,
+          "clone_minus_nominal_rms_m": 0.4682867942032618,
+          "clone_minus_nominal_range_m": [
+            -6.0791015625,
+            7.8165283203125
+          ],
+          "format_check_rms_limit_m": 20,
+          "limit": "Format/convention check, not an accuracy estimate or the complete 100-member error distribution."
+        },
+        {
+          "id": "pgda78-0003",
+          "asset_sha256": "07dad75a48f1f4acf9f9084408bcf0bb3a80a0a5368613da425ad462baad8c89",
+          "grid_aligned": true,
+          "clone_minus_nominal_rms_m": 0.4682520590050405,
+          "clone_minus_nominal_range_m": [
+            -7.4547119140625,
+            7.8707275390625
+          ],
+          "format_check_rms_limit_m": 20,
+          "limit": "Format/convention check, not an accuracy estimate or the complete 100-member error distribution."
+        }
+      ],
+      "count_map_check": {
+        "finite_cells": 10240000,
+        "cells_with_returns": 937381,
+        "empty_interpolated_cells": 9302619,
+        "sampling": "Native containing cell, no interpolation of count categories."
+      }
+    }
+  ],
+  "support_display_derivatives": {
+    "connecting-ridge": {
+      "file": "data/lola-support/connecting-ridge.png",
+      "url": "/data/lola-support/connecting-ridge.png",
+      "sha256": "7dd9941bd2ba8bb8d4368621c713ff152ba8b467b363b8a4df26e32ebb654f49",
+      "bytes": 1010931,
+      "width": 3200,
+      "height": 3200,
+      "source_asset_id": "PGDA78-Site01-counts",
+      "source_sha256": "16d6ed21020ad48fa71d94e7437492acf5bf04118f52bcd292f57f22ead4cd23",
+      "colors_srgb8": {
+        "returns": [
+          173,
+          203,
+          151
+        ],
+        "interpolated": [
+          148,
+          154,
+          159
+        ],
+        "unknown": [
+          193,
+          147,
+          88
+        ]
+      },
+      "script": "scripts/derive_lola_support.py",
+      "encoding": "RGB8 PNG, filter 0, zlib level 9; north-to-south native row order",
+      "registration": "One image pixel per native nominal LDEC cell. Map via source south-polar stereographic coordinates; nearest filtering, no mipmaps.",
+      "limit": "A nominal-cell return-support display, not a terrain safety or wheel-scale coverage map."
+    },
+    "shackleton-rim": {
+      "file": "data/lola-support/shackleton-rim.png",
+      "url": "/data/lola-support/shackleton-rim.png",
+      "sha256": "b282304cebec1c9566976ec5a96897a3630cffbe3e24aab0ce3b8533220e040a",
+      "bytes": 987681,
+      "width": 3200,
+      "height": 3200,
+      "source_asset_id": "PGDA78-Site04-counts",
+      "source_sha256": "fcc8c2219ae2368d5b2a1f6aec05fcf96cf725f3035ac8d80efc312a4ff29227",
+      "colors_srgb8": {
+        "returns": [
+          173,
+          203,
+          151
+        ],
+        "interpolated": [
+          148,
+          154,
+          159
+        ],
+        "unknown": [
+          193,
+          147,
+          88
+        ]
+      },
+      "script": "scripts/derive_lola_support.py",
+      "encoding": "RGB8 PNG, filter 0, zlib level 9; north-to-south native row order",
+      "registration": "One image pixel per native nominal LDEC cell. Map via source south-polar stereographic coordinates; nearest filtering, no mipmaps.",
+      "limit": "A nominal-cell return-support display, not a terrain safety or wheel-scale coverage map."
+    }
+  }
+}

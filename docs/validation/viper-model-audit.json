@@ -1,0 +1,936 @@
+{
+  "id": "clavius-viper-upstream-audit-v1",
+  "recorded_utc": "2026-11-15T21:39:27.550330+00:00",
+  "role": "Candidate model audit; not active app robot support or flight validation",
+  "software": {
+    "name": "Project Chrono",
+    "version": "9.0.1",
+    "upstream_commit": "2617649bf687456328a122b63dc0bb64df91394a",
+    "repository": "https://github.com/projectchrono/chrono",
+    "reference_runtime_identity": "b6893013760304c5d046a33fc9c27068e070eade0584278f97fb2865c5bae9cf"
+  },
+  "hardware_reference": {
+    "title": "VIPER Rover Overview and Mobility and Hardware",
+    "author": "Bill Bluethmann",
+    "presentation_date": "2024-11-14",
+    "url": "https://ntrs.nasa.gov/citations/20240013903",
+    "download_url": "https://ntrs.nasa.gov/api/citations/20240013903/downloads/LSIC_2024-Tech%20Infusion_Panel-VIPER_Mob-HW.pdf",
+    "sha256": "fde1179cbf7af0fa04bdf4d19bb2c133a6c551e616fa921bb69354c21ec18465",
+    "bytes": 2756069,
+    "facts": {
+      "roving_mass_kg": {
+        "value": 447,
+        "page": 2
+      },
+      "launch_mass_with_lander_interface_kg": {
+        "value": 490,
+        "page": 2
+      },
+      "envelope_m": {
+        "value": [
+          1.7,
+          1.7,
+          2.5
+        ],
+        "page": 2
+      },
+      "battery_capacity_wh": {
+        "value": 5420,
+        "condition": "Start of life at 0 degrees C; not a temperature-dependent discharge curve",
+        "page": 2
+      },
+      "solar_panel_w": {
+        "value": 320,
+        "condition": "Published panel output; not a mission-time incidence/temperature efficiency model",
+        "page": 2
+      },
+      "wheel_diameter_m": {
+        "value": 0.5,
+        "page": 4
+      },
+      "grouser_height_m": {
+        "value": 0.025,
+        "page": 4
+      },
+      "top_speed_m_s": {
+        "value": 0.2,
+        "page": 4
+      },
+      "nominal_speed_m_s": {
+        "value": 0.1,
+        "page": 4
+      },
+      "steering_half_range_deg": {
+        "value": 50,
+        "page": 4
+      },
+      "ground_clearance_range_m": {
+        "value": [
+          0.07,
+          0.43
+        ],
+        "page": 4
+      },
+      "slope_requirement_deg": {
+        "value": 15,
+        "role": "Design requirement, not demonstrated Clavius performance",
+        "page": 4
+      },
+      "obstacle_requirement_m": {
+        "value": 0.15,
+        "role": "Design requirement, not guaranteed traversability",
+        "page": 4
+      }
+    }
+  },
+  "native_model": {
+    "engine_version": "9.0.1",
+    "role": "Upstream model instantiation audit; no simulation or flight validation",
+    "upstream_rover_mass_getter_kg": 430.92111389444585,
+    "bodies": [
+      {
+        "name": "chassis_body",
+        "mass_kg": 328.81693203100417,
+        "inertia_com_principal_kg_m2": [
+          79.03928724885532,
+          86.78999635225327,
+          110.2799525667459
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.016496957074182,
+          -2.2232399533356912e-05,
+          0.6818411300241348
+        ],
+        "reference_world_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_relative_reference_m": [
+          -0.016496957074182,
+          -2.2232399533356912e-05,
+          0.6818411300241348
+        ]
+      },
+      {
+        "name": "wheel_LF_body",
+        "mass_kg": 11.051451888185232,
+        "inertia_com_principal_kg_m2": [
+          0.2702021519829343,
+          0.2705231821027216,
+          0.4344019170372474
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6418877139272928,
+          0.5960044153109113,
+          0.0003652317272176513
+        ],
+        "reference_world_m": [
+          0.6417999999999999,
+          0.6097999999999999,
+          0.0
+        ],
+        "com_relative_reference_m": [
+          8.77139272928977e-05,
+          -0.013795584689088565,
+          0.0003652317272176513
+        ]
+      },
+      {
+        "name": "upper_arm_body",
+        "mass_kg": 2.709255217811145,
+        "inertia_com_principal_kg_m2": [
+          0.0021638927915535837,
+          0.0209986825615715,
+          0.021724661873162437
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6417999999999999,
+          0.36251988934457036,
+          0.0525
+        ],
+        "reference_world_m": [
+          0.6417999999999999,
+          0.2067,
+          0.0525
+        ],
+        "com_relative_reference_m": [
+          1.4849755953383174e-18,
+          0.15581988934457036,
+          -2.3538442836719155e-20
+        ]
+      },
+      {
+        "name": "lower_arm_body",
+        "mass_kg": 6.96275742269473,
+        "inertia_com_principal_kg_m2": [
+          0.006209701747298846,
+          0.06404526672891087,
+          0.06526250590047625
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6417999999999999,
+          0.350640432854908,
+          -0.052500001790185366
+        ],
+        "reference_world_m": [
+          0.6417999999999999,
+          0.2067,
+          -0.0525
+        ],
+        "com_relative_reference_m": [
+          8.804714035700623e-19,
+          0.14394043285490798,
+          -1.7901853703724507e-09
+        ]
+      },
+      {
+        "name": "upright_body",
+        "mass_kg": 4.802580937169346,
+        "inertia_com_principal_kg_m2": [
+          0.010534988654724268,
+          0.02557820576982033,
+          0.029288464643288856
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6420217836191924,
+          0.5959168934721247,
+          0.0006959129182502721
+        ],
+        "reference_world_m": [
+          0.6417999999999999,
+          0.6097999999999999,
+          0.0
+        ],
+        "com_relative_reference_m": [
+          0.00022178361919250424,
+          -0.01388310652787513,
+          0.0006959129182502721
+        ]
+      },
+      {
+        "name": "wheel_RF_body",
+        "mass_kg": 11.051451888185232,
+        "inertia_com_principal_kg_m2": [
+          0.2702021519829343,
+          0.2705231821027216,
+          0.4344019170372474
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6418877139272928,
+          -0.6235955846890885,
+          0.0003652317272176513
+        ],
+        "reference_world_m": [
+          0.6417999999999999,
+          -0.6097999999999999,
+          0.0
+        ],
+        "com_relative_reference_m": [
+          8.77139272928977e-05,
+          -0.013795584689088565,
+          0.0003652317272176513
+        ]
+      },
+      {
+        "name": "upper_arm_body",
+        "mass_kg": 2.709255217811145,
+        "inertia_com_principal_kg_m2": [
+          0.0021638927915535837,
+          0.0209986825615715,
+          0.021724661873162437
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6417999999999999,
+          -0.36251988934457036,
+          0.0525
+        ],
+        "reference_world_m": [
+          0.6417999999999999,
+          -0.2067,
+          0.0525
+        ],
+        "com_relative_reference_m": [
+          1.4849755953383174e-18,
+          -0.15581988934457036,
+          2.3538442836719155e-20
+        ]
+      },
+      {
+        "name": "lower_arm_body",
+        "mass_kg": 6.96275742269473,
+        "inertia_com_principal_kg_m2": [
+          0.006209701747298846,
+          0.06404526672891087,
+          0.06526250590047625
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6417999999999999,
+          -0.350640432854908,
+          -0.05249999820981463
+        ],
+        "reference_world_m": [
+          0.6417999999999999,
+          -0.2067,
+          -0.0525
+        ],
+        "com_relative_reference_m": [
+          8.804714035700623e-19,
+          -0.14394043285490798,
+          1.7901853703724507e-09
+        ]
+      },
+      {
+        "name": "upright_body",
+        "mass_kg": 4.802580937169346,
+        "inertia_com_principal_kg_m2": [
+          0.010534988654724268,
+          0.02557820576982033,
+          0.029288464643288856
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6415782163808075,
+          -0.5959168934721247,
+          0.0006959129182502721
+        ],
+        "reference_world_m": [
+          0.6417999999999999,
+          -0.6097999999999999,
+          0.0
+        ],
+        "com_relative_reference_m": [
+          -0.00022178361919250424,
+          0.01388310652787513,
+          0.0006959129182502721
+        ]
+      },
+      {
+        "name": "wheel_LB_body",
+        "mass_kg": 11.051451888185232,
+        "inertia_com_principal_kg_m2": [
+          0.2702021519829343,
+          0.2705231821027216,
+          0.4344019170372474
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.641712286072707,
+          0.5960044153109113,
+          0.0003652317272176513
+        ],
+        "reference_world_m": [
+          -0.6417999999999999,
+          0.6097999999999999,
+          0.0
+        ],
+        "com_relative_reference_m": [
+          8.77139272928977e-05,
+          -0.013795584689088565,
+          0.0003652317272176513
+        ]
+      },
+      {
+        "name": "upper_arm_body",
+        "mass_kg": 2.709255217811145,
+        "inertia_com_principal_kg_m2": [
+          0.0021638927915535837,
+          0.0209986825615715,
+          0.021724661873162437
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.6417999999999999,
+          0.36251988934457036,
+          0.0525
+        ],
+        "reference_world_m": [
+          -0.6417999999999999,
+          0.2067,
+          0.0525
+        ],
+        "com_relative_reference_m": [
+          1.4849755953383174e-18,
+          0.15581988934457036,
+          -2.3538442836719155e-20
+        ]
+      },
+      {
+        "name": "lower_arm_body",
+        "mass_kg": 6.96275742269473,
+        "inertia_com_principal_kg_m2": [
+          0.006209701747298846,
+          0.06404526672891087,
+          0.06526250590047625
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.6417999999999999,
+          0.350640432854908,
+          -0.052500001790185366
+        ],
+        "reference_world_m": [
+          -0.6417999999999999,
+          0.2067,
+          -0.0525
+        ],
+        "com_relative_reference_m": [
+          8.804714035700623e-19,
+          0.14394043285490798,
+          -1.7901853703724507e-09
+        ]
+      },
+      {
+        "name": "upright_body",
+        "mass_kg": 4.802580937169346,
+        "inertia_com_principal_kg_m2": [
+          0.010534988654724268,
+          0.02557820576982033,
+          0.029288464643288856
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.6415782163808075,
+          0.5959168934721247,
+          0.0006959129182502721
+        ],
+        "reference_world_m": [
+          -0.6417999999999999,
+          0.6097999999999999,
+          0.0
+        ],
+        "com_relative_reference_m": [
+          0.00022178361919250424,
+          -0.01388310652787513,
+          0.0006959129182502721
+        ]
+      },
+      {
+        "name": "wheel_RB_body",
+        "mass_kg": 11.051451888185232,
+        "inertia_com_principal_kg_m2": [
+          0.2702021519829343,
+          0.2705231821027216,
+          0.4344019170372474
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.641712286072707,
+          -0.6235955846890885,
+          0.0003652317272176513
+        ],
+        "reference_world_m": [
+          -0.6417999999999999,
+          -0.6097999999999999,
+          0.0
+        ],
+        "com_relative_reference_m": [
+          8.77139272928977e-05,
+          -0.013795584689088565,
+          0.0003652317272176513
+        ]
+      },
+      {
+        "name": "upper_arm_body",
+        "mass_kg": 2.709255217811145,
+        "inertia_com_principal_kg_m2": [
+          0.0021638927915535837,
+          0.0209986825615715,
+          0.021724661873162437
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.6417999999999999,
+          -0.36251988934457036,
+          0.0525
+        ],
+        "reference_world_m": [
+          -0.6417999999999999,
+          -0.2067,
+          0.0525
+        ],
+        "com_relative_reference_m": [
+          1.4849755953383174e-18,
+          -0.15581988934457036,
+          2.3538442836719155e-20
+        ]
+      },
+      {
+        "name": "lower_arm_body",
+        "mass_kg": 6.96275742269473,
+        "inertia_com_principal_kg_m2": [
+          0.006209701747298846,
+          0.06404526672891087,
+          0.06526250590047625
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.6417999999999999,
+          -0.350640432854908,
+          -0.05249999820981463
+        ],
+        "reference_world_m": [
+          -0.6417999999999999,
+          -0.2067,
+          -0.0525
+        ],
+        "com_relative_reference_m": [
+          8.804714035700623e-19,
+          -0.14394043285490798,
+          1.7901853703724507e-09
+        ]
+      },
+      {
+        "name": "upright_body",
+        "mass_kg": 4.802580937169346,
+        "inertia_com_principal_kg_m2": [
+          0.010534988654724268,
+          0.02557820576982033,
+          0.029288464643288856
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.6420217836191924,
+          -0.5959168934721247,
+          0.0006959129182502721
+        ],
+        "reference_world_m": [
+          -0.6417999999999999,
+          -0.6097999999999999,
+          0.0
+        ],
+        "com_relative_reference_m": [
+          -0.00022178361919250424,
+          0.01388310652787513,
+          0.0006959129182502721
+        ]
+      },
+      {
+        "name": "",
+        "mass_kg": 1.0000000000000002,
+        "inertia_com_principal_kg_m2": [
+          0.0016666666666666672,
+          0.0016666666666666672,
+          0.0016666666666666672
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6417999999999999,
+          0.6097999999999999,
+          0.0
+        ]
+      },
+      {
+        "name": "",
+        "mass_kg": 1.0000000000000002,
+        "inertia_com_principal_kg_m2": [
+          0.0016666666666666672,
+          0.0016666666666666672,
+          0.0016666666666666672
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          0.6417999999999999,
+          -0.6097999999999999,
+          0.0
+        ]
+      },
+      {
+        "name": "",
+        "mass_kg": 1.0000000000000002,
+        "inertia_com_principal_kg_m2": [
+          0.0016666666666666672,
+          0.0016666666666666672,
+          0.0016666666666666672
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.6417999999999999,
+          0.6097999999999999,
+          0.0
+        ]
+      },
+      {
+        "name": "",
+        "mass_kg": 1.0000000000000002,
+        "inertia_com_principal_kg_m2": [
+          0.0016666666666666672,
+          0.0016666666666666672,
+          0.0016666666666666672
+        ],
+        "products_of_inertia_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "com_world_m": [
+          -0.6417999999999999,
+          -0.6097999999999999,
+          0.0
+        ]
+      }
+    ],
+    "all_body_mass_kg": 434.92111389444585,
+    "link_count": 28,
+    "shafts": [
+      {
+        "inertia_kg_m2": 0.1
+      },
+      {
+        "inertia_kg_m2": 0.1
+      },
+      {
+        "inertia_kg_m2": 0.1
+      },
+      {
+        "inertia_kg_m2": 0.1
+      }
+    ]
+  },
+  "structural_checks": {
+    "all_masses_positive": true,
+    "all_principal_inertias_positive": true,
+    "inertia_triangle_inequalities": true,
+    "sum_matches_actual_system_mass": true,
+    "four_wheels_present": true
+  },
+  "wheel_collider_geometry": {
+    "maximum_radial_extent_about_y_m": 0.25030584182156035,
+    "full_y_extent_m": 0.298045,
+    "role": "Upstream collider bounds, including protrusions; not measured flight-wheel width or the separate TREC fixture."
+  },
+  "mass_frame_consistency": {
+    "role": "Consistency of source-derived mass frames with the actual collider; not measured NASA flight COG",
+    "tolerance_m": 1e-06,
+    "wheel_offsets": {
+      "wheel_LF_body": {
+        "collider_cog_m": [
+          -8.771392729288876e-05,
+          0.013795584689088553,
+          0.00036523172721760524
+        ],
+        "body_cog_m": [
+          8.77139272928977e-05,
+          -0.013795584689088565,
+          0.0003652317272176513
+        ],
+        "difference_m": [
+          0.00017542785458578647,
+          -0.02759116937817712,
+          4.607859233063394e-17
+        ],
+        "distance_m": 0.027591727067862632
+      },
+      "wheel_RF_body": {
+        "collider_cog_m": [
+          8.771392729289773e-05,
+          -0.013795584689088564,
+          0.0003652317272176514
+        ],
+        "body_cog_m": [
+          8.77139272928977e-05,
+          -0.013795584689088565,
+          0.0003652317272176513
+        ],
+        "difference_m": [
+          -2.710505431213761e-20,
+          -1.734723475976807e-18,
+          -1.0842021724855044e-19
+        ],
+        "distance_m": 1.738319638496483e-18
+      },
+      "wheel_LB_body": {
+        "collider_cog_m": [
+          -8.771392729288876e-05,
+          0.013795584689088553,
+          0.00036523172721760524
+        ],
+        "body_cog_m": [
+          8.77139272928977e-05,
+          -0.013795584689088565,
+          0.0003652317272176513
+        ],
+        "difference_m": [
+          0.00017542785458578647,
+          -0.02759116937817712,
+          4.607859233063394e-17
+        ],
+        "distance_m": 0.027591727067862632
+      },
+      "wheel_RB_body": {
+        "collider_cog_m": [
+          8.771392729289773e-05,
+          -0.013795584689088564,
+          0.0003652317272176514
+        ],
+        "body_cog_m": [
+          8.77139272928977e-05,
+          -0.013795584689088565,
+          0.0003652317272176513
+        ],
+        "difference_m": [
+          -2.710505431213761e-20,
+          -1.734723475976807e-18,
+          -1.0842021724855044e-19
+        ],
+        "distance_m": 1.738319638496483e-18
+      }
+    },
+    "checks_passed": false,
+    "native_geometry": {
+      "right_collider": {
+        "assumed_density_kg_m3": 800.0,
+        "mass_kg": 11.051451888185232,
+        "cog_relative_reference_m": [
+          8.771392729289773e-05,
+          -0.013795584689088564,
+          0.0003652317272176514
+        ]
+      },
+      "left_rotated_collider": {
+        "assumed_density_kg_m3": 800.0,
+        "mass_kg": 11.051451888185234,
+        "cog_relative_reference_m": [
+          -8.771392729288876e-05,
+          0.013795584689088553,
+          0.00036523172721760524
+        ]
+      }
+    },
+    "command": [
+      "/Users/Aayush/SpaceAppsProject/data/runtime/chrono-model-audit-build/clavius_viper_wheel_mass_frames",
+      "/Users/Aayush/SpaceAppsProject/data/raw/robots/chrono/data/robot/viper/col/viper_wheel.obj",
+      "/Users/Aayush/SpaceAppsProject/data/runtime/viper-model-audit-v2/wheel-mass-frames.json"
+    ],
+    "native_output_sha256": "e21378debfbd1ab2736975e3a802238d57b805b86440a0e4a7e0ada055971ad5"
+  },
+  "differences": {
+    "mass_difference_from_roving_reference_kg": -12.078886105554147,
+    "mass_difference_from_roving_reference_percent": -2.702211656723519,
+    "mass_excluded_by_upstream_getter_kg": 4.0,
+    "upstream_steering_half_range_deg": 30,
+    "hardware_steering_half_range_deg": 50
+  },
+  "assumption_ledger": [
+    "Body masses and principal inertias derive from collider mesh volumes with assumed part densities; no measured flight tensors.",
+    "Four 1 kg steering connector bodies contribute to system mass but are excluded by the upstream GetRoverMass helper.",
+    "Upstream steering clamps to 30 degrees, below the dated hardware 50 degree range; no adaptation has been accepted.",
+    "Upstream suspension springs use 800000 N/m and 10000 N s/m; these are source model values, not measured flight suspension curves.",
+    "Upstream default DC driver uses 300 N m stall torque and pi rad/s no-load speed; no flight torque/current map is established.",
+    "The flight hardware uses active wheel downforce and IMU control; those flight control loops have not been reproduced or validated.",
+    "The native collider lateral extent is not interchangeable with the 0.2 m TREC laboratory wheel width.",
+    "Left-wheel collider rotation is assigned after the upstream constructor computes mass properties. The native geometry check detects a COG-frame mismatch; reconcile it before adapting the model.",
+    "The 5420 W h source capacity alone does not supply calibrated energy consumption, thermal or BMS response."
+  ],
+  "active_app_model": false,
+  "flight_prediction_validated": false,
+  "lunar_soil_validated": false,
+  "evidence": {
+    "command": [
+      "/Users/Aayush/SpaceAppsProject/data/runtime/chrono-model-audit-build/clavius_viper_audit",
+      "/Users/Aayush/SpaceAppsProject/data/raw/robots/chrono/data",
+      "/Users/Aayush/SpaceAppsProject/data/runtime/viper-model-audit-v2/native-model.json"
+    ],
+    "native_output_sha256": "440bf585494da738d080ff1dc81888d1a285f1423c39171b4b52e1685210b750",
+    "files": [
+      {
+        "file": "data/raw/robots/chrono/src/chrono_models/robot/viper/Viper.cpp",
+        "sha256": "4a6156c947445bbcdf8d5ecb0c6e59465f4232bb2349141a1c529e34f88a5e86",
+        "bytes": 28933
+      },
+      {
+        "file": "data/raw/robots/chrono/src/chrono_models/robot/viper/Viper.h",
+        "sha256": "ecb757be4e9e2bf7a5bedd144f184f9b80792535d0e2394a2ef9c2e337b5079f",
+        "bytes": 17541
+      },
+      {
+        "file": "data/raw/robots/chrono/LICENSE",
+        "sha256": "5f625eb4c9e0ddf86db9d1ed9b6adb5b30296ea81919282b2f38c977136bf079",
+        "bytes": 1485
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_L_bt_sus.obj",
+        "sha256": "6288061c0c13055c36af8d86148b58fd79cf5ae59c0c48620c7be8ad55df9c7d",
+        "bytes": 27033
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_L_steer.obj",
+        "sha256": "41bd6eb648f9290151b35bee3d7073109c368fd229c7aa7d5cb6b59e51a59b55",
+        "bytes": 71387
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_L_up_sus.obj",
+        "sha256": "68890af782e7e2a2789f7a7134e24e11f64567721f5313d0ed4a7e056b51abe2",
+        "bytes": 27799
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_R_bt_sus.obj",
+        "sha256": "81c45060db0a3c1599b327db23a06062389d67cc942bb585c99d061759f42b24",
+        "bytes": 27121
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_R_steer.obj",
+        "sha256": "57c5766399752d92330df40305c49ff3af2e50794e097f5b856c1829b86357f5",
+        "bytes": 71037
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_R_up_sus.obj",
+        "sha256": "d22975a201f3bef1f33dccfbeaf77867fb4a5e1ec42d29c066f597a718411c56",
+        "bytes": 27893
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_chassis.obj",
+        "sha256": "1dca0c3b06a2cb3e04acf6c1090a0e743f94f0d112bb4ab45913a2bb92ddcf2f",
+        "bytes": 1020412
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_cylwheel.obj",
+        "sha256": "3ddbf5ce53464bcebb012e7d5823088a6a25e598a8c85cce85fa240da19e5b53",
+        "bytes": 8721
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_simplewheel.obj",
+        "sha256": "96272086e97c77caed9031023d5681e4c3b6bd98ba0170392842167316cf6d0c",
+        "bytes": 41246
+      },
+      {
+        "file": "data/raw/robots/chrono/data/robot/viper/col/viper_wheel.obj",
+        "sha256": "0056b34fc18369521e9d2d629b822570f7936d9ff02a6f8e869f8be1b6709739",
+        "bytes": 183730
+      },
+      {
+        "file": "data/runtime/chrono-build/lib/libChronoEngine.dylib",
+        "sha256": "c7c83909831f04121209f628887ee9d2319277fe84def06e7b3caab5fcf86b22",
+        "bytes": 11758184
+      },
+      {
+        "file": "data/runtime/chrono-build/lib/libChronoEngine_vehicle.dylib",
+        "sha256": "e27cc5cc84e7bad6a51e856bf1e00bc471cfb2ebf8687b8725ad8f9987f5dd21",
+        "bytes": 5745776
+      },
+      {
+        "file": "data/runtime/chrono-build/lib/libChronoModels_robot.dylib",
+        "sha256": "0798cc7d2adbce7e00103c442f9f65f07930c061c123ac68d9b5713fedd894a6",
+        "bytes": 527272
+      },
+      {
+        "file": "data/runtime/chrono-model-audit-build/clavius_viper_audit",
+        "sha256": "f5cc2977ff6c50ad5d61778e8efc0ff105580a802545a12e7b06e3daeabf1cf2",
+        "bytes": 141008
+      },
+      {
+        "file": "data/runtime/chrono-model-audit-build/clavius_viper_wheel_mass_frames",
+        "sha256": "2ec3f10695797fdb1ed16bd6a1f487dde495bd1fc586c5c9059198399bebb0be",
+        "bytes": 58032
+      },
+      {
+        "file": "workers/chrono/model-audit/viper.cpp",
+        "sha256": "53fdb47fd3f0ce2c8469d9f848d4a7a593904f06ede1befc24ccd068a5b0349a",
+        "bytes": 3342
+      },
+      {
+        "file": "workers/chrono/model-audit/wheel-mass-frames.cpp",
+        "sha256": "2856ab6b8ee3c8547dcfc799158b9e866eda478603b7218a3e4c884965e93384",
+        "bytes": 1954
+      },
+      {
+        "file": "workers/chrono/model-audit/CMakeLists.txt",
+        "sha256": "babf59440a868ac1c7f67aff0e28147e5fa4c41a5b35fcaad292b49fe6482cff",
+        "bytes": 997
+      },
+      {
+        "file": "scripts/audit_viper_reference.py",
+        "sha256": "0fab36308ef27427d95631116c87c905294a6af0efd24e5a42a9c91bdd21b113",
+        "bytes": 9630
+      }
+    ]
+  }
+}

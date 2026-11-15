@@ -1,0 +1,37 @@
+{
+  "run_id": "bd4a989a-1d34-4cdf-b4ca-1d8d9d5006e7",
+  "reproduced": true,
+  "metric_tolerance": "relative/absolute 1e-6",
+  "differences": [],
+  "metrics": {
+    "distance_m": 113.2373277458786,
+    "scheduled_completion_s": 2864.7465549175718,
+    "minimum_battery_wh": 215.18871877552732,
+    "reserve_wh": 75,
+    "capacity_wh": 500.0,
+    "final_battery_wh": 215.18871877552732,
+    "generated_wh": 0.2673569589379854,
+    "consumed_wh": 199.588074122182,
+    "max_route_pitch_deg": 3.431054853446434,
+    "max_terrain_slope_deg": 4.429420338102939,
+    "longest_earth_outage_s": 0,
+    "required_tasks_scheduled_complete": true,
+    "operations_energy_supported": true,
+    "minimum_battery_temperature_c": -5.684341886080802e-14,
+    "maximum_battery_temperature_c": 20.0,
+    "final_battery_temperature_c": 3.0350358560445443,
+    "heater_delivered_wh": 39.999583269671966,
+    "solar_curtailed_wh": 0.0,
+    "unserved_load_wh": 0.0,
+    "thermal_energy_residual_j": 8.280039764940739e-09,
+    "thermal_integrator_steps": 43242,
+    "thermal_heat_integrals_j": {
+      "absorbed_solar_w": 93.56729685803953,
+      "internal_heat_w": 57451.85670690357,
+      "heater_heat_w": 143998.49977081944,
+      "conversion_heat_w": 18883.01531020219,
+      "radiated_heat_w": 210445.9524157951,
+      "conducted_heat_w": 55786.38985767617
+    }
+  }
+}

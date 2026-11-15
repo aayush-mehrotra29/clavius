@@ -1,0 +1,516 @@
+
+********************************************
+***  GMAT Console Application
+********************************************
+
+General Mission Analysis Tool
+Console Based Version
+Build Date: Mar 26 2026  19:40:07
+
+
+Moderator is updating data files...
+Moderator is creating core engine...
+Successfully set Planetary Source to use: DE405
+Successfully set Planetary Source to use: DE405
+Successfully set Planetary Source to use: DE405
+Setting nutation file to /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/planetary_coeff/NUTATION.DAT
+Setting leap seconds file to /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/time/tai-utc.dat
+2026-11-15 14:02:13 GMAT Moderator successfully created core engine
+*** Use of MATLAB is disabled from the gmat_startup_file
+
+Interpreting scripts from the file.
+***** file: /Users/Aayush/SpaceAppsProject/planner/orbital/references/Ex_GivenEpochGoToTheMoon.script
+Successfully set Planetary Source to use: DE405
+Successfully set Planetary Source to use: DE405
+Successfully interpreted the script
+.................... Print out the whole sequence ........................................
+   Command::NoOp
+   Command::BeginMissionSequence
+   Command::GMAT
+   Command::Toggle
+   Command::Target
+   ... branch 0::Vary
+   ... branch 0::Vary
+   ... branch 0::Maneuver
+   ... branch 0::GMAT
+   ... branch 0::GMAT
+   ... branch 0::Propagate
+   ... branch 0::Achieve
+   ... branch 0::Achieve
+   ... branch 0::EndTarget
+   Command::GMAT
+   Command::Toggle
+   Command::Target
+   ... branch 0::Vary
+   ... branch 0::Vary
+   ... branch 0::Vary
+   ... branch 0::Maneuver
+   ... branch 0::Propagate
+   ... branch 0::Achieve
+   ... branch 0::Achieve
+   ... branch 0::Vary
+   ... branch 0::Maneuver
+   ... branch 0::Achieve
+   ... branch 0::EndTarget
+   Command::Propagate
+.................... End sequence ........................................................
+Running mission...
+Successfully set Planetary Source to use: DE405
+Successfully set Planetary Source to use: DE405
+Kernel /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/planetary_ephem/spk/DE405AllPlanets.bsp has been loaded.
+Kernel /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/planetary_coeff/SPICEPlanetaryConstantsKernel.tpc has been loaded.
+Kernel /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/time/SPICELeapSecondKernel.tls has been loaded.
+Kernel /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/planetary_coeff/SPICEEarthPredictedKernel.bpc has been loaded.
+Kernel /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/planetary_coeff/SPICEEarthCurrentKernel.bpc has been loaded.
+Kernel /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/planetary_coeff/earth_latest_high_prec.bpc has been loaded.
+Kernel /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/planetary_coeff/SPICELunaCurrentKernel.bpc has been loaded.
+Kernel /Users/Aayush/SpaceAppsProject/data/runtime/gmat/sdk/R2026a/data/planetary_coeff/SPICELunaFrameKernel.tf has been loaded.
+********************************************************
+*** Performing Differential Correction (using "DC1")
+*** 2 variables; 2 goals
+   Variables:  MoonSat.RAAN, MoonSat.AOP
+   Goals:  MoonSat.EarthMoonRot.RA, MoonSat.EarthMoonRot.DEC
+   SolverMode:  Solve
+********************************************************
+DC1 Iteration 1; Nominal Pass
+   Variables:  MoonSat.RAAN = 45.1, MoonSat.AOP = 2.5
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -152.533210209  Variance: 152.533210209
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 15.6486356336  Variance: -15.6486356336
+
+   Completed iteration 1, pert 1 (MoonSat.RAAN = 45.10001)
+   Completed iteration 1, pert 2 (MoonSat.AOP = 2.50001)
+
+DC1 Iteration 2; Nominal Pass
+   Variables:  MoonSat.RAAN = 45.1791394365, MoonSat.AOP = 7.5
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -147.312723628  Variance: 147.312723628
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 15.0502384254  Variance: -15.0502384254
+
+   Completed iteration 2, pert 1 (MoonSat.RAAN = 45.1791494365)
+   Completed iteration 2, pert 2 (MoonSat.AOP = 7.50001)
+
+DC1 Iteration 3; Nominal Pass
+   Variables:  MoonSat.RAAN = 45.5394107633, MoonSat.AOP = 12.5
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -141.851089606  Variance: 141.851089606
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 14.4241923486  Variance: -14.4241923486
+
+   Completed iteration 3, pert 1 (MoonSat.RAAN = 45.5394207633)
+   Completed iteration 3, pert 2 (MoonSat.AOP = 12.50001)
+
+DC1 Iteration 4; Nominal Pass
+   Variables:  MoonSat.RAAN = 46.2180928058, MoonSat.AOP = 17.5
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -136.113287999  Variance: 136.113287999
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 13.7609647484  Variance: -13.7609647484
+
+   Completed iteration 4, pert 1 (MoonSat.RAAN = 46.2181028058)
+   Completed iteration 4, pert 2 (MoonSat.AOP = 17.50001)
+
+DC1 Iteration 5; Nominal Pass
+   Variables:  MoonSat.RAAN = 47.3256954106, MoonSat.AOP = 22.5
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -129.994521596  Variance: 129.994521596
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 13.0592138676  Variance: -13.0592138676
+
+   Completed iteration 5, pert 1 (MoonSat.RAAN = 47.3257054106)
+   Completed iteration 5, pert 2 (MoonSat.AOP = 22.50001)
+
+DC1 Iteration 6; Nominal Pass
+   Variables:  MoonSat.RAAN = 48.9413451501, MoonSat.AOP = 27.5
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -123.423714361  Variance: 123.423714361
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 12.2865057144  Variance: -12.2865057144
+
+   Completed iteration 6, pert 1 (MoonSat.RAAN = 48.9413551501)
+   Completed iteration 6, pert 2 (MoonSat.AOP = 27.50001)
+
+DC1 Iteration 7; Nominal Pass
+   Variables:  MoonSat.RAAN = 51.1870540863, MoonSat.AOP = 32.5
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -116.293841458  Variance: 116.293841458
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 11.3935353895  Variance: -11.3935353895
+
+   Completed iteration 7, pert 1 (MoonSat.RAAN = 51.1870640863)
+   Completed iteration 7, pert 2 (MoonSat.AOP = 32.50001)
+
+DC1 Iteration 8; Nominal Pass
+   Variables:  MoonSat.RAAN = 54.7786609414, MoonSat.AOP = 37.5
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -107.931009883  Variance: 107.931009883
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 10.3506346659  Variance: -10.3506346659
+
+   Completed iteration 8, pert 1 (MoonSat.RAAN = 54.7786709414)
+   Completed iteration 8, pert 2 (MoonSat.AOP = 37.50001)
+
+DC1 Iteration 9; Nominal Pass
+   Variables:  MoonSat.RAAN = 59.7786609414, MoonSat.AOP = 41.600334269
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -99.1769344812  Variance: 99.1769344812
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 9.23429032452  Variance: -9.23429032452
+
+   Completed iteration 9, pert 1 (MoonSat.RAAN = 59.7786709414)
+   Completed iteration 9, pert 2 (MoonSat.AOP = 41.600344269)
+
+DC1 Iteration 10; Nominal Pass
+   Variables:  MoonSat.RAAN = 64.7786609414, MoonSat.AOP = 43.6322644183
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -92.4724367506  Variance: 92.4724367506
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 8.43141363265  Variance: -8.43141363265
+
+   Completed iteration 10, pert 1 (MoonSat.RAAN = 64.7786709414)
+   Completed iteration 10, pert 2 (MoonSat.AOP = 43.6322744183)
+
+DC1 Iteration 11; Nominal Pass
+   Variables:  MoonSat.RAAN = 69.7786609414, MoonSat.AOP = 44.5257126306
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -86.8788927351  Variance: 86.8788927351
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 7.79210125945  Variance: -7.79210125945
+
+   Completed iteration 11, pert 1 (MoonSat.RAAN = 69.7786709414)
+   Completed iteration 11, pert 2 (MoonSat.AOP = 44.5257226306)
+
+DC1 Iteration 12; Nominal Pass
+   Variables:  MoonSat.RAAN = 74.7786609414, MoonSat.AOP = 44.6906512677
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -81.9818614185  Variance: 81.9818614185
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 7.25347161046  Variance: -7.25347161046
+
+   Completed iteration 12, pert 1 (MoonSat.RAAN = 74.7786709414)
+   Completed iteration 12, pert 2 (MoonSat.AOP = 44.6906612677)
+
+DC1 Iteration 13; Nominal Pass
+   Variables:  MoonSat.RAAN = 79.7786609414, MoonSat.AOP = 44.7753281572
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -77.1881467677  Variance: 77.1881467677
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 6.56328625178  Variance: -6.56328625178
+
+   Completed iteration 13, pert 1 (MoonSat.RAAN = 79.7786709414)
+   Completed iteration 13, pert 2 (MoonSat.AOP = 44.7753381572)
+
+DC1 Iteration 14; Nominal Pass
+   Variables:  MoonSat.RAAN = 84.7786609414, MoonSat.AOP = 44.4339416841
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -72.791646433  Variance: 72.791646433
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 5.92426097372  Variance: -5.92426097372
+
+   Completed iteration 14, pert 1 (MoonSat.RAAN = 84.7786709414)
+   Completed iteration 14, pert 2 (MoonSat.AOP = 44.4339516841)
+
+DC1 Iteration 15; Nominal Pass
+   Variables:  MoonSat.RAAN = 89.7786609414, MoonSat.AOP = 43.3428600062
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -69.0376399951  Variance: 69.0376399951
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 5.56700749215  Variance: -5.56700749215
+
+   Completed iteration 15, pert 1 (MoonSat.RAAN = 89.7786709414)
+   Completed iteration 15, pert 2 (MoonSat.AOP = 43.3428700062)
+
+DC1 Iteration 16; Nominal Pass
+   Variables:  MoonSat.RAAN = 94.7786609414, MoonSat.AOP = 41.6171692067
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -65.7923202963  Variance: 65.7923202963
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 5.4890028318  Variance: -5.4890028318
+
+   Completed iteration 16, pert 1 (MoonSat.RAAN = 94.7786709414)
+   Completed iteration 16, pert 2 (MoonSat.AOP = 41.6171792067)
+
+DC1 Iteration 17; Nominal Pass
+   Variables:  MoonSat.RAAN = 99.7786609414, MoonSat.AOP = 40.7942626592
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -61.8165492668  Variance: 61.8165492668
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 4.77909594009  Variance: -4.77909594009
+
+   Completed iteration 17, pert 1 (MoonSat.RAAN = 99.7786709414)
+   Completed iteration 17, pert 2 (MoonSat.AOP = 40.7942726592)
+
+DC1 Iteration 18; Nominal Pass
+   Variables:  MoonSat.RAAN = 104.778660941, MoonSat.AOP = 39.1605897912
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -58.4740956124  Variance: 58.4740956124
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 4.48679386308  Variance: -4.48679386308
+
+   Completed iteration 18, pert 1 (MoonSat.RAAN = 104.778670941)
+   Completed iteration 18, pert 2 (MoonSat.AOP = 39.1605997912)
+
+DC1 Iteration 19; Nominal Pass
+   Variables:  MoonSat.RAAN = 109.778660941, MoonSat.AOP = 37.4093119274
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -55.2035078377  Variance: 55.2035078377
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 4.2054408999  Variance: -4.2054408999
+
+   Completed iteration 19, pert 1 (MoonSat.RAAN = 109.778670941)
+   Completed iteration 19, pert 2 (MoonSat.AOP = 37.4093219274)
+
+DC1 Iteration 20; Nominal Pass
+   Variables:  MoonSat.RAAN = 114.778660941, MoonSat.AOP = 35.5565292575
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -51.9881797114  Variance: 51.9881797114
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 3.9330101334  Variance: -3.9330101334
+
+   Completed iteration 20, pert 1 (MoonSat.RAAN = 114.778670941)
+   Completed iteration 20, pert 2 (MoonSat.AOP = 35.5565392575)
+
+DC1 Iteration 21; Nominal Pass
+   Variables:  MoonSat.RAAN = 119.778660941, MoonSat.AOP = 33.6150597484
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -48.8151644992  Variance: 48.8151644992
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 3.66795449743  Variance: -3.66795449743
+
+   Completed iteration 21, pert 1 (MoonSat.RAAN = 119.778670941)
+   Completed iteration 21, pert 2 (MoonSat.AOP = 33.6150697484)
+
+DC1 Iteration 22; Nominal Pass
+   Variables:  MoonSat.RAAN = 124.778660941, MoonSat.AOP = 32.1977908695
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -45.2600790697  Variance: 45.2600790697
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 2.97102241622  Variance: -2.97102241622
+
+   Completed iteration 22, pert 1 (MoonSat.RAAN = 124.778670941)
+   Completed iteration 22, pert 2 (MoonSat.AOP = 32.1978008695)
+
+DC1 Iteration 23; Nominal Pass
+   Variables:  MoonSat.RAAN = 129.778660941, MoonSat.AOP = 29.626110341
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -42.4770377122  Variance: 42.4770377122
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 3.06637821126  Variance: -3.06637821126
+
+   Completed iteration 23, pert 1 (MoonSat.RAAN = 129.778670941)
+   Completed iteration 23, pert 2 (MoonSat.AOP = 29.626120341)
+
+DC1 Iteration 24; Nominal Pass
+   Variables:  MoonSat.RAAN = 134.778660941, MoonSat.AOP = 27.037105152
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -39.6665650073  Variance: 39.6665650073
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 3.14683969948  Variance: -3.14683969948
+
+   Completed iteration 24, pert 1 (MoonSat.RAAN = 134.778670941)
+   Completed iteration 24, pert 2 (MoonSat.AOP = 27.037115152)
+
+DC1 Iteration 25; Nominal Pass
+   Variables:  MoonSat.RAAN = 139.778660941, MoonSat.AOP = 24.8612559908
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -36.5557833875  Variance: 36.5557833875
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 2.88203660467  Variance: -2.88203660467
+
+   Completed iteration 25, pert 1 (MoonSat.RAAN = 139.778670941)
+   Completed iteration 25, pert 2 (MoonSat.AOP = 24.8612659908)
+
+DC1 Iteration 26; Nominal Pass
+   Variables:  MoonSat.RAAN = 144.778660941, MoonSat.AOP = 22.2075748869
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -33.7232036016  Variance: 33.7232036016
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 2.9539147817  Variance: -2.9539147817
+
+   Completed iteration 26, pert 1 (MoonSat.RAAN = 144.778670941)
+   Completed iteration 26, pert 2 (MoonSat.AOP = 22.2075848869)
+
+DC1 Iteration 27; Nominal Pass
+   Variables:  MoonSat.RAAN = 149.778660941, MoonSat.AOP = 19.9799462431
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -30.5985634647  Variance: 30.5985634647
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 2.66486193374  Variance: -2.66486193374
+
+   Completed iteration 27, pert 1 (MoonSat.RAAN = 149.778670941)
+   Completed iteration 27, pert 2 (MoonSat.AOP = 19.9799562431)
+
+DC1 Iteration 28; Nominal Pass
+   Variables:  MoonSat.RAAN = 154.778660941, MoonSat.AOP = 17.7090858403
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -27.4829208234  Variance: 27.4829208234
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 2.37995222845  Variance: -2.37995222845
+
+   Completed iteration 28, pert 1 (MoonSat.RAAN = 154.778670941)
+   Completed iteration 28, pert 2 (MoonSat.AOP = 17.7090958403)
+
+DC1 Iteration 29; Nominal Pass
+   Variables:  MoonSat.RAAN = 159.778660941, MoonSat.AOP = 15.4004577265
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -24.3740637011  Variance: 24.3740637011
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 2.0989049673  Variance: -2.0989049673
+
+   Completed iteration 29, pert 1 (MoonSat.RAAN = 159.778670941)
+   Completed iteration 29, pert 2 (MoonSat.AOP = 15.4004677265)
+
+DC1 Iteration 30; Nominal Pass
+   Variables:  MoonSat.RAAN = 164.778660941, MoonSat.AOP = 13.4852061716
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -21.0222000524  Variance: 21.0222000524
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 1.4753189802  Variance: -1.4753189802
+
+   Completed iteration 30, pert 1 (MoonSat.RAAN = 164.778670941)
+   Completed iteration 30, pert 2 (MoonSat.AOP = 13.4852161716)
+
+DC1 Iteration 31; Nominal Pass
+   Variables:  MoonSat.RAAN = 169.778660941, MoonSat.AOP = 11.4769977174
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -17.7182508465  Variance: 17.7182508465
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 0.904516272408  Variance: -0.904516272408
+
+   Completed iteration 31, pert 1 (MoonSat.RAAN = 169.778670941)
+   Completed iteration 31, pert 2 (MoonSat.AOP = 11.4770077174)
+
+DC1 Iteration 32; Nominal Pass
+   Variables:  MoonSat.RAAN = 174.778660941, MoonSat.AOP = 8.94690743699
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -14.7057858235  Variance: 14.7057858235
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 0.745097528115  Variance: -0.745097528115
+
+   Completed iteration 32, pert 1 (MoonSat.RAAN = 174.778670941)
+   Completed iteration 32, pert 2 (MoonSat.AOP = 8.94691743699)
+
+DC1 Iteration 33; Nominal Pass
+   Variables:  MoonSat.RAAN = 179.778660941, MoonSat.AOP = 5.79929546251
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -12.0340665994  Variance: 12.0340665994
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 1.08489130247  Variance: -1.08489130247
+
+   Completed iteration 33, pert 1 (MoonSat.RAAN = 179.778670941)
+   Completed iteration 33, pert 2 (MoonSat.AOP = 5.79930546251)
+
+DC1 Iteration 34; Nominal Pass
+   Variables:  MoonSat.RAAN = 184.778660941, MoonSat.AOP = 3.400158467
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -8.93173629492  Variance: 8.93173629492
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 0.802165459726  Variance: -0.802165459726
+
+   Completed iteration 34, pert 1 (MoonSat.RAAN = 184.778670941)
+   Completed iteration 34, pert 2 (MoonSat.AOP = 3.400168467)
+
+DC1 Iteration 35; Nominal Pass
+   Variables:  MoonSat.RAAN = 189.778660941, MoonSat.AOP = 1.41859066232
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -5.59301159763  Variance: 5.59301159763
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 0.170819740574  Variance: -0.170819740574
+
+   Completed iteration 35, pert 1 (MoonSat.RAAN = 189.778670941)
+   Completed iteration 35, pert 2 (MoonSat.AOP = 1.41860066232)
+
+DC1 Iteration 36; Nominal Pass
+   Variables:  MoonSat.RAAN = 194.778660941, MoonSat.AOP = -1.21821228527
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -2.62541998109  Variance: 2.62541998109
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 0.0809049629276  Variance: -0.0809049629276
+
+   Completed iteration 36, pert 1 (MoonSat.RAAN = 194.778670941)
+   Completed iteration 36, pert 2 (MoonSat.AOP = -1.21820228527)
+
+DC1 Iteration 37; Nominal Pass
+   Variables:  MoonSat.RAAN = 199.202309817, MoonSat.AOP = -3.54806170775
+   Goals and achieved values:
+      MoonSat.EarthMoonRot.RA  Desired: 0  Achieved: -0.00254599511073  Variance: 0.00254599511073
+      MoonSat.EarthMoonRot.DEC  Desired: 0  Achieved: 0.00175362849958  Variance: -0.00175362849958
+
+
+*** Targeting Completed in 37 iterations.
+*** The Targeter converged!
+Final Variable values:
+   MoonSat.RAAN = 199.202309817
+   MoonSat.AOP = -3.54806170775
+
+********************************************************
+*** Performing Differential Correction (using "DC1")
+*** 4 variables; 3 goals
+   Variables:  MoonSat.RAAN, MoonSat.AOP, TOI.Element1, LOI.Element1
+   Goals:  MoonSat.Luna.RMAG, MoonSat.MoonInertial.BVectorAngle, MoonSat.Luna.ECC
+   SolverMode:  Solve
+********************************************************
+DC1 Iteration 1; Nominal Pass
+   Variables:  MoonSat.RAAN = 199.202309817, MoonSat.AOP = 356.451938292, TOI.Element1 = 3.14, LOI.Element1 = -0.6
+   Goals and achieved values:
+      MoonSat.Luna.RMAG  Desired: 15000  Achieved: 14967.2056922  Variance: 32.7943078332
+      MoonSat.MoonInertial.BVectorAngle  Desired: 75  Achieved: 176.774100933  Variance: -101.774100933
+      MoonSat.Luna.ECC  Desired: 0.01  Achieved: 0.17987189051  Variance: -0.16987189051
+
+   Completed iteration 1, pert 1 (MoonSat.RAAN = 199.202310817)
+   Completed iteration 1, pert 2 (MoonSat.AOP = 356.451939292)
+   Completed iteration 1, pert 3 (TOI.Element1 = 3.1400001)
+   Completed iteration 1, pert 4 (LOI.Element1 = -0.59999)
+
+DC1 Iteration 2; Nominal Pass
+   Variables:  MoonSat.RAAN = 200.547467692, MoonSat.AOP = 358.451938292, TOI.Element1 = 3.13943869659, LOI.Element1 = -0.617210606129
+   Goals and achieved values:
+      MoonSat.Luna.RMAG  Desired: 15000  Achieved: 21883.333093  Variance: -6883.33309302
+      MoonSat.MoonInertial.BVectorAngle  Desired: 75  Achieved: 131.246247718  Variance: -56.2462477178
+      MoonSat.Luna.ECC  Desired: 0.01  Achieved: 0.162165071597  Variance: -0.152165071597
+
+   Completed iteration 2, pert 1 (MoonSat.RAAN = 200.547468692)
+   Completed iteration 2, pert 2 (MoonSat.AOP = 358.451939292)
+   Completed iteration 2, pert 3 (TOI.Element1 = 3.13943879659)
+   Completed iteration 2, pert 4 (LOI.Element1 = -0.617200606129)
+
+DC1 Iteration 3; Nominal Pass
+   Variables:  MoonSat.RAAN = 201.074670383, MoonSat.AOP = 359.248975967, TOI.Element1 = 3.13286668848, LOI.Element1 = -0.620369567284
+   Goals and achieved values:
+      MoonSat.Luna.RMAG  Desired: 15000  Achieved: 27272.9619717  Variance: -12272.9619717
+      MoonSat.MoonInertial.BVectorAngle  Desired: 75  Achieved: 73.9748532572  Variance: 1.02514674278
+      MoonSat.Luna.ECC  Desired: 0.01  Achieved: 0.179331424777  Variance: -0.169331424777
+
+   Completed iteration 3, pert 1 (MoonSat.RAAN = 201.074671383)
+   Completed iteration 3, pert 2 (MoonSat.AOP = 359.248976967)
+   Completed iteration 3, pert 3 (TOI.Element1 = 3.13286678848)
+   Completed iteration 3, pert 4 (LOI.Element1 = -0.620359567284)
+
+DC1 Iteration 4; Nominal Pass
+   Variables:  MoonSat.RAAN = 201.459405268, MoonSat.AOP = 357.396753047, TOI.Element1 = 3.13324403478, LOI.Element1 = -0.624164341491
+   Goals and achieved values:
+      MoonSat.Luna.RMAG  Desired: 15000  Achieved: 17059.6160118  Variance: -2059.61601177
+      MoonSat.MoonInertial.BVectorAngle  Desired: 75  Achieved: 75.2275399387  Variance: -0.227539938678
+      MoonSat.Luna.ECC  Desired: 0.01  Achieved: 0.0593759432959  Variance: -0.0493759432959
+
+   Completed iteration 4, pert 1 (MoonSat.RAAN = 201.459406268)
+   Completed iteration 4, pert 2 (MoonSat.AOP = 357.396754047)
+   Completed iteration 4, pert 3 (TOI.Element1 = 3.13324413478)
+   Completed iteration 4, pert 4 (LOI.Element1 = -0.624154341491)
+
+DC1 Iteration 5; Nominal Pass
+   Variables:  MoonSat.RAAN = 201.303058414, MoonSat.AOP = 357.292426117, TOI.Element1 = 3.13326206673, LOI.Element1 = -0.633262532219
+   Goals and achieved values:
+      MoonSat.Luna.RMAG  Desired: 15000  Achieved: 15798.3000588  Variance: -798.300058774
+      MoonSat.MoonInertial.BVectorAngle  Desired: 75  Achieved: 75.1683361577  Variance: -0.168336157677
+      MoonSat.Luna.ECC  Desired: 0.01  Achieved: 0.0180505648905  Variance: -0.0080505648905
+
+   Completed iteration 5, pert 1 (MoonSat.RAAN = 201.303059414)
+   Completed iteration 5, pert 2 (MoonSat.AOP = 357.292427117)
+   Completed iteration 5, pert 3 (TOI.Element1 = 3.13326216673)
+   Completed iteration 5, pert 4 (LOI.Element1 = -0.633252532219)
+
+DC1 Iteration 6; Nominal Pass
+   Variables:  MoonSat.RAAN = 201.242281851, MoonSat.AOP = 357.198535269, TOI.Element1 = 3.13326405905, LOI.Element1 = -0.634423205538
+   Goals and achieved values:
+      MoonSat.Luna.RMAG  Desired: 15000  Achieved: 15001.5279645  Variance: -1.52796453374
+      MoonSat.MoonInertial.BVectorAngle  Desired: 75  Achieved: 74.9878160916  Variance: 0.012183908419
+      MoonSat.Luna.ECC  Desired: 0.01  Achieved: 0.0104342894783  Variance: -0.000434289478274
+
+   Completed iteration 6, pert 1 (MoonSat.RAAN = 201.242282851)
+   Completed iteration 6, pert 2 (MoonSat.AOP = 357.198536269)
+   Completed iteration 6, pert 3 (TOI.Element1 = 3.13326415905)
+   Completed iteration 6, pert 4 (LOI.Element1 = -0.634413205538)
+
+DC1 Iteration 7; Nominal Pass
+   Variables:  MoonSat.RAAN = 201.242297782, MoonSat.AOP = 357.1985598, TOI.Element1 = 3.13326520569, LOI.Element1 = -0.634545446635
+   Goals and achieved values:
+      MoonSat.Luna.RMAG  Desired: 15000  Achieved: 15000.0003921  Variance: -0.000392089139496
+      MoonSat.MoonInertial.BVectorAngle  Desired: 75  Achieved: 75.0000007733  Variance: -7.73319683844e-07
+      MoonSat.Luna.ECC  Desired: 0.01  Achieved: 0.0100000750149  Variance: -7.50149480658e-08
+
+
+*** Targeting Completed in 7 iterations.
+*** The Targeter converged!
+Final Variable values:
+   MoonSat.RAAN = 201.242297782
+   MoonSat.AOP = 357.1985598
+   TOI.Element1 = 3.13326520569
+   LOI.Element1 = -0.634545446635
+
+
+Mission run completed.
+===> Total Run Time: 0.692 seconds
+
+========================================
+
+
+*** GMAT Integration test (Console version) successful! ***
+
+Moderator is deleting core engine...

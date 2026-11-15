@@ -1,0 +1,74 @@
+[
+  {
+    "id": "M1188426614",
+    "metadata_exact_label": "M1188426614LE.xml",
+    "lat_deg": -85.5672,
+    "lon_deg": 21.2437,
+    "utc": "2015-06-08T18:16:14.587Z",
+    "center_coverage": "center_ray_covered"
+  },
+  {
+    "id": "M1311409938",
+    "metadata_exact_label": "M1311409938LE.xml",
+    "lat_deg": -81.4226,
+    "lon_deg": 276.8811,
+    "utc": "2019-05-02T04:18:17.800Z",
+    "center_coverage": "TerrainCoverageError"
+  },
+  {
+    "id": "M1312308500",
+    "metadata_exact_label": "M1312308500LE.xml",
+    "lat_deg": -79.2774,
+    "lon_deg": 132.8021,
+    "utc": "2019-05-12T13:54:19.711Z",
+    "center_coverage": "TerrainCoverageError"
+  },
+  {
+    "id": "M139356343",
+    "metadata_exact_label": "M139356343LE.xml",
+    "lat_deg": -84.7436,
+    "lon_deg": 93.8938,
+    "utc": "2010-09-17T09:51:36.354Z",
+    "center_coverage": "TerrainCoverageError"
+  },
+  {
+    "id": "M139729686",
+    "metadata_exact_label": "M139729686LE.xml",
+    "lat_deg": -89.4878,
+    "lon_deg": 8.9038,
+    "utc": "2010-09-21T17:34:01.211Z",
+    "center_coverage": "center_ray_covered"
+  },
+  {
+    "id": "M151364517",
+    "metadata_exact_label": "M151364517LE.xml",
+    "lat_deg": -81.101,
+    "lon_deg": 224.3862,
+    "utc": "2011-02-03T09:27:52.118Z",
+    "center_coverage": "TerrainCoverageError"
+  },
+  {
+    "id": "M154940551",
+    "metadata_exact_label": "M154940551LE.xml",
+    "lat_deg": -79.255,
+    "lon_deg": 40.437,
+    "utc": "2011-03-16T18:48:20.206Z",
+    "center_coverage": "TerrainCoverageError"
+  },
+  {
+    "id": "M155368056",
+    "metadata_exact_label": "M155368056LE.xml",
+    "lat_deg": -80.7203,
+    "lon_deg": 338.6464,
+    "utc": "2011-03-21T17:33:30.249Z",
+    "center_coverage": "TerrainCoverageError"
+  },
+  {
+    "id": "M184288222",
+    "metadata_exact_label": "M184288222LE.xml",
+    "lat_deg": -84.8994,
+    "lon_deg": 224.2322,
+    "utc": "2012-02-19T10:56:22.069Z",
+    "center_coverage": "center_ray_covered"
+  }
+]

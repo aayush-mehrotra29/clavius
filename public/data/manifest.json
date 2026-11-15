@@ -1,0 +1,251 @@
+{
+  "title": "NASA SVS CGI Moon Kit (2019 maps)",
+  "sourcePage": "https://svs.gsfc.nasa.gov/4720/",
+  "credit": "NASA\u2019s Scientific Visualization Studio; LRO / LOLA and LROC instrument teams",
+  "elevation": {
+    "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_16_uint.tif",
+    "sourceSha256": "45a2b32d56e81ed30db07fead8abc842b249b6511219d9ca2c53f81bc2dc5d62",
+    "outputSha256": "45a979b1dbe37c47c35f21c62d0d6aca34f4879e8f8151d36df1fc7c6876d2fc",
+    "file": "lola-elevation.bin",
+    "width": 5760,
+    "height": 2880,
+    "encoding": "little-endian uint16, row-major, north to south, west to east",
+    "pixelsPerDegree": 16,
+    "pixelRegistration": "pixel centers",
+    "elevationMeters": "sample * 0.5 - 10000",
+    "referenceRadiusMeters": 1737400,
+    "minElevationMeters": -8981.5,
+    "maxElevationMeters": 10685.5
+  },
+  "imagery": {
+    "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_4k.tif",
+    "sourceSha256": "918649a7f8ed2f1329b2cd95bb0d25483befdcb60ae1a66db681a637cc21344f",
+    "file": "lroc-color.jpg",
+    "width": 4096,
+    "height": 2048,
+    "processing": "RGB JPEG, quality 94, no chroma subsampling",
+    "limits": "Visualization mosaic. Polar latitudes beyond \u00b170\u00b0 filled with LOLA albedo; source dropouts inpainted by NASA. Not scientific reflectance."
+  },
+  "limits": "Global visualization only. Mesh resamples the raster. Not wheel-scale terrain, validated hazard data, rover dynamics, or date-specific lighting.",
+  "derivatives": {
+    "surfaceNormals": {
+      "file": "lola-normals.png",
+      "sourceFile": "lola-elevation.bin",
+      "sourceElevationSha256": "45a979b1dbe37c47c35f21c62d0d6aca34f4879e8f8151d36df1fc7c6876d2fc",
+      "outputSha256": "0a934904612cd335bb2cbd2d039ca71610c349c982e2fa5472f886665ad223d3",
+      "width": 5760,
+      "height": 2880,
+      "encoding": "linear RGB8, normalized object-space XYZ encoded as normal * 0.5 + 0.5",
+      "method": "Central differences on native LOLA pixel centers, longitude wrapping, one-sided latitude edges; spherical physical spacing with radius 1737400 m + elevation.",
+      "script": "scripts/derive_lunar_normals.py",
+      "limits": "Shading derivative of the same 16 px/degree DEM. No new measured resolution or invented craters. RGB8 normals have quantization error; they are a display asset, not a scientific slope product."
+    }
+  },
+  "display": {
+    "defaultVerticalExaggeration": 1,
+    "illumination": "Illustrative directional lighting; adjustable solar elevation 5\u201370 degrees; not tied to a mission epoch.",
+    "terrainShadows": "Display shadow map on the regional mesh; not a validated illumination or permanently shadowed region product."
+  },
+  "simulation": {
+    "manifest": "simulation-manifest.json",
+    "local_resolution_m": 5,
+    "regional_resolution_m": 80,
+    "frame": "MOON_ME_DE421",
+    "ephemeris": "DE421",
+    "reference_radius_m": 1737400,
+    "physics": "executed MuJoCo rigid contact and Gazebo Harmonic / DART in a local Linux VM with ROS 2 telemetry; native benchmark passed",
+    "models": "declared rover mobility; optional declared single-node battery/enclosure thermal screening with thermostat and charging inhibition; SPICE directions with sampled terrain horizons",
+    "historical_temperature_context": {
+      "source": "LRO Diviner PCP southern-summer composites",
+      "posting_m": 240,
+      "local_time_bins_hours": [
+        [
+          0,
+          0.25
+        ],
+        [
+          12,
+          12.25
+        ]
+      ],
+      "observation_years": [
+        2009,
+        2019
+      ],
+      "role": "Historical surface context; explicitly copied values are constant ground scenarios, not mission-date forecasts.",
+      "source_manifest": "simulation-manifest.json#diviner",
+      "prepared_sites": [
+        "connecting-ridge",
+        "shackleton-rim"
+      ]
+    },
+    "default_site": "connecting-ridge",
+    "sites": [
+      {
+        "id": "connecting-ridge",
+        "source": "PGDA78-Site01",
+        "name": "Connecting Ridge"
+      },
+      {
+        "id": "shackleton-rim",
+        "source": "PGDA78-Site04",
+        "name": "Shackleton rim",
+        "origin": "Published Site04 ROI record 4, converted from polar stereographic X/Y metres"
+      }
+    ],
+    "terrain_uncertainty": {
+      "source": "NASA PGDA78 published statistical cloned surfaces",
+      "loaded_clone_indices_per_site": [
+        1,
+        2,
+        3
+      ],
+      "published_ensemble_size_per_site": 100,
+      "value_convention": "Complete height surfaces, used directly; not additive error offsets.",
+      "origin_policy": "All realizations retain the nominal local ENU origin.",
+      "regional_terrain": "PGDA90 remains nominal.",
+      "support_mask": "Native nominal LDEC return counts; zero means an interpolated cell, positive means returns in that cell.",
+      "source_manifest": "simulation-manifest.json#terrain",
+      "support_display_derivatives": {
+        "connecting-ridge": {
+          "url": "/data/lola-support/connecting-ridge.png",
+          "sha256": "7dd9941bd2ba8bb8d4368621c713ff152ba8b467b363b8a4df26e32ebb654f49",
+          "source_sha256": "16d6ed21020ad48fa71d94e7437492acf5bf04118f52bcd292f57f22ead4cd23",
+          "width": 3200,
+          "height": 3200
+        },
+        "shackleton-rim": {
+          "url": "/data/lola-support/shackleton-rim.png",
+          "sha256": "b282304cebec1c9566976ec5a96897a3630cffbe3e24aab0ce3b8533220e040a",
+          "source_sha256": "fcc8c2219ae2368d5b2a1f6aec05fcf96cf725f3035ac8d80efc312a4ff29227",
+          "width": 3200,
+          "height": 3200
+        }
+      }
+    },
+    "observed_shadow_validation": {
+      "source": "NASA PGDA90 projected LROC NAC scenes and published renderings; PDS4 acquisition labels",
+      "source_manifest": "simulation-manifest.json#observed_shadow_validation",
+      "purpose": "Bounded scientific validation, not active rover-site imagery.",
+      "scenes": [
+        "M1188426614",
+        "M1311409938",
+        "M139729686"
+      ],
+      "observed_units": "I/F",
+      "reference_rendering_units": "W/m2",
+      "terrain_for_comparison": "Existing PGDA90 80 m regional DEM, plus separate production PGDA78 5 m site comparisons where the observed footprint overlaps. Only one observed epoch overlaps the curated sites.",
+      "report": {
+        "url": "/data/illumination-validation.json",
+        "sha256": "0b853723ff6526d51976606639ae0955e89e120b2638259cf45dd0663db27b9f",
+        "bytes": 1192083,
+        "model_id": "clavius-observed-shadow-screen-v1.2",
+        "status": "Bounded comparisons recorded; numerical targets are not all met. No operational accuracy bound.",
+        "script": "scripts/publish_shadow_validation.py"
+      }
+    }
+  },
+  "landingPreview": {
+    "url": "/images/landing-moon.webp",
+    "sourceFiles": [
+      "lroc-color.jpg",
+      "lola-normals.png"
+    ],
+    "outputSha256": "e1e6a885a78ad5ae28aa8f2ca02b036c7f083c1426bef83b05eeb50d4ebcdeca",
+    "script": "scripts/render_landing_moon.py",
+    "description": "Orthographic near-side display with illustrative lighting. Uses the existing Moon Kit imagery and DEM-derived normals."
+  },
+  "landingElevation": {
+    "url": "/images/lunar-elevation.webp",
+    "sourceFiles": [
+      "lola-elevation.bin",
+      "lola-normals.png"
+    ],
+    "outputSha256": "f12fd3e5fb8b8ac82cf3da04b4db4435da5aa23c2b0b41618f39d7c3665cb1cb",
+    "script": "scripts/render_landing_moon.py",
+    "description": "Orthographic near-side elevation, with colors clamped at -4500 and +4500 m relative to the 1737.4 km sphere. Illustrative relief shading."
+  },
+  "landingPolarViews": {
+    "sourceManifest": "simulation-manifest.json",
+    "script": "scripts/render_landing_polar.py",
+    "assets": [
+      {
+        "url": "/images/connecting-ridge-relief.webp",
+        "outputSha256": "ed0c1fa12ccc424416331899572d5a311f3d2d54b84b8cf52eaacc4ec21839c6",
+        "sources": [
+          "PGDA78-Site01"
+        ],
+        "sampleStride": 16,
+        "heightScale": 2.4,
+        "contourIntervalM": 200
+      },
+      {
+        "url": "/images/connecting-ridge-horizon.svg",
+        "outputSha256": "18d131cc450ff7b91fcb2f8aececc6f3df67fe1ba86a0dea70d727b37e6e7297",
+        "sources": [
+          "PGDA78-Site01",
+          "PGDA90-80m",
+          "DE421 kernel bundle"
+        ],
+        "epochUtc": "2026-11-15T12:00:00Z",
+        "observerHeightM": 0.5,
+        "latDeg": -89.44,
+        "lonDeg": 222.8,
+        "azimuthStepDeg": 1,
+        "bearingRangeDeg": [
+          90,
+          270
+        ]
+      }
+    ]
+  },
+  "orbital_references": {
+    "software": "NASA GMAT R2026a, official signed universal macOS distribution",
+    "role": "Offline reference benchmark, separate from the surface/dynamics models",
+    "native_ephemeris": "DE405",
+    "native_lunar_radius_m": 1738200,
+    "distribution_sha256": "8a81d22ce2d39504eadc875d71494321adb49f60da92d266fdbe660de0f771d2",
+    "runtime_identity": "97c3f208072e53654eeb5a7c46e721abe9c71c7bda779fd6f24ab336379d03ed",
+    "source_manifest": "planner/orbital/references/manifest.json",
+    "report": {
+      "url": "/data/gmat-reference-validation.json",
+      "sha256": "62341b694b8711e1d8b7eb8b120e603d9862f88a1d6c0d1a2dda0fb33e3093d0",
+      "bytes": 23824,
+      "model_id": "clavius-gmat-reference-benchmark-v1",
+      "status": "Both original reference cases passed. Bounded departure search and full clearance/repropagation gates remain pending."
+    }
+  },
+  "mobility_validation": {
+    "role": "validation_only",
+    "source": "NASA Glenn TREC / MGRU3 published experimental plot points and author rig definitions",
+    "source_manifest": "/data/mobility-reference-manifest.json",
+    "report": {
+      "url": "/data/mobility-validation.json",
+      "sha256": "d1c76dce7b6cd88a21cd109376ad58882f23d938df79bca8aa7f2326420b4d81",
+      "bytes": 36184,
+      "model_id": "clavius-trec-rigid-contact-discrepancy-v4"
+    },
+    "status": "Independent rigid-contact discrepancy test; no lunar soil calibration established",
+    "terrain_role": "No new lunar terrain, regolith map or mission mobility response added."
+  },
+  "scm_validation": {
+    "role": "offline_experimental_development",
+    "source": "Same NASA Glenn TREC Earth-gravity published plot points; no new lunar measurements",
+    "source_manifest": "/data/mobility-reference-manifest.json",
+    "software": {
+      "name": "Project Chrono CPU SCM",
+      "version": "9.0.1",
+      "upstream_commit": "2617649bf687456328a122b63dc0bb64df91394a",
+      "source": "https://github.com/projectchrono/chrono"
+    },
+    "report": {
+      "url": "/data/scm-validation.json",
+      "sha256": "5b608ab2118bc5a57911358227ef8479103ae452327ce44a7014e3daffc7c3b9",
+      "bytes": 53233,
+      "model_id": "clavius-trec-scm-development-v1"
+    },
+    "status": "development_targets_not_met",
+    "active_app_dynamics": false,
+    "lunar_validation_established": false
+  }
+}
