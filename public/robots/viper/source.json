@@ -22,5 +22,48 @@
     "viper_R_up_sus.obj": "d22975a201f3bef1f33dccfbeaf77867fb4a5e1ec42d29c066f597a718411c56",
     "viper_chassis.obj": "1dca0c3b06a2cb3e04acf6c1090a0e743f94f0d112bb4ab45913a2bb92ddcf2f",
     "viper_wheel.obj": "7b67f6b58e785013345a816601ddb2421086757a07daf8352959e1996cf90d8f"
+  },
+  "solar_array": {
+    "model": "clavius-viper-array-incidence-v1",
+    "panel_reference_w": 320,
+    "reference_distance_au": 1,
+    "body_axes": "x forward, y port, z up",
+    "faces": {
+      "port": [
+        0,
+        1,
+        0
+      ],
+      "starboard": [
+        0,
+        -1,
+        0
+      ],
+      "aft": [
+        -1,
+        0,
+        0
+      ]
+    },
+    "layout_source": {
+      "title": "VIPER Project Information Package",
+      "date": "2021-04-30",
+      "page": 8,
+      "url": "https://science.nasa.gov/wp-content/uploads/2024/08/viper-pip-final.pdf",
+      "sha256": "fc0da12320241efab1ca0c897804a0972610846d65ed779af8a98dbd44d81e56"
+    },
+    "rating_source": {
+      "title": "VIPER Rover Overview and Mobility and Hardware",
+      "date": "2024-11-14",
+      "pages": [
+        2,
+        3,
+        5
+      ],
+      "url": "https://ntrs.nasa.gov/citations/20240013903",
+      "sha256": "fde1179cbf7af0fa04bdf4d19bb2c133a6c551e616fa921bb69354c21ec18465",
+      "corner_reference_w": 450
+    },
+    "assumptions": "Orthogonal vertical faces, 320 W per face at normal incidence and 1 au, uniform visible-disk fraction at the 0.5 m terrain observer shared by all faces. Direct array power before bus loads, battery losses, dust, temperature effects and self-shadowing."
   }
 }

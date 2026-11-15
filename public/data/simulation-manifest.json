@@ -1703,11 +1703,11 @@
       },
       "rover": {
         "url": "/robots/viper/source.json",
-        "sha256": "ca723a92a99e8fdd49da4b00b9d32e5ba5efee497c64e8eb874e4b35714a45c5"
+        "sha256": "812e42e71e0bf5fa1eef10fc1f280d22d1dc3dececba7ccd86424139648449aa"
       },
       "sunlight": {
         "url": "/data/drive/sunlight.json",
-        "sha256": "0d4fb689c5341d73e3834b2d542b9edcedeb8fb2cb4f51cc01bef6b635fe87ae",
+        "sha256": "987d505ea942c3bb2f47e203ebcd45f9bbd213dc5509b79d37c3211ff88b6d28",
         "model": "clavius-drive-directional-horizon-v1",
         "sample_interval_s": 1,
         "role": "Three selected UTC starts applied to the recorded traces; calculated nominal observer visibility."

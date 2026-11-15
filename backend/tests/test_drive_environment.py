@@ -72,3 +72,20 @@ def test_elapsed_si_clock_resolves_positive_utc_leap_second():
 def test_unsupported_samples_are_explicit(values):
     response=client.get(route,params={"start_utc":utc,**values})
     assert response.status_code==422
+
+
+def test_custom_replay_samples_match_live_query_and_are_bound_to_site_and_time():
+    primary = json.loads((ROOT/"public/data/drive/replays.json").read_text())["sites"]["connecting-ridge"]
+    trace = primary["maneuvers"]["crab"]
+    endpoint = route.replace("drive-environment","drive-replay-environment")
+    start = "2028-01-22T18:04:00Z"
+    params = {"start_utc":start, "replay_sha256":trace["sha256"]}
+    result = client.get(endpoint,params=params).json()
+    assert result["replay_sha256"] == trace["sha256"] and result["sample_interval_s"] == 1
+    assert len(result["samples"]) == 21
+    e,n,_ = trace["final_enu_m"]
+    point = live_sample("connecting-ridge",start,20,e,n)
+    assert result["samples"][-1] == point["sample"]
+    assert result["samples"][-1]["sun_distance_km"] > 1e8
+    assert client.get(endpoint.replace("connecting-ridge","shackleton-rim"),params=params).status_code == 422
+    assert client.get(endpoint,params={**params,"start_utc":"2049-12-31T23:59:50Z"}).status_code == 422

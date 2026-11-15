@@ -1,15 +1,15 @@
 const model = 'clavius-drive-directional-horizon-v1';
 
-export async function loadSunlightCatalog(signal) {
+export async function loadDriveSource(name, signal) {
   const index = await fetch('/data/manifest.json', {signal});
   if (!index.ok) throw new Error('Drive source manifest unavailable');
-  const record = (await index.json()).rover_drive.sources.sunlight;
+  const record = (await index.json()).rover_drive.sources[name];
   const response = await fetch(record.url, {signal});
-  if (!response.ok) throw new Error('Sunlight samples unavailable');
+  if (!response.ok) throw new Error('Drive source unavailable');
   const bytes = await response.arrayBuffer();
   const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', bytes));
   const actual = Array.from(digest, byte => byte.toString(16).padStart(2, '0')).join('');
-  if (actual !== record.sha256) throw new Error('Sunlight catalogue checksum mismatch');
+  if (actual !== record.sha256) throw new Error('Drive source checksum mismatch');
   return JSON.parse(new TextDecoder().decode(bytes));
 }
 
@@ -21,8 +21,9 @@ export function replaySunlight(catalog, context) {
     entry => entry.replay_sha256 === context.replayHash
   );
   const second = Math.floor(context.elapsed);
-  const sample = trace?.samples?.[context.start]?.[second];
-  return sample ? {sample, elapsed: second, source: 'Packaged replay'} : null;
+  const series = trace?.samples?.[context.start];
+  const sample = series?.[second];
+  return sample ? {sample, series, elapsed: second, source: 'Packaged replay'} : null;
 }
 
 function usable(sample) {
@@ -57,13 +58,21 @@ export class DriveSunlight {
     if (old && old.site === ctx.site && old.start === ctx.start && old.native === ctx.native &&
         ctx.elapsed >= old.elapsed && Math.floor(ctx.elapsed) === Math.floor(old.elapsed) &&
         Math.hypot(ctx.east - old.east, ctx.north - old.north) < 0.5) return;
-    const saved = replaySunlight(this.catalog, ctx);
+    let saved = replaySunlight(this.catalog, ctx);
+    const live = this.liveSeries;
+    if (!saved && ctx.native && live && live.site_id === ctx.site && live.start_utc === ctx.start &&
+        live.replay_sha256 === ctx.replayHash) {
+      const second = Math.floor(ctx.elapsed);
+      saved = {sample:live.samples[second], series:live.samples, elapsed:second, source:'Live service'};
+    }
     if (saved && usable(saved.sample)) {
       this.previous = ctx;
       this.publish(saved);
       return;
     }
-    this.requestLive(ctx);
+    // The manual render quaternion is reused next frame. Bind the sampled attitude
+    // to this request before it leaves the browser.
+    this.requestLive(ctx.orientation ? {...ctx, orientation:ctx.orientation.clone()} : ctx);
   }
 
   async requestLive(ctx) {
@@ -74,10 +83,23 @@ export class DriveSunlight {
     });
     const timeout = setTimeout(() => request.abort(), 10000);
     try {
-      const path = '/api/v1/sites/' + encodeURIComponent(ctx.site) + '/drive-environment?' + params;
+      const base = '/api/v1/sites/' + encodeURIComponent(ctx.site);
+      const path = ctx.native ? base + '/drive-replay-environment?' +
+        new URLSearchParams({start_utc:ctx.start, replay_sha256:ctx.replayHash}) :
+        base + '/drive-environment?' + params;
       const response = await this.fetcher(path, {signal: request.signal});
       if (!response.ok) throw new Error('Environment service unavailable');
       const result = await response.json();
+      if (this.pending !== request) return;
+      if (ctx.native) {
+        if (result.site_id !== ctx.site || result.model !== model || result.start_utc !== ctx.start ||
+            result.replay_sha256 !== ctx.replayHash || result.sample_interval_s !== 1 ||
+            result.samples?.length !== 21 || !result.samples.every(usable)) throw new Error('Invalid traverse environment');
+        this.liveSeries = result;
+        // The cursor may have moved while computing the whole traverse.
+        this.previous = null;
+        return;
+      }
       const sample = result.sample;
       if (result.site_id !== ctx.site || result.model !== model || result.elapsed_s !== ctx.elapsed ||
           !usable(sample) || sample.east_m !== ctx.east || sample.north_m !== ctx.north) {
@@ -85,7 +107,7 @@ export class DriveSunlight {
       }
       if (this.pending !== request) return;
       this.previous = ctx;
-      this.publish({sample, elapsed: result.elapsed_s, source: 'Live service'});
+      this.publish({sample, elapsed: result.elapsed_s, orientation: ctx.orientation, source: 'Live service'});
       this.retryAt = performance.now() + 200;
     } catch {
       if (this.pending !== request) return;

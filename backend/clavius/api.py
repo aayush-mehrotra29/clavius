@@ -63,6 +63,13 @@ def drive_environment(identity:str,start_utc:str,elapsed_s:float=Query(0,ge=0,al
  try:return live_sample(identity,start_utc,elapsed_s,east_m,north_m)
  except (ValueError,OSError) as e:raise HTTPException(422,str(e)) from e
 
+@app.get('/api/v1/sites/{identity}/drive-replay-environment')
+def drive_replay_environment(identity:str,start_utc:str,replay_sha256:str):
+ from .drive_environment import live_replay
+ if not any(d['id']==identity for d in catalogue()):raise HTTPException(404,'Unknown drive site.')
+ try:return live_replay(identity,start_utc,replay_sha256)
+ except (ValueError,OSError) as e:raise HTTPException(422,str(e)) from e
+
 @app.get('/api/v1/sites/{identity}/thermal-context')
 def thermal_context(identity:str,east_m:float=0,north_m:float=0):
  if not any(d['id']==identity for d in catalogue()):raise HTTPException(404)

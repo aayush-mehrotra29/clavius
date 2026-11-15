@@ -3,9 +3,8 @@ import hashlib
 import json
 from pathlib import Path
 
-import numpy as np
 
-from backend.clavius.drive_environment import MODEL, drive_sample, drive_sources, start_epoch
+from backend.clavius.drive_environment import MODEL, drive_sources, read_replay, replay_samples
 from backend.clavius.terrain import site
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,17 +14,8 @@ EPOCHS = ["2028-01-01T12:00:00Z", "2028-01-21T12:00:00Z", "2028-01-27T12:00:00Z"
 
 
 def sample_trace(terrain, replay, frequency, frame_count):
-    raw = (OUT / replay["file"]).read_bytes()
-    if hashlib.sha256(raw).hexdigest() != replay["sha256"]:
-        raise ValueError("Native trace identity mismatch")
-    frames = np.frombuffer(raw, dtype="<f4").reshape(frame_count, 17, 7)
-    samples = {}
-    for utc in EPOCHS:
-        et = start_epoch(utc)
-        samples[utc] = [
-            drive_sample(terrain, et + t, float(chassis[0]), float(chassis[1]))
-            for t, chassis in enumerate(frames[::frequency, 0])
-        ]
+    frames = read_replay(OUT, replay, frame_count)
+    samples = {utc: replay_samples(terrain, utc, frames, frequency) for utc in EPOCHS}
     return {"replay_sha256": replay["sha256"], "samples": samples}
 
 

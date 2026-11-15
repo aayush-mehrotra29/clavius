@@ -3,7 +3,8 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {advanceDrive, parkedDrive, loadViper, nominalSpeed, radius} from './viper-drive.js';
 import {groundHeight, loadGround, loadDriveImage, terrainMesh} from './drive-ground.js';
 import {applyReplay,drawReplayPaths,loadReplay,replayAssembly} from './viper-replay.js';
-import {DriveSunlight,loadSunlightCatalog} from './drive-sunlight.js';
+import {arrayPower,replayArrayEnergy,manualBodyToEnu} from './viper-array.js';
+import {DriveSunlight,loadDriveSource} from './drive-sunlight.js';
 import './drive.css';
 
 const directions={w:'forward',s:'reverse',a:'left',d:'right',arrowup:'forward',arrowdown:'reverse',arrowleft:'left',arrowright:'right'};
@@ -19,7 +20,7 @@ export function mountDrive(root,{logo,icon,icons}) {
   <section class="drive-stage" aria-label="Lunar driving surface"><div class="drive-canvas"></div>
   <div class="drive-hud"><div><span class="eyebrow">LUNAR SOUTH POLE</span><h1>VIPER surface drive</h1></div><label>Terrain site<select data-site><option value="connecting-ridge">Connecting Ridge</option><option value="shackleton-rim">Shackleton rim</option></select></label></div>
   <div class="drive-camera"><button data-camera aria-label="Change to site overview">${icon('maximize')} Site overview</button><button data-image aria-pressed="true">LROC mosaic</button><button data-contours aria-pressed="false">${icon('layers')} Contours</button></div>
-  <div class="drive-sun-readout" hidden><strong data-disk></strong><span data-sun-angles></span><span data-earth></span><small data-sun-stamp></small></div><p class="drive-loading" role="status">Loading NASA terrain and rover geometry…</p></section>
+  <div class="drive-sun-readout" hidden><strong data-disk></strong><span data-sun-angles></span><span data-earth></span><details data-array hidden><summary>Solar array estimate <b data-array-total></b></summary><dl><dt>Port</dt><dd data-watts="port"></dd><dt>Starboard</dt><dd data-watts="starboard"></dd><dt>Aft</dt><dd data-watts="aft"></dd></dl><span data-array-energy></span></details><small data-sun-stamp></small></div><p class="drive-loading" role="status">Loading NASA terrain and rover geometry…</p></section>
   <section class="drive-console" aria-label="Drive controls"><div class="drive-instruments"><div><small>Ground speed</small><strong data-speed>0.00 m/s</strong></div><div><small>Distance</small><strong data-distance>0.0 m</strong></div><div><small>Front-left steer</small><strong data-steer>0.0°</strong></div><div><small>Local slope</small><strong data-slope>—</strong></div></div>
   <div class="drive-buttons"><select data-motion aria-label="Motion model"><option value="manual">Manual drive</option><option value="native">Recorded dynamics</option></select><select data-maneuver aria-label="Steering maneuver"><option value="turn">Coordinated turn</option><option value="crab">Crab steering</option></select><button data-demo disabled>Start traverse</button><select data-rate aria-label="Simulation rate"><option value="1">Real time</option><option value="10" selected>10× time</option><option value="30">30× time</option></select>
   <div class="drive-pad" aria-label="Hold to drive">${[['left','←'],['forward','↑'],['reverse','↓'],['right','→']].map(([d,k])=>`<button data-dir="${d}" aria-label="Drive ${d}">${k}</button>`).join('')}</div><button data-reset aria-label="Reset rover position">${icon('rotate-ccw')}</button></div><label class="drive-clock" hidden>Replay time <input type="range" data-scrub min="0" max="20" step=".05" value="0"><output data-time>0.00 / 20 s</output></label>
@@ -29,7 +30,7 @@ export function mountDrive(root,{logo,icon,icons}) {
   <label>Lighting<select data-lighting><option value="survey">Survey light</option><option value="dated">Mission sunlight</option></select></label>
   <fieldset data-epochs><legend>Drive start (UTC)</legend><select data-epoch-choice aria-label="Choose an epoch"><option value="2028-01-01T12:00">1 Jan 2028 · 12:00 UTC</option><option value="2028-01-21T12:00" selected>21 Jan 2028 · 12:00 UTC</option><option value="2028-01-27T12:00">27 Jan 2028 · 12:00 UTC</option><option value="custom">Custom UTC start</option></select>
   <input type="datetime-local" data-utc aria-label="Custom UTC start" min="2000-01-01T00:00" max="2049-12-31T23:59" value="2028-01-21T12:00" hidden></fieldset>
-  <p>The directional light follows visibility at the rover. Other locations in the view share this lighting approximation. The three listed epochs ship with Recorded dynamics. Manual driving and custom dates use the local simulation service. Mission sunlight uses shaded terrain with a display fill light. The historical photo layer is available in survey light.</p><button type="submit">Apply lighting</button></form></dialog>
+  <p>The directional light follows visibility at the rover. Other locations in the view share this lighting approximation. The three listed epochs ship with Recorded dynamics. Manual driving and custom dates use the local simulation service. Mission sunlight uses shaded terrain with a display fill light. The historical photo layer is available in survey light. Expand Solar array estimate to see how heading, tilt and terrain shadow affect each of VIPER’s three panels. The estimate is gross generation before electrical loads. It assumes clean panels and omits temperature losses and shading by the rover.</p><button type="submit">Apply lighting</button></form></dialog>
   <dialog class="drive-info drive-model-dialog"><button data-close>Close</button><h2>VIPER surface drive</h2><p>The articulated chassis, suspension and wheels come from Project Chrono’s VIPER model. Four-wheel steering follows an ideal rolling path at the documented nominal speed of 0.1 m/s. In a coordinated turn the wheels follow different arcs. Crab steering points all four wheels the same way so you can travel diagonally while the chassis keeps its heading. Hold forward and left or right together to steer. Manual steering angles can reach the documented ±50°. Pitch and roll follow the terrain. The drive clock can be accelerated.</p><p>Recorded dynamics replays 20 seconds of Project Chrono rigid-contact simulation on this site. Choose a straight traverse or a 25° crab traverse to inspect the solver’s chassis, suspension and wheel poses. Both use the native model’s 30° steering limit. The 434.92 kg model uses assumed friction, a 1 ms step and ideal wheel-speed control under 1.62 m/s² gravity.</p><p>The photographed surface comes from the LROC controlled south-pole average mosaic at 1 m/pixel. It combines historical exposures. Missing coverage shows shaded topography. The local surface uses NASA PGDA78 with 5 m posting. The surrounding 40.96 km landscape uses PGDA90 with 80 m posting. Survey lighting and fine material grain are illustrative. Mission sunlight uses a dated Sun direction and terrain horizon at the rover. Wheel slip, sinkage, battery draw and flight suspension response are unresolved in this preview.</p><a href="/data/drive/index.json" target="_blank" rel="noreferrer">Terrain files and source hashes</a><a href="/data/drive/sunlight.json" target="_blank" rel="noreferrer">Dated sunlight samples and source hashes</a><a href="/robots/viper/source.json" target="_blank" rel="noreferrer">Rover geometry and hardware sources</a></dialog></main>`;
   icons();
   const $=s=>root.querySelector(s), host=$('.drive-canvas'), status=$('.drive-loading'), lifetime=new AbortController();
@@ -50,7 +51,11 @@ export function mountDrive(root,{logo,icon,icons}) {
   const held=new Set(), target=new THREE.Vector3(), up=new THREE.Vector3(), forward=new THREE.Vector3(), side=new THREE.Vector3(), basis=new THREE.Matrix4(), lastTarget=new THREE.Vector3();
   const sunOffset=new THREE.Vector3(-34,18,22);
   let dated=false,startUtc='2028-01-21T12:00:00Z',manualTime=0,lightingSite;
+  let observation, hardware, cachedEnergy;
+  const manualOrientation = new THREE.Quaternion();
   const sky=new DriveSunlight(result=>{
+    observation = result;
+    if (!result?.sample) $('[data-array]').hidden=true;
     const readout=$('.drive-sun-readout');
     readout.hidden=!dated;
     const sample=result?.sample;
@@ -98,6 +103,29 @@ export function mountDrive(root,{logo,icon,icons}) {
     follow();
     return Math.atan(Math.hypot(dx,dn))*180/Math.PI;
   }
+  function showArray(maneuver) {
+    const panel = $('[data-array]');
+    const sun = observation?.sample;
+    const orientation = native ? assembly.children[0].quaternion : observation?.orientation;
+    const watts = orientation && arrayPower(hardware, sun, orientation);
+    panel.hidden = !watts;
+    if (!watts) return;
+    $('[data-array-total]').textContent=Math.round(watts.total)+' W';
+    for (const [face,w] of Object.entries(watts.faces)) {
+      $('[data-watts="'+face+'"]').textContent=Math.round(w)+' W';
+    }
+    const series = observation.series;
+    const energy = $('[data-array-energy]');
+    energy.hidden = !native || !series;
+    if (native && series) {
+      const trace = recording[maneuver];
+      if (cachedEnergy?.series !== series || cachedEnergy.trace !== trace) {
+        cachedEnergy = {series, trace, valueAt:replayArrayEnergy(hardware,series,trace.poses)};
+      }
+      energy.hidden = !cachedEnergy.valueAt;
+      if (cachedEnergy.valueAt) energy.textContent = 'Generated since start · '+cachedEnergy.valueAt(replayTime).toFixed(3)+' Wh';
+    }
+  }
   function follow(){
     light.target.position.copy(target);light.position.copy(target).add(sunOffset);
     if(!overview){camera.position.add(target.clone().sub(lastTarget));controls.target.copy(target);}
@@ -140,8 +168,10 @@ export function mountDrive(root,{logo,icon,icons}) {
       slope=pose();speed=Math.abs(throttle)*nominalSpeed;distance=state.distance;
     }
     if(dated && !document.hidden)sky.update({site:lightingSite,start:startUtc,elapsed:native?replayTime:manualTime,
-      east,north,native,replayHash:recording[maneuver].sha256},now);
+      east,north,native,replayHash:recording[maneuver].sha256,
+      orientation:native?null:manualBodyToEnu(rover.body.quaternion,manualOrientation)},now);
     if(now-hudTime>100){
+      if(dated)showArray(maneuver);
       $('[data-speed]').textContent=speed.toFixed(2)+' m/s';
       $('[data-distance]').textContent=distance.toFixed(1)+' m';
       $('[data-steer]').textContent=(leftFrontSteer*180/Math.PI).toFixed(1)+'°';
@@ -239,7 +269,9 @@ export function mountDrive(root,{logo,icon,icons}) {
       const meta=await fetch('/data/drive/replays.json',{signal:lifetime.signal});
       if(!meta.ok)throw new Error('Native replay catalogue unavailable.');
       replayIndex=await meta.json();
-      loadSunlightCatalog(lifetime.signal)
+      loadDriveSource('rover',lifetime.signal)
+        .then(source=>{if(!lifetime.signal.aborted)hardware=source.solar_array;}).catch(()=>{});
+      loadDriveSource('sunlight',lifetime.signal)
         .then(catalog=>{if(!lifetime.signal.aborted){sky.catalog=catalog;sky.reset();}}).catch(()=>{});
       const images=await fetch('/data/drive/imagery.json',{signal:lifetime.signal});
       if(!images.ok)throw new Error('LROC catalogue unavailable.');

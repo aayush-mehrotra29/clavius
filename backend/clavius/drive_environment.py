@@ -1,9 +1,13 @@
 """Geometric sunlight and Earth visibility at a nominal VIPER drive position."""
 from datetime import datetime, timezone
+import hashlib
+import json
+
 import numpy as np
 
 from .geometry import directions, epoch, solar_disk_fraction, utc_from_et
 from .integrity import verify_sources
+from .paths import ROOT
 from .terrain import basis, site, TerrainCoverageError
 
 MODEL = "clavius-drive-directional-horizon-v1"
@@ -45,7 +49,7 @@ def drive_sample(terrain, et, east, north):
         "utc": utc_from_et(et), "east_m": east, "north_m": north,
         "sun_site_enu": site_enu.tolist(), "sun_azimuth_deg": sun["azimuth_deg"],
         "sun_elevation_deg": sun["elevation_deg"], "sun_horizon_deg": float(sh),
-        "sun_angular_radius_deg": sun["angular_radius_deg"],
+        "sun_angular_radius_deg": sun["angular_radius_deg"], "sun_distance_km": sun["distance_km"],
         "disk_fraction": solar_disk_fraction(sun["elevation_deg"], float(sh), sun["angular_radius_deg"]),
         "earth_elevation_deg": earth["elevation_deg"], "earth_horizon_deg": float(eh),
         "earth_center_visible": earth["elevation_deg"] > float(eh),
@@ -59,3 +63,35 @@ def live_sample(identity, start_utc, elapsed, east, north):
         raise ValueError("The sample time exceeds the supported kernel interval.")
     return {"model": MODEL, "site_id": identity, "elapsed_s": elapsed,
             "sample": drive_sample(terrain, et, east, north), "sources": drive_sources(terrain)}
+
+def replay_samples(terrain, start_utc, frames, frequency):
+    start = start_epoch(start_utc)
+    chassis = frames[::frequency, 0]
+    if start + len(chassis) - 1 >= epoch("2050-01-01T00:00:00Z"):
+        raise ValueError("The traverse ends outside the supported kernel interval.")
+    return [drive_sample(terrain, start + t, float(p[0]), float(p[1])) for t, p in enumerate(chassis)]
+
+
+def read_replay(directory, trace, frame_count):
+    raw = (directory / trace["file"]).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != trace["sha256"]:
+        raise ValueError("Native trace identity mismatch")
+    return np.frombuffer(raw, dtype="<f4").reshape(frame_count, 17, 7)
+
+
+def live_replay(identity, start_utc, replay_sha256):
+    directory = ROOT / "public/data/drive"
+    catalog = json.loads((directory / "replays.json").read_text())
+    primary = catalog["sites"][identity]
+    traces = [primary, *primary.get("maneuvers", {}).values()]
+    trace = next((r for r in traces if r["sha256"] == replay_sha256), None)
+    if trace is None:
+        raise ValueError("No matching recorded traverse at this site.")
+    frequency = round(1 / catalog["sample_period_s"])
+    if frequency * catalog["sample_period_s"] != 1:
+        raise ValueError("One second must contain a whole number of recorded frames.")
+    frames = read_replay(directory, trace, catalog["frame_count"])
+    terrain = site(identity)
+    return {"model": MODEL, "site_id": identity, "replay_sha256": replay_sha256, "start_utc": start_utc,
+            "sample_interval_s": 1, "samples": replay_samples(terrain, start_utc, frames, frequency),
+            "sources": drive_sources(terrain)}
