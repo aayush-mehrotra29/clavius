@@ -3,13 +3,28 @@ import {OBJLoader} from 'three/addons/loaders/OBJLoader.js';
 
 const halfWheelbase = .6418, halfTrack = .6098;
 export const radius = .25, nominalSpeed = .1;
+const maxSteer = 50 * Math.PI / 180;
+const maxCurvature = Math.tan(maxSteer) / (halfWheelbase + halfTrack * Math.tan(maxSteer));
 const corners = [[1,1],[1,-1],[-1,1],[-1,-1]];
 
 // Constant-curvature rolling. Positive heading is east toward north.
 // Each wheel follows its own arc about the common instantaneous turn center.
-export function advanceDrive(state, throttle, steer, seconds) {
+export function advanceDrive(state, throttle, steer, seconds, maneuver = 'turn') {
   const speed = nominalSpeed * throttle;
-  const curvature = steer * .65;
+  const command = Math.max(-1, Math.min(1, steer));
+  if (maneuver === 'crab') {
+    const angle = command * maxSteer;
+    const distance = speed * seconds;
+    const direction = state.heading + angle;
+    return {
+      east: state.east + distance * Math.cos(direction),
+      north: state.north + distance * Math.sin(direction),
+      heading: state.heading,
+      distance: state.distance + Math.abs(distance),
+      wheels: state.wheels.map(wheel => ({steer: angle, spin: wheel.spin + distance / radius}))
+    };
+  }
+  const curvature = command * maxCurvature;
   const distance = speed * seconds, angle = distance * curvature;
   const mid = state.heading + angle/2;
   const chord = angle === 0 ? distance : distance * Math.sin(angle/2)/(angle/2);

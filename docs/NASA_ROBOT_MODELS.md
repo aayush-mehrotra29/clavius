@@ -1,6 +1,6 @@
 # NASA robot model evidence
 
-Clavius prioritizes a small, documented robot library over broad company schematic importing. The mission-assessment rover is the hypothetical R1. The separate surface drive visualizes VIPER and two recorded native traverses. The first NASA hardware candidate is VIPER, supported by related NASA Glenn TREC/MGRU3 ground-test references. A candidate audit is not yet executable app support or validated flight prediction.
+Clavius prioritizes a small, documented robot library over broad company schematic importing. The mission-assessment rover is the hypothetical R1. The separate surface drive visualizes VIPER and four recorded native traverses across two sites. The first NASA hardware candidate is VIPER, supported by related NASA Glenn TREC/MGRU3 ground-test references. A candidate audit is not yet executable app support or validated flight prediction.
 
 ## VIPER source and native model audit
 
@@ -93,3 +93,18 @@ The browser's **Rover drive** uses the eight original Project Chrono visual OBJ 
 **Recorded dynamics** plays independently simulated 20 s rigid-contact traverses at Connecting Ridge and Shackleton rim. Each uses the separately frame-repaired source, a 20 m square from the same nominal 5 m mesh as the browser, lunar gravity, 1 ms solver steps and an ideal straight-ahead command after settling. The 17 visible body reference transforms are recorded at 20 Hz in ENU. Final east displacement was 1.530 m and 1.840 m respectively. Mean vertical wheel support over the last 10 s was 1.0344 and 1.0277 times model weight. Separate executions reproduced both files byte-for-byte. Replay keeps the source model's 434.92 kg mass, uncalibrated rigid contact, passive spring assumptions and unexercised 30° steering limit. Its trajectory does not establish flight performance. The mission and energy solver's built-in rover remains R1.
 
 To reproduce on the prepared Chrono runtime, configure `workers/chrono/site-drive` with `Chrono_DIR=data/runtime/chrono-build/cmake`, `ADAPTED_SOURCE=data/runtime/viper-adapted-source` and `ADAPTED_LIBRARY=data/runtime/viper-adapted-build/libclavius_viper_repaired.a` (use absolute paths). Build in `data/runtime/site-drive-build`, then run `.venv/bin/python -m scripts.record_viper_drives`. The publisher verifies the adapted runtime, terrain hash, forward travel, support, frame count and normalized body rotations. [Replay provenance](../public/data/drive/replays.json)
+
+### Crab steering on the two measured site meshes
+
+The manual model now supports coordinated turns and crab translation. In a turn, each wheel is tangent to its own circle around the common turn center. The innermost wheel reaches ±50° at full steering input. In crab mode all four wheel planes stay parallel and the heading stays fixed. Both modes assume instantaneous steering and ideal rolling. The ±50° bound and independent steering come from pages 4–5 of the [dated NASA hardware briefing](https://ntrs.nasa.gov/citations/20240013903). The selected 25° demo angle is a Clavius scenario.
+
+The native crab experiment uses the same nominal DEM, 434.92 kg assembly, 1.62 m/s² gravity, ideal speed motors, solver, contact and clock as the straight reference. During seconds 1–3, the front steering motors ramp to +25° and the reversed rear motor frames ramp to −25°. The wheels then drive forward with all four planes pointing left. No new flight actuation or soil parameters enter this comparison.
+
+From seconds 4–20, the checks require every measured axle heading to stay within 2° of 25° relative to the chassis, chassis yaw to stay within 15° of its heading at second 4, and northward travel to exceed the straight run by at least 0.30 m. The headings are derived from the recorded body orientations, independent of steering commands. These are software control and repeatability checks.
+
+| Site | Additional northward travel, 4–20 s | Maximum chassis yaw excursion | Maximum wheel-plane error |
+| --- | ---: | ---: | ---: |
+| Connecting Ridge | 0.695 m | 0.239° | <0.000003° |
+| Shackleton rim | 0.652 m | 0.454° | <0.000003° |
+
+In the drive view, select **Recorded dynamics → 25° crab traverse**. **Compare recorded paths** shows both trajectories on shared east/north axes, with positions in metres at the replay cursor. The steering readout follows the measured front-left axle. The native assembly still has a 30° steering limit, and its ideal positioning motors explain the small wheel-plane residuals. Two executions of each native crab experiment produced byte-identical pose files. Flight controller tracking and lateral soil resistance require hardware data.

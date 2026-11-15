@@ -1,4 +1,5 @@
 // Recorded component experiment on the same local DEM facets as the browser.
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <fstream>
@@ -16,16 +17,26 @@ using namespace chrono::clavius_viper;
 
 class Driver : public ViperDriver {
   public:
+    explicit Driver(bool crab) : crab(crab) {}
     DriveMotorType GetDriveMotorType() const override { return DriveMotorType::SPEED; }
     void Update(double time) override {
         double omega = .4 * std::clamp(time-3.,0.,1.);
         drive_speeds = {omega,omega,omega,omega};
+        if (crab) {
+            // The two rear steering motor frames are reversed in the source assembly.
+            const double ramp = std::clamp((time - 1.) / 2., 0., 1.);
+            const double angle = 25. * CH_PI / 180. * ramp;
+            steer_angles = {angle, angle, -angle, -angle};
+        }
     }
+  private:
+    bool crab;
 };
 
 int main(int argc, char** argv) {
   try {
-    if (argc != 4) throw std::runtime_error("Usage: clavius_site_drive chrono-data drive-grid.bin frames.bin");
+    if (argc != 4 && !(argc == 5 && std::string(argv[4]) == "crab"))
+        throw std::runtime_error("Usage: clavius_site_drive chrono-data drive-grid.bin frames.bin [crab]");
     SetChronoDataPath(std::string(argv[1])+"/");
     std::vector<float> grid(513*513);
     std::ifstream input(argv[2], std::ios::binary);
@@ -52,7 +63,7 @@ int main(int argc, char** argv) {
     floor->EnableCollision(true);sys.AddBody(floor);
     Viper rover(&sys,ViperWheelType::RealWheel);
     rover.SetChassisVisualization(false);rover.SetWheelVisualization(false);rover.SetSuspensionVisualization(false);
-    rover.SetWheelContactMaterial(material);rover.SetDriver(chrono_types::make_shared<Driver>());
+    rover.SetWheelContactMaterial(material);rover.SetDriver(chrono_types::make_shared<Driver>(argc == 5));
     rover.Initialize(ChFrame<>(point(0,0)+ChVector3d(0,0,.52),QUNIT));
     std::vector<std::shared_ptr<ChBodyAuxRef>> bodies={rover.GetChassis()->GetBody()};
     for(int i=0;i<4;i++) {

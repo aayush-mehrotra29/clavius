@@ -30,13 +30,20 @@ def test_fixed_site_light_direction_matches_spkcpo_observer_state():
 
 
 @pytest.mark.parametrize("name",["connecting-ridge","shackleton-rim"])
-def test_packaged_samples_reproduce_at_recorded_pose_and_clock(name):
+@pytest.mark.parametrize("maneuver",["straight","crab"])
+def test_packaged_samples_reproduce_at_recorded_pose_and_clock(name,maneuver):
     catalog = json.loads((ROOT/"public/data/drive/sunlight.json").read_text())
     replays = json.loads((ROOT/"public/data/drive/replays.json").read_text())
-    assert catalog["sites"][name]["replay_sha256"]==replays["sites"][name]["sha256"]
-    poses = np.fromfile(ROOT/"public/data/drive"/replays["sites"][name]["file"],dtype="<f4").reshape(401,17,7)
+    trace=replays["sites"][name]
+    site_catalog=catalog["sites"][name]
+    samples=site_catalog
+    if maneuver=="crab":
+        trace=trace["maneuvers"]["crab"]
+        samples=site_catalog["maneuvers"]["crab"]
+    assert samples["replay_sha256"]==trace["sha256"]
+    poses = np.fromfile(ROOT/"public/data/drive"/trace["file"],dtype="<f4").reshape(401,17,7)
     for start in catalog["epochs"]:
-        rows = catalog["sites"][name]["samples"][start]
+        rows = samples["samples"][start]
         assert len(rows)==21
         for t in (0,12,20):
             e,n=map(float,poses[t*20,0,:2])
@@ -46,7 +53,7 @@ def test_packaged_samples_reproduce_at_recorded_pose_and_clock(name):
             assert rows[t]["east_m"]==e and rows[t]["north_m"]==n
             for key in ("sun_site_enu","disk_fraction","sun_horizon_deg","earth_horizon_deg"):
                 np.testing.assert_allclose(live["sample"][key],rows[t][key],rtol=0,atol=1e-8)
-    fraction=catalog["sites"][name]["samples"][utc][0]["disk_fraction"]
+    fraction=samples["samples"][utc][0]["disk_fraction"]
     assert fraction==0 if name=="connecting-ridge" else .50<fraction<.55
 
 

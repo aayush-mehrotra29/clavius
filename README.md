@@ -1,6 +1,6 @@
 # Clavius
 
-Explore the Moon from orbit, drive a 3D VIPER reference at two south-polar sites, and test mission scenarios on NASA terrain. The browser includes a manual drive and two recorded Project Chrono traverses.
+Explore the Moon from orbit, drive a 3D VIPER reference at two south-polar sites, and test mission scenarios on NASA terrain. The browser includes a manual drive and recorded Project Chrono straight and crab traverses at both sites.
 
 ![VIPER during a recorded traverse at Shackleton rim](docs/validation/viper-surface-drive.jpg)
 
@@ -147,3 +147,5 @@ npm run validate:mobility -- --output data/runtime/mobility/new-wheel-comparison
 Run `npm ci` and `npm run dev`, then open **Rover drive** from the explorer or go directly to `/app/drive`. The rover, both south-polar sites, historical 1 m/pixel LROC imagery and native replays ship in the repository and run in a WebGL 2 browser. Hold WASD, the arrow keys or the on-screen controls to drive. **Site overview** shows the surrounding landscape. Select **Recorded dynamics** to replay a 20-second rigid-contact experiment and inspect the actual wheel and suspension motion. The separate mission assessment workspace uses the Python service.
 
 To compare polar lighting, select **Recorded dynamics → Sun at rover → Mission sunlight**, pick a UTC start and scrub the replay. The three January 2028 starts work without the Python service. With the simulation service running, you can also select a custom date or sample sunlight along a manual drive. The readout gives the fraction of the solar disk above the local terrain horizon at the rover. The **Survey light** setting shows the historical LROC mosaic.
+
+Select **Crab steering** in manual drive to move diagonally while keeping the chassis pointed in the same direction. Hold W with A or D. In **Recorded dynamics**, choose **25° crab traverse** and expand **Compare recorded paths** to see how far the rover traveled relative to the straight run at the same elapsed time.

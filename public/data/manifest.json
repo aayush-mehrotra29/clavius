@@ -574,15 +574,15 @@
       },
       "recordings": {
         "url": "/data/drive/replays.json",
-        "sha256": "d843a0e80748dd1932f849bf707061d0c9ce34693ad162cb64eaec323754a710"
+        "sha256": "8d6f11296507ac5528a171b3d6fc3b971b1ef3bc9d785141213eaa335b0659f3"
       },
       "rover": {
         "url": "/robots/viper/source.json",
-        "sha256": "df5cf8d93d06c7d7a4ec734c4e16ea40c2db8b6d0ddf8f36a4aedf9b4970bc31"
+        "sha256": "ca723a92a99e8fdd49da4b00b9d32e5ba5efee497c64e8eb874e4b35714a45c5"
       },
       "sunlight": {
         "url": "/data/drive/sunlight.json",
-        "sha256": "d125db66b3cc975c2926ff26175e3f5648cb3358cee5ae3f79e5f7837c1d622f",
+        "sha256": "0d4fb689c5341d73e3834b2d542b9edcedeb8fb2cb4f51cc01bef6b635fe87ae",
         "model": "clavius-drive-directional-horizon-v1",
         "sample_interval_s": 1,
         "role": "Three selected UTC starts applied to the recorded traces; calculated nominal observer visibility."

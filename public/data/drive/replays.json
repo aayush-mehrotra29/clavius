@@ -2,8 +2,8 @@
   "engine": "Project Chrono 9.0.1, SMC rigid contact, Bullet",
   "model": "clavius-viper-mechanical-frame-repair-v1",
   "runtime_identity": "1f18c4a4faeb68faac1d849e14c0c2b5006a85619044af30c3322b4a960ac055",
-  "executable_sha256": "747a0b133c529e6f8c0e41e80030d5bbd84e97def1d7b9e41d7f6ac4b0794f85",
-  "worker_sha256": "9cf1696b88cdb1a554f2e4daaea1dfedaa5e2dffba69da3af5e0b502117bbd61",
+  "executable_sha256": "227d342be05c879a45d38e378608350e15ddcf35207dd5b8af1321631824e947",
+  "worker_sha256": "bdc83e5c4af9169a6d89222cc07b3ebb20505e89e88fafe84cf96e9a71e0ee87",
   "gravity_m_s2": 1.62,
   "solver_step_s": 0.001,
   "sample_period_s": 0.05,
@@ -13,6 +13,7 @@
   "young_modulus_pa": 20000000.0,
   "restitution": 0,
   "motor": "ideal wheel angular speed: zero until 3 s, ramp to 0.4 rad/s by 4 s",
+  "crab_command": "All four wheel planes steer left from 0 to 25 degrees during 1\u20133 s; rear motor commands use reversed axes.",
   "ground": "20 m square near site origin, same nominal 5 m grid and triangle split as browser",
   "layout": "little-endian float32. Each frame has chassis then LF, RF, LB, RB. Each corner has upper arm, lower arm, upright, wheel. Each body has ENU xyz metres, quaternion xyzw in the reference frame.",
   "flight_validated": false,
@@ -27,7 +28,29 @@
         -0.23844487965106964,
         0.2903325855731964
       ],
-      "checks": "Forward displacement (m) 1.53027 mean vertical support / weight 1.0344"
+      "checks": "Forward displacement (m) 1.53027 mean vertical support / weight 1.0344",
+      "maneuvers": {
+        "crab": {
+          "file": "connecting-ridge-crab.bin",
+          "sha256": "fcd257aa28915a6fe5371fc025ddba99894aecdfe1dff42614287c5b7c6d14c8",
+          "terrain_sha256": "e20ebabb9725d1000497c2949acf4a840b87c77de98dffec1a2c3f2579bde820",
+          "final_enu_m": [
+            1.452230453491211,
+            0.47635239362716675,
+            0.2991974949836731
+          ],
+          "checks": "Forward displacement (m) 1.45223 mean vertical support / weight 0.989201",
+          "steering_checks": {
+            "max_wheel_heading_error_deg": 1.8682621352184015e-06,
+            "max_chassis_yaw_change_deg": 0.23934293646042842,
+            "north_gain_over_straight_m": 0.6953579783439636,
+            "interval_s": [
+              4,
+              20
+            ]
+          }
+        }
+      }
     },
     "shackleton-rim": {
       "file": "shackleton-rim-replay.bin",
@@ -38,7 +61,29 @@
         0.05109260976314545,
         0.1630733162164688
       ],
-      "checks": "Forward displacement (m) 1.83975 mean vertical support / weight 1.02773"
+      "checks": "Forward displacement (m) 1.83975 mean vertical support / weight 1.02773",
+      "maneuvers": {
+        "crab": {
+          "file": "shackleton-rim-crab.bin",
+          "sha256": "efc6215eabc41267497115b0e7f3f92046f4e98d5323d99a7ac38819f2acf63e",
+          "terrain_sha256": "57df2cfad6272c3eae0e5b7c96cde6662b6fcbba74a8e1db7ac57d234951bfe5",
+          "final_enu_m": [
+            1.6491336822509766,
+            0.7206765413284302,
+            0.17647087574005127
+          ],
+          "checks": "Forward displacement (m) 1.64913 mean vertical support / weight 0.993902",
+          "steering_checks": {
+            "max_wheel_heading_error_deg": 2.4363182760112068e-06,
+            "max_chassis_yaw_change_deg": 0.45394877786379145,
+            "north_gain_over_straight_m": 0.6516107320785522,
+            "interval_s": [
+              4,
+              20
+            ]
+          }
+        }
+      }
     }
   }
 }

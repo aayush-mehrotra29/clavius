@@ -30,3 +30,12 @@ test('a missing service clears the numerical sample and exposes unavailability',
   await new Promise(resolve=>setTimeout(resolve,0));
   assert.deepEqual(events,[{unavailable:true}]);light.reset();
 });
+
+test('each native maneuver resolves only the sunlight sampled along its own chassis path',()=>{
+  for(const [name,siteData] of Object.entries(catalog.sites)) {
+    const crab=siteData.maneuvers.crab;
+    const result=replaySunlight(catalog,{...context,site:name,replayHash:crab.replay_sha256,elapsed:20});
+    assert.deepEqual(result.sample,crab.samples[start][20]);
+    assert.ok(Math.abs(result.sample.north_m-siteData.samples[start][20].north_m)>.3);
+  }
+});

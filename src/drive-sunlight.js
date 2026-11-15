@@ -16,9 +16,12 @@ export async function loadSunlightCatalog(signal) {
 export function replaySunlight(catalog, context) {
   const site = catalog?.sites?.[context.site];
   if (!context.native || catalog?.model !== model || catalog.sample_interval_s !== 1 ||
-      !site || site.replay_sha256 !== context.replayHash) return null;
+      !site) return null;
+  const trace = [site, ...Object.values(site.maneuvers ?? {})].find(
+    entry => entry.replay_sha256 === context.replayHash
+  );
   const second = Math.floor(context.elapsed);
-  const sample = site.samples?.[context.start]?.[second];
+  const sample = trace?.samples?.[context.start]?.[second];
   return sample ? {sample, elapsed: second, source: 'Packaged replay'} : null;
 }
 

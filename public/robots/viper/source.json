@@ -11,8 +11,8 @@
     "roving_mass_kg": 447,
     "steering_limit_deg": 50
   },
-  "manual": "Ideal planar four-wheel rolling projected onto display terrain, locked suspension geometry, visual roll and pitch",
-  "recorded": "20 s native rigid-contact replay only. Frame-repaired Chrono model retains source masses, motor assumptions and 30 degree steering bound.",
+  "manual": "Ideal planar four-wheel rolling projected onto display terrain, coordinated curves and parallel-wheel crab steering up to the documented 50 degree bound, locked suspension geometry, visual roll and pitch",
+  "recorded": "20 s native rigid-contact experiments for straight travel and 25 degree crab travel. Frame-repaired Chrono model retains source masses, motor assumptions and 30 degree steering bound.",
   "files": {
     "viper_L_bt_sus.obj": "6288061c0c13055c36af8d86148b58fd79cf5ae59c0c48620c7be8ad55df9c7d",
     "viper_L_steer.obj": "41bd6eb648f9290151b35bee3d7073109c368fd229c7aa7d5cb6b59e51a59b55",

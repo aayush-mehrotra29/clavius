@@ -1,4 +1,4 @@
-"""Package reproducible, sample-and-hold sunlight for the two native replays."""
+"""Package reproducible, sample-and-hold sunlight for the native traverses at both sites."""
 import hashlib
 import json
 from pathlib import Path
@@ -14,6 +14,21 @@ OUT = DATA / "drive"
 EPOCHS = ["2028-01-01T12:00:00Z", "2028-01-21T12:00:00Z", "2028-01-27T12:00:00Z"]
 
 
+def sample_trace(terrain, replay, frequency, frame_count):
+    raw = (OUT / replay["file"]).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != replay["sha256"]:
+        raise ValueError("Native trace identity mismatch")
+    frames = np.frombuffer(raw, dtype="<f4").reshape(frame_count, 17, 7)
+    samples = {}
+    for utc in EPOCHS:
+        et = start_epoch(utc)
+        samples[utc] = [
+            drive_sample(terrain, et + t, float(chassis[0]), float(chassis[1]))
+            for t, chassis in enumerate(frames[::frequency, 0])
+        ]
+    return {"replay_sha256": replay["sha256"], "samples": samples}
+
+
 def main():
     replays = json.loads((OUT / "replays.json").read_text())
     frequency = round(1 / replays["sample_period_s"])
@@ -21,21 +36,14 @@ def main():
         raise ValueError("One second must contain a whole number of recorded frames")
     record = {"model": MODEL, "sample_interval_s": 1, "epochs": EPOCHS, "sites": {}}
     for identity, replay in replays["sites"].items():
-        raw = (OUT / replay["file"]).read_bytes()
-        if hashlib.sha256(raw).hexdigest() != replay["sha256"]:
-            raise ValueError("Native trace identity mismatch")
-        frames = np.frombuffer(raw, dtype="<f4").reshape(replays["frame_count"], 17, 7)
         terrain = site(identity)
-        samples = {}
-        for utc in EPOCHS:
-            et = start_epoch(utc)
-            samples[utc] = [
-                drive_sample(terrain, et + t, float(chassis[0]), float(chassis[1]))
-                for t, chassis in enumerate(frames[::frequency, 0])
-            ]
-        record["sites"][identity] = {
-            "replay_sha256": replay["sha256"], "sources": drive_sources(terrain), "samples": samples
+        primary = sample_trace(terrain, replay, frequency, replays["frame_count"])
+        primary["sources"] = drive_sources(terrain)
+        primary["maneuvers"] = {
+            name: sample_trace(terrain, trace, frequency, replays["frame_count"])
+            for name, trace in replay.get("maneuvers", {}).items()
         }
+        record["sites"][identity] = primary
     output = (json.dumps(record, indent=2, allow_nan=False) + "\n").encode()
     (OUT / "sunlight.json").write_bytes(output)
     source = {

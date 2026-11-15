@@ -38,3 +38,54 @@ for(const [id,entry] of Object.entries(recordings.sites))test(id+' replay matche
   assert.deepEqual(group.children[0].position.toArray(),entry.final_enu_m);
   for(const part of group.children)assert.ok(Math.abs(part.quaternion.length()-1)<1e-5);
 });
+
+test('manual crab translates along all four wheel planes and reverses on the same track',()=>{
+  const initial=parkedDrive();
+  initial.heading=Math.PI/3;
+  for(const command of [-1, -.5, .5, 1]) {
+    const angle=command * 50 * Math.PI/180;
+    const end=advanceDrive(initial,1,command,10,'crab');
+    assert.equal(end.heading,initial.heading);
+    assert.ok(Math.abs(end.east-Math.cos(initial.heading+angle))<1e-12);
+    assert.ok(Math.abs(end.north-Math.sin(initial.heading+angle))<1e-12);
+    for(const wheel of end.wheels) {
+      assert.ok(Math.abs(wheel.steer-angle)<1e-12);
+      assert.equal(wheel.spin,4);
+    }
+    const reversed=advanceDrive(end,-1,command,10,'crab');
+    assert.ok(Math.hypot(reversed.east,reversed.north)<1e-12);
+    assert.equal(reversed.distance,2);
+  }
+});
+
+test('both directions of a full coordinated turn reach the documented inner-wheel limit',()=>{
+  for(const command of [-1,1]){
+    const end=advanceDrive(parkedDrive(),1,command,1);
+    const angles=end.wheels.map(w=>Math.abs(w.steer)*180/Math.PI);
+    assert.ok(Math.abs(Math.max(...angles)-50)<1e-10);
+    assert.ok(Math.min(...angles)<30);
+    assert.ok(end.wheels.every(w=>w.spin>0));
+  }
+});
+
+for(const [id,straight] of Object.entries(recordings.sites))test(id+' native crab steers all four axles and gains lateral ground',()=>{
+  const entry=straight.maneuvers.crab;
+  assert.equal(entry.terrain_sha256,straight.terrain_sha256);
+  const bytes=read(entry.file);assert.equal(digest(bytes),entry.sha256);
+  const poses=new Float32Array(bytes.buffer,bytes.byteOffset,bytes.length/4);
+  const group=new THREE.Group();
+  for(let i=0;i<17;i++)group.add(new THREE.Group());
+  const trace={poses,distance:new Float64Array(401)};
+  for(let t=4;t<=20;t+=.25) {
+    const displayed=applyReplay(group,trace,t);
+    const inverse=group.children[0].quaternion.clone().invert();
+    for(const index of [4,8,12,16]) {
+      const axis=new THREE.Vector3(0,1,0).applyQuaternion(group.children[index].quaternion).applyQuaternion(inverse);
+      const angle=Math.atan2(-axis.x,axis.y);
+      assert.ok(Math.abs(angle*180/Math.PI-25)<2);
+      if(index===4)assert.equal(displayed.leftFrontSteer,angle);
+    }
+  }
+  assert.deepEqual(group.children[0].position.toArray(),entry.final_enu_m);
+  assert.ok(entry.steering_checks.north_gain_over_straight_m>=.3);
+});
