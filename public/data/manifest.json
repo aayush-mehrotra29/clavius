@@ -579,6 +579,13 @@
       "rover": {
         "url": "/robots/viper/source.json",
         "sha256": "df5cf8d93d06c7d7a4ec734c4e16ea40c2db8b6d0ddf8f36a4aedf9b4970bc31"
+      },
+      "sunlight": {
+        "url": "/data/drive/sunlight.json",
+        "sha256": "d125db66b3cc975c2926ff26175e3f5648cb3358cee5ae3f79e5f7837c1d622f",
+        "model": "clavius-drive-directional-horizon-v1",
+        "sample_interval_s": 1,
+        "role": "Three selected UTC starts applied to the recorded traces; calculated nominal observer visibility."
       }
     },
     "role": "Browser kinematic drive and recorded native component experiments. Controlled NAC mosaic is historical display imagery only."

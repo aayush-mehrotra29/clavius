@@ -1,0 +1,2337 @@
+{
+  "model": "clavius-drive-directional-horizon-v1",
+  "sample_interval_s": 1,
+  "epochs": [
+    "2028-01-01T12:00:00Z",
+    "2028-01-21T12:00:00Z",
+    "2028-01-27T12:00:00Z"
+  ],
+  "sites": {
+    "connecting-ridge": {
+      "replay_sha256": "af8773215c6db4300f4cfae32046e4c7c5ad5e72ff68a0ee041cefe509501fad",
+      "sources": {
+        "terrain_sha256": {
+          "PGDA78-Site01": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+          "PGDA90-80m": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a"
+        },
+        "kernel_sha256": {
+          "de421.bsp": "08b20db2ae22488650641c5a9033e5bfda4b1c4b440cfeaf20f621cfa18ecdb3",
+          "moon_pa_de421_1900-2050.bpc": "656f90616403d75a75f0cd6c8830fc5b44f8cb4facb5ccb8915e752b397520cf",
+          "moon_080317.tf": "78732477b96f9863e7b0d65bcee3c22b8707ca5ed0db56d1173319cb2e8c7993",
+          "naif0012.tls": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+          "pck00011.tpc": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1"
+        },
+        "frame": "MOON_ME_DE421",
+        "aberration": "NONE",
+        "realization": "nominal",
+        "observer_height_m": 0.5,
+        "max_ray_distance_m": 220000
+      },
+      "samples": {
+        "2028-01-01T12:00:00Z": [
+          {
+            "utc": "2028-01-01T12:00:00.000Z",
+            "east_m": 0.0,
+            "north_m": 0.0,
+            "sun_site_enu": [
+              -0.9950739182994944,
+              -0.09864514049532436,
+              0.009850552103782785
+            ],
+            "sun_azimuth_deg": 264.33856743656133,
+            "sun_elevation_deg": 0.5644041893454829,
+            "sun_horizon_deg": -0.22387311359147924,
+            "sun_angular_radius_deg": 0.2714360823023258,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6578291268892773,
+            "earth_horizon_deg": -1.4918378955675224,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:01.000Z",
+            "east_m": -0.06178132817149162,
+            "north_m": -0.030757058411836624,
+            "sun_site_enu": [
+              -0.9950736759369317,
+              -0.09864758804779833,
+              0.009850524337016539
+            ],
+            "sun_azimuth_deg": 264.33863473258975,
+            "sun_elevation_deg": 0.5644047234969511,
+            "sun_horizon_deg": -0.2223371742288275,
+            "sun_angular_radius_deg": 0.2714360810883758,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.657842749670131,
+            "earth_horizon_deg": -1.49183789566957,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:02.000Z",
+            "east_m": -0.0862664207816124,
+            "north_m": -0.04512964189052582,
+            "sun_site_enu": [
+              -0.9950734335683412,
+              -0.09865003559975054,
+              0.00985049657024409
+            ],
+            "sun_azimuth_deg": 264.33857632913544,
+            "sun_elevation_deg": 0.5644039818333192,
+            "sun_horizon_deg": -0.2216789142128324,
+            "sun_angular_radius_deg": 0.27143607987435187,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6578568518254917,
+            "earth_horizon_deg": -1.4918378955861318,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:03.000Z",
+            "east_m": -0.08955588936805725,
+            "north_m": -0.04659702256321907,
+            "sun_site_enu": [
+              -0.9950731911937234,
+              -0.0986524831511682,
+              0.009850468803469027
+            ],
+            "sun_azimuth_deg": 264.33844648856933,
+            "sun_elevation_deg": 0.5644025034377842,
+            "sun_horizon_deg": -0.22156920401558197,
+            "sun_angular_radius_deg": 0.271436078660284,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6578711421468935,
+            "earth_horizon_deg": -1.4916734392857098,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:04.000Z",
+            "east_m": -0.0475316047668457,
+            "north_m": -0.05226200819015503,
+            "sun_site_enu": [
+              -0.9950729488130919,
+              -0.09865493070192033,
+              0.009850441036686532
+            ],
+            "sun_azimuth_deg": 264.33816393446557,
+            "sun_elevation_deg": 0.5643995532968608,
+            "sun_horizon_deg": -0.222666303898054,
+            "sun_angular_radius_deg": 0.2714360774461311,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6578865798889457,
+            "earth_horizon_deg": -1.4931535430788736,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:05.000Z",
+            "east_m": 0.05064352974295616,
+            "north_m": -0.06362172961235046,
+            "sun_site_enu": [
+              -0.9950727064264483,
+              -0.09865737825198966,
+              0.009850413269894219
+            ],
+            "sun_azimuth_deg": 264.33769214417464,
+            "sun_elevation_deg": 0.5643947810377182,
+            "sun_horizon_deg": -0.22507992288970793,
+            "sun_angular_radius_deg": 0.2714360762318733,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.657903451042342,
+            "earth_horizon_deg": -1.496278200075901,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:06.000Z",
+            "east_m": 0.14921222627162933,
+            "north_m": -0.07497785240411758,
+            "sun_site_enu": [
+              -0.9950724640337845,
+              -0.09865982580145073,
+              0.009850385503106634
+            ],
+            "sun_azimuth_deg": 264.3372190270693,
+            "sun_elevation_deg": 0.5643899958695782,
+            "sun_horizon_deg": -0.22749354080426587,
+            "sun_angular_radius_deg": 0.27143607501761235,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6579203312069626,
+            "earth_horizon_deg": -1.4993851831096823,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:07.000Z",
+            "east_m": 0.24799229204654694,
+            "north_m": -0.08681832998991013,
+            "sun_site_enu": [
+              -0.9950722216351016,
+              -0.0986622733503018,
+              0.009850357736324516
+            ],
+            "sun_azimuth_deg": 264.3367451973022,
+            "sun_elevation_deg": 0.5643852053507047,
+            "sun_horizon_deg": -0.22975981064485565,
+            "sun_angular_radius_deg": 0.27143607380334867,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.657937227618301,
+            "earth_horizon_deg": -1.5018888221906723,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:08.000Z",
+            "east_m": 0.3462693989276886,
+            "north_m": -0.09807837754487991,
+            "sun_site_enu": [
+              -0.9950719792303984,
+              -0.09866472089854961,
+              0.009850329969546299
+            ],
+            "sun_azimuth_deg": 264.33627306198514,
+            "sun_elevation_deg": 0.5643804294360013,
+            "sun_horizon_deg": -0.23214999388959978,
+            "sun_angular_radius_deg": 0.27143607258908314,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.657954098744483,
+            "earth_horizon_deg": -1.5047262729468216,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:09.000Z",
+            "east_m": 0.4446251094341278,
+            "north_m": -0.1097477450966835,
+            "sun_site_enu": [
+              -0.9950717368196756,
+              -0.09866716844618745,
+              0.009850302202773676
+            ],
+            "sun_azimuth_deg": 264.33580066141803,
+            "sun_elevation_deg": 0.564375652278804,
+            "sun_horizon_deg": -0.2343228870377514,
+            "sun_angular_radius_deg": 0.27143607137481524,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.657970981284462,
+            "earth_horizon_deg": -1.5075637160440396,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:10.000Z",
+            "east_m": 0.5427983999252319,
+            "north_m": -0.12121400237083435,
+            "sun_site_enu": [
+              -0.9950714944029327,
+              -0.09866961599321938,
+              0.009850274436004834
+            ],
+            "sun_azimuth_deg": 264.3353288751416,
+            "sun_elevation_deg": 0.5643708804448155,
+            "sun_horizon_deg": -0.2367130690155472,
+            "sun_angular_radius_deg": 0.27143607016054483,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.65798785480525,
+            "earth_horizon_deg": -1.5105364147731974,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:11.000Z",
+            "east_m": 0.6408132910728455,
+            "north_m": -0.13296519219875336,
+            "sun_site_enu": [
+              -0.9950712519801704,
+              -0.09867206353964207,
+              0.009850246669241683
+            ],
+            "sun_azimuth_deg": 264.33485762231055,
+            "sun_elevation_deg": 0.5643661147330713,
+            "sun_horizon_deg": -0.23899460528223138,
+            "sun_angular_radius_deg": 0.2714360689462724,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.658004731336521,
+            "earth_horizon_deg": -1.5121987245460293,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:12.000Z",
+            "east_m": 0.7387527823448181,
+            "north_m": -0.14478541910648346,
+            "sun_site_enu": [
+              -0.9950710095513883,
+              -0.0986745110854572,
+              0.009850218902483197
+            ],
+            "sun_azimuth_deg": 264.33438662314757,
+            "sun_elevation_deg": 0.5643613517210746,
+            "sun_horizon_deg": -0.24123629121020956,
+            "sun_angular_radius_deg": 0.2714360677319976,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6580216077226346,
+            "earth_horizon_deg": -1.5137099131581595,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:13.000Z",
+            "east_m": 0.8372794985771179,
+            "north_m": -0.15676160156726837,
+            "sun_site_enu": [
+              -0.9950707671165865,
+              -0.09867695863066354,
+              0.00985019113572928
+            ],
+            "sun_azimuth_deg": 264.333913644492,
+            "sun_elevation_deg": 0.5643565699705491,
+            "sun_horizon_deg": -0.24338828853332478,
+            "sun_angular_radius_deg": 0.2714360665177192,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6580385013439805,
+            "earth_horizon_deg": -1.5152211000101117,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:14.000Z",
+            "east_m": 0.9359533786773682,
+            "north_m": -0.16854940354824066,
+            "sun_site_enu": [
+              -0.9950705246758544,
+              -0.09867940617435882,
+              0.009850163368988854
+            ],
+            "sun_azimuth_deg": 264.3334401694251,
+            "sun_elevation_deg": 0.5643517827879008,
+            "sun_horizon_deg": -0.24564788487503172,
+            "sun_angular_radius_deg": 0.27143606530343806,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6580553939397893,
+            "earth_horizon_deg": -1.5167322846118292,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:15.000Z",
+            "east_m": 1.0346593856811523,
+            "north_m": -0.18023143708705902,
+            "sun_site_enu": [
+              -0.9950702822290127,
+              -0.09868185371835224,
+              0.009850135602244327
+            ],
+            "sun_azimuth_deg": 264.3329665855596,
+            "sun_elevation_deg": 0.5643469942115457,
+            "sun_horizon_deg": -0.24779988043569176,
+            "sun_angular_radius_deg": 0.27143606408915416,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6580722847834206,
+            "earth_horizon_deg": -1.5180923487075986,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:16.000Z",
+            "east_m": 1.1336252689361572,
+            "north_m": -0.19184406101703644,
+            "sun_site_enu": [
+              -0.9950700397761514,
+              -0.09868430126173865,
+              0.009850107835504728
+            ],
+            "sun_azimuth_deg": 264.3324921253971,
+            "sun_elevation_deg": 0.5643421968945604,
+            "sun_horizon_deg": -0.25005947537043643,
+            "sun_angular_radius_deg": 0.2714360628748673,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6580891800002586,
+            "earth_horizon_deg": -1.5194524113040684,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:17.000Z",
+            "east_m": 1.2326909303665161,
+            "north_m": -0.20359230041503906,
+            "sun_site_enu": [
+              -0.9950697973172703,
+              -0.09868674880451675,
+              0.009850080068770512
+            ],
+            "sun_azimuth_deg": 264.3320173285184,
+            "sun_elevation_deg": 0.5643373967514996,
+            "sun_horizon_deg": -0.25217462495895193,
+            "sun_angular_radius_deg": 0.2714360616605777,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6581060807059504,
+            "earth_horizon_deg": -1.52216015974611,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:18.000Z",
+            "east_m": 1.3319357633590698,
+            "north_m": -0.21507403254508972,
+            "sun_site_enu": [
+              -0.995069554852369,
+              -0.09868919634668892,
+              0.00985005230204007
+            ],
+            "sun_azimuth_deg": 264.33154192731934,
+            "sun_elevation_deg": 0.5643325898724717,
+            "sun_horizon_deg": -0.25430612344612713,
+            "sun_angular_radius_deg": 0.2714360604462853,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.658122979279235,
+            "earth_horizon_deg": -1.5236920354922383,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:19.000Z",
+            "east_m": 1.4310442209243774,
+            "north_m": -0.22671908140182495,
+            "sun_site_enu": [
+              -0.9950693123814479,
+              -0.09869164388825284,
+              0.009850024535315317
+            ],
+            "sun_azimuth_deg": 264.3310669852889,
+            "sun_elevation_deg": 0.5643277879985505,
+            "sun_horizon_deg": -0.2563310462330382,
+            "sun_angular_radius_deg": 0.2714360592319907,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.6581398785224692,
+            "earth_horizon_deg": -1.5249175347525814,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:20.000Z",
+            "east_m": 1.5302653312683105,
+            "north_m": -0.23844487965106964,
+            "sun_site_enu": [
+              -0.9950690699045075,
+              -0.0986940914292089,
+              0.00984999676859452
+            ],
+            "sun_azimuth_deg": 264.3305916631404,
+            "sun_elevation_deg": 0.5643229826981044,
+            "sun_horizon_deg": -0.2584625436037636,
+            "sun_angular_radius_deg": 0.27143605801769327,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.658156782232229,
+            "earth_horizon_deg": -1.5262962192990013,
+            "earth_center_visible": true
+          }
+        ],
+        "2028-01-21T12:00:00Z": [
+          {
+            "utc": "2028-01-21T12:00:00.000Z",
+            "east_m": 0.0,
+            "north_m": 0.0,
+            "sun_site_enu": [
+              0.3653662864079774,
+              0.9308187208458505,
+              0.009164370100430887
+            ],
+            "sun_azimuth_deg": 21.431070757300354,
+            "sun_elevation_deg": 0.5250870787913164,
+            "sun_horizon_deg": 0.8241158939508266,
+            "sun_angular_radius_deg": 0.27115094949784513,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551728530948338,
+            "earth_horizon_deg": -0.8645856075246812,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:01.000Z",
+            "east_m": -0.06178132817149162,
+            "north_m": -0.030757058411836624,
+            "sun_site_enu": [
+              0.36536399706289097,
+              0.9308196194266553,
+              0.009164373445282242
+            ],
+            "sun_azimuth_deg": 21.43113806846681,
+            "sun_elevation_deg": 0.5250855837434045,
+            "sun_horizon_deg": 0.820631022957606,
+            "sun_angular_radius_deg": 0.2711509506880258,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551719794311516,
+            "earth_horizon_deg": -0.8645838516678783,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:02.000Z",
+            "east_m": -0.0862664207816124,
+            "north_m": -0.04512964189052582,
+            "sun_site_enu": [
+              0.36536170771625304,
+              0.930820518001571,
+              0.009164376790072096
+            ],
+            "sun_azimuth_deg": 21.431079675618694,
+            "sun_elevation_deg": 0.5250850399901948,
+            "sun_horizon_deg": 0.8205497278183268,
+            "sun_angular_radius_deg": 0.2711509518782573,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.5517107697645915,
+            "earth_horizon_deg": -0.8645832322090838,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:03.000Z",
+            "east_m": -0.08955588936805725,
+            "north_m": -0.04659702256321907,
+            "sun_site_enu": [
+              0.3653594183673039,
+              0.930821416570896,
+              0.009164380134805401
+            ],
+            "sun_azimuth_deg": 21.43094984461192,
+            "sun_elevation_deg": 0.5250851470567219,
+            "sun_horizon_deg": 0.8203692716510462,
+            "sun_angular_radius_deg": 0.2711509530685228,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551701677186246,
+            "earth_horizon_deg": -0.8645833875388168,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:04.000Z",
+            "east_m": -0.0475316047668457,
+            "north_m": -0.05226200819015503,
+            "sun_site_enu": [
+              0.3653571290150154,
+              0.9308223151350351,
+              0.009164383479481588
+            ],
+            "sun_azimuth_deg": 21.430667283990644,
+            "sun_elevation_deg": 0.5250856707883508,
+            "sun_horizon_deg": 0.8224651664519046,
+            "sun_angular_radius_deg": 0.2711509542588094,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551691593713169,
+            "earth_horizon_deg": -0.8645836963380065,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:05.000Z",
+            "east_m": 0.05064352974295616,
+            "north_m": -0.06362172961235046,
+            "sun_site_enu": [
+              0.3653548396610134,
+              0.9308232136933487,
+              0.009164386824093103
+            ],
+            "sun_azimuth_deg": 21.430195467163344,
+            "sun_elevation_deg": 0.5250866956977361,
+            "sun_horizon_deg": 0.8301685494971843,
+            "sun_angular_radius_deg": 0.2711509554491216,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551680269245616,
+            "earth_horizon_deg": -0.8645844686463592,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:06.000Z",
+            "east_m": 0.14921222627162933,
+            "north_m": -0.07497785240411758,
+            "sun_site_enu": [
+              0.365352550304793,
+              0.9308241122460357,
+              0.009164390168652689
+            ],
+            "sun_azimuth_deg": 21.429722323398483,
+            "sun_elevation_deg": 0.5250877254357059,
+            "sun_horizon_deg": 0.8380553159703599,
+            "sun_angular_radius_deg": 0.27115095663943195,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551668937198691,
+            "earth_horizon_deg": -0.8645852409544588,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:07.000Z",
+            "east_m": 0.24799229204654694,
+            "north_m": -0.08681832998991013,
+            "sun_site_enu": [
+              0.36535026094550777,
+              0.9308250107934278,
+              0.0091643935131642
+            ],
+            "sun_azimuth_deg": 21.42924846664231,
+            "sun_elevation_deg": 0.5250887428473429,
+            "sun_horizon_deg": 0.8461254626513324,
+            "sun_angular_radius_deg": 0.27115095782973914,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551657588112524,
+            "earth_horizon_deg": -0.864585754793104,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:08.000Z",
+            "east_m": 0.3462693989276886,
+            "north_m": -0.09807837754487991,
+            "sun_site_enu": [
+              0.36534797158485727,
+              0.9308259093348584,
+              0.009164396857620041
+            ],
+            "sun_azimuth_deg": 21.428776304796386,
+            "sun_elevation_deg": 0.5250897719848764,
+            "sun_horizon_deg": 0.8541955755373267,
+            "sun_angular_radius_deg": 0.27115095902004466,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551646264205508,
+            "earth_horizon_deg": -0.8645865271012446,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:09.000Z",
+            "east_m": 0.4446251094341278,
+            "north_m": -0.1097477450966835,
+            "sun_site_enu": [
+              0.36534568222114283,
+              0.9308268078709941,
+              0.009164400202027736
+            ],
+            "sun_azimuth_deg": 21.428303877444943,
+            "sun_elevation_deg": 0.5250907894990153,
+            "sun_horizon_deg": 0.8624490649392172,
+            "sun_angular_radius_deg": 0.271150960210347,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551634927831505,
+            "earth_horizon_deg": -0.8645872478395453,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:10.000Z",
+            "east_m": 0.5427983999252319,
+            "north_m": -0.12121400237083435,
+            "sun_site_enu": [
+              0.36534339285606077,
+              0.9308277064011692,
+              0.009164403546379936
+            ],
+            "sun_azimuth_deg": 21.427832064580265,
+            "sun_elevation_deg": 0.525091811027043,
+            "sun_horizon_deg": 0.8707025179586791,
+            "sun_angular_radius_deg": 0.2711509614006473,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551623600380637,
+            "earth_horizon_deg": -0.8645878132481395,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:11.000Z",
+            "east_m": 0.6408132910728455,
+            "north_m": -0.13296519219875336,
+            "sun_site_enu": [
+              0.3653411034879164,
+              0.9308286049260482,
+              0.009164406890684016
+            ],
+            "sun_azimuth_deg": 21.42736078503373,
+            "sun_elevation_deg": 0.5250928218934524,
+            "sun_horizon_deg": 0.8791393445823594,
+            "sun_angular_radius_deg": 0.27115096259094473,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551612268370583,
+            "earth_horizon_deg": -0.8645885339864485,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:12.000Z",
+            "east_m": 0.7387527823448181,
+            "north_m": -0.14478541910648346,
+            "sun_site_enu": [
+              0.36533881411840274,
+              0.9308295034449677,
+              0.00916441023493311
+            ],
+            "sun_azimuth_deg": 21.426889759199764,
+            "sun_elevation_deg": 0.5250938297168605,
+            "sun_horizon_deg": 0.8877595404906118,
+            "sun_angular_radius_deg": 0.27115096378123965,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551600935950867,
+            "earth_horizon_deg": -0.8645892547247214,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:13.000Z",
+            "east_m": 0.8372794985771179,
+            "north_m": -0.15676160156726837,
+            "sun_site_enu": [
+              0.3653365247458229,
+              0.930830401958593,
+              0.009164413579133555
+            ],
+            "sun_azimuth_deg": 21.426416753568155,
+            "sun_elevation_deg": 0.5250948398070916,
+            "sun_horizon_deg": 0.8908266341282739,
+            "sun_angular_radius_deg": 0.27115096497153224,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551589587949525,
+            "earth_horizon_deg": -0.8645897685633906,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:14.000Z",
+            "east_m": 0.9359533786773682,
+            "north_m": -0.16854940354824066,
+            "sun_site_enu": [
+              0.3653342353718733,
+              0.930831300466258,
+              0.00916441692327896
+            ],
+            "sun_azimuth_deg": 21.425943251559698,
+            "sun_elevation_deg": 0.5250958574261301,
+            "sun_horizon_deg": 0.8995904443710936,
+            "sun_angular_radius_deg": 0.2711509661618229,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.55157824206551,
+            "earth_horizon_deg": -0.8645904893016991,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:15.000Z",
+            "east_m": 1.0346593856811523,
+            "north_m": -0.18023143708705902,
+            "sun_site_enu": [
+              0.36533194599570773,
+              0.9308321989682952,
+              0.009164420267372509
+            ],
+            "sun_azimuth_deg": 21.42546964083917,
+            "sun_elevation_deg": 0.5250968786564878,
+            "sun_horizon_deg": 0.9083542125119308,
+            "sun_angular_radius_deg": 0.27115096735211136,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551566898333888,
+            "earth_horizon_deg": -0.8645912100398573,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:16.000Z",
+            "east_m": 1.1336252689361572,
+            "north_m": -0.19184406101703644,
+            "sun_site_enu": [
+              0.3653296566164784,
+              0.9308330974650376,
+              0.009164423611417215
+            ],
+            "sun_azimuth_deg": 21.424995153717017,
+            "sun_elevation_deg": 0.5250979051243687,
+            "sun_horizon_deg": 0.9173043998185268,
+            "sun_angular_radius_deg": 0.271150968542398,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.55155555136739,
+            "earth_horizon_deg": -0.8645917238785272,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:17.000Z",
+            "east_m": 1.2326909303665161,
+            "north_m": -0.20359230041503906,
+            "sun_site_enu": [
+              0.36532736723587883,
+              0.9308339959558206,
+              0.009164426955407874
+            ],
+            "sun_azimuth_deg": 21.424520329839428,
+            "sun_elevation_deg": 0.5250989286158576,
+            "sun_horizon_deg": 0.9266274638850538,
+            "sun_angular_radius_deg": 0.271150969732682,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551544198803042,
+            "earth_horizon_deg": -0.8645923930469472,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:18.000Z",
+            "east_m": 1.3319357633590698,
+            "north_m": -0.21507403254508972,
+            "sun_site_enu": [
+              0.3653250778522165,
+              0.9308348944413075,
+              0.009164430299348951
+            ],
+            "sun_azimuth_deg": 21.424044901647562,
+            "sun_elevation_deg": 0.5250999624172219,
+            "sun_horizon_deg": 0.9357640189408927,
+            "sun_angular_radius_deg": 0.2711509709229641,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551532849829841,
+            "earth_horizon_deg": -0.8645931137852972,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:19.000Z",
+            "east_m": 1.4310442209243774,
+            "north_m": -0.22671908140182495,
+            "sun_site_enu": [
+              0.36532278846718524,
+              0.9308357929208351,
+              0.009164433643235931
+            ],
+            "sun_azimuth_deg": 21.423569932647023,
+            "sun_elevation_deg": 0.5251009895507275,
+            "sun_horizon_deg": 0.9452734438315098,
+            "sun_angular_radius_deg": 0.2711509721132436,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.551521499105143,
+            "earth_horizon_deg": -0.8645935760540342,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:20.000Z",
+            "east_m": 1.5302653312683105,
+            "north_m": -0.23844487965106964,
+            "sun_site_enu": [
+              0.3653204990790909,
+              0.9308366913950664,
+              0.009164436987073112
+            ],
+            "sun_azimuth_deg": 21.423094583404886,
+            "sun_elevation_deg": 0.5251020155453674,
+            "sun_horizon_deg": 0.9547828168457769,
+            "sun_angular_radius_deg": 0.27115097330352056,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": -6.55151014402687,
+            "earth_horizon_deg": -0.8645942967924098,
+            "earth_center_visible": false
+          }
+        ],
+        "2028-01-27T12:00:00Z": [
+          {
+            "utc": "2028-01-27T12:00:00.000Z",
+            "east_m": 0.0,
+            "north_m": 0.0,
+            "sun_site_enu": [
+              -0.784635041915257,
+              0.6199472809421955,
+              0.003635911305506324
+            ],
+            "sun_azimuth_deg": 308.3125839822007,
+            "sun_elevation_deg": 0.20832283149059921,
+            "sun_horizon_deg": -0.7015345841970606,
+            "sun_angular_radius_deg": 0.2713319992481916,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0246310422051341,
+            "earth_horizon_deg": -1.1901036742398066,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:01.000Z",
+            "east_m": -0.06178132817149162,
+            "north_m": -0.030757058411836624,
+            "sun_site_enu": [
+              -0.784636568624955,
+              0.6199453487962582,
+              0.003635888109096252
+            ],
+            "sun_azimuth_deg": 308.31265111163486,
+            "sun_elevation_deg": 0.20832247116007427,
+            "sun_horizon_deg": -0.7009456931603034,
+            "sun_angular_radius_deg": 0.27133199862864527,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0246464062034073,
+            "earth_horizon_deg": -1.1901012960712494,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:02.000Z",
+            "east_m": -0.0862664207816124,
+            "north_m": -0.04512964189052582,
+            "sun_site_enu": [
+              -0.7846380953300448,
+              0.6199434166463712,
+              0.0036358649126419923
+            ],
+            "sun_azimuth_deg": 308.31259254136467,
+            "sun_elevation_deg": 0.20832148144706575,
+            "sun_horizon_deg": -0.7006285979356166,
+            "sun_angular_radius_deg": 0.27133199800905994,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.024662198034079,
+            "earth_horizon_deg": -1.19010253955149,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:03.000Z",
+            "east_m": -0.08955588936805725,
+            "north_m": -0.04659702256321907,
+            "sun_site_enu": [
+              -0.7846396220304725,
+              0.6199414844926026,
+              0.0036358417161462243
+            ],
+            "sun_azimuth_deg": 308.3124625346794,
+            "sun_elevation_deg": 0.20832020744032595,
+            "sun_horizon_deg": -0.7006285979434687,
+            "sun_angular_radius_deg": 0.2713319973894548,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0246781454312899,
+            "earth_horizon_deg": -1.1901064217058095,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:04.000Z",
+            "east_m": -0.0475316047668457,
+            "north_m": -0.05226200819015503,
+            "sun_site_enu": [
+              -0.7846411487262446,
+              0.6199395523349445,
+              0.003635818519605233
+            ],
+            "sun_azimuth_deg": 308.31217980866677,
+            "sun_elevation_deg": 0.20831767649285804,
+            "sun_horizon_deg": -0.7009003938583016,
+            "sun_angular_radius_deg": 0.2713319967697753,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0246951998354936,
+            "earth_horizon_deg": -1.1901110785545028,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:05.000Z",
+            "east_m": 0.05064352974295616,
+            "north_m": -0.06362172961235046,
+            "sun_site_enu": [
+              -0.7846426754173843,
+              0.6199376201733675,
+              0.003635795323016717
+            ],
+            "sun_azimuth_deg": 308.3117078391799,
+            "sun_elevation_deg": 0.2083135779197789,
+            "sun_horizon_deg": -0.7010275909275986,
+            "sun_angular_radius_deg": 0.27133199615000414,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.024713638024746,
+            "earth_horizon_deg": -1.1901168203474668,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:06.000Z",
+            "east_m": 0.14921222627162933,
+            "north_m": -0.07497785240411758,
+            "sun_site_enu": [
+              -0.7846442021037653,
+              0.6199356880080312,
+              0.003635772126392834
+            ],
+            "sun_azimuth_deg": 308.311234542837,
+            "sun_elevation_deg": 0.20830946923734478,
+            "sun_horizon_deg": -0.7015689906524948,
+            "sun_angular_radius_deg": 0.2713319955302285,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0247320848454906,
+            "earth_horizon_deg": -1.1901225621402993,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:07.000Z",
+            "east_m": 0.24799229204654694,
+            "north_m": -0.08681832998991013,
+            "sun_site_enu": [
+              -0.7846457287853843,
+              0.6199337558389387,
+              0.00363574892973437
+            ],
+            "sun_azimuth_deg": 308.31076053369867,
+            "sun_elevation_deg": 0.20830534519008045,
+            "sun_horizon_deg": -0.7021555070430578,
+            "sun_angular_radius_deg": 0.27133199491044835,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0247505481608892,
+            "earth_horizon_deg": -1.1901280452882994,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:08.000Z",
+            "east_m": 0.3462693989276886,
+            "north_m": -0.09807837754487991,
+            "sun_site_enu": [
+              -0.7846472554628076,
+              0.6199318236653751,
+              0.003635725733032881
+            ],
+            "sun_azimuth_deg": 308.3102882191444,
+            "sun_elevation_deg": 0.20830124598498914,
+            "sun_horizon_deg": -0.7028322564554822,
+            "sun_angular_radius_deg": 0.2713319942906655,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0247689861564926,
+            "earth_horizon_deg": -1.1901337870813906,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:09.000Z",
+            "east_m": 0.4446251094341278,
+            "north_m": -0.1097477450966835,
+            "sun_site_enu": [
+              -0.7846487821349053,
+              0.6199298914887692,
+              0.0036357025363036584
+            ],
+            "sun_azimuth_deg": 308.3098156392898,
+            "sun_elevation_deg": 0.20829713637941633,
+            "sun_horizon_deg": -0.7034187724638514,
+            "sun_angular_radius_deg": 0.27133199367087835,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.024787435874114,
+            "earth_horizon_deg": -1.1901394772695226,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:10.000Z",
+            "east_m": 0.5427983999252319,
+            "north_m": -0.12121400237083435,
+            "sun_site_enu": [
+              -0.7846503088022433,
+              0.6199279593084058,
+              0.003635679339538224
+            ],
+            "sun_azimuth_deg": 308.3093436737914,
+            "sun_elevation_deg": 0.20829303562611567,
+            "sun_horizon_deg": -0.7040504050558067,
+            "sun_angular_radius_deg": 0.2713319930510879,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0248058765719428,
+            "earth_horizon_deg": -1.1901452190627617,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:11.000Z",
+            "east_m": 0.6408132910728455,
+            "north_m": -0.13296519219875336,
+            "sun_site_enu": [
+              -0.7846518354648193,
+              0.619926027124287,
+              0.003635656142738372
+            ],
+            "sun_azimuth_deg": 308.3088722416897,
+            "sun_elevation_deg": 0.20828893313801464,
+            "sun_horizon_deg": -0.7046369207003037,
+            "sun_angular_radius_deg": 0.27133199243129347,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.024824320705846,
+            "earth_horizon_deg": -1.1901507022108448,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:12.000Z",
+            "east_m": 0.7387527823448181,
+            "north_m": -0.14478541910648346,
+            "sun_site_enu": [
+              -0.7846533621226343,
+              0.6199240949364111,
+              0.0036356329459030397
+            ],
+            "sun_azimuth_deg": 308.3084010632479,
+            "sun_elevation_deg": 0.20828483117859226,
+            "sun_horizon_deg": -0.7052685528789672,
+            "sun_angular_radius_deg": 0.2713319918114952,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0248427648401466,
+            "earth_horizon_deg": -1.1901563923991947,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:13.000Z",
+            "east_m": 0.8372794985771179,
+            "north_m": -0.15676160156726837,
+            "sun_site_enu": [
+              -0.7846548887756902,
+              0.619922162744777,
+              0.0036356097490323827
+            ],
+            "sun_azimuth_deg": 308.3079279052149,
+            "sun_elevation_deg": 0.2082807108458792,
+            "sun_horizon_deg": -0.7054227141620117,
+            "sun_angular_radius_deg": 0.27133199119169216,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0248612257876692,
+            "earth_horizon_deg": -1.190161875547663,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:14.000Z",
+            "east_m": 0.9359533786773682,
+            "north_m": -0.16854940354824066,
+            "sun_site_enu": [
+              -0.7846564154239868,
+              0.6199202305493845,
+              0.003635586552126207
+            ],
+            "sun_azimuth_deg": 308.30745425074576,
+            "sun_elevation_deg": 0.20827659054583422,
+            "sun_horizon_deg": -0.7058271325906842,
+            "sun_angular_radius_deg": 0.2713319905718852,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0248796854008415,
+            "earth_horizon_deg": -1.1901675657362423,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:15.000Z",
+            "east_m": 1.0346593856811523,
+            "north_m": -0.18023143708705902,
+            "sun_site_enu": [
+              -0.7846579420675233,
+              0.619918298350234,
+              0.0036355633551846647
+            ],
+            "sun_azimuth_deg": 308.3069804875504,
+            "sun_elevation_deg": 0.20827247156480289,
+            "sun_horizon_deg": -0.7064112923157179,
+            "sun_angular_radius_deg": 0.2713319899520744,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0248981431408637,
+            "earth_horizon_deg": -1.1901732559246592,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:16.000Z",
+            "east_m": 1.1336252689361572,
+            "north_m": -0.19184406101703644,
+            "sun_site_enu": [
+              -0.7846594687068643,
+              0.6199163661466116,
+              0.003635540158201003
+            ],
+            "sun_azimuth_deg": 308.30650584799383,
+            "sun_elevation_deg": 0.20826834727317534,
+            "sun_horizon_deg": -0.7069954519801115,
+            "sun_angular_radius_deg": 0.2713319893322596,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0249166049447163,
+            "earth_horizon_deg": -1.1901787390732255,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:17.000Z",
+            "east_m": 1.2326909303665161,
+            "north_m": -0.20359230041503906,
+            "sun_site_enu": [
+              -0.7846609953408803,
+              0.619914433939946,
+              0.00363551696118957
+            ],
+            "sun_azimuth_deg": 308.3060308717312,
+            "sun_elevation_deg": 0.20826421762311254,
+            "sun_horizon_deg": -0.7075346761711497,
+            "sun_angular_radius_deg": 0.27133198871244063,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0249350722727504,
+            "earth_horizon_deg": -1.1901843776568783,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:18.000Z",
+            "east_m": 1.3319357633590698,
+            "north_m": -0.21507403254508972,
+            "sun_site_enu": [
+              -0.7846625219701376,
+              0.6199125017295215,
+              0.003635493764141848
+            ],
+            "sun_azimuth_deg": 308.3055552911898,
+            "sun_elevation_deg": 0.20826008877357555,
+            "sun_horizon_deg": -0.7081637708413723,
+            "sun_angular_radius_deg": 0.27133198809261777,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0249535370559353,
+            "earth_horizon_deg": -1.1901900678456465,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:19.000Z",
+            "east_m": 1.4310442209243774,
+            "north_m": -0.22671908140182495,
+            "sun_site_enu": [
+              -0.7846640485946335,
+              0.6199105695153408,
+              0.0036354705670596254
+            ],
+            "sun_azimuth_deg": 308.30508016979377,
+            "sun_elevation_deg": 0.20825596010351932,
+            "sun_horizon_deg": -0.7087029947243735,
+            "sun_angular_radius_deg": 0.2713319874727911,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0249720028010876,
+            "earth_horizon_deg": -1.1901954993895318,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:20.000Z",
+            "east_m": 1.5302653312683105,
+            "north_m": -0.23844487965106964,
+            "sun_site_enu": [
+              -0.7846655752143692,
+              0.6199086372974034,
+              0.003635447369941446
+            ],
+            "sun_azimuth_deg": 308.30460466824894,
+            "sun_elevation_deg": 0.2082518268621698,
+            "sun_horizon_deg": -0.7092871538481106,
+            "sun_angular_radius_deg": 0.27133198685296045,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 1.0249904729853037,
+            "earth_horizon_deg": -1.1902011895783964,
+            "earth_center_visible": true
+          }
+        ]
+      }
+    },
+    "shackleton-rim": {
+      "replay_sha256": "3b01b258b52c0dc1cc762ac10857125deb7a15b7a52f0c059ced2acb4154537f",
+      "sources": {
+        "terrain_sha256": {
+          "PGDA90-80m": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a",
+          "PGDA78-Site04": "38ff70dbdf2f066c2cfa94a646c3a59d653ce7f6b4528b15fc1b43ee397ce758"
+        },
+        "kernel_sha256": {
+          "de421.bsp": "08b20db2ae22488650641c5a9033e5bfda4b1c4b440cfeaf20f621cfa18ecdb3",
+          "moon_pa_de421_1900-2050.bpc": "656f90616403d75a75f0cd6c8830fc5b44f8cb4facb5ccb8915e752b397520cf",
+          "moon_080317.tf": "78732477b96f9863e7b0d65bcee3c22b8707ca5ed0db56d1173319cb2e8c7993",
+          "naif0012.tls": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+          "pck00011.tpc": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1"
+        },
+        "frame": "MOON_ME_DE421",
+        "aberration": "NONE",
+        "realization": "nominal",
+        "observer_height_m": 0.5,
+        "max_ray_distance_m": 220000
+      },
+      "samples": {
+        "2028-01-01T12:00:00Z": [
+          {
+            "utc": "2028-01-01T12:00:00.000Z",
+            "east_m": 0.0,
+            "north_m": 0.0,
+            "sun_site_enu": [
+              -0.9739039463381322,
+              0.22666059107237785,
+              0.011665323044507007
+            ],
+            "sun_azimuth_deg": 283.1014534452074,
+            "sun_elevation_deg": 0.6683889367260059,
+            "sun_horizon_deg": -0.5576852578320869,
+            "sun_angular_radius_deg": 0.271436088132049,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.862712354510363,
+            "earth_horizon_deg": -0.7596485315173459,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:01.000Z",
+            "east_m": 0.04986857622861862,
+            "north_m": -0.023776359856128693,
+            "sun_site_enu": [
+              -0.9739045040238664,
+              0.2266581954834739,
+              0.011665310205989526
+            ],
+            "sun_azimuth_deg": 283.1008749455361,
+            "sun_elevation_deg": 0.6683864233735702,
+            "sun_horizon_deg": -0.5442577973650212,
+            "sun_angular_radius_deg": 0.271436086917928,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.862728024426225,
+            "earth_horizon_deg": -0.7596488036765461,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:02.000Z",
+            "east_m": 0.06945335119962692,
+            "north_m": -0.03891361132264137,
+            "sun_site_enu": [
+              -0.9739050617037077,
+              0.2266557998931983,
+              0.011665297367459063
+            ],
+            "sun_azimuth_deg": 283.10056216631824,
+            "sun_elevation_deg": 0.6683849462657265,
+            "sun_horizon_deg": -0.537544045033419,
+            "sun_angular_radius_deg": 0.27143608570386274,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8627430020561153,
+            "earth_horizon_deg": -0.759648589405294,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:03.000Z",
+            "east_m": 0.07734466344118118,
+            "north_m": -0.04021821916103363,
+            "sun_site_enu": [
+              -0.973905619377671,
+              0.22665340430149028,
+              0.011665284528919259
+            ],
+            "sun_azimuth_deg": 283.1003519872801,
+            "sun_elevation_deg": 0.6683839476689541,
+            "sun_horizon_deg": -0.5358656048035817,
+            "sun_angular_radius_deg": 0.27143608448982176,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8627574012210033,
+            "earth_horizon_deg": -0.7596471354763642,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:04.000Z",
+            "east_m": 0.12524059414863586,
+            "north_m": -0.04036703705787659,
+            "sun_site_enu": [
+              -0.9739061770457539,
+              0.22665100870835342,
+              0.011665271690383337
+            ],
+            "sun_azimuth_deg": 283.09979078664503,
+            "sun_elevation_deg": 0.6683816740562764,
+            "sun_horizon_deg": -0.5313897584877962,
+            "sun_angular_radius_deg": 0.2714360832757066,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.862772342355309,
+            "earth_horizon_deg": -0.7596450375415821,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:05.000Z",
+            "east_m": 0.23294079303741455,
+            "north_m": -0.03336632251739502,
+            "sun_site_enu": [
+              -0.9739067347079733,
+              0.22664861311371934,
+              0.011665258851856517
+            ],
+            "sun_azimuth_deg": 283.09870483187507,
+            "sun_elevation_deg": 0.6683775348623882,
+            "sun_horizon_deg": -0.5297113152495945,
+            "sun_angular_radius_deg": 0.2714360820614843,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.862787933009385,
+            "earth_horizon_deg": -0.7596414349405771,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:06.000Z",
+            "east_m": 0.3404361307621002,
+            "north_m": -0.02716241404414177,
+            "sun_site_enu": [
+              -0.9739072923642961,
+              0.22664621751773018,
+              0.011665246013323409
+            ],
+            "sun_azimuth_deg": 283.0976206766218,
+            "sun_elevation_deg": 0.668373396286529,
+            "sun_horizon_deg": -0.5277531292374379,
+            "sun_angular_radius_deg": 0.27143608084725945,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.862803544314771,
+            "earth_horizon_deg": -0.7596378323394991,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:07.000Z",
+            "east_m": 0.44756826758384705,
+            "north_m": -0.021794555708765984,
+            "sun_site_enu": [
+              -0.9739078500147218,
+              0.2266438219203858,
+              0.011665233174783917
+            ],
+            "sun_azimuth_deg": 283.09653970987733,
+            "sun_elevation_deg": 0.6683692631165754,
+            "sun_horizon_deg": -0.5255152015376093,
+            "sun_angular_radius_deg": 0.27143607963303235,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8628191751549656,
+            "earth_horizon_deg": -0.759634445201397,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:08.000Z",
+            "east_m": 0.5550949573516846,
+            "north_m": -0.016069628298282623,
+            "sun_site_enu": [
+              -0.9739084076592535,
+              0.2266414263216775,
+              0.01166522033623889
+            ],
+            "sun_azimuth_deg": 283.09545528281444,
+            "sun_elevation_deg": 0.6683651199475895,
+            "sun_horizon_deg": -0.5146292218025337,
+            "sun_angular_radius_deg": 0.2714360784188022,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8628348010927036,
+            "earth_horizon_deg": -0.759630788883592,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:09.000Z",
+            "east_m": 0.6627758741378784,
+            "north_m": -0.010638663545250893,
+            "sun_site_enu": [
+              -0.9739089652978892,
+              0.22663903072161024,
+              0.01166520749768673
+            ],
+            "sun_azimuth_deg": 283.0943695039964,
+            "sun_elevation_deg": 0.6683609696295222,
+            "sun_horizon_deg": -0.49825403631189624,
+            "sun_angular_radius_deg": 0.27143607720456925,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8628504379301307,
+            "earth_horizon_deg": -0.7596271862826507,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:10.000Z",
+            "east_m": 0.7722389101982117,
+            "north_m": -0.005155292339622974,
+            "sun_site_enu": [
+              -0.97390952293063,
+              0.22663663512017887,
+              0.011665194659129656
+            ],
+            "sun_azimuth_deg": 283.0932680896344,
+            "sun_elevation_deg": 0.668356762513789,
+            "sun_horizon_deg": -0.48160584693024505,
+            "sun_angular_radius_deg": 0.27143607599033037,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8628660988902914,
+            "earth_horizon_deg": -0.7596236917112226,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:11.000Z",
+            "east_m": 0.8819969296455383,
+            "north_m": 0.000876967387739569,
+            "sun_site_enu": [
+              -0.9739100805574765,
+              0.2266342395173827,
+              0.011665181820565534
+            ],
+            "sun_azimuth_deg": 283.0921640890141,
+            "sun_elevation_deg": 0.6683525500259848,
+            "sun_horizon_deg": -0.46550342293527147,
+            "sun_angular_radius_deg": 0.27143607477608883,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.86288174779446,
+            "earth_horizon_deg": -0.7596200353934912,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:12.000Z",
+            "east_m": 0.9897798895835876,
+            "north_m": 0.006456345319747925,
+            "sun_site_enu": [
+              -0.9739106381784264,
+              0.2266318439132314,
+              0.011665168981995173
+            ],
+            "sun_azimuth_deg": 283.0910774198163,
+            "sun_elevation_deg": 0.6683483975261773,
+            "sun_horizon_deg": -0.4496738500522862,
+            "sun_angular_radius_deg": 0.27143607356184796,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.862897381669239,
+            "earth_horizon_deg": -0.7596163790757677,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:13.000Z",
+            "east_m": 1.0968009233474731,
+            "north_m": 0.012120210565626621,
+            "sun_site_enu": [
+              -0.9739111957934811,
+              0.22662944830771994,
+              0.011665156143418436
+            ],
+            "sun_azimuth_deg": 283.08999743781476,
+            "sun_elevation_deg": 0.6683442701004156,
+            "sun_horizon_deg": -0.43411713384680733,
+            "sun_angular_radius_deg": 0.2714360723476062,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8629130020531735,
+            "earth_horizon_deg": -0.7596129382212539,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:14.000Z",
+            "east_m": 1.2025701999664307,
+            "north_m": 0.017695730552077293,
+            "sun_site_enu": [
+              -0.9739117534024333,
+              0.22662705270173616,
+              0.011665143304837904
+            ],
+            "sun_azimuth_deg": 283.0889284408589,
+            "sun_elevation_deg": 0.6683401821759163,
+            "sun_horizon_deg": -0.42511058358943543,
+            "sun_angular_radius_deg": 0.2714360711333641,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.862928606999235,
+            "earth_horizon_deg": -0.7596093356203406,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:15.000Z",
+            "east_m": 1.3082565069198608,
+            "north_m": 0.023408103734254837,
+            "sun_site_enu": [
+              -0.9739123110056968,
+              0.22662465709350457,
+              0.011665130466248579
+            ],
+            "sun_azimuth_deg": 283.0878601736433,
+            "sun_elevation_deg": 0.6683360979302804,
+            "sun_horizon_deg": -0.42238132274001133,
+            "sun_angular_radius_deg": 0.27143606991911956,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.862944206694983,
+            "earth_horizon_deg": -0.7596056793028354,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:16.000Z",
+            "east_m": 1.4145833253860474,
+            "north_m": 0.029072556644678116,
+            "sun_site_enu": [
+              -0.9739128686030648,
+              0.22662226148391146,
+              0.011665117627652282
+            ],
+            "sun_azimuth_deg": 283.08678628786384,
+            "sun_elevation_deg": 0.6683319927691294,
+            "sun_horizon_deg": -0.39238759395059547,
+            "sun_angular_radius_deg": 0.27143606870487136,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.862959816999016,
+            "earth_horizon_deg": -0.7596020767019357,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:17.000Z",
+            "east_m": 1.5209012031555176,
+            "north_m": 0.034625694155693054,
+            "sun_site_enu": [
+              -0.9739134261945375,
+              0.22661986587295857,
+              0.011665104789050312
+            ],
+            "sun_azimuth_deg": 283.08571248197416,
+            "sun_elevation_deg": 0.6683278870586024,
+            "sun_horizon_deg": -0.36027687172389594,
+            "sun_angular_radius_deg": 0.2714360674906206,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8629754304742545,
+            "earth_horizon_deg": -0.759598635847422,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:18.000Z",
+            "east_m": 1.6269503831863403,
+            "north_m": 0.04022567719221115,
+            "sun_site_enu": [
+              -0.9739139837801144,
+              0.22661747026064527,
+              0.011665091950441952
+            ],
+            "sun_azimuth_deg": 283.084641035428,
+            "sun_elevation_deg": 0.6683237903145989,
+            "sun_horizon_deg": -0.3359607122791777,
+            "sun_angular_radius_deg": 0.2714360662763678,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8629910386756183,
+            "earth_horizon_deg": -0.7595949795299577,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:19.000Z",
+            "east_m": 1.7334411144256592,
+            "north_m": 0.04566609114408493,
+            "sun_site_enu": [
+              -0.9739145413597962,
+              0.22661507464697125,
+              0.01166507911182735
+            ],
+            "sun_azimuth_deg": 283.08356571582647,
+            "sun_elevation_deg": 0.6683196782056794,
+            "sun_horizon_deg": -0.30518757304621247,
+            "sun_angular_radius_deg": 0.2714360650621117,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.8630066579472535,
+            "earth_horizon_deg": -0.7595913232124093,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-01T12:00:20.000Z",
+            "east_m": 1.8397537469863892,
+            "north_m": 0.05109260976314545,
+            "sun_site_enu": [
+              -0.9739150989335826,
+              0.22661267903193666,
+              0.011665066273207339
+            ],
+            "sun_azimuth_deg": 283.0824919604699,
+            "sun_elevation_deg": 0.6683155717027209,
+            "sun_horizon_deg": -0.27348173014314786,
+            "sun_angular_radius_deg": 0.27143606384785335,
+            "disk_fraction": 1.0,
+            "earth_elevation_deg": 2.863022275067046,
+            "earth_horizon_deg": -0.7595878286412376,
+            "earth_center_visible": true
+          }
+        ],
+        "2028-01-21T12:00:00Z": [
+          {
+            "utc": "2028-01-21T12:00:00.000Z",
+            "east_m": 0.0,
+            "north_m": 0.0,
+            "sun_site_enu": [
+              0.6453190940208782,
+              0.7639074910325389,
+              0.0029346271387903056
+            ],
+            "sun_azimuth_deg": 40.18981267586213,
+            "sun_elevation_deg": 0.16814199083865142,
+            "sun_horizon_deg": 0.15762709522113216,
+            "sun_angular_radius_deg": 0.27115092951006564,
+            "disk_fraction": 0.5246811337134419,
+            "earth_elevation_deg": -6.304711404367759,
+            "earth_horizon_deg": -1.066851690250971,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:01.000Z",
+            "east_m": 0.04986857622861862,
+            "north_m": -0.023776359856128693,
+            "sun_site_enu": [
+              0.6453172152692174,
+              0.7639090781223112,
+              0.002934627660005753
+            ],
+            "sun_azimuth_deg": 40.18923419056786,
+            "sun_elevation_deg": 0.1681424825288757,
+            "sun_horizon_deg": 0.1594133708060552,
+            "sun_angular_radius_deg": 0.2711509307003574,
+            "disk_fraction": 0.5204910419247953,
+            "earth_elevation_deg": -6.304701074103302,
+            "earth_horizon_deg": -1.0668443768352336,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:02.000Z",
+            "east_m": 0.06945335119962692,
+            "north_m": -0.03891361132264137,
+            "sun_site_enu": [
+              0.645315336514492,
+              0.7639106652067541,
+              0.002934628181195532
+            ],
+            "sun_azimuth_deg": 40.1889214291612,
+            "sun_elevation_deg": 0.1681425477975986,
+            "sun_horizon_deg": 0.16014889596230597,
+            "sun_angular_radius_deg": 0.27115093189062284,
+            "disk_fraction": 0.518765119312351,
+            "earth_elevation_deg": -6.304691312608713,
+            "earth_horizon_deg": -1.0668408574308315,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:03.000Z",
+            "east_m": 0.07734466344118118,
+            "north_m": -0.04021821916103363,
+            "sun_site_enu": [
+              0.6453134577559514,
+              0.7639122522865025,
+              0.002934628702366923
+            ],
+            "sun_azimuth_deg": 40.188711273830314,
+            "sun_elevation_deg": 0.1681427125876077,
+            "sun_horizon_deg": 0.16041158347894813,
+            "sun_angular_radius_deg": 0.2711509330808914,
+            "disk_fraction": 0.5181490163240464,
+            "earth_elevation_deg": -6.304682100681224,
+            "earth_horizon_deg": -1.0668380524124812,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:04.000Z",
+            "east_m": 0.12524059414863586,
+            "north_m": -0.04036703705787659,
+            "sun_site_enu": [
+              0.6453115789926526,
+              0.7639138393623524,
+              0.0029346292235399897
+            ],
+            "sun_azimuth_deg": 40.18815009787688,
+            "sun_elevation_deg": 0.16814375695663777,
+            "sun_horizon_deg": 0.16209278363491195,
+            "sun_angular_radius_deg": 0.27115093427120684,
+            "disk_fraction": 0.5142055549832001,
+            "earth_elevation_deg": -6.304672532364281,
+            "earth_horizon_deg": -1.0668289787106624,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:05.000Z",
+            "east_m": 0.23294079303741455,
+            "north_m": -0.03336632251739502,
+            "sun_site_enu": [
+              0.6453097002259272,
+              0.7639154264331789,
+              0.0029346297447177547
+            ],
+            "sun_azimuth_deg": 40.18706417174661,
+            "sun_elevation_deg": 0.1681462526799349,
+            "sun_horizon_deg": 0.16592802036438054,
+            "sun_angular_radius_deg": 0.2711509354616012,
+            "disk_fraction": 0.5052080026849741,
+            "earth_elevation_deg": -6.304662601710745,
+            "earth_horizon_deg": -1.0668101169212458,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:06.000Z",
+            "east_m": 0.3404361307621002,
+            "north_m": -0.02716241404414177,
+            "sun_site_enu": [
+              0.6453078214552914,
+              0.7639170134993909,
+              0.0029346302658812416
+            ],
+            "sun_azimuth_deg": 40.185980044780365,
+            "sun_elevation_deg": 0.16814872398106057,
+            "sun_horizon_deg": 0.16718891971753683,
+            "sun_angular_radius_deg": 0.271150936651992,
+            "disk_fraction": 0.5022534648166529,
+            "earth_elevation_deg": -6.304652647982711,
+            "earth_horizon_deg": -1.0667913651503873,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:07.000Z",
+            "east_m": 0.44756826758384705,
+            "north_m": -0.021794555708765984,
+            "sun_site_enu": [
+              0.6453059426800511,
+              0.7639186005615746,
+              0.002934630787032465
+            ],
+            "sun_azimuth_deg": 40.18489910589902,
+            "sun_elevation_deg": 0.16815116650611625,
+            "sun_horizon_deg": 0.16905388686840914,
+            "sun_angular_radius_deg": 0.27115093784237876,
+            "disk_fraction": 0.4978805584280389,
+            "earth_elevation_deg": -6.304642671499641,
+            "earth_horizon_deg": -1.0667727233981268,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:08.000Z",
+            "east_m": 0.5550949573516846,
+            "north_m": -0.016069628298282623,
+            "sun_site_enu": [
+              0.6453040639015973,
+              0.763920187618555,
+              0.002934631308168378
+            ],
+            "sun_azimuth_deg": 40.18381470691125,
+            "sun_elevation_deg": 0.16815362639212678,
+            "sun_horizon_deg": 0.17311835253838045,
+            "sun_angular_radius_deg": 0.27115093903276405,
+            "disk_fraction": 0.4883442549351345,
+            "earth_elevation_deg": -6.304632702315689,
+            "earth_horizon_deg": -1.0667540267835967,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:09.000Z",
+            "east_m": 0.6627758741378784,
+            "north_m": -0.010638663545250893,
+            "sun_site_enu": [
+              0.6453021851185387,
+              0.7639217746715078,
+              0.0029346318292911323
+            ],
+            "sun_azimuth_deg": 40.18272895598808,
+            "sun_elevation_deg": 0.1681560821451809,
+            "sun_horizon_deg": 0.1771828165178028,
+            "sun_angular_radius_deg": 0.2711509402231466,
+            "disk_fraction": 0.4788105622923758,
+            "earth_elevation_deg": -6.304622722359082,
+            "earth_horizon_deg": -1.0667352750147991,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:10.000Z",
+            "east_m": 0.7722389101982117,
+            "north_m": -0.005155292339622974,
+            "sun_site_enu": [
+              0.64530030633226,
+              0.7639233617192627,
+              0.0029346323503996186
+            ],
+            "sun_azimuth_deg": 40.18162756961789,
+            "sun_elevation_deg": 0.16815857709051407,
+            "sun_horizon_deg": 0.18145841945912378,
+            "sun_angular_radius_deg": 0.27115094141352925,
+            "disk_fraction": 0.468786586905158,
+            "earth_elevation_deg": -6.304612726496607,
+            "earth_horizon_deg": -1.0667161934850098,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:11.000Z",
+            "east_m": 0.8819969296455383,
+            "north_m": 0.000876967387739569,
+            "sun_site_enu": [
+              0.6452984275413789,
+              0.7639249487629878,
+              0.0029346328714949885
+            ],
+            "sun_azimuth_deg": 40.18052359717962,
+            "sun_elevation_deg": 0.1681610921074794,
+            "sun_horizon_deg": 0.1853645240101951,
+            "sun_angular_radius_deg": 0.27115094260391065,
+            "disk_fraction": 0.4596361618907639,
+            "earth_elevation_deg": -6.304602744974967,
+            "earth_horizon_deg": -1.0666971668189493,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:12.000Z",
+            "east_m": 0.9897798895835876,
+            "north_m": 0.006456345319747925,
+            "sun_site_enu": [
+              0.6452965487472904,
+              0.763926535801504,
+              0.002934633392574058
+            ],
+            "sun_azimuth_deg": 40.179436955990745,
+            "sun_elevation_deg": 0.1681635537241224,
+            "sun_horizon_deg": 0.18515338326800712,
+            "sun_angular_radius_deg": 0.27115094379428667,
+            "disk_fraction": 0.4601366689251291,
+            "earth_elevation_deg": -6.30459276855346,
+            "earth_horizon_deg": -1.0666783601893004,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:13.000Z",
+            "east_m": 1.0968009233474731,
+            "north_m": 0.012120210565626621,
+            "sun_site_enu": [
+              0.6452946699486027,
+              0.7639281228359884,
+              0.0029346339136411014
+            ],
+            "sun_azimuth_deg": 40.178357001971534,
+            "sun_elevation_deg": 0.16816600125563455,
+            "sun_horizon_deg": 0.18801382798389144,
+            "sun_angular_radius_deg": 0.2711509449846595,
+            "disk_fraction": 0.4534420715187115,
+            "earth_elevation_deg": -6.304582802224143,
+            "earth_horizon_deg": -1.0666596635782017,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:14.000Z",
+            "east_m": 1.2025701999664307,
+            "north_m": 0.017695730552077293,
+            "sun_site_enu": [
+              0.6452927911467062,
+              0.763929709865265,
+              0.002934634434690955
+            ],
+            "sun_azimuth_deg": 40.17728803294164,
+            "sun_elevation_deg": 0.16816841993869142,
+            "sun_horizon_deg": 0.19230968925016384,
+            "sun_angular_radius_deg": 0.27115094617502833,
+            "disk_fraction": 0.4433950678370996,
+            "earth_elevation_deg": -6.304572845376829,
+            "earth_horizon_deg": -1.0666412418662496,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:15.000Z",
+            "east_m": 1.3082565069198608,
+            "north_m": 0.023408103734254837,
+            "sun_site_enu": [
+              0.6452909123409022,
+              0.7639312968899249,
+              0.0029346349557274566
+            ],
+            "sun_azimuth_deg": 40.176219793761405,
+            "sun_elevation_deg": 0.16817084028887982,
+            "sun_horizon_deg": 0.1967646539359037,
+            "sun_angular_radius_deg": 0.27115094736539497,
+            "disk_fraction": 0.43299085791613573,
+            "earth_elevation_deg": -6.304562893590265,
+            "earth_horizon_deg": -1.0666226552742573,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:16.000Z",
+            "east_m": 1.4145833253860474,
+            "north_m": 0.029072556644678116,
+            "sun_site_enu": [
+              0.6452890335304927,
+              0.763932883910557,
+              0.002934635476750909
+            ],
+            "sun_azimuth_deg": 40.17514593595112,
+            "sun_elevation_deg": 0.16817327303649207,
+            "sun_horizon_deg": 0.20121961624626458,
+            "sun_angular_radius_deg": 0.27115094855576,
+            "disk_fraction": 0.42260488763222637,
+            "earth_elevation_deg": -6.3045529339952315,
+            "earth_horizon_deg": -1.0666041235457244,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:17.000Z",
+            "east_m": 1.5209012031555176,
+            "north_m": 0.034625694155693054,
+            "sun_site_enu": [
+              0.6452871547168696,
+              0.7639344709259868,
+              0.0029346359977590352
+            ],
+            "sun_azimuth_deg": 40.17407215803243,
+            "sun_elevation_deg": 0.16817570277900148,
+            "sun_horizon_deg": 0.20371227268026437,
+            "sun_angular_radius_deg": 0.2711509497461224,
+            "disk_fraction": 0.41680519190750526,
+            "earth_elevation_deg": -6.304542970933945,
+            "earth_horizon_deg": -1.0665855369551132,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:18.000Z",
+            "east_m": 1.6269503831863403,
+            "north_m": 0.04022567719221115,
+            "sun_site_enu": [
+              0.6452852758986448,
+              0.7639360579373855,
+              0.0029346365187550186
+            ],
+            "sun_azimuth_deg": 40.17300073942074,
+            "sun_elevation_deg": 0.16817812797501494,
+            "sun_horizon_deg": 0.2033940611089853,
+            "sun_angular_radius_deg": 0.2711509509364822,
+            "disk_fraction": 0.4175515624256748,
+            "earth_elevation_deg": -6.304533011943633,
+            "earth_horizon_deg": -1.0665669503650228,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:19.000Z",
+            "east_m": 1.7334411144256592,
+            "north_m": 0.04566609114408493,
+            "sun_site_enu": [
+              0.6452833970772044,
+              0.7639376449435828,
+              0.0029346370397348065
+            ],
+            "sun_azimuth_deg": 40.17192544774032,
+            "sun_elevation_deg": 0.16818055852841768,
+            "sun_horizon_deg": 0.2070476239901673,
+            "sun_angular_radius_deg": 0.27115095212684,
+            "disk_fraction": 0.4090597092426113,
+            "earth_elevation_deg": -6.304523043569205,
+            "earth_horizon_deg": -1.066548363775687,
+            "earth_center_visible": false
+          },
+          {
+            "utc": "2028-01-21T12:00:20.000Z",
+            "east_m": 1.8397537469863892,
+            "north_m": 0.05109260976314545,
+            "sun_site_enu": [
+              0.6452815182511615,
+              0.7639392319457502,
+              0.002934637560703087
+            ],
+            "sun_azimuth_deg": 40.17085172024293,
+            "sun_elevation_deg": 0.16818298493265063,
+            "sun_horizon_deg": 0.21184352091799197,
+            "sun_angular_radius_deg": 0.27115095331719513,
+            "disk_fraction": 0.39793662852212763,
+            "earth_elevation_deg": -6.304513076449969,
+            "earth_horizon_deg": -1.0665297223241188,
+            "earth_center_visible": false
+          }
+        ],
+        "2028-01-27T12:00:00Z": [
+          {
+            "utc": "2028-01-27T12:00:00.000Z",
+            "east_m": 0.0,
+            "north_m": 0.0,
+            "sun_site_enu": [
+              -0.5435782269665389,
+              0.8393581959356089,
+              0.0007280684265320729
+            ],
+            "sun_azimuth_deg": 327.0724320757169,
+            "sun_elevation_deg": 0.04171525172244768,
+            "sun_horizon_deg": 0.3324620455737443,
+            "sun_angular_radius_deg": 0.2713319899063368,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2415571072322578,
+            "earth_horizon_deg": -0.7570838175855304,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:01.000Z",
+            "east_m": 0.04986857622861862,
+            "north_m": -0.023776359856128693,
+            "sun_site_enu": [
+              -0.5435802939871472,
+              0.8393568573132699,
+              0.0007280590893014356
+            ],
+            "sun_azimuth_deg": 327.071853410118,
+            "sun_elevation_deg": 0.04171316620308794,
+            "sun_horizon_deg": 0.3522600550320975,
+            "sun_angular_radius_deg": 0.2713319892866938,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2415743860802009,
+            "earth_horizon_deg": -0.7570766186352618,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:02.000Z",
+            "east_m": 0.06945335119962692,
+            "north_m": -0.03891361132264137,
+            "sun_site_enu": [
+              -0.5435823610043382,
+              0.8393555186859186,
+              0.0007280497520439877
+            ],
+            "sun_azimuth_deg": 327.07154046607354,
+            "sun_elevation_deg": 0.041711861901937874,
+            "sun_horizon_deg": 0.36069570322683975,
+            "sun_angular_radius_deg": 0.27133198866709085,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2415910049475942,
+            "earth_horizon_deg": -0.7570728815036671,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:03.000Z",
+            "east_m": 0.07734466344118118,
+            "north_m": -0.04021821916103363,
+            "sun_site_enu": [
+              -0.5435844280182172,
+              0.8393541800534873,
+              0.000728040414764616
+            ],
+            "sun_azimuth_deg": 327.07133012642765,
+            "sun_elevation_deg": 0.04171114951593701,
+            "sun_horizon_deg": 0.3636223527740231,
+            "sun_angular_radius_deg": 0.2713319880475173,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.241607051944531,
+            "earth_horizon_deg": -0.7570709578169678,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:04.000Z",
+            "east_m": 0.12524059414863586,
+            "north_m": -0.04036703705787659,
+            "sun_site_enu": [
+              -0.5435864950289925,
+              0.8393528414158405,
+              0.0007280310774809142
+            ],
+            "sun_azimuth_deg": 327.0707687682724,
+            "sun_elevation_deg": 0.04170975266918237,
+            "sun_horizon_deg": 0.3806657455813855,
+            "sun_angular_radius_deg": 0.2713319874279014,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2416235912090479,
+            "earth_horizon_deg": -0.7570659578666261,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:05.000Z",
+            "east_m": 0.23294079303741455,
+            "north_m": -0.03336632251739502,
+            "sun_site_enu": [
+              -0.5435885620367774,
+              0.8393515027729053,
+              0.0007280217401990932
+            ],
+            "sun_azimuth_deg": 327.0696826625576,
+            "sun_elevation_deg": 0.04170748251299428,
+            "sun_horizon_deg": 0.4087269404155382,
+            "sun_angular_radius_deg": 0.2713319868082328,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2416407026489178,
+            "earth_horizon_deg": -0.7570561236213771,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:06.000Z",
+            "east_m": 0.3404361307621002,
+            "north_m": -0.02716241404414177,
+            "sun_site_enu": [
+              -0.5435906290412603,
+              0.8393501641248832,
+              0.0007280124028995313
+            ],
+            "sun_azimuth_deg": 327.0685983560572,
+            "sun_elevation_deg": 0.041705193975718334,
+            "sun_horizon_deg": 0.4333448827407791,
+            "sun_angular_radius_deg": 0.27133198618855925,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2416578354462042,
+            "earth_horizon_deg": -0.757046289376146,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:07.000Z",
+            "east_m": 0.44756826758384705,
+            "north_m": -0.021794555708765984,
+            "sun_site_enu": [
+              -0.5435926960424395,
+              0.839348825471775,
+              0.0007280030655821867
+            ],
+            "sun_azimuth_deg": 327.06751723773857,
+            "sun_elevation_deg": 0.04170288880795027,
+            "sun_horizon_deg": 0.4574462087167238,
+            "sun_angular_radius_deg": 0.27133198556888105,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2416749887005776,
+            "earth_horizon_deg": -0.7570364551312206,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:08.000Z",
+            "east_m": 0.5550949573516846,
+            "north_m": -0.016069628298282623,
+            "sun_site_enu": [
+              -0.5435947630410863,
+              0.8393474868130818,
+              0.0007279937282461929
+            ],
+            "sun_azimuth_deg": 327.0664326592043,
+            "sun_elevation_deg": 0.04170058643187463,
+            "sun_horizon_deg": 0.48154737282621557,
+            "sun_angular_radius_deg": 0.27133198494919897,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2416921363766849,
+            "earth_horizon_deg": -0.7570265660575127,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:09.000Z",
+            "east_m": 0.6627758741378784,
+            "north_m": -0.010638663545250893,
+            "sun_site_enu": [
+              -0.5435968300356704,
+              0.8393461481497948,
+              0.000727984390893311
+            ],
+            "sun_azimuth_deg": 327.0653467288702,
+            "sun_elevation_deg": 0.041698273148958395,
+            "sun_horizon_deg": 0.505304067164393,
+            "sun_angular_radius_deg": 0.2713319843295126,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2417092949362074,
+            "earth_horizon_deg": -0.757016731812901,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:10.000Z",
+            "east_m": 0.7722389101982117,
+            "north_m": -0.005155292339622974,
+            "sun_site_enu": [
+              -0.5435988970269637,
+              0.8393448094814131,
+              0.0007279750535243136
+            ],
+            "sun_azimuth_deg": 327.06424516312967,
+            "sun_elevation_deg": 0.04169592938343682,
+            "sun_horizon_deg": 0.5295770315140298,
+            "sun_angular_radius_deg": 0.27133198370982065,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2417264754116466,
+            "earth_horizon_deg": -0.7570065680107159,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:11.000Z",
+            "east_m": 0.8819969296455383,
+            "north_m": 0.000876967387739569,
+            "sun_site_enu": [
+              -0.5436009640149613,
+              0.8393434708079408,
+              0.0007279657161368584
+            ],
+            "sun_azimuth_deg": 327.06314101134814,
+            "sun_elevation_deg": 0.04169359549656827,
+            "sun_horizon_deg": 0.5533333649735305,
+            "sun_angular_radius_deg": 0.27133198309012546,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.241743643169763,
+            "earth_horizon_deg": -0.7569966789376015,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:12.000Z",
+            "east_m": 0.9897798895835876,
+            "north_m": 0.006456345319747925,
+            "sun_site_enu": [
+              -0.5436030309996489,
+              0.839342132129387,
+              0.0007279563787315449
+            ],
+            "sun_azimuth_deg": 327.0620541906931,
+            "sun_elevation_deg": 0.041691284441375195,
+            "sun_horizon_deg": 0.5767452172096529,
+            "sun_angular_radius_deg": 0.2713319824704278,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2417607985827772,
+            "earth_horizon_deg": -0.7569867898647555,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:13.000Z",
+            "east_m": 1.0968009233474731,
+            "north_m": 0.012120210565626621,
+            "sun_site_enu": [
+              -0.543605097981034,
+              0.8393407934457467,
+              0.0007279470413085382
+            ],
+            "sun_azimuth_deg": 327.0609740572133,
+            "sun_elevation_deg": 0.041688989351588435,
+            "sun_horizon_deg": 0.5996404450111497,
+            "sun_angular_radius_deg": 0.27133198185072693,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2417779414001762,
+            "earth_horizon_deg": -0.7569769007921747,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:14.000Z",
+            "east_m": 1.2025701999664307,
+            "north_m": 0.017695730552077293,
+            "sun_site_enu": [
+              -0.5436071649591137,
+              0.8393394547570218,
+              0.0007279377038668017
+            ],
+            "sun_azimuth_deg": 327.05990490861103,
+            "sun_elevation_deg": 0.04168671422061755,
+            "sun_horizon_deg": 0.6221911965143813,
+            "sun_angular_radius_deg": 0.2713319812310235,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2417950703726455,
+            "earth_horizon_deg": -0.7569670665484776,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:15.000Z",
+            "east_m": 1.3082565069198608,
+            "north_m": 0.023408103734254837,
+            "sun_site_enu": [
+              -0.5436092319338941,
+              0.8393381160632081,
+              0.000727928366408149
+            ],
+            "sun_azimuth_deg": 327.0588364898444,
+            "sun_elevation_deg": 0.041684444343938115,
+            "sun_horizon_deg": 0.6445696136771663,
+            "sun_angular_radius_deg": 0.2713319806113164,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2418121941279137,
+            "earth_horizon_deg": -0.7569573973761591,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:16.000Z",
+            "east_m": 1.4145833253860474,
+            "north_m": 0.029072556644678116,
+            "sun_site_enu": [
+              -0.5436112989061417,
+              0.8393367773638092,
+              0.0007279190289292802
+            ],
+            "sun_azimuth_deg": 327.0577624524866,
+            "sun_elevation_deg": 0.041682161655043765,
+            "sun_horizon_deg": 0.6680121038572268,
+            "sun_angular_radius_deg": 0.27133197999160497,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2418293277410382,
+            "earth_horizon_deg": -0.7569475631330174,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:17.000Z",
+            "east_m": 1.5209012031555176,
+            "north_m": 0.034625694155693054,
+            "sun_site_enu": [
+              -0.5436133658743263,
+              0.8393354386598167,
+              0.000727909691435145
+            ],
+            "sun_azimuth_deg": 327.0566884950293,
+            "sun_elevation_deg": 0.041679876032326785,
+            "sun_horizon_deg": 0.6914072869538882,
+            "sun_angular_radius_deg": 0.2713319793718894,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2418464646068157,
+            "earth_horizon_deg": -0.756937674061077,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:18.000Z",
+            "east_m": 1.6269503831863403,
+            "north_m": 0.04022567719221115,
+            "sun_site_enu": [
+              -0.5436154328392103,
+              0.8393340999507363,
+              0.0007279003539231678
+            ],
+            "sun_azimuth_deg": 327.0556168969139,
+            "sun_elevation_deg": 0.041677596501210674,
+            "sun_horizon_deg": 0.6873385756702388,
+            "sun_angular_radius_deg": 0.2713319787521703,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2418635965101543,
+            "earth_horizon_deg": -0.7569280048894604,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:19.000Z",
+            "east_m": 1.7334411144256592,
+            "north_m": 0.04566609114408493,
+            "sun_site_enu": [
+              -0.5436174998007972,
+              0.8393327612365657,
+              0.0007278910163934733
+            ],
+            "sun_azimuth_deg": 327.0545414257143,
+            "sun_elevation_deg": 0.04167530463382537,
+            "sun_horizon_deg": 0.6831003277315665,
+            "sun_angular_radius_deg": 0.2713319781324467,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2418807390398585,
+            "earth_horizon_deg": -0.75691811581798,
+            "earth_center_visible": true
+          },
+          {
+            "utc": "2028-01-27T12:00:20.000Z",
+            "east_m": 1.8397537469863892,
+            "north_m": 0.05109260976314545,
+            "sun_site_enu": [
+              -0.5436195667590837,
+              0.8393314225173077,
+              0.0007278816788471043
+            ],
+            "sun_azimuth_deg": 327.05346751874225,
+            "sun_elevation_deg": 0.041673015555930365,
+            "sun_horizon_deg": 0.678862072182859,
+            "sun_angular_radius_deg": 0.27133197751271926,
+            "disk_fraction": 0.0,
+            "earth_elevation_deg": 1.2418978796520908,
+            "earth_horizon_deg": -0.7569081719176666,
+            "earth_center_visible": true
+          }
+        ]
+      }
+    }
+  }
+}

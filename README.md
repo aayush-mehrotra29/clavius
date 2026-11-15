@@ -145,3 +145,5 @@ npm run validate:mobility -- --output data/runtime/mobility/new-wheel-comparison
 ### Drive VIPER
 
 Run `npm ci` and `npm run dev`, then open **Rover drive** from the explorer or go directly to `/app/drive`. The rover, both south-polar sites, historical 1 m/pixel LROC imagery and native replays ship in the repository and run in a WebGL 2 browser. Hold WASD, the arrow keys or the on-screen controls to drive. **Site overview** shows the surrounding landscape. Select **Recorded dynamics** to replay a 20-second rigid-contact experiment and inspect the actual wheel and suspension motion. The separate mission assessment workspace uses the Python service.
+
+To compare polar lighting, select **Recorded dynamics → Sun at rover → Mission sunlight**, pick a UTC start and scrub the replay. The three January 2028 starts work without the Python service. With the simulation service running, you can also select a custom date or sample sunlight along a manual drive. The readout gives the fraction of the solar disk above the local terrain horizon at the rover. The **Survey light** setting shows the historical LROC mosaic.
