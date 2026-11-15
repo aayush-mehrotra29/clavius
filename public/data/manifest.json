@@ -559,5 +559,27 @@
       "outputSha256": "e0bd3d8fd73b40c928c5cb868ee243dbace3101b6241333512bdd813ee039e51"
     },
     "script": "scripts/prepare_explorer_detail.py"
+  },
+  "rover_drive": {
+    "path": "/app/drive",
+    "sources": {
+      "terrain": {
+        "url": "/data/drive/index.json",
+        "sha256": "bf25fc81038c7d70526e98bf27c0df618fd1d102a61661881a8790424969053b"
+      },
+      "imagery": {
+        "url": "/data/drive/imagery.json",
+        "sha256": "fc5ee7f0641ca86a92f9cf3e48c8e5c3730f5428d5ed98fcf2e3941a1e1c6645"
+      },
+      "recordings": {
+        "url": "/data/drive/replays.json",
+        "sha256": "d843a0e80748dd1932f849bf707061d0c9ce34693ad162cb64eaec323754a710"
+      },
+      "rover": {
+        "url": "/robots/viper/source.json",
+        "sha256": "df5cf8d93d06c7d7a4ec734c4e16ea40c2db8b6d0ddf8f36a4aedf9b4970bc31"
+      }
+    },
+    "role": "Browser kinematic drive and recorded native component experiments. Controlled NAC mosaic is historical display imagery only."
   }
 }

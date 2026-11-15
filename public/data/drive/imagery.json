@@ -1,0 +1,60 @@
+{
+  "product": "NAC_POLE_SOUTH_CM_AVG_P892S2250",
+  "source_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/EXTRAS/BROWSE/NAC_POLE/NAC_POLE_SOUTH_CM_AVG/NAC_POLE_SOUTH_CM_AVG_P892S2250.TIF",
+  "source_sha256": "c2efa377c1a158ea170242f84f6a88b7c5c2286da2d470150b6b0572459b31b1",
+  "bytes": 2069522710,
+  "catalogue": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_POLE_SOUTH_CM_AVG",
+  "credit": "NASA/GSFC/Arizona State University; Archinal et al. (2023)",
+  "acquisition": "Multi-image average composite; no single mission UTC",
+  "method": "Nearest source pixel at ENU display pixel center. Preserve browse intensity. Outside this tile and DN 0 are transparent; the browse TIFF declares no nodata, so zeros are conservatively excluded.",
+  "role": "historical visual texture only",
+  "script": "scripts/prepare_drive_imagery.py",
+  "sites": {
+    "connecting-ridge": {
+      "drive": {
+        "file": "connecting-ridge-drive-nac.png",
+        "sha256": "29ddab6d126ffb0cb4ec588c0ce861aa60cf41a6268cdef1392f48e3186275a3",
+        "spacing_m": 1,
+        "half_extent_m": 1280,
+        "valid_pixels": 6553600,
+        "total_pixels": 6553600
+      },
+      "horizon": {
+        "file": "connecting-ridge-horizon-nac.png",
+        "sha256": "33dc8234359f8041601d7212c11b1e6553c3747ac7b4cc7149dd7e6e7aa82d0f",
+        "spacing_m": 20,
+        "half_extent_m": 20480,
+        "valid_pixels": 2786304,
+        "total_pixels": 4194304
+      }
+    },
+    "shackleton-rim": {
+      "drive": {
+        "file": "shackleton-rim-drive-nac.png",
+        "sha256": "ab48bfcbfa60c24fc21fda03be0b2993fd5ec4926ba315410a8962d7964bd4f9",
+        "spacing_m": 1,
+        "half_extent_m": 1280,
+        "valid_pixels": 6553600,
+        "total_pixels": 6553600
+      },
+      "horizon": {
+        "file": "shackleton-rim-horizon-nac.png",
+        "sha256": "c40a1055b10c37847c35f11bee5202b7f6fddd968f73df226baafce6bd488d8c",
+        "spacing_m": 20,
+        "half_extent_m": 20480,
+        "valid_pixels": 1555815,
+        "total_pixels": 4194304
+      }
+    }
+  },
+  "transform": [
+    1.0,
+    0.0,
+    -45488.0,
+    0.0,
+    -1.0,
+    0.0
+  ],
+  "native_posting_m": 1,
+  "crs_wkt": "PROJCS[\"PolarStereographic Moon\",GEOGCS[\"GCS_Moon\",DATUM[\"D_Moon\",SPHEROID[\"Moon\",1737400,0]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]"
+}

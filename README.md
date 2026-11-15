@@ -139,3 +139,7 @@ npm run validate:mobility -- --output data/runtime/mobility/new-wheel-comparison
 ```
 
 [Both original GMAT R2026a lunar examples](docs/GMAT_REFERENCES.md) also executed through the installed native Console/API with retained residual/event/endpoint evidence. A bounded transfer search and continuous clearance/tighter repropagation remain pending. Run `npm run test:orbital` or `npm run gmat:references -- --output data/runtime/gmat/new-reference-run` to exercise the separate orbital reference path.
+
+### Drive VIPER
+
+Run `npm ci` and `npm run dev`, then open **Rover drive** from the explorer or go directly to `/app/drive`. The rover, both south-polar sites, historical 1 m/pixel LROC imagery and native replays ship in the repository and run in a WebGL 2 browser. Hold WASD, the arrow keys or the on-screen controls to drive. **Site overview** shows the surrounding landscape. Select **Recorded dynamics** to replay a 20-second rigid-contact experiment and inspect the actual wheel and suspension motion. The separate mission assessment workspace uses the Python service.

@@ -1,0 +1,61 @@
+{
+  "sites": {
+    "connecting-ridge": {
+      "name": "Connecting Ridge",
+      "latitude": -89.44,
+      "longitude": 222.8,
+      "levels": [
+        {
+          "file": "connecting-ridge-drive.bin",
+          "level": "drive",
+          "count": 513,
+          "spacing_m": 5,
+          "half_extent_m": 1280,
+          "sha256": "e20ebabb9725d1000497c2949acf4a840b87c77de98dffec1a2c3f2579bde820",
+          "source": "PGDA78-Site01",
+          "source_sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e"
+        },
+        {
+          "file": "connecting-ridge-horizon.bin",
+          "level": "horizon",
+          "count": 513,
+          "spacing_m": 80,
+          "half_extent_m": 20480,
+          "sha256": "2887209f65c16ef9696cb59dfcd54728bfa7e297b278e3a61ab48a22891737c6",
+          "source": "PGDA90-80m",
+          "source_sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a"
+        }
+      ]
+    },
+    "shackleton-rim": {
+      "name": "Shackleton rim",
+      "latitude": -89.78487391500357,
+      "longitude": 204.04052123431973,
+      "levels": [
+        {
+          "file": "shackleton-rim-drive.bin",
+          "level": "drive",
+          "count": 513,
+          "spacing_m": 5,
+          "half_extent_m": 1280,
+          "sha256": "57df2cfad6272c3eae0e5b7c96cde6662b6fcbba74a8e1db7ac57d234951bfe5",
+          "source": "PGDA78-Site04",
+          "source_sha256": "38ff70dbdf2f066c2cfa94a646c3a59d653ce7f6b4528b15fc1b43ee397ce758"
+        },
+        {
+          "file": "shackleton-rim-horizon.bin",
+          "level": "horizon",
+          "count": 513,
+          "spacing_m": 80,
+          "half_extent_m": 20480,
+          "sha256": "99b6627b5a1b4717957bb2ffd47f862739226fdd1d223f80393a2eeb5298d841",
+          "source": "PGDA90-80m",
+          "source_sha256": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a"
+        }
+      ]
+    }
+  },
+  "encoding": "little-endian float32 local up metres, rows south to north",
+  "script": "scripts/prepare_drive_terrain.py",
+  "role": "nominal terrain for kinematic drive visualization"
+}

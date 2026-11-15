@@ -78,3 +78,5 @@ The [bounded repair search](REPAIR_SEARCH.md) reruns a saved mission with the cu
 The second curated site is now implemented end to end. [Shackleton source registration, paired missions, native probe, repair audit and reproduction evidence](MULTISITE.md) records the remaining limits. The native worker now enforces explicit site identities.
 
 The [published terrain uncertainty implementation](TERRAIN_UNCERTAINTY.md) includes native-cell support images, paired missions, held-out terrain audits, complete ensemble reproduction and matched native Gazebo cases. The current Gazebo runtime identity and prior image tags are retained separately from the earlier nominal-site evidence.
+
+The dedicated `/app/drive` view now shows VIPER on the two nominal sites with historical controlled NAC imagery, manual four-wheel kinematics and separately executed native Chrono replays. R1 remains the built-in for predictive mission screening. [Model evidence](NASA_ROBOT_MODELS.md)

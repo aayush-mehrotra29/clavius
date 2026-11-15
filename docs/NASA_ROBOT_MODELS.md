@@ -1,6 +1,6 @@
 # NASA robot model evidence
 
-Clavius prioritizes a small, documented robot library over broad company schematic importing. The active app rover is still the hypothetical R1. The first NASA hardware candidate is VIPER, supported by related NASA Glenn TREC/MGRU3 ground-test references. A candidate audit is not yet executable app support or validated flight prediction.
+Clavius prioritizes a small, documented robot library over broad company schematic importing. The mission-assessment rover is the hypothetical R1. The separate surface drive visualizes VIPER and two recorded native traverses. The first NASA hardware candidate is VIPER, supported by related NASA Glenn TREC/MGRU3 ground-test references. A candidate audit is not yet executable app support or validated flight prediction.
 
 ## VIPER source and native model audit
 
@@ -85,3 +85,11 @@ With the pinned Chrono checkout, private build dependencies and native reference
 ```
 
 The output directory must be fresh. This builds the isolated audit executable, verifies the pinned runtime and NASA PDF, and retains native JSON, logs and exact source identities. It does not alter or activate the app's rover dynamics.
+
+## Interactive VIPER and recorded terrain traverses
+
+The browser's **Rover drive** uses the eight original Project Chrono visual OBJ files, arranged as a chassis plus four upper arms, lower arms, uprights and wheels. Four-wheel steering and rotation in manual mode use ideal rolling kinematics and terrain-derived attitude. The mode supports forward/reverse, curved paths and accelerated visualization. Geometry provenance, retained BSD license and the dated hardware reference are provided alongside the model.
+
+**Recorded dynamics** plays independently simulated 20 s rigid-contact traverses at Connecting Ridge and Shackleton rim. Each uses the separately frame-repaired source, a 20 m square from the same nominal 5 m mesh as the browser, lunar gravity, 1 ms solver steps and an ideal straight-ahead command after settling. The 17 visible body reference transforms are recorded at 20 Hz in ENU. Final east displacement was 1.530 m and 1.840 m respectively. Mean vertical wheel support over the last 10 s was 1.0344 and 1.0277 times model weight. Separate executions reproduced both files byte-for-byte. Replay keeps the source model's 434.92 kg mass, uncalibrated rigid contact, passive spring assumptions and unexercised 30° steering limit. Its trajectory does not establish flight performance. The mission and energy solver's built-in rover remains R1.
+
+To reproduce on the prepared Chrono runtime, configure `workers/chrono/site-drive` with `Chrono_DIR=data/runtime/chrono-build/cmake`, `ADAPTED_SOURCE=data/runtime/viper-adapted-source` and `ADAPTED_LIBRARY=data/runtime/viper-adapted-build/libclavius_viper_repaired.a` (use absolute paths). Build in `data/runtime/site-drive-build`, then run `.venv/bin/python -m scripts.record_viper_drives`. The publisher verifies the adapted runtime, terrain hash, forward travel, support, frame count and normalized body rotations. [Replay provenance](../public/data/drive/replays.json)

@@ -1,0 +1,26 @@
+{
+  "model": "VIPER visual reference",
+  "source": "https://github.com/projectchrono/chrono/tree/2617649bf687456328a122b63dc0bb64df91394a/data/robot/viper/obj",
+  "git_commit": "2617649bf687456328a122b63dc0bb64df91394a",
+  "license": "LICENSE.txt (BSD-3-Clause, Project Chrono Development Team)",
+  "geometry": "Eight original OBJ files instanced as 17 articulated visible bodies. Materials are illustrative.",
+  "hardware_reference": "https://ntrs.nasa.gov/citations/20240013903",
+  "documented": {
+    "nominal_speed_m_s": 0.1,
+    "wheel_diameter_m": 0.5,
+    "roving_mass_kg": 447,
+    "steering_limit_deg": 50
+  },
+  "manual": "Ideal planar four-wheel rolling projected onto display terrain, locked suspension geometry, visual roll and pitch",
+  "recorded": "20 s native rigid-contact replay only. Frame-repaired Chrono model retains source masses, motor assumptions and 30 degree steering bound.",
+  "files": {
+    "viper_L_bt_sus.obj": "6288061c0c13055c36af8d86148b58fd79cf5ae59c0c48620c7be8ad55df9c7d",
+    "viper_L_steer.obj": "41bd6eb648f9290151b35bee3d7073109c368fd229c7aa7d5cb6b59e51a59b55",
+    "viper_L_up_sus.obj": "68890af782e7e2a2789f7a7134e24e11f64567721f5313d0ed4a7e056b51abe2",
+    "viper_R_bt_sus.obj": "81c45060db0a3c1599b327db23a06062389d67cc942bb585c99d061759f42b24",
+    "viper_R_steer.obj": "57c5766399752d92330df40305c49ff3af2e50794e097f5b856c1829b86357f5",
+    "viper_R_up_sus.obj": "d22975a201f3bef1f33dccfbeaf77867fb4a5e1ec42d29c066f597a718411c56",
+    "viper_chassis.obj": "1dca0c3b06a2cb3e04acf6c1090a0e743f94f0d112bb4ab45913a2bb92ddcf2f",
+    "viper_wheel.obj": "7b67f6b58e785013345a816601ddb2421086757a07daf8352959e1996cf90d8f"
+  }
+}

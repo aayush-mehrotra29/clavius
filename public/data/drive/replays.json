@@ -1,0 +1,44 @@
+{
+  "engine": "Project Chrono 9.0.1, SMC rigid contact, Bullet",
+  "model": "clavius-viper-mechanical-frame-repair-v1",
+  "runtime_identity": "1f18c4a4faeb68faac1d849e14c0c2b5006a85619044af30c3322b4a960ac055",
+  "executable_sha256": "747a0b133c529e6f8c0e41e80030d5bbd84e97def1d7b9e41d7f6ac4b0794f85",
+  "worker_sha256": "9cf1696b88cdb1a554f2e4daaea1dfedaa5e2dffba69da3af5e0b502117bbd61",
+  "gravity_m_s2": 1.62,
+  "solver_step_s": 0.001,
+  "sample_period_s": 0.05,
+  "frame_count": 401,
+  "system_mass_kg": 434.92111389444585,
+  "friction": 0.7,
+  "young_modulus_pa": 20000000.0,
+  "restitution": 0,
+  "motor": "ideal wheel angular speed: zero until 3 s, ramp to 0.4 rad/s by 4 s",
+  "ground": "20 m square near site origin, same nominal 5 m grid and triangle split as browser",
+  "layout": "little-endian float32. Each frame has chassis then LF, RF, LB, RB. Each corner has upper arm, lower arm, upright, wheel. Each body has ENU xyz metres, quaternion xyzw in the reference frame.",
+  "flight_validated": false,
+  "soil_calibrated": false,
+  "sites": {
+    "connecting-ridge": {
+      "file": "connecting-ridge-replay.bin",
+      "sha256": "af8773215c6db4300f4cfae32046e4c7c5ad5e72ff68a0ee041cefe509501fad",
+      "terrain_sha256": "e20ebabb9725d1000497c2949acf4a840b87c77de98dffec1a2c3f2579bde820",
+      "final_enu_m": [
+        1.5302653312683105,
+        -0.23844487965106964,
+        0.2903325855731964
+      ],
+      "checks": "Forward displacement (m) 1.53027 mean vertical support / weight 1.0344"
+    },
+    "shackleton-rim": {
+      "file": "shackleton-rim-replay.bin",
+      "sha256": "3b01b258b52c0dc1cc762ac10857125deb7a15b7a52f0c059ced2acb4154537f",
+      "terrain_sha256": "57df2cfad6272c3eae0e5b7c96cde6662b6fcbba74a8e1db7ac57d234951bfe5",
+      "final_enu_m": [
+        1.8397537469863892,
+        0.05109260976314545,
+        0.1630733162164688
+      ],
+      "checks": "Forward displacement (m) 1.83975 mean vertical support / weight 1.02773"
+    }
+  }
+}

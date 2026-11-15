@@ -1,0 +1,17 @@
+.drive-page{display:flex;flex-direction:column;height:100dvh;min-height:510px;background:#0d1214;color:#eef0e8}
+.drive-page .app-header{flex:none}.drive-nav,.drive-buttons,.drive-pad,.drive-instruments,.drive-foot{display:flex;align-items:center}
+.drive-nav{gap:20px;font-size:13px;margin-left:32px}.drive-nav a{color:#a7b1b3}.drive-nav span{color:#d7edb0}
+.drive-stage{position:relative;isolation:isolate;flex:1;min-height:250px;background:#080a0d}
+.drive-canvas,.drive-canvas canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.drive-stage::after{content:'';position:absolute;inset:0 0 auto;height:130px;background:linear-gradient(#050709c4,transparent);z-index:0;pointer-events:none}
+.drive-hud,.drive-camera{position:absolute;z-index:1;top:24px}.drive-hud{left:clamp(16px,3vw,48px);display:flex;gap:32px;align-items:flex-end}.drive-hud h1{font-size:clamp(22px,3vw,40px);letter-spacing:-.06em;margin:5px 0 0;color:#fff}
+.drive-hud label,.drive-instruments small{display:block;font-size:10px;letter-spacing:.08em;color:#bdc7c9}.drive-hud select{display:block;margin-top:4px}.drive-camera{right:clamp(16px,3vw,48px);display:flex;gap:6px}
+.drive-page select,.drive-camera button,.drive-buttons button,.drive-info button{font:inherit;font-size:12px;border:1px solid #525e60;background:#182022ed;color:#f1f4eb;border-radius:5px;min-height:36px;padding:7px 12px;cursor:pointer}.drive-page button svg{width:16px;height:16px;vertical-align:middle}.drive-camera button[aria-pressed=true]{background:#384a3b}
+.drive-loading{position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);padding:12px 18px;background:#12191bee;border-radius:6px;font-size:13px}.drive-loading[hidden]{display:none}
+.drive-console{display:flex;align-items:center;justify-content:space-between;padding:16px clamp(16px,3vw,48px);gap:16px;flex-wrap:wrap;border-top:1px solid #333e40}
+.drive-buttons,.drive-pad{gap:6px}.drive-instruments{gap:clamp(18px,3vw,44px)}.drive-instruments strong{display:block;font:500 17px/1.6 ui-monospace,monospace;min-width:70px}
+.drive-buttons [data-demo]{color:#151e13;background:#d7edb0;min-width:108px}.drive-pad button{min-width:37px;touch-action:none;user-select:none;font-size:18px;padding:4px 8px}.drive-pad button:active{background:#526646}
+.drive-foot{justify-content:space-between;border-top:1px solid #263035;padding:8px clamp(16px,3vw,48px);color:#b2bdc3;font-size:11px}.drive-foot button{color:#d7edb0;font-size:11px}
+.drive-info{max-width:min(470px,90vw);background:#141b1f;color:#e4e9e7;padding:28px;border:1px solid #52605e;border-radius:8px;margin:auto}.drive-info p{font-size:14px;line-height:1.6;margin:12px 0}.drive-info a{display:block;color:#d7edb0;text-decoration:underline;margin-top:8px}.drive-info button{float:right}
+@media(max-width:740px){.drive-nav{gap:13px;margin-left:auto;font-size:12px}.drive-hud{top:14px;gap:12px;align-items:flex-start;flex-direction:column}.drive-camera{top:15px;flex-direction:column}.drive-camera button{font-size:10px}.drive-console{padding:10px 14px;gap:8px}.drive-buttons{flex-wrap:wrap}.drive-foot{font-size:9px;gap:12px}.drive-foot button{font-size:10px}.drive-instruments strong{font-size:14px}}
+.drive-pad[hidden]{display:none}.drive-console{row-gap:10px}.drive-stage::after{z-index:0}

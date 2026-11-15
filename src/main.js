@@ -14,6 +14,13 @@ let alive=0;
 function navigate() {
   // Native fragment navigation on the landing page keeps the walkthrough and focus intact.
   if (location.pathname === '/' && root.querySelector('.landing-page')) return;
+  if(location.pathname.replace(/\/$/,'')==='/app/drive'){
+    const generation=++alive;cleanup?.();cleanup=null;viewer?.dispose();viewer=null;
+    document.title='VIPER surface drive — Clavius';window.scrollTo(0,0);
+    root.innerHTML='<p role="status">Opening rover drive…</p>';
+    import('./drive-view.js').then(({mountDrive})=>{if(alive===generation)cleanup=mountDrive(root,{logo,icon,icons});});
+    return;
+  }
   if(location.pathname.replace(/\/$/,'')==='/app/simulation'){
     if(document.querySelector('.sim-workspace'))return;
     alive++;cleanup?.();cleanup=null;viewer?.dispose();viewer=null;
@@ -43,7 +50,7 @@ function renderApp() {
       <header class="app-header">
         <a class="brand" href="/" aria-label="Clavius home">${logo}</a>
         <span class="header-divider"></span><span class="workspace-name">Lunar workspace ${icon('chevron-down')}</span>
-        <nav class="main-nav" aria-label="Workspace"><span class="nav-active">${icon('globe-2')} Explorer</span><a href="/app/simulation" class="explorer-sim-link">${icon('sliders-horizontal')} Simulation</a></nav>
+        <nav class="main-nav" aria-label="Workspace"><span class="nav-active">${icon('globe-2')} Explorer</span><a href="/app/simulation" class="explorer-sim-link">${icon('sliders-horizontal')} Simulation</a><a href="/app/drive">Rover drive</a></nav>
         <div class="header-right"><span class="build-tag mono">PREVIEW 0.1</span><button class="text-button" data-action="sources">${icon('info')} <span>Data & sources</span></button><span class="avatar">C</span></div>
       </header>
       <div class="work-body">
@@ -83,7 +90,7 @@ function renderRegions() {
 }
 function renderDetail() {
   const r=activeRegion;
-  document.querySelector('.region-detail').innerHTML=`<div class="detail-kicker"><span>${icon('map-pin')} SELECTED REGION</span><span class="detail-number mono">${r.id==='custom'?'PIN':String(regions.indexOf(r)+1).padStart(2,'0')}</span></div><h2>${r.name}</h2><p class="region-description">${r.description}</p><div class="coordinates"><div><span>LATITUDE</span><strong class="mono">${coord(r.lat)}</strong></div><div><span>LONGITUDE</span><strong class="mono">${coord(r.lon,false)}</strong></div></div><div class="elevation-row"><span>Sampled elevation ${icon('info')}</span><strong id="site-elevation" class="mono">${grid?formatElevation((mode==='terrain' && viewer?.detailGrid || grid).sample(r.lat,r.lon)):'Loading…'}</strong></div><button class="primary surface-button" data-action="surface" ${viewer?'':'disabled'}>${icon(mode==='terrain'?'globe-2':'navigation')} ${mode==='terrain'?'Return to globe':'Explore terrain'} ${icon('arrow-up-right')}</button><span class="detail-note">${mode==='terrain'?'400 km patch · WASD to move':'NASA LOLA terrain · global resolution'}</span>`;
+  document.querySelector('.region-detail').innerHTML=`<div class="detail-kicker"><span>${icon('map-pin')} SELECTED REGION</span><span class="detail-number mono">${r.id==='custom'?'PIN':String(regions.indexOf(r)+1).padStart(2,'0')}</span></div><h2>${r.name}</h2><p class="region-description">${r.description}</p><div class="coordinates"><div><span>LATITUDE</span><strong class="mono">${coord(r.lat)}</strong></div><div><span>LONGITUDE</span><strong class="mono">${coord(r.lon,false)}</strong></div></div><div class="elevation-row"><span>Sampled elevation ${icon('info')}</span><strong id="site-elevation" class="mono">${grid?formatElevation((mode==='terrain' && viewer?.detailGrid || grid).sample(r.lat,r.lon)):'Loading…'}</strong></div><button class="primary surface-button" data-action="surface" ${viewer?'':'disabled'}>${icon(mode==='terrain'?'globe-2':'navigation')} ${mode==='terrain'?'Return to globe':'Explore terrain'} ${icon('arrow-up-right')}</button><a class="drive-entry" href="/app/drive?site=${r.id==='shackleton'?'shackleton-rim':'connecting-ridge'}">Drive VIPER at the south pole ${icon('arrow-up-right')}</a><span class="detail-note">${mode==='terrain'?'400 km patch · WASD to move':'NASA LOLA terrain · global resolution'}</span>`;
   icons();
 }
 function formatElevation(m) { return `${m>=0?'+':'−'}${(Math.abs(m)/1000).toFixed(2)} km`; }
@@ -190,6 +197,6 @@ async function loadScene(generation) {
     document.querySelector('#retry-load').onclick=()=>{viewer?.dispose();viewer=null;document.querySelector('#viewport').replaceChildren();document.querySelector('.loading-screen').innerHTML='<strong>Loading lunar surface…</strong>';loadScene(alive);};icons();
   }
 }
-document.addEventListener('click',e=>{const a=e.target.closest('a');if(a&&a.origin===location.origin&&['/','/app','/app/simulation'].includes(a.pathname)&&!a.hash&&!a.target&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&e.button===0){e.preventDefault();history.pushState({},'',a.href);navigate();}});
+document.addEventListener('click',e=>{const a=e.target.closest('a');if(a&&a.origin===location.origin&&['/','/app','/app/simulation','/app/drive'].includes(a.pathname)&&!a.hash&&!a.target&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&e.button===0){e.preventDefault();history.pushState({},'',a.href);navigate();}});
 window.addEventListener('popstate',()=>{if(location.pathname==='/app'&&document.querySelector('.workspace')){alive++;cleanup?.();viewer?.dispose();viewer=null;renderApp();}else navigate();});
 navigate();
