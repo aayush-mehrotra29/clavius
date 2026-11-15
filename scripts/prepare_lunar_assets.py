@@ -42,8 +42,8 @@ manifest = {
  'limits': 'Global visualization only. Mesh resamples the raster. Not wheel-scale terrain, validated hazard data, rover dynamics, or date-specific lighting.',
 }
 previous=json.loads((out/'manifest.json').read_text()) if (out/'manifest.json').exists() else {}
-for key in ('simulation', 'landingPolarViews'):
-    if key in previous:
+for key in previous:
+    if key not in manifest:
         manifest[key] = previous[key]
 (out / 'manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
 print(json.dumps(manifest['elevation'], indent=2))

@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {loadRegionalGrid} from './terrain-detail.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { DEG, MOON_RADIUS_KM as R, latLonToXYZ, xyzToLatLon } from './lunar.js';
 
@@ -6,7 +7,7 @@ const vector = (lat, lon, radius = 1) => new THREE.Vector3(...latLonToXYZ(lat, l
 export class LunarScene {
   constructor(host, grid, texture, normalTexture, callbacks) {
     this.host = host; this.grid = grid; this.callbacks = callbacks;
-    this.mode = 'globe'; this.relief = 1; this.sunElevation = 25; this.layer = 'imagery'; this.keys = new Set();
+    this.mode = 'globe'; this.relief = 1; this.sunElevation = 46; this.layer = 'imagery'; this.keys = new Set();
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     this.renderer.setClearColor(0x080a0c, 1);
@@ -68,6 +69,7 @@ export class LunarScene {
         `);
       shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>',normalChunk);
     };
+    this.detailMaterial = new THREE.MeshStandardMaterial({map:texture,roughness:1});
     this.material.customProgramCacheKey = () => 'lola-object-normals-v1';
     this.globeGeometry = new THREE.SphereGeometry(R, 768, 384);
     this.baseDirections = this.globeGeometry.attributes.position.array.slice();
@@ -119,7 +121,7 @@ export class LunarScene {
   }
   select(site, animate = true) {
     this.site = site;
-    if (this.mode === 'terrain') { this.buildTerrain(); this.reset(); }
+    if (this.mode === 'terrain') { this.startTerrain(); this.reset(); }
     else {
       const p = vector(site.lat, site.lon, R + this.grid.sample(site.lat,site.lon)/1000*this.relief + 7);
       this.marker.position.copy(p); this.marker.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),p.clone().normalize());
@@ -131,10 +133,26 @@ export class LunarScene {
   setMode(mode) {
     this.mode = mode; this.destination = null; this.keys.clear();
     this.globe.visible = mode === 'globe'; this.graticule.visible = mode === 'globe' && this.showGrid;
-    if (mode === 'terrain') this.buildTerrain();
+    this.detailRequest?.abort();
+    if (mode === 'terrain') this.startTerrain();
     else { if(this.terrain) this.terrain.visible = false; this.normalUniforms.moonNormalBasis.value.identity(); this.select(this.site, false); }
     this.updateLighting(); this.renderer.shadowMap.needsUpdate = true;
     this.reset();
+  }
+  startTerrain() {
+    this.detailRequest?.abort();
+    const request = this.detailRequest = new AbortController();
+    this.detailGrid = null;
+    this.buildTerrain();
+    this.callbacks.onDetail('Loading 64 px/° terrain');
+    loadRegionalGrid(this.site.lat, this.site.lon, request.signal).then(grid => {
+      if (request.signal.aborted) return;
+      this.detailGrid = grid;
+      this.buildTerrain();
+      this.callbacks.onDetail('LOLA 64 px/° · ≈474 m posting');
+    }).catch(() => {
+      if (!request.signal.aborted) this.callbacks.onDetail('16 px/° preview · detail unavailable');
+    });
   }
   buildTerrain() {
     if (this.terrain) { this.scene.remove(this.terrain); this.terrain.geometry.dispose(); }
@@ -144,14 +162,16 @@ export class LunarScene {
     this.north = new THREE.Vector3().crossVectors(this.up,this.east).negate();
     // north = derivative of spherical position with respect to latitude.
     this.north.set(-Math.sin(lat*DEG)*Math.cos(lon*DEG), Math.cos(lat*DEG), Math.sin(lat*DEG)*Math.sin(lon*DEG));
-    const segments = 256, size = 400;
+    const grid = this.detailGrid || this.grid;
+    const segments = this.detailGrid ? (innerWidth < 700 ? 512 : 800) : 256, size = 400;
     let geometry = new THREE.PlaneGeometry(size,size,segments,segments);
+    const direction = new THREE.Vector3();
     const pos = geometry.attributes.position, uv = geometry.attributes.uv;
     for (let i = 0; i < pos.count; i++) {
       const x = pos.getX(i), n = pos.getY(i);
-      const dir = this.up.clone().multiplyScalar(R).addScaledVector(this.east,x).addScaledVector(this.north,n).normalize();
+      const dir = direction.copy(this.up).multiplyScalar(R).addScaledVector(this.east,x).addScaledVector(this.north,n).normalize();
       const coord = xyzToLatLon(dir.x,dir.y,dir.z);
-      const p = dir.multiplyScalar(R + this.grid.sample(coord.lat,coord.lon)/1000*this.relief);
+      const p = dir.multiplyScalar(R + grid.sample(coord.lat,coord.lon)/1000*this.relief);
       pos.setXYZ(i,p.dot(this.east),p.dot(this.up)-R,-p.dot(this.north));
       // Unwrap around the selected longitude to avoid a seam across ±180°.
       let longitude = coord.lon;
@@ -162,16 +182,18 @@ export class LunarScene {
     geometry.computeVertexNormals();
     // Duplicate triangle vertices at the equirectangular seam so interpolation
     // takes the short way around the texture, including polar patches.
-    const indexed = geometry;
-    geometry = indexed.toNonIndexed(); indexed.dispose();
-    const textureUV = geometry.attributes.uv;
-    for (let i = 0; i < textureUV.count; i += 3) {
-      const anchor = textureUV.getX(i);
-      for (let j = 1; j < 3; j++) {
-        let u = textureUV.getX(i + j);
-        while (u - anchor > .5) u -= 1;
-        while (u - anchor < -.5) u += 1;
-        textureUV.setX(i + j, u);
+    // Only a patch containing a pole can have a seam after unwrapping
+    // longitudes about the selected center. Keep the common mesh indexed.
+    if (Math.abs(lat) > 80) {
+      const indexed = geometry;
+      geometry = indexed.toNonIndexed(); indexed.dispose();
+      const uv = geometry.attributes.uv;
+      for (let i = 0; i < uv.count; i += 3) {
+        const anchor = uv.getX(i);
+        for (let j = 1; j < 3; j++) {
+          const u = uv.getX(i+j);
+          uv.setX(i+j, u - Math.round(u-anchor));
+        }
       }
     }
     geometry.computeBoundingSphere();
@@ -180,11 +202,11 @@ export class LunarScene {
       this.up.x,this.up.y,this.up.z,
       -this.north.x,-this.north.y,-this.north.z,
     );
-    this.terrain = new THREE.Mesh(geometry,this.material);
+    this.terrain = new THREE.Mesh(geometry,this.detailGrid ? this.detailMaterial : this.material);
     this.terrain.castShadow = true; this.terrain.receiveShadow = true;
     this.scene.add(this.terrain);
     this.renderer.shadowMap.needsUpdate = true;
-    const h = this.grid.sample(lat,lon)/1000*this.relief;
+    const h = grid.sample(lat,lon)/1000*this.relief;
     this.marker.position.set(0,h+.4,0); this.marker.quaternion.setFromAxisAngle(new THREE.Vector3(1,0,0),-Math.PI/2); this.marker.scale.setScalar(.18);
     this.terrainHeight = h;
     this.updateLighting();
@@ -194,7 +216,7 @@ export class LunarScene {
     if (this.mode === 'globe') {
       this.controls.minDistance = R + 40; this.controls.maxDistance = 11000; this.controls.maxPolarAngle = Math.PI;
       this.controls.enablePan = false; this.controls.target.set(0,0,0);
-      this.camera.position.copy(vector(this.site?.lat ?? -18, this.site?.lon ?? -12,5700));
+      this.camera.position.copy(vector(this.site?.lat ?? -18, this.site?.lon ?? -12,Math.max(5700,R/Math.sin(Math.atan(Math.tan(19*DEG)*this.camera.aspect)) * 1.08)));
     } else {
       this.controls.minDistance = 8; this.controls.maxDistance = 550; this.controls.maxPolarAngle = Math.PI*.47;
       this.controls.enablePan = true; this.controls.target.set(0,this.terrainHeight,0); this.camera.position.set(100,145,180);
@@ -206,6 +228,10 @@ export class LunarScene {
     this.material.map = layer === 'imagery' ? this.texture : null;
     this.material.color.set(layer === 'imagery' ? 0xffffff : 0xa3a5a6);
     this.material.wireframe = layer === 'wireframe'; this.material.needsUpdate = true;
+    this.detailMaterial.map = this.material.map;
+    this.detailMaterial.color.copy(this.material.color);
+    this.detailMaterial.wireframe = this.material.wireframe;
+    this.detailMaterial.needsUpdate = true;
   }
   setRelief(amount) {
     this.relief = amount; this.normalUniforms.moonRelief.value = amount;
@@ -222,7 +248,7 @@ export class LunarScene {
   updateLighting() {
     const angle = this.sunElevation * DEG;
     this.sun.castShadow = this.mode === 'terrain';
-    this.ambient.intensity = this.mode === 'terrain' ? .24 : .38;
+    this.ambient.intensity = this.mode === 'terrain' ? .62 : .85;
     if(this.mode === 'terrain') {
       this.sun.target.position.set(0,this.terrainHeight ?? 0,0);
       this.sun.position.set(-Math.cos(angle)*600,Math.sin(angle)*800,Math.cos(angle)*530);
@@ -250,7 +276,7 @@ export class LunarScene {
     let p = hit.point;
     if (this.mode === 'terrain') p = this.up.clone().multiplyScalar(R + p.y).addScaledVector(this.east,p.x).addScaledVector(this.north,-p.z);
     const coords = xyzToLatLon(p.x,p.y,p.z);
-    this.callbacks.onPick({...coords,elevation:this.grid.sample(coords.lat,coords.lon)});
+    this.callbacks.onPick({...coords,elevation:(this.mode === 'terrain' && this.detailGrid || this.grid).sample(coords.lat,coords.lon)});
   }
   resize() {
     const {width,height} = this.host.getBoundingClientRect();
@@ -289,7 +315,7 @@ export class LunarScene {
       const t=this.controls.target;
       const clamped=t.clone(); clamped.x=THREE.MathUtils.clamp(t.x,-150,150); clamped.z=THREE.MathUtils.clamp(t.z,-150,150);
       const dir=this.up.clone().multiplyScalar(R).addScaledVector(this.east,clamped.x).addScaledVector(this.north,-clamped.z);
-      const coord=xyzToLatLon(dir.x,dir.y,dir.z), height=this.grid.sample(coord.lat,coord.lon)/1000*this.relief;
+      const coord=xyzToLatLon(dir.x,dir.y,dir.z), height=(this.detailGrid||this.grid).sample(coord.lat,coord.lon)/1000*this.relief;
       clamped.y=dir.normalize().multiplyScalar(R+height).dot(this.up)-R;
       this.camera.position.add(clamped.clone().sub(t)); this.controls.target.copy(clamped);
       this.camera.position.y=Math.max(this.camera.position.y,clamped.y+3);
@@ -303,6 +329,7 @@ export class LunarScene {
     }
   }
   dispose() {
+    this.detailRequest?.abort(); this.detailMaterial.dispose();
     cancelAnimationFrame(this.frameId); window.removeEventListener('blur',this.onWindowBlur); this.observer.disconnect(); this.controls.dispose();
     this.scene.traverse(node => {
       node.geometry?.dispose();

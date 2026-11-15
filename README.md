@@ -46,7 +46,8 @@ The permanent dataset record is [NASA_DATASETS.md](docs/NASA_DATASETS.md). Futur
 Assets come from [NASA SVS CGI Moon Kit](https://svs.gsfc.nasa.gov/4720/), using the 2019 maps. Credit: NASA’s Scientific Visualization Studio, Ernie Wright, and the LRO / LOLA / LROC instrument teams.
 
 - LOLA `ldem_16_uint.tif`: 5,760 × 2,880, 16 pixels/degree; approximately 1.9 km sample spacing at the equator. Preserved as little-endian unsigned 16-bit samples. Elevation is `sample × 0.5 − 10000` meters relative to a 1,737.4 km reference sphere. Pixel centers are sampled with bilinear interpolation, wrapping longitude and clamping at polar edges.
-- LROC `lroc_color_poles_4k.tif`: 4,096 × 2,048, converted to a high-quality RGB JPEG. Polar regions beyond ±70° contain NASA's LOLA albedo fill; the mosaic includes inpainting and color adjustment for visualization.
+- The explorer uses 8,192 × 4,096 LROC imagery and streams the regional 64 px/degree LOLA grid on demand.
+- Thumbnail and fallback LROC `lroc_color_poles_4k.tif`: 4,096 × 2,048, converted to a high-quality RGB JPEG. Polar regions beyond ±70° contain NASA's LOLA albedo fill; the mosaic includes inpainting and color adjustment for visualization.
 - `lola-normals.png`: per-pixel surface normals derived from the same LOLA DEM; these improve shading without adding measured resolution. Reproduce with `python3 scripts/derive_lunar_normals.py`.
 - Source URLs, source hashes, output elevation hash, dimensions and transformation details are recorded in [the asset manifest](public/data/manifest.json). To reproduce outputs, download the two original TIFFs from the manifest and run `python3 scripts/prepare_lunar_assets.py <elevation.tif> <color.tif>` with Pillow and NumPy installed.
 - Curated site coordinates are approximate navigation targets, not surveyed landing locations.
