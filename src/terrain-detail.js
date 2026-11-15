@@ -41,7 +41,7 @@ export async function loadRegionalGrid(lat, lon, signal) {
       if (!response.ok) throw new Error('Regional DEM download failed.');
       const bytes = new Uint8Array(await response.arrayBuffer());
       // Some hosts decode .gz automatically using Content-Encoding.
-      const raw = bytes[0] === 31 && bytes[1] === 139
+      const raw = bytes.length !== tileSize*tileSize*2 && bytes[0] === 31 && bytes[1] === 139
         ? new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer())
         : bytes;
       tiles.set(id, decodeTile(raw));

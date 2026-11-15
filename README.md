@@ -1,6 +1,8 @@
 # Clavius
 
-The initial lunar exploration workspace for our robot simulation project. A cinematic twilight landing page opens an interactive 3D Moon built from NASA LRO / LOLA elevation and LROC imagery.
+Explore the Moon from orbit, drive a 3D VIPER reference at two south-polar sites, and test mission scenarios on NASA terrain. The browser includes a manual drive and two recorded Project Chrono traverses.
+
+![VIPER during a recorded traverse at Shackleton rim](docs/validation/viper-surface-drive.jpg)
 
 ## Run locally
 

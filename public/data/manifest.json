@@ -44,7 +44,8 @@
   "display": {
     "defaultVerticalExaggeration": 1,
     "illumination": "Illustrative directional lighting; adjustable solar elevation 5\u201370 degrees; not tied to a mission epoch.",
-    "terrainShadows": "Display shadow map on the regional mesh; not a validated illumination or permanently shadowed region product."
+    "terrainShadows": "Display shadow map on the regional mesh; not a validated illumination or permanently shadowed region product.",
+    "regionalContext": "400 km detailed tile window, joined to a curved surround from the 16 px/degree global DEM at matching boundary vertices."
   },
   "simulation": {
     "manifest": "simulation-manifest.json",

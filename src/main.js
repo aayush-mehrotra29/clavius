@@ -50,7 +50,7 @@ function renderApp() {
       <header class="app-header">
         <a class="brand" href="/" aria-label="Clavius home">${logo}</a>
         <span class="header-divider"></span><span class="workspace-name">Lunar workspace ${icon('chevron-down')}</span>
-        <nav class="main-nav" aria-label="Workspace"><span class="nav-active">${icon('globe-2')} Explorer</span><a href="/app/simulation" class="explorer-sim-link">${icon('sliders-horizontal')} Simulation</a><a href="/app/drive">Rover drive</a></nav>
+        <nav class="main-nav" aria-label="Workspace"><span class="nav-active">${icon('globe-2')} Explorer</span><a href="/app/simulation" class="explorer-sim-link">${icon('sliders-horizontal')} Simulation</a><a href="/app/drive" class="explorer-sim-link">${icon('navigation')} Rover drive</a></nav>
         <div class="header-right"><span class="build-tag mono">PREVIEW 0.1</span><button class="text-button" data-action="sources">${icon('info')} <span>Data & sources</span></button><span class="avatar">C</span></div>
       </header>
       <div class="work-body">

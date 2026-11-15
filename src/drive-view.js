@@ -21,7 +21,7 @@ export function mountDrive(root,{logo,icon,icons}) {
   <p class="drive-loading" role="status">Loading NASA terrain and rover geometry…</p></section>
   <section class="drive-console" aria-label="Drive controls"><div class="drive-instruments"><div><small>Ground speed</small><strong data-speed>0.00 m/s</strong></div><div><small>Distance</small><strong data-distance>0.0 m</strong></div><div><small>Local slope</small><strong data-slope>—</strong></div></div>
   <div class="drive-buttons"><select data-motion aria-label="Motion model"><option value="manual">Manual drive</option><option value="native">Recorded dynamics</option></select><button data-demo disabled>Start traverse</button><select data-rate aria-label="Simulation rate"><option value="1">Real time</option><option value="10" selected>10× time</option><option value="30">30× time</option></select>
-  <div class="drive-pad" aria-label="Hold to drive">${[['left','←'],['forward','↑'],['reverse','↓'],['right','→']].map(([d,k])=>`<button data-dir="${d}" aria-label="Drive ${d}">${k}</button>`).join('')}</div><button data-reset aria-label="Reset rover position">${icon('rotate-ccw')}</button></div></section>
+  <div class="drive-pad" aria-label="Hold to drive">${[['left','←'],['forward','↑'],['reverse','↓'],['right','→']].map(([d,k])=>`<button data-dir="${d}" aria-label="Drive ${d}">${k}</button>`).join('')}</div><button data-reset aria-label="Reset rover position">${icon('rotate-ccw')}</button></div><label class="drive-clock" hidden>Replay time <input type="range" data-scrub min="0" max="20" step=".05" value="0"><output data-time>0.00 / 20 s</output></label></section>
   <footer class="drive-foot"><span>WASD to drive · Drag to orbit · Scroll to zoom</span><button data-info>Data & rover model</button></footer>
   <dialog class="drive-info"><button data-close>Close</button><h2>VIPER surface drive</h2><p>The articulated chassis, suspension and wheels come from Project Chrono’s VIPER model. Four-wheel steering follows an ideal rolling path at the documented nominal speed of 0.1 m/s. Pitch and roll follow the terrain. The drive clock can be accelerated.</p><p>Recorded dynamics replays 20 seconds of Project Chrono rigid-contact simulation on this site. It shows the solver’s chassis, suspension and wheel poses. The 434.92 kg model uses assumed friction, a 1 ms step and ideal wheel-speed control under 1.62 m/s² gravity.</p><p>The photographed surface comes from the LROC controlled south-pole average mosaic at 1 m/pixel. It combines historical exposures. Missing coverage shows shaded topography. The local surface uses NASA PGDA78 with 5 m posting. The surrounding 40.96 km landscape uses PGDA90 with 80 m posting. Display lighting and fine material grain are illustrative. Wheel slip, sinkage, battery draw and flight suspension response are unresolved in this preview.</p><a href="/data/drive/index.json" target="_blank" rel="noreferrer">Terrain files and source hashes</a><a href="/robots/viper/source.json" target="_blank" rel="noreferrer">Rover geometry and hardware sources</a></dialog></main>`;
   icons();
@@ -77,10 +77,10 @@ export function mountDrive(root,{logo,icon,icons}) {
   function reset(){state=parkedDrive();held.clear();pose();cameraMode(false);}
   function tick(now) {
     frame=requestAnimationFrame(tick);
-    const dt=Math.min((now-last)/1000,.12);last=now;
+    const dt=Math.max(0,(now-last)/1000);last=now;
     if(!active)return;
     let slope,speed,distance;
-    const elapsed=dt*Number($('[data-rate]').value);
+    const elapsed=(document.hidden?0:Math.min(dt,1))*Number($('[data-rate]').value);
     if(native){
       if(demo)replayTime=Math.min(20,replayTime+elapsed);
       const measured=applyReplay(assembly,recording,replayTime);
@@ -90,6 +90,7 @@ export function mountDrive(root,{logo,icon,icons}) {
       const dn=groundHeight(local,p.x,p.y+.5)-groundHeight(local,p.x,p.y-.5);
       slope=Math.atan(Math.hypot(dx,dn))*180/Math.PI;
       speed=measured.speed;distance=measured.distance;
+      if(now-hudTime>100){$('[data-scrub]').value=replayTime;$('[data-time]').textContent=replayTime.toFixed(2)+' / 20 s';}
       if(replayTime===20&&demo)setDemo(false);
     }else{
       let throttle=demo?1:Number(held.has('forward'))-Number(held.has('reverse'));
@@ -143,10 +144,12 @@ export function mountDrive(root,{logo,icon,icons}) {
   $('[data-motion]').onchange=e=>{
     native=e.target.value==='native';held.clear();replayTime=0;
     if(rover){rover.body.visible=!native;assembly.visible=native;}
-    $('.drive-pad').hidden=native;$('[data-rate]').value=native?'1':'10';
+    $('.drive-pad').hidden=native;$('.drive-clock').hidden=!native;$('[data-rate]').value=native?'1':'10';
     setDemo(active&&!matchMedia('(prefers-reduced-motion: reduce)').matches);
     if(active)cameraMode(false);
   };
+  $('[data-scrub]').oninput=e=>{replayTime=Number(e.target.value);setDemo(false);};
+  listen(document,'visibilitychange',()=>{last=performance.now();held.clear();});
   $('[data-demo]').onclick=()=>{held.clear();if(native&&replayTime===20)replayTime=0;setDemo(!demo);};
   $('[data-camera]').onclick=()=>{if(active)cameraMode(!overview);};
   $('[data-reset]').onclick=()=>{if(active){status.hidden=true;replayTime=0;setDemo(false);reset();}};
