@@ -81,6 +81,20 @@ def moon_state(et):
         return np.asarray(spice.spkezr('MOON', et, 'J2000', 'NONE', 'EARTH')[0])
 
 
+def globe_frames(start, times):
+    """Body-fixed to J2000 rotations (quaternions in Three.js xyzw order)."""
+    result = {'earth_xyzw': [], 'moon_xyzw': [], 'sun_direction_j2000': []}
+    with _lock:
+        for offset in times:
+            et = start + offset
+            for name, frame in [('earth_xyzw', 'IAU_EARTH'), ('moon_xyzw', 'MOON_ME_DE421')]:
+                w, x, y, z = spice.m2q(spice.pxform(frame, 'J2000', et))
+                result[name].append([x, y, z, w])
+            sunlight, _ = spice.spkpos('SUN', et, 'J2000', 'NONE', 'EARTH')
+            result['sun_direction_j2000'].append(unit(sunlight).tolist())
+    return result
+
+
 def flight_samples(earth, moon, start, patch_time, gate, ground):
     """Earth-centered J2000 states. At each impulse store the outbound velocity."""
     times = np.concatenate((earth.t, patch_time-start+moon.t[1:], gate-start+np.arange(30., DESCENT_SECONDS+1, 30.)))
@@ -104,7 +118,7 @@ def flight_samples(earth, moon, start, patch_time, gate, ground):
             craft[i, 3:] = state[3:]
         else:
             craft[i] = state
-    return {'times_seconds': times.tolist(), 'spacecraft_coords_km': craft[:, :3].tolist(),
+    return {'globe_frames': globe_frames(start, times), 'times_seconds': times.tolist(), 'spacecraft_coords_km': craft[:, :3].tolist(),
             'spacecraft_velocities_kms': craft[:, 3:].tolist(), 'moon_coords_km': lunar[:, :3].tolist(),
             'moon_velocities_kms': lunar[:, 3:].tolist(), 'patch_index': patch, 'approach_index': approach,
             'lunar_reference_radius_km': 1737.4, 'earth_reference_radius_km': EARTH_RADIUS,
@@ -173,7 +187,11 @@ def plan_flight(request, progress, cancel):
 
 def saved_flight_samples(flight):
     if 'trajectory_3d' in flight:
-        return flight['trajectory_3d']
+        samples = flight['trajectory_3d']
+        if 'globe_frames' in samples:
+            return samples
+        start = start_epoch(flight['request']['departure_utc'])
+        return {**samples, 'globe_frames': globe_frames(start, samples['times_seconds'])}
     # Older runs saved positions only. Recover the missing states without changing
     # the saved artifact, and verify the full original coast before using them.
     recovered = plan_flight(FlightRequest(**flight['request']), lambda *_: None, lambda: False)

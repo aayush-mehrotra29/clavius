@@ -1,12 +1,15 @@
 // Software projection of the flight scene. Reuse its camera, world geometry,
-// draw ranges and procedural textures so both renderers follow the same flight.
+// draw ranges and mapped textures so both renderers follow the same flight.
 import * as THREE from 'three';
+import {SoftwareGlobe} from './SoftwareGlobe';
 
 export class FlightCanvasRenderer {
   readonly domElement = document.createElement('canvas');
   private readonly ctx: CanvasRenderingContext2D;
   private readonly transform = new THREE.Matrix4();
   private readonly vertex = new THREE.Vector3();
+  private readonly globe = new SoftwareGlobe();
+  private readonly sunlight = new THREE.Vector3();
   private width = 1;
   private height = 1;
   private ratio = Math.min(devicePixelRatio, 2);
@@ -35,7 +38,7 @@ export class FlightCanvasRenderer {
     const screenY = (v: THREE.Vector3) => height / 2 + focal * v.y / v.z;
     scene.updateMatrixWorld();
     camera.updateMatrixWorld();
-    ctx.fillStyle = '#030712';
+    ctx.fillStyle = (scene.background as THREE.Color).getStyle();
     ctx.fillRect(0, 0, width, height);
 
     const bodies: THREE.Mesh[] = [];
@@ -43,6 +46,7 @@ export class FlightCanvasRenderer {
     const clipped = new THREE.Vector3();
     for (const object of scene.children) {
       transform.multiplyMatrices(camera.matrixWorldInverse, object.matrixWorld);
+      if (object instanceof THREE.DirectionalLight) this.sunlight.copy(object.position).transformDirection(camera.matrixWorldInverse);
       if (object instanceof THREE.Mesh) {
         bodies.push(object);
         continue;
@@ -53,7 +57,7 @@ export class FlightCanvasRenderer {
       const mat = object.material;
       const segments = object instanceof THREE.LineSegments;
       const stars = object instanceof THREE.Points;
-      ctx.strokeStyle = segments ? '#1e293b' : mat.color.getStyle();
+      ctx.strokeStyle = segments ? '#202020' : mat.color.getStyle();
       ctx.fillStyle = mat.color.getStyle();
       ctx.globalAlpha = mat.opacity;
       ctx.lineWidth = mat.linewidth || 1;
@@ -91,22 +95,11 @@ export class FlightCanvasRenderer {
       const x = screenX(vertex), y = screenY(vertex);
       const mat = body.material;
       const geometry = body.geometry;
-      if (geometry instanceof THREE.SphereGeometry && mat.map) {
-        const r = focal * geometry.parameters.radius / -z;
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.clip();
-        ctx.drawImage(mat.map.image, x-r, y-r, 2*r, 2*r);
-        const shade = ctx.createRadialGradient(x-r*.35, y-r*.35, 0, x, y, r);
-        shade.addColorStop(0, 'transparent');
-        shade.addColorStop(1, 'rgba(0,6,20,.83)');
-        ctx.fillStyle = shade;
-        ctx.fillRect(x-r, y-r, 2*r, 2*r);
-        ctx.restore();
+      if (geometry instanceof THREE.SphereGeometry) {
+        this.globe.draw(ctx, width, height, body, camera, vertex, geometry.parameters.radius, focal, this.sunlight, mat.map?.image);
       } else if (geometry instanceof THREE.RingGeometry || geometry instanceof THREE.OctahedronGeometry) {
         const craft = geometry instanceof THREE.OctahedronGeometry;
-        const r = Math.max(3, focal * (craft ? 4 : geometry.parameters.outerRadius) / -z);
+        const r = Math.max(3, focal * body.scale.x * (craft ? 4 : geometry.parameters.outerRadius) / -z);
         ctx.strokeStyle = ctx.fillStyle = mat.color.getStyle();
         ctx.lineWidth = 1.5;
         ctx.beginPath();

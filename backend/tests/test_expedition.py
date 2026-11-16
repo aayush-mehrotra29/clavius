@@ -109,6 +109,18 @@ def test_flight_viewer_samples_follow_coasts_and_rotating_descent():
     fixed = spice.sxform('J2000', 'MOON_ME_DE421', start+times[-1]) @ np.r_[craft[-1]-moon[-1],velocities[-1]-lunar_v[-1]]
     np.testing.assert_allclose(fixed[:3], site('shackleton-rim').origin/1000, rtol=0, atol=1e-6)
     np.testing.assert_allclose(fixed[3:], 0, atol=1e-10)
+    # Saved XYZW orientations recover the same body-fixed landing coordinates.
+    frames = data['globe_frames']
+    for key, frame in [('earth_xyzw', 'IAU_EARTH'), ('moon_xyzw', 'MOON_ME_DE421')]:
+        assert len(frames[key]) == len(times)
+        for idx in (0, approach, -1):
+            x, y, z, w = frames[key][idx]
+            rotation = spice.q2m([w, x, y, z])
+            np.testing.assert_allclose(rotation, spice.pxform(frame, 'J2000', start+times[idx]), atol=1e-10)
+    np.testing.assert_allclose(np.linalg.norm(frames['sun_direction_j2000'], axis=1), 1, atol=1e-12)
+    old_samples = {key:value for key,value in data.items() if key != 'globe_frames'}
+    assert saved_flight_samples({**flight, 'trajectory_3d':old_samples}) == data
+    assert 'globe_frames' not in old_samples
     legacy = {key:value for key,value in flight.items() if key!='trajectory_3d'}
     assert saved_flight_samples(legacy) == data
     legacy['trajectory_earth_j2000_km']=[[0,0,0]]

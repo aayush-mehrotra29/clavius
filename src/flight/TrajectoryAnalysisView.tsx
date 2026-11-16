@@ -38,28 +38,28 @@ export function TrajectoryAnalysisView({trajData}: {trajData: FlightSamples}) {
           <div className="orb-chart">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#303030" />
                 <XAxis
                   dataKey="time_h" type="number" domain={[0, 'dataMax']}
-                  stroke="#64748b"
-                  tick={{ fontSize: 11, fontFamily: 'monospace' }}
-                  label={{ value: 'Flight Time (hours)', position: 'insideBottom', offset: -10, fill: '#64748b', fontSize: 11, fontFamily: 'monospace' }}
+                  stroke="#a3a3a3"
+                  tick={{ fontSize: 11, fontFamily: 'inherit' }}
+                  label={{ value: 'Flight Time (hours)', position: 'insideBottom', offset: -10, fill: '#a3a3a3', fontSize: 11, fontFamily: 'inherit' }}
                 />
                 <YAxis
-                  stroke="#64748b"
-                  tick={{ fontSize: 11, fontFamily: 'monospace' }}
-                  label={{ value: 'Velocity (km/s)', angle: -90, position: 'insideLeft', offset: 10, fill: '#64748b', fontSize: 11, fontFamily: 'monospace' }}
+                  stroke="#a3a3a3"
+                  tick={{ fontSize: 11, fontFamily: 'inherit' }}
+                  label={{ value: 'Velocity (km/s)', angle: -90, position: 'insideLeft', offset: 10, fill: '#a3a3a3', fontSize: 11, fontFamily: 'inherit' }}
                 />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#070c18', borderColor: '#334155', borderRadius: 4, fontFamily: 'monospace', fontSize: 12 }}
+                  contentStyle={{ backgroundColor: '#181818', borderColor: '#414141', borderRadius: 12, fontFamily: 'inherit', fontSize: 12 }}
                   formatter={(value,name) => [Number(value).toFixed(3)+' km/s', name]}
                 />
-                <Legend wrapperStyle={{ fontFamily: 'monospace', fontSize: 11, paddingTop: 10 }} />
+                <Legend wrapperStyle={{ fontFamily: 'inherit', fontSize: 11, paddingTop: 10 }} />
                 <Line
                   type="linear" isAnimationActive={false}
                   dataKey="velocity_kms"
                   name="Inertial Velocity |v|"
-                  stroke="#00f0ff"
+                  stroke="#779bff"
                   strokeWidth={2}
                   dot={false}
                 />
@@ -67,7 +67,7 @@ export function TrajectoryAnalysisView({trajData}: {trajData: FlightSamples}) {
                   type="linear" isAnimationActive={false}
                   dataKey="velocity_rel_moon_kms"
                   name="Moon-Relative Speed"
-                  stroke="#f59e0b"
+                  stroke="#e5e5e5"
                   strokeWidth={1.5}
                   strokeDasharray="4 4"
                   dot={false}
@@ -82,29 +82,29 @@ export function TrajectoryAnalysisView({trajData}: {trajData: FlightSamples}) {
           <div className="orb-chart">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData} margin={{ top: 10, right: 30, left: 20, bottom: 20 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#303030" />
                 <XAxis
                   dataKey="time_h" type="number" domain={[0, 'dataMax']}
-                  stroke="#64748b"
-                  tick={{ fontSize: 11, fontFamily: 'monospace' }}
-                  label={{ value: 'Flight Time (hours)', position: 'insideBottom', offset: -10, fill: '#64748b', fontSize: 11, fontFamily: 'monospace' }}
+                  stroke="#a3a3a3"
+                  tick={{ fontSize: 11, fontFamily: 'inherit' }}
+                  label={{ value: 'Flight Time (hours)', position: 'insideBottom', offset: -10, fill: '#a3a3a3', fontSize: 11, fontFamily: 'inherit' }}
                 />
                 <YAxis
-                  stroke="#64748b"
-                  tick={{ fontSize: 11, fontFamily: 'monospace' }}
-                  label={{ value: 'Distance (km)', angle: -90, position: 'insideLeft', offset: 0, fill: '#64748b', fontSize: 11, fontFamily: 'monospace' }}
+                  stroke="#a3a3a3"
+                  tick={{ fontSize: 11, fontFamily: 'inherit' }}
+                  label={{ value: 'Distance (km)', angle: -90, position: 'insideLeft', offset: 0, fill: '#a3a3a3', fontSize: 11, fontFamily: 'inherit' }}
                 />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#070c18', borderColor: '#334155', borderRadius: 4, fontFamily: 'monospace', fontSize: 12 }}
+                  contentStyle={{ backgroundColor: '#181818', borderColor: '#414141', borderRadius: 12, fontFamily: 'inherit', fontSize: 12 }}
                   formatter={(value,name) => [Math.round(Number(value)).toLocaleString()+' km', name]}
                 />
-                <Legend wrapperStyle={{ fontFamily: 'monospace', fontSize: 11, paddingTop: 10 }} />
-                <ReferenceLine y={50000} stroke="#f43f5e" strokeDasharray="3 3" label={{ value: 'Patch · 50,000 km', fill: '#f43f5e', fontSize: 10, fontFamily: 'monospace' }} />
+                <Legend wrapperStyle={{ fontFamily: 'inherit', fontSize: 11, paddingTop: 10 }} />
+                <ReferenceLine y={50000} stroke="#a3a3a3" strokeDasharray="3 3" label={{ value: 'Patch · 50,000 km', fill: '#a3a3a3', fontSize: 10, fontFamily: 'inherit' }} />
                 <Line
                   type="linear" isAnimationActive={false}
                   dataKey="earth_dist_km"
                   name="Range from Earth Center"
-                  stroke="#38bdf8"
+                  stroke="#779bff"
                   strokeWidth={2}
                   dot={false}
                 />
@@ -112,7 +112,7 @@ export function TrajectoryAnalysisView({trajData}: {trajData: FlightSamples}) {
                   type="linear" isAnimationActive={false}
                   dataKey="moon_dist_km"
                   name="Range from Moon Center"
-                  stroke="#f59e0b"
+                  stroke="#e5e5e5"
                   strokeWidth={2}
                   dot={false}
                 />
@@ -126,29 +126,29 @@ export function TrajectoryAnalysisView({trajData}: {trajData: FlightSamples}) {
           <div className="orb-chart">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData} margin={{ top: 10, right: 30, left: 20, bottom: 20 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#303030" />
                 <XAxis
                   dataKey="time_h" type="number" domain={[0, 'dataMax']}
-                  stroke="#64748b"
-                  tick={{ fontSize: 11, fontFamily: 'monospace' }}
-                  label={{ value: 'Flight Time (hours)', position: 'insideBottom', offset: -10, fill: '#64748b', fontSize: 11, fontFamily: 'monospace' }}
+                  stroke="#a3a3a3"
+                  tick={{ fontSize: 11, fontFamily: 'inherit' }}
+                  label={{ value: 'Flight Time (hours)', position: 'insideBottom', offset: -10, fill: '#a3a3a3', fontSize: 11, fontFamily: 'inherit' }}
                 />
                 <YAxis
-                  stroke="#64748b"
-                  tick={{ fontSize: 11, fontFamily: 'monospace' }}
-                  label={{ value: 'Above lunar datum (km)', angle: -90, position: 'insideLeft', offset: 0, fill: '#64748b', fontSize: 11, fontFamily: 'monospace' }}
+                  stroke="#a3a3a3"
+                  tick={{ fontSize: 11, fontFamily: 'inherit' }}
+                  label={{ value: 'Above lunar datum (km)', angle: -90, position: 'insideLeft', offset: 0, fill: '#a3a3a3', fontSize: 11, fontFamily: 'inherit' }}
                 />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#070c18', borderColor: '#334155', borderRadius: 4, fontFamily: 'monospace', fontSize: 12 }}
+                  contentStyle={{ backgroundColor: '#181818', borderColor: '#414141', borderRadius: 12, fontFamily: 'inherit', fontSize: 12 }}
                   formatter={(value,name) => [Math.round(Number(value)).toLocaleString()+' km', name]}
                 />
-                <Legend wrapperStyle={{ fontFamily: 'monospace', fontSize: 11, paddingTop: 10 }} />
-                <ReferenceLine y={approachAltitude} stroke="#10b981" strokeDasharray="4 4" label={{ value: `Approach: ${approachAltitude.toFixed(1)} km`, fill: '#10b981', fontSize: 10, fontFamily: 'monospace' }} />
+                <Legend wrapperStyle={{ fontFamily: 'inherit', fontSize: 11, paddingTop: 10 }} />
+                <ReferenceLine y={approachAltitude} stroke="#a3a3a3" strokeDasharray="4 4" label={{ value: `Approach: ${approachAltitude.toFixed(1)} km`, fill: '#a3a3a3', fontSize: 10, fontFamily: 'inherit' }} />
                 <Line
                   type="linear" isAnimationActive={false}
                   dataKey="moon_alt_km"
                   name="Lunar-Relative Altitude"
-                  stroke="#22d3ee"
+                  stroke="#779bff"
                   strokeWidth={2}
                   dot={false}
                 />
@@ -162,27 +162,27 @@ export function TrajectoryAnalysisView({trajData}: {trajData: FlightSamples}) {
           <div className="orb-chart">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData} margin={{ top: 10, right: 30, left: 20, bottom: 20 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#303030" />
                 <XAxis
                   dataKey="time_h" type="number" domain={[0, 'dataMax']}
-                  stroke="#64748b"
-                  tick={{ fontSize: 11, fontFamily: 'monospace' }}
-                  label={{ value: 'Flight Time (hours)', position: 'insideBottom', offset: -10, fill: '#64748b', fontSize: 11, fontFamily: 'monospace' }}
+                  stroke="#a3a3a3"
+                  tick={{ fontSize: 11, fontFamily: 'inherit' }}
+                  label={{ value: 'Flight Time (hours)', position: 'insideBottom', offset: -10, fill: '#a3a3a3', fontSize: 11, fontFamily: 'inherit' }}
                 />
                 <YAxis
-                  stroke="#64748b"
-                  tick={{ fontSize: 11, fontFamily: 'monospace' }}
-                  label={{ value: 'C3 Energy (km²/s²)', angle: -90, position: 'insideLeft', offset: 0, fill: '#64748b', fontSize: 11, fontFamily: 'monospace' }}
+                  stroke="#a3a3a3"
+                  tick={{ fontSize: 11, fontFamily: 'inherit' }}
+                  label={{ value: 'C3 Energy (km²/s²)', angle: -90, position: 'insideLeft', offset: 0, fill: '#a3a3a3', fontSize: 11, fontFamily: 'inherit' }}
                 />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#070c18', borderColor: '#334155', borderRadius: 4, fontFamily: 'monospace', fontSize: 12 }}
+                  contentStyle={{ backgroundColor: '#181818', borderColor: '#414141', borderRadius: 12, fontFamily: 'inherit', fontSize: 12 }}
                 />
-                <Legend wrapperStyle={{ fontFamily: 'monospace', fontSize: 11, paddingTop: 10 }} />
+                <Legend wrapperStyle={{ fontFamily: 'inherit', fontSize: 11, paddingTop: 10 }} />
                 <Line
                   type="linear" isAnimationActive={false}
                   dataKey="c3_energy"
                   name="Characteristic Energy C3 (km²/s²)"
-                  stroke="#a855f7"
+                  stroke="#e5e5e5"
                   strokeWidth={2}
                   dot={false}
                 />
@@ -190,7 +190,7 @@ export function TrajectoryAnalysisView({trajData}: {trajData: FlightSamples}) {
                   type="linear" isAnimationActive={false}
                   dataKey="energy_earth"
                   name="Earth specific energy (km²/s²)"
-                  stroke="#10b981"
+                  stroke="#a3a3a3"
                   strokeWidth={1.5}
                   strokeDasharray="3 3"
                   dot={false}

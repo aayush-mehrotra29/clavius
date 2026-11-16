@@ -109,13 +109,13 @@ export function mountExpedition(root,{logo,icon,icons}){
       <dl>${metric('Departure',dateLabel(flight.departure_utc))}${metric('Landing',dateLabel(flight.landing.utc))}
       ${metric('Flight time',(flight.transfer_s/3600).toFixed(2)+' h')}${metric('Total Δv',flight.total_delta_v_km_s.toFixed(2)+' km/s')}</dl></section>
       ${btn('exp-continue','Plan traverse')}${flightDetails()}
-      <details class="exp-notes"><summary>About this visualization</summary><p>Positions and velocities use Earth-centered J2000 coordinates. The globe textures, body sizes and dashed lunar orbit guide are illustrative. Lunar altitude is relative to the 1,737.4 km sphere. The amber ring marks the braking point 100 km above the selected landing site.</p><a href="https://github.com/prollyAditya/Clavius/tree/3f26903fad64ae961b1464597d83d3a86ef02663/frontend/src/components/views" target="_blank" rel="noopener">Original flight visualizations ↗</a></details>
+      <details class="exp-notes"><summary>About this visualization</summary><p>Positions and velocities use Earth-centered J2000 coordinates. Earth uses NASA’s July 2004 Blue Marble mosaic. The Moon uses the LROC WAC mosaic with LOLA polar fill. SPICE orients both maps at each flight sample. Both globes use their reference radii. The dashed orbit is a guide. Lunar altitude is relative to the 1,737.4 km sphere. The white ring marks the braking point 100 km above the selected landing site.</p><a href="https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map/" target="_blank" rel="noopener">Earth imagery ↗</a> · <a href="https://svs.gsfc.nasa.gov/4720/" target="_blank" rel="noopener">Moon imagery ↗</a><br><a href="https://github.com/prollyAditya/Clavius/tree/3f26903fad64ae961b1464597d83d3a86ef02663/frontend/src/components/views" target="_blank" rel="noopener">Original flight visualizations ↗</a></details>
       <button class="exp-back" id="exp-edit">Edit flight</button>`);
     $('#exp-continue').onclick=()=>{url('route',flight.id);traverseForm();};
     $('#exp-edit').onclick=()=>{url();flightForm();};
     icons();
     try{
-      const [module,data]=await Promise.all([import('./flight/viewer.tsx'),flight.trajectory_3d||api('flights/'+encodeURIComponent(flight.id)+'/trajectory')]);
+      const [module,data]=await Promise.all([import('./flight/viewer.tsx'),flight.trajectory_3d?.globe_frames ? flight.trajectory_3d : api('flights/'+encodeURIComponent(flight.id)+'/trajectory')]);
       if(signal.aborted||version!==viewVersion)return;
       host.replaceChildren();closeOrbit=module.mountFlightViewer(host,data);
     }catch(e){

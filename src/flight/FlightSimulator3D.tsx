@@ -2,124 +2,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { Play, Pause, RotateCcw } from 'lucide-react';
+import { Play, Pause, RotateCcw, Camera } from 'lucide-react';
 import type { FlightSamples } from './types';
 import {FlightCanvasRenderer} from './FlightCanvasRenderer';
 import {advanceSample} from './playback.js';
 
-// Procedural texture generator for Earth
-function createEarthTexture(): THREE.CanvasTexture {
-  const canvas = document.createElement('canvas');
-  canvas.width = 1024;
-  canvas.height = 512;
-  const ctx = canvas.getContext('2d')!;
-
-  // Deep ocean blue gradient
-  const oceanGrad = ctx.createLinearGradient(0, 0, 0, 512);
-  oceanGrad.addColorStop(0, '#0a1d37');
-  oceanGrad.addColorStop(0.5, '#0d2d59');
-  oceanGrad.addColorStop(1, '#0a1d37');
-  ctx.fillStyle = oceanGrad;
-  ctx.fillRect(0, 0, 1024, 512);
-
-  // Continents stylized shapes
-  ctx.fillStyle = '#1c4a38';
-  // North America
-  ctx.beginPath();
-  ctx.ellipse(250, 160, 100, 70, -0.2, 0, Math.PI * 2);
-  ctx.fill();
-  // South America
-  ctx.beginPath();
-  ctx.ellipse(320, 320, 60, 110, 0.3, 0, Math.PI * 2);
-  ctx.fill();
-  // Eurasia
-  ctx.beginPath();
-  ctx.ellipse(650, 150, 160, 80, 0.1, 0, Math.PI * 2);
-  ctx.fill();
-  // Africa
-  ctx.beginPath();
-  ctx.ellipse(540, 260, 80, 100, 0, 0, Math.PI * 2);
-  ctx.fill();
-  // Australia
-  ctx.beginPath();
-  ctx.ellipse(820, 340, 50, 40, -0.2, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Ice caps
-  ctx.fillStyle = '#d6e6ff';
-  ctx.fillRect(0, 0, 1024, 30);
-  ctx.fillRect(0, 485, 1024, 27);
-
-  // Cloud swirls
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
-  for (let i = 0; i < 40; i++) {
-    const x = (i * 37) % 1024;
-    const y = 80 + (i * 17) % 350;
-    ctx.beginPath();
-    ctx.ellipse(x, y, 40 + (i % 30), 10 + (i % 15), 0.2, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  // Lat/Lon subtle grid
-  ctx.strokeStyle = 'rgba(56, 189, 248, 0.12)';
-  ctx.lineWidth = 1;
-  for (let x = 0; x <= 1024; x += 128) {
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, 512);
-    ctx.stroke();
-  }
-  for (let y = 0; y <= 512; y += 64) {
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(1024, y);
-    ctx.stroke();
-  }
-
-  return new THREE.CanvasTexture(canvas);
-}
-
-// Procedural texture generator for Moon
-function createMoonTexture(): THREE.CanvasTexture {
-  const canvas = document.createElement('canvas');
-  canvas.width = 512;
-  canvas.height = 256;
-  const ctx = canvas.getContext('2d')!;
-
-  ctx.fillStyle = '#8a929a';
-  ctx.fillRect(0, 0, 512, 256);
-
-  // Lunar maria (dark basalt plains)
-  ctx.fillStyle = '#555b63';
-  ctx.beginPath();
-  ctx.ellipse(180, 90, 70, 50, 0.2, 0, Math.PI * 2); // Oceanus Procellarum / Imbrium
-  ctx.fill();
-  ctx.beginPath();
-  ctx.ellipse(280, 95, 45, 40, -0.1, 0, Math.PI * 2); // Serenitatis
-  ctx.fill();
-  ctx.beginPath();
-  ctx.ellipse(320, 130, 40, 35, 0, 0, Math.PI * 2); // Tranquillitatis
-  ctx.fill();
-  ctx.beginPath();
-  ctx.ellipse(350, 160, 30, 25, 0.1, 0, Math.PI * 2); // Fecunditatis
-  ctx.fill();
-
-  // Impact craters
-  ctx.fillStyle = '#b0b8c2';
-  for (let i = 0; i < 50; i++) {
-    const x = (i * 61) % 512;
-    const y = (i * 47) % 256;
-    const r = 3 + (i % 8);
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.strokeStyle = '#43474c';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-  }
-
-  return new THREE.CanvasTexture(canvas);
-}
+// SphereGeometry uses +Y north and -Z east at the prime meridian.
+const sphereToBody = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI / 2);
+const cameras = {inertial: 'System', earth: 'Earth', moon: 'Moon', spacecraft: 'Spacecraft'} as const;
 
 export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, active: boolean}) {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -129,6 +19,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(50); // steps per second
   const [timeIndex, setTimeIndex] = useState<number>(0);
   const [cameraMode, setCameraMode] = useState<'inertial' | 'earth' | 'moon' | 'spacecraft'>('inertial');
+  const [missingMap, setMissingMap] = useState('');
   const numPoints = trajData.times_seconds.length;
   const cameraModeRef = useRef(cameraMode);
   const fitOverview = useRef<() => void>(() => {});
@@ -152,9 +43,8 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
   // Scale factor: Real distances are ~384,400 km.
   // We represent 1 Three.js unit = 1000 km for clean numerical stability.
   const DIST_SCALE = 1 / 1000.0;
-  // Visual exaggeration for celestial body radii to make them easily visible at transfer scale
-  const EARTH_VIS_RADIUS = 6.378 * 2.2; // ~14 units
-  const MOON_VIS_RADIUS = 1.737 * 3.5;  // ~6 units
+  const earthRadius = trajData.earth_reference_radius_km * DIST_SCALE;
+  const moonRadius = trajData.lunar_reference_radius_km * DIST_SCALE;
 
   useEffect(() => {
     const container = mountRef.current;
@@ -162,7 +52,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
 
     // Scene
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x030712);
+    scene.background = new THREE.Color(0x090909);
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
@@ -171,6 +61,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       0.1,
       5000
     );
+    camera.up.set(0, 0, 1);
     cameraRef.current = camera;
     camera.position.set(0, -450, 320);
 
@@ -207,7 +98,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.maxDistance = 2500;
-    controls.minDistance = 15;
+    controls.minDistance = 2;
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
@@ -227,38 +118,38 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       starPositions[i + 2] = (Math.random() - 0.5) * 4000;
     }
     starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-    const starMaterial = new THREE.PointsMaterial({ color: 0x94a3b8, size: 1.5, sizeAttenuation: false });
+    const starMaterial = new THREE.PointsMaterial({ color: 0x858585, size: 1.5, sizeAttenuation: false });
     const starField = new THREE.Points(starGeometry, starMaterial);
     scene.add(starField);
 
     // Coordinate grid on the J2000 equatorial plane (Z=0)
-    const gridHelper = new THREE.GridHelper(900, 36, 0x06b6d4, 0x1e293b);
+    const gridHelper = new THREE.GridHelper(900, 36, 0x393939, 0x202020);
     gridHelper.rotation.x = Math.PI / 2;
     gridHelper.position.set(0, 0, 0);
     scene.add(gridHelper);
 
+    let disposed = false;
+    const loader = new THREE.TextureLoader();
+    const loadMap = (url: string, name: string) => {
+      const texture = loader.load(url, () => { needsFrame = true; }, undefined, () => {
+        if (!disposed) setMissingMap(previous => previous ? previous + ' and ' + name : name);
+      });
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.wrapS = THREE.RepeatWrapping;
+      return texture;
+    };
+
     // Earth Sphere
-    const earthGeo = new THREE.SphereGeometry(EARTH_VIS_RADIUS, 48, 48);
-    const earthTex = createEarthTexture();
+    const earthGeo = new THREE.SphereGeometry(earthRadius, 48, 48);
+    const earthTex = loadMap('/data/earth-blue-marble-july.jpg', 'Earth');
     const earthMat = new THREE.MeshStandardMaterial({
       map: earthTex,
-      roughness: 0.7,
-      metalness: 0.1,
+      roughness: 1,
+      metalness: 0,
     });
     const earthMesh = new THREE.Mesh(earthGeo, earthMat);
     earthMesh.position.set(0, 0, 0);
     scene.add(earthMesh);
-
-    // Atmosphere Glow Rim
-    const atmoGeo = new THREE.SphereGeometry(EARTH_VIS_RADIUS * 1.08, 32, 32);
-    const atmoMat = new THREE.MeshBasicMaterial({
-      color: 0x00f0ff,
-      transparent: true,
-      opacity: 0.18,
-      side: THREE.BackSide,
-    });
-    const atmoMesh = new THREE.Mesh(atmoGeo, atmoMat);
-    scene.add(atmoMesh);
 
     // Moon Orbit Guide Ring (radius = 384.4 units)
     const moonStart = new THREE.Vector3(...trajData.moon_coords_km[0]);
@@ -272,7 +163,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     }
     orbitRingGeo.setFromPoints(ringPts);
     const orbitRingMat = new THREE.LineDashedMaterial({
-      color: 0x334155,
+      color: 0x505050,
       dashSize: 6,
       gapSize: 4,
     });
@@ -282,8 +173,8 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     scene.add(moonOrbitRing);
 
     // Moon Sphere
-    const moonGeo = new THREE.SphereGeometry(MOON_VIS_RADIUS, 32, 32);
-    const moonTex = createMoonTexture();
+    const moonGeo = new THREE.SphereGeometry(moonRadius, 32, 32);
+    const moonTex = loadMap('/data/lroc-color.jpg', 'Moon');
     const moonMat = new THREE.MeshStandardMaterial({
       map: moonTex,
       roughness: 0.9,
@@ -294,7 +185,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
 
     // Spacecraft Indicator (Small Glowing Octahedron + Beacon)
     const scGeo = new THREE.OctahedronGeometry(2.5, 0);
-    const scMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: false });
+    const scMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false });
     const scMesh = new THREE.Mesh(scGeo, scMat);
     scMeshRef.current = scMesh;
     scene.add(scMesh);
@@ -302,7 +193,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     // Spacecraft Beacon Halo
     const haloGeo = new THREE.RingGeometry(3.5, 5.0, 16);
     const haloMat = new THREE.MeshBasicMaterial({
-      color: 0x22d3ee,
+      color: 0x779bff,
       side: THREE.DoubleSide,
       transparent: true,
       opacity: 0.7,
@@ -312,6 +203,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     const haloMesh = new THREE.Mesh(haloGeo, haloMat);
     scMesh.add(haloMesh);
 
+    let brakeMarker: THREE.Mesh | undefined;
     // Full planned/simulated trajectory ribbon (all points)
     if (trajData && trajData.spacecraft_coords_km.length > 0) {
       const pts = trajData.spacecraft_coords_km.map(
@@ -319,17 +211,17 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       );
       const fullTrajGeo = new THREE.BufferGeometry().setFromPoints(pts);
       const fullTrajMat = new THREE.LineBasicMaterial({
-        color: 0x1e3a8a, // Deep blue planned trajectory
+        color: 0xa0a0a0,
         transparent: true,
         opacity: 0.6,
       });
       const fullLine = new THREE.Line(fullTrajGeo, fullTrajMat);
       scene.add(fullLine);
 
-      // Traversed past trajectory (bright cyan)
+      // Traversed past trajectory
       const pastGeo = new THREE.BufferGeometry().setFromPoints(pts);
       const pastMat = new THREE.LineBasicMaterial({
-        color: 0x06b6d4, // Bright neon cyan
+        color: 0x527fff,
         linewidth: 2,
       });
       const pastLine = new THREE.Line(pastGeo, pastMat);
@@ -342,10 +234,11 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
         const periPt = pts[closestApproachIdx];
         const periMarkerGeo = new THREE.RingGeometry(3, 4.5, 16);
         const periMarkerMat = new THREE.MeshBasicMaterial({
-          color: 0xf59e0b, // Amber marker
+          color: 0xffffff,
           side: THREE.DoubleSide,
         });
         const periMarker = new THREE.Mesh(periMarkerGeo, periMarkerMat);
+        brakeMarker = periMarker;
         periMarker.position.copy(periPt);
         periMarker.material.depthTest=false;
         periMarker.renderOrder=2;
@@ -363,7 +256,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       const limitingFov = Math.min(halfFov, Math.atan(Math.tan(halfFov)*camera.aspect));
       controls.target.copy(sphere.center);
       camera.position.copy(sphere.center).addScaledVector(
-        new THREE.Vector3(0,-450,320).normalize(), (sphere.radius+EARTH_VIS_RADIUS)*1.1/Math.sin(limitingFov)
+        new THREE.Vector3(0,-450,320).normalize(), (sphere.radius+earthRadius)*1.1/Math.sin(limitingFov)
       );
       controls.update();
     };
@@ -392,9 +285,6 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       lastTime = now;
       if (!activeRef.current || document.hidden) return;
 
-      // Earth slow rotation
-      earthMesh.rotation.z += 0.001;
-
       // Update trajectory playback
       if (isPlayingRef.current && trajData && trajData.spacecraft_coords_km.length > 0) {
         const total = trajData.spacecraft_coords_km.length;
@@ -406,6 +296,10 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       // Update positions of spacecraft and moon based on current timeIndex
       const idx = Math.min(Math.floor(timeIndexRef.current), (trajData?.spacecraft_coords_km.length || 1) - 1);
       if (trajData && trajData.spacecraft_coords_km[idx]) {
+        const frames = trajData.globe_frames;
+        earthMesh.quaternion.fromArray(frames.earth_xyzw[idx]).multiply(sphereToBody);
+        moonMesh.quaternion.fromArray(frames.moon_xyzw[idx]).multiply(sphereToBody);
+        sunLight.position.fromArray(frames.sun_direction_j2000[idx]);
         const scCoord = trajData.spacecraft_coords_km[idx];
         const scPos = new THREE.Vector3(scCoord[0] * DIST_SCALE, scCoord[1] * DIST_SCALE, scCoord[2] * DIST_SCALE);
         if (scMeshRef.current) {
@@ -419,7 +313,6 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
         }
 
         pastLineRef.current?.geometry.setDrawRange(0, idx+1);
-        haloMesh.quaternion.copy(camera.quaternion);
         const focus = cameraModeRef.current;
         const subject = focus==='moon' ? moonMesh : focus==='spacecraft' ? scMesh : null;
         if (subject) {
@@ -434,7 +327,16 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       }
 
       controls.update();
-      if (gpu || needsFrame || idx !== lastSample || !camera.matrixWorld.equals(lastView)) {
+      camera.updateMatrixWorld();
+      // Event glyphs have a fixed screen footprint across camera scales.
+      const pixelAngle = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / Math.max(1, container.clientHeight);
+      for (const marker of [scMesh, brakeMarker]) {
+        if (!marker) continue;
+        const depth = -marker.position.clone().applyMatrix4(camera.matrixWorldInverse).z;
+        marker.scale.setScalar(Math.max(camera.near, depth) * pixelAngle);
+        marker.quaternion.copy(camera.quaternion);
+      }
+      if (needsFrame || idx !== lastSample || !camera.matrixWorld.equals(lastView)) {
         renderer.render(scene, camera);
         lastSample = idx;
         lastView.copy(camera.matrixWorld);
@@ -445,6 +347,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     animId = requestAnimationFrame(animate);
 
     return () => {
+      disposed = true;
       cancelAnimationFrame(animId);
       resize.disconnect();
       controls.dispose();
@@ -468,17 +371,18 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     cameraModeRef.current=mode;
     if (!cameraRef.current || !controlsRef.current) return;
 
+    controlsRef.current.minDistance = mode === 'earth' ? earthRadius * 1.1 : moonRadius * 1.1;
     if (mode === 'inertial') {
       fitOverview.current();
     } else if (mode === 'earth') {
       controlsRef.current.target.set(0, 0, 0);
-      cameraRef.current.position.set(0, -50, 30);
+      cameraRef.current.position.set(0, -4 * earthRadius, 2 * earthRadius);
     } else if (mode === 'moon' && trajData && moonMeshRef.current) {
       const idx = Math.min(Math.floor(timeIndexRef.current), trajData.moon_coords_km.length - 1);
       const mCoord = trajData.moon_coords_km[idx];
       const mPos = new THREE.Vector3(mCoord[0] * DIST_SCALE, mCoord[1] * DIST_SCALE, mCoord[2] * DIST_SCALE);
       controlsRef.current.target.copy(mPos);
-      cameraRef.current.position.set(mPos.x + 30, mPos.y - 30, mPos.z + 20);
+      cameraRef.current.position.set(mPos.x + 3*moonRadius, mPos.y - 3*moonRadius, mPos.z + 2*moonRadius);
     } else if (mode === 'spacecraft' && trajData && scMeshRef.current) {
       const idx = Math.min(Math.floor(timeIndexRef.current), trajData.spacecraft_coords_km.length - 1);
       const scCoord = trajData.spacecraft_coords_km[idx];
@@ -512,8 +416,9 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
   return (
     <section hidden={!active} className="orbital-simulator" aria-label="Earth to Moon flight path">
       <div ref={mountRef} className="orbital-canvas" aria-label="Drag to orbit and scroll to zoom" />
-      <details className="orb-hud orbital-panel" open={!matchMedia('(max-width: 900px)').matches}>
-        <summary>Flight telemetry <span>J2000</span></summary>
+      {missingMap && <p role="status" className="orb-map-error">{missingMap} imagery unavailable.</p>}
+      <details className="orb-hud orbital-panel">
+        <summary>Telemetry</summary>
         <div className="orb-clock">T+ {[currDays,currHours,currMins,currSecs].map((n,i)=>String(n).padStart(2,'0')+['d','h','m','s'][i]).join(' ')}</div>
         <dl className="orb-metrics">
           <div><dt>Velocity</dt><dd>{velMag.toFixed(3)} km/s</dd></div>
@@ -521,24 +426,25 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
           <div><dt>Moon range</dt><dd>{Math.round(moonDist).toLocaleString()} km</dd></div>
           <div><dt>Lunar datum altitude</dt><dd>{moonAlt.toFixed(1)} km</dd></div>
         </dl>
-        <div className="orb-vectors">R (km) [{currPos.map(v=>v.toFixed(0)).join(', ')}]<br/>V (km/s) [{currVel.map(v=>v.toFixed(2)).join(', ')}]</div>
+        <div className="orb-vectors">J2000 · R (km) [{currPos.map(v=>v.toFixed(0)).join(', ')}]<br/>V (km/s) [{currVel.map(v=>v.toFixed(2)).join(', ')}]</div>
       </details>
-      <div className="orb-cameras orbital-panel" aria-label="Camera perspective">
-        {(['inertial','earth','moon','spacecraft'] as const).map((mode,i)=>
-          <button key={mode} aria-label={['Inertial system','Earth focus','Moon focus','Spacecraft cam'][i]} aria-pressed={cameraMode===mode} onClick={()=>setCameraView(mode)}>
-            <span className="orb-camera-full">{['Inertial system','Earth focus','Moon focus','Spacecraft cam'][i]}</span>
-            <span className="orb-camera-short">{['System','Earth','Moon','Spacecraft'][i]}</span>
-          </button>)}
-      </div>
+      <label className="orb-camera orbital-panel">
+        <Camera size={16} aria-hidden="true"/>
+        <select aria-label="Camera perspective" value={cameraMode}
+          onChange={e => setCameraView(e.target.value as keyof typeof cameras)}>
+          {Object.entries(cameras).map(([id, label]) => <option key={id} value={id}>{label}</option>)}
+        </select>
+      </label>
       <div className="orb-timeline orbital-panel">
         <div className="orb-playbar">
           <button className="orb-play" aria-label={isPlaying?'Pause flight':'Play flight'} onClick={()=>setIsPlaying(!isPlaying)}>
             {isPlaying?<Pause/>:<Play/>}
           </button>
           <button aria-label="Restart flight timeline" onClick={()=>{timeIndexRef.current=0;setTimeIndex(0);}}><RotateCcw/></button>
-          <div className="orb-rates" aria-label="Playback speed in samples per second">
-            {[10,50,150,400].map(spd=><button key={spd} title={spd+' samples per second'} aria-pressed={playbackSpeed===spd} onClick={()=>setPlaybackSpeed(spd)}>{spd}×</button>)}
-          </div>
+          <select className="orb-rate" aria-label="Playback speed in samples per second" value={playbackSpeed}
+            onChange={e => setPlaybackSpeed(Number(e.target.value))}>
+            {[10,50,150,400].map(rate => <option key={rate} value={rate}>{rate} samples/s</option>)}
+          </select>
           <output>T+ {(currTimeSec/3600).toFixed(2)} h</output>
         </div>
         <input aria-label="Flight timeline" type="range" min={0} max={numPoints-1} value={timeIndex}

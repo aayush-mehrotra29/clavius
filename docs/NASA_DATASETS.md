@@ -24,6 +24,12 @@ Updated 15 November 2026. This is the durable source record for the running luna
 - Uses: globe/regional albedo texture and region thumbnail previews.
 - Limits: NASA adjusts color/dynamic range and inpaints small dropouts. Beyond ±70° latitude it fills missing WAC coverage with monochromatic LOLA albedo. This is a visualization texture, not calibrated scientific reflectance or high-resolution polar imaging.
 
+## Flight globe imagery
+
+Earth uses the unmodified 5,400 × 2,700 July 2004 base-map JPEG from [NASA Earth Observatory’s Blue Marble Next Generation](https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map/). Its colors are a fixed monthly composite. The Moon uses the 4,096 × 2,048 LROC/LOLA mosaic described above. The served file hashes and original Earth download are in `public/data/manifest.json#flightGlobes`.
+
+Both maps place north at the top, 0° longitude in the middle, and east to the right. Every saved sample gets a body-fixed-to-J2000 rotation from the pinned SPICE kernels. Earth uses the approximate IAU_EARTH text-PCK orientation and the Moon uses MOON_ME_DE421. The spheres use the solver’s reference radii. The scene uses the geometric Earth-to-Sun direction for both bodies and adds fill light for readability. Neither map depicts weather, shadows or surface appearance observed on the flight date. The software renderer ray-casts the same spheres and uses a downsampled texture for interactive playback.
+
 ## Our display derivative: surface normals
 
 - Asset: `public/data/lola-normals.png`, 5,760 × 2,880, linear RGB8 encoded object-space normals.
