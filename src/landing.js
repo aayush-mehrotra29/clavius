@@ -14,7 +14,7 @@ export function mountLanding(root, { logo }) {
             <a href="#about">Overview</a>
             <a href="#mission">Surface mission</a>
             <a href="#sources">Lunar atlas</a>
-            <a href="#research">Research</a>
+            <a href="#users">Who it’s for</a>
           </div>
           <a class="get-started sky-explore" href="/app">Get started</a>
         </nav>

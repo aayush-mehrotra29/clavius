@@ -57,7 +57,7 @@ function atlasFigure(layer, index, inline) {
 export function landingSections() {
   return `
     <section id="about" class="lunar-intro" aria-labelledby="about-title">
-      <div class="intro-copy story-width" id="users">
+      <div class="intro-copy story-width">
         <h2 id="about-title" class="story-title"><a href="/app">Introducing Clavius</a></h2>
         <p id="challenge" class="story-body">At the Moon’s south pole, a rover can reach the right spot at the wrong time. The ridge beside a science stop can block the sunlight it needs to recharge. Even in sunlight, the rover may have to wait for Earth to rise above the ridge before it can send its results home.</p>
         <p id="questions" class="story-body">Clavius lets you plan the flight and the rover’s first drive together. Choose a departure from Earth orbit and a landing site, then use the simulated touchdown time to try a route. You can see where the rover loses sunlight, how much charge it has left and when it can reach Earth by radio.</p>
@@ -120,19 +120,19 @@ export function landingSections() {
       </div>
     </section>
 
-    <section id="research" class="research-story story-width" aria-labelledby="research-title">
-      <h2 class="story-title" id="research-title">Research &amp; benchmarks</h2>
-      <div class="research-studies">
-        <article>
-          <h3>When can a spacecraft leave Earth orbit?</h3>
-          <p>Campana and Topputo studied how the changing positions of Earth, the Moon and the Sun affect low-energy transfers. Their work shows why departure dates matter.</p>
-          <a class="story-link" href="https://doi.org/10.1016/j.actaastro.2025.03.010" aria-label="Read Campana and Topputo’s paper on low-energy Earth–Moon transfers">Campana &amp; Topputo · <cite>Acta Astronautica</cite>, 2025</a>
-        </article>
-        <article>
-          <h3>Will a sunlit route stay lit?</h3>
-          <p>Chen and colleagues used hourly maps to find terrain that stayed sunlit for 72 hours, then planned simulated routes within a rover’s slope limits. In Clavius, you can vary the start time and see how sunlight changes the battery reserve along one route.</p>
-          <a class="story-link" href="https://doi.org/10.3390/rs18172950" aria-label="Read Chen and colleagues’ paper on illumination mapping and polar rover routes">Chen et al. · <cite>Remote Sensing</cite>, 2026</a>
-        </article>
+    <section id="users" class="audience-story story-width" aria-labelledby="users-title">
+      <h2 class="story-title" id="users-title">Who is Clavius for?</h2>
+      <dl class="audience-list">
+        <div><dt>Mission planners</dt><dd>Compare two departure dates for the same landing site. See which arrival gives a rover more daylight for its first drive.</dd></div>
+        <div><dt>Rover engineers</dt><dd>Try a longer science stop or move a charging break. Replay the drive to see where the rover draws down its battery.</dd></div>
+        <div><dt>Students and educators</dt><dd>Pick a ridge on the lunar map and predict when Earth will be visible from it. Use the simulated horizon to check your prediction.</dd></div>
+      </dl>
+      <div id="research" class="research-notes">
+        <h3>Research &amp; benchmarks</h3>
+        <ul>
+          <li><a href="https://doi.org/10.1016/j.actaastro.2025.03.010">Campana &amp; Topputo, <cite>Acta Astronautica</cite> (2025)</a>. How departure timing affects low-energy transfers to the Moon.</li>
+          <li><a href="https://doi.org/10.3390/rs18172950">Chen et al., <cite>Remote Sensing</cite> (2026)</a>. Using hourly sunlight maps and slope limits to plan polar rover routes.</li>
+        </ul>
       </div>
       <details id="benchmarks" class="story-detail">
         <summary>Explore the benchmark results</summary>
