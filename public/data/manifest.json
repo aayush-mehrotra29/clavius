@@ -690,5 +690,37 @@
     "url": "/data/drive/traverse-relief.json",
     "sha256": "3bb96dd496c7e5a471b3e78a099b9c927ed7e988f782f7f60b78f7573541c546",
     "role": "Traverse map display. LROC/DLR 1 m orthoimagery and 2 m stereo relief and slope on nominal PGDA78 rover geometry."
+  },
+  "landingTransfer": {
+    "url": "/images/connecting-ridge-transfer.svg",
+    "outputSha256": "5806e3606fc41f231dcf6400871ab939bec3f386274ca6e8fe613f96b47875d4",
+    "script": "scripts/render_landing_transfer.py",
+    "sourceManifest": "simulation-manifest.json",
+    "flightRequest": {
+      "site_id": "connecting-ridge",
+      "departure_utc": "2028-01-01T00:00:00Z",
+      "transfer_hours": 96.0
+    },
+    "touchdownUtc": "2028-01-05T00:15:00.000Z",
+    "sourceHashes": {
+      "terrain_sha256": {
+        "PGDA78-Site01": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+        "PGDA90-80m": "82030dcbdd7c4bb0c7d858e9b4b293b9f2cda5a543ba31ec0f42784bd6beee5a"
+      },
+      "kernel_sha256": {
+        "de421.bsp": "08b20db2ae22488650641c5a9033e5bfda4b1c4b440cfeaf20f621cfa18ecdb3",
+        "moon_pa_de421_1900-2050.bpc": "656f90616403d75a75f0cd6c8830fc5b44f8cb4facb5ccb8915e752b397520cf",
+        "moon_080317.tf": "78732477b96f9863e7b0d65bcee3c22b8707ca5ed0db56d1173319cb2e8c7993",
+        "naif0012.tls": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+        "pck00011.tpc": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1"
+      },
+      "frame": "MOON_ME_DE421",
+      "aberration": "NONE",
+      "realization": "nominal",
+      "observer_height_m": 0.5,
+      "max_ray_distance_m": 220000
+    },
+    "samples": 391,
+    "description": "Clavius simulated spacecraft and DE421 Moon positions in Earth-centered J2000, projected onto the plane of the two endpoint Moon vectors. Uniform distance scale, enlarged body markers."
   }
 }

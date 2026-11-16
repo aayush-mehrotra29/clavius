@@ -21,9 +21,9 @@ const missionSteps = [
 const atlasLayers = [
   {
     title: 'Global surface',
-    copy: 'NASA’s 2019 CGI Moon Kit pairs LROC imagery with elevations measured by the Lunar Orbiter Laser Altimeter. Use the globe to examine a destination before looking at the local terrain along a route.',
+    copy: 'The 2019 CGI Moon Kit pairs LROC imagery with elevations measured by the Lunar Orbiter Laser Altimeter. Use the globe to examine a destination before looking at the local terrain along a route.',
     image: 'landing-moon.webp', alt: 'The near side of the Moon in natural color with illustrative lighting.',
-    link: '/data/manifest.json', linkText: 'Explorer sources',
+    link: 'https://svs.gsfc.nasa.gov/4720/', linkText: 'Source · NASA Scientific Visualization Studio',
   },
   {
     title: 'Height in color',
@@ -36,7 +36,7 @@ const atlasLayers = [
     copy: 'At the south pole, PGDA 78 records the surface on a 5 m grid. This relief model shows the ridges and crater walls across its 16 km footprint.',
     image: 'connecting-ridge-relief.webp', alt: 'Oblique terrain model of Connecting Ridge with violet depressions and peach-colored ridges.',
     caption: '200 m contours · 2.4× vertical scale',
-    link: 'https://pgda.gsfc.nasa.gov/products/78', linkText: 'NASA terrain data',
+    link: 'https://pgda.gsfc.nasa.gov/products/78', linkText: 'PGDA 78 terrain data',
   },
   {
     title: 'A rover’s horizon',
@@ -44,6 +44,13 @@ const atlasLayers = [
     image: 'connecting-ridge-horizon.svg', alt: 'Skyline from east through south to west. The Sun is above the ridge at about 1.3 degrees elevation and Earth is below it at about −3.3 degrees.',
     caption: '15 November 2026 · 12:00 UTC',
     link: '/data/simulation-manifest.json', linkText: 'Simulation sources',
+  },
+  {
+    title: 'Where will the Moon be at arrival?',
+    copy: 'JPL’s DE421 ephemeris gives the Moon’s position and velocity relative to Earth throughout the flight. At arrival, Clavius uses the Moon’s orientation and the elevation from the 5 m Connecting Ridge grid to aim 100 km above the site. A modeled 15-minute descent takes the spacecraft to the surface.',
+    image: 'connecting-ridge-transfer.svg', alt: 'The simulated flight leaves Earth and meets the Moon at its 5 January position. A dashed line shows the Moon’s motion since departure on 1 January.',
+    caption: '1–5 January 2028 · 96 hours to approach',
+    link: 'https://naif.jpl.nasa.gov/naif/data_generic.html', linkText: 'Source · NASA JPL SPICE kernels',
   },
 ];
 
@@ -105,7 +112,7 @@ export function landingSections() {
 
     <section id="sources" class="data-sky" aria-labelledby="sources-title">
       <div class="data-inner story-width">
-        <h2 id="sources-title" class="story-title">Explore the destination.</h2>
+        <h2 id="sources-title" class="story-title">Lunar surface and flight data</h2>
         <div class="atlas-story">
           <div class="atlas-chapters">
             ${atlasLayers.map((layer, index) => `<article class="atlas-chapter" data-chapter="${index}">

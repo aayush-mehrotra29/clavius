@@ -280,10 +280,10 @@
 .audience-list > div {
   padding: clamp(18px, 2.3vw, 34px);
   border-radius: 20px;
-  background: linear-gradient(155deg, #20202c, #141419 80%);
+  background: #333333;
 }
 .audience-list dt { font-size: clamp(20px, 2vw, 28px); font-weight: 500; letter-spacing: -.04em; }
-.audience-list dd { max-width: 44ch; margin: 10px 0 0; font-size: 16px; line-height: 1.55; color: #b9b8c4; }
+.audience-list dd { max-width: 44ch; margin: 10px 0 0; font-size: 16px; line-height: 1.55; color: #d2d2d2; }
 .research-notes { max-width: 72ch; margin-top: clamp(48px, 6vw, 84px); color: #aaa9b4; }
 .research-notes h3 { font-size: 16px; font-weight: 500; color: #d0cfd6; }
 .research-notes ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }

@@ -30,6 +30,12 @@ Earth uses the unmodified 5,400 × 2,700 July 2004 base-map JPEG from [NASA Eart
 
 Both maps place north at the top, 0° longitude in the middle, and east to the right. Every saved sample gets a body-fixed-to-J2000 rotation from the pinned SPICE kernels. Earth uses the approximate IAU_EARTH text-PCK orientation and the Moon uses MOON_ME_DE421. The spheres use the solver’s reference radii. The scene uses the geometric Earth-to-Sun direction for both bodies and adds fill light for readability. Neither map depicts weather, shadows or surface appearance observed on the flight date. The software renderer ray-casts the same spheres and uses a downsampled texture for interactive playback.
 
+## Flight path in the landing atlas
+
+The flight planner reads the Moon’s geometric Earth-relative position and velocity from `de421.bsp` in J2000. The lunar orientation and frame kernels transform the nominal PGDA78 site into that flight frame at the requested approach time. The planner aims 100 km above the site and prescribes a 900-second radial descent. These are Clavius modeling choices. NASA JPL distributes the [SPICE kernels](https://naif.jpl.nasa.gov/naif/data_generic.html).
+
+The flight illustration plots the planner’s spacecraft positions and the moving Moon on the same distance scale for a 96-hour transfer to Connecting Ridge departing 1 January 2028 UTC. Both tracks are projected onto the plane through Earth and the Moon’s departure and touchdown positions. Body markers are enlarged for legibility. The kernel and terrain hashes, flight request and output hash appear under `landingTransfer` in the explorer manifest. Regenerate the figure with `.venv/bin/python -m scripts.render_landing_transfer`.
+
 ## Our display derivative: surface normals
 
 - Asset: `public/data/lola-normals.png`, 5,760 × 2,880, linear RGB8 encoded object-space normals.
