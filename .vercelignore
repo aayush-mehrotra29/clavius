@@ -1,0 +1,10 @@
+# Only the web application belongs in a Vercel deployment.
+/*
+!api
+!public
+!src
+!index.html
+!package.json
+!package-lock.json
+!vite.config.js
+!vercel.json
