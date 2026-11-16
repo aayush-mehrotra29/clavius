@@ -5,7 +5,7 @@ The sky hero opens the global explorer. The editorial sequence below it uses Cla
 | Section | Content |
 | --- | --- |
 | Sky hero | Mission planning headline and explorer entry |
-| Overview | Current surface tools and planned flight workflow |
+| Overview | Introducing Clavius, how arrival time shapes a rover’s first drive, and a lunar ridge illustration |
 | Surface mission | Rover, route and replay walkthrough with an expandable recorded comparison |
 | Lunar atlas | Global imagery and elevation, Connecting Ridge relief and the modeled horizon |
 | Research | Two recent studies and expandable benchmark records |

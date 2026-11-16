@@ -77,14 +77,27 @@
   text-decoration-color: #a5a3b0;
 }
 .story-link:hover { text-decoration-color: currentColor; }
-.lunar-intro, .mission-heading {
+.mission-heading {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: start;
   gap: 8%;
 }
 .lunar-intro { padding-top: clamp(64px, 8vw, 120px); }
-.lunar-intro .story-body, .mission-heading .story-body { max-width: 48ch; }
+.intro-copy { max-width: 680px; }
+.intro-copy h2 { margin-bottom: clamp(24px, 3vw, 36px); }
+.intro-copy h2 a:hover { text-decoration: underline; text-decoration-thickness: .04em; text-underline-offset: .12em; }
+.intro-copy p + p { margin-top: 1em; }
+.intro-panorama {
+  display: block;
+  width: 100%;
+  height: clamp(240px, 35vw, 600px);
+  object-fit: cover;
+  object-position: center 41%;
+  margin-top: 24px;
+  mask-image: linear-gradient(to bottom, transparent, black 12%);
+}
+.mission-heading .story-body { max-width: 48ch; }
 .mission-story { padding-block: clamp(64px, 8vw, 120px); }
 .mission-demo {
   margin-top: clamp(40px, 5vw, 80px);
@@ -299,7 +312,7 @@
 }
 @media (max-width: 800px) {
   .story-width { width: min(89%, 650px); }
-  .lunar-intro, .mission-heading, .mission-demo { grid-template-columns: 1fr; gap: 26px; }
+  .mission-heading, .mission-demo { grid-template-columns: 1fr; gap: 26px; }
   .mission-demo { display: flex; flex-direction: column; align-items: stretch; }
   .mission-controls { gap: 22px; }
   .mission-visual { width: 100%; }

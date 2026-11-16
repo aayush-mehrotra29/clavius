@@ -56,15 +56,13 @@ function atlasFigure(layer, index, inline) {
 
 export function landingSections() {
   return `
-    <section id="about" class="lunar-intro story-width" aria-labelledby="about-title">
-      <h2 id="about-title" class="story-title">A rover’s first day on the Moon.</h2>
-      <div id="users">
-        <p id="challenge" class="story-body">Plan a transfer from Earth orbit, choose a traverse and watch the rover follow it across the lunar surface.</p>
-        <details class="story-detail" id="questions">
-          <summary>How does the flight set the surface mission?</summary>
-          <p class="story-body">Choose a departure and site. Clavius solves the transfer and adds a prescribed descent. The rover starts there at the modeled touchdown time, with sunlight calculated for that place and date.</p>
-        </details>
+    <section id="about" class="lunar-intro" aria-labelledby="about-title">
+      <div class="intro-copy story-width" id="users">
+        <h2 id="about-title" class="story-title"><a href="/app">Introducing Clavius</a></h2>
+        <p id="challenge" class="story-body">At the Moon’s south pole, a rover can reach the right spot at the wrong time. The ridge beside a science stop can block the sunlight it needs to recharge. Even in sunlight, the rover may have to wait for Earth to rise above the ridge before it can send its results home.</p>
+        <p id="questions" class="story-body">Clavius lets you plan the flight and the rover’s first drive together. Choose a departure from Earth orbit and a landing site, then use the simulated touchdown time to try a route. You can see where the rover loses sunlight, how much charge it has left and when it can reach Earth by radio.</p>
       </div>
+      <img class="intro-panorama" src="/images/polar-ridge.webp" width="1672" height="941" alt="Illustration of low sunlight catching lunar ridgelines above a shadowed crater." loading="lazy" decoding="async">
     </section>
 
     <section id="mission" class="mission-story story-width" aria-labelledby="mission-title">
