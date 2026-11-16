@@ -1784,5 +1784,10 @@
         }
       }
     }
+  },
+  "horizons_geometry": {
+    "url": "/data/horizons-geometry.json",
+    "sha256": "8ec7bcafd513313541b644f8c6693d50aa8cc2bebe961922cad4fd7d0a6abe59",
+    "role": "External geometric direction and range comparison at two nominal site origins."
   }
 }

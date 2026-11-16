@@ -5,6 +5,7 @@ import {groundHeight, loadGround, loadDriveImage, terrainMesh} from './drive-gro
 import {applyReplay,drawReplayPaths,loadReplay,replayAssembly} from './viper-replay.js';
 import {arrayPower,replayArrayEnergy,manualBodyToEnu} from './viper-array.js';
 import {DriveSunlight,loadDriveSource} from './drive-sunlight.js';
+import {geometryReferenceMarkup,mountGeometryReference} from './drive-geometry-reference.js';
 import {terrainComparisonMarkup,renderTerrainComparison} from './drive-terrain-comparison.js';
 import {wheelPanelMarkup, renderWheelSample} from './drive-wheels.js';
 import {mountParkedPower} from './parked-view.js';
@@ -34,7 +35,7 @@ export function mountDrive(root,{logo,icon,icons}) {
   <label>Lighting<select data-lighting><option value="survey">Survey light</option><option value="dated">Mission sunlight</option></select></label>
   <fieldset data-epochs><legend>Drive start (UTC)</legend><select data-epoch-choice aria-label="Choose an epoch"><option value="2028-01-01T12:00">1 Jan 2028 · 12:00 UTC</option><option value="2028-01-21T12:00" selected>21 Jan 2028 · 12:00 UTC</option><option value="2028-01-27T12:00">27 Jan 2028 · 12:00 UTC</option><option value="custom">Custom UTC start</option></select>
   <input type="datetime-local" data-utc aria-label="Custom UTC start" min="2000-01-01T00:00" max="2049-12-31T23:59" value="2028-01-21T12:00" hidden></fieldset>
-  <p>The directional light follows visibility at the rover. Other locations in the view share this lighting approximation. The three listed epochs ship with Recorded dynamics. Manual driving and custom dates use the local simulation service. Mission sunlight uses shaded terrain with a display fill light. The historical photo layer is available in survey light. Expand Solar array estimate to see how heading, tilt and terrain shadow affect each of VIPER’s three panels. The estimate is gross generation before electrical loads. It assumes clean panels and omits temperature losses and shading by the rover.</p><button type="submit">Apply lighting</button></form></dialog>
+  <p>The directional light follows visibility at the rover. Other locations in the view share this lighting approximation. The three listed epochs ship with Recorded dynamics. Manual driving and custom dates use the local simulation service. Mission sunlight uses shaded terrain with a display fill light. The historical photo layer is available in survey light. Expand Solar array estimate to see how heading, tilt and terrain shadow affect each of VIPER’s three panels. The estimate is gross generation before electrical loads. It assumes clean panels and omits temperature losses and shading by the rover.</p>${geometryReferenceMarkup}<button type="submit">Apply lighting</button></form></dialog>
   <dialog class="drive-info drive-model-dialog"><button data-close>Close</button><h2>VIPER surface drive</h2><p>The articulated chassis, suspension and wheels come from Project Chrono’s VIPER model. Four-wheel steering follows an ideal rolling path at the documented nominal speed of 0.1 m/s. In a coordinated turn the wheels follow different arcs. Crab steering points all four wheels the same way so you can travel diagonally while the chassis keeps its heading. Hold forward and left or right together to steer. Manual steering angles can reach the documented ±50°. Pitch and roll follow the terrain. The drive clock can be accelerated.</p><p>Recorded dynamics replays 20 seconds of Project Chrono rigid-contact simulation on this site. Choose a straight traverse or a 25° crab traverse to inspect the solver’s chassis, suspension and wheel poses. Both use the native model’s 30° steering limit. The 434.92 kg model uses assumed friction, a 1 ms step and ideal wheel-speed control under 1.62 m/s² gravity.</p><p>The photographed surface comes from the LROC controlled south-pole average mosaic at 1 m/pixel. It combines historical exposures. Missing coverage shows shaded topography. The local surface uses NASA PGDA78 with 5 m posting. Terrain clone 001 is a published reconstruction of possible elevations. Switching surfaces recalculates wheel contact in recorded drives and uses the corresponding sunlight horizon. The surrounding 40.96 km landscape uses PGDA90 with 80 m posting. Survey lighting and fine material grain are illustrative. Mission sunlight uses a dated Sun direction and terrain horizon at the rover. Recorded wheel slip estimates use nominal wheel radius and rigid terrain. Soil deformation, sinkage and flight suspension response remain unresolved.</p><label class="grain-setting"><input type="checkbox" data-grain checked> Show illustrative surface grain</label><a href="/data/drive/index.json" target="_blank" rel="noreferrer">Terrain files and source hashes</a><a href="/data/drive/sunlight.json" target="_blank" rel="noreferrer">Dated sunlight samples and source hashes</a><a href="/robots/viper/source.json" target="_blank" rel="noreferrer">Rover geometry and hardware sources</a></dialog></main>`;
   icons();
   const $=s=>root.querySelector(s), host=$('.drive-canvas'), status=$('.drive-loading'), lifetime=new AbortController();
@@ -334,6 +335,10 @@ export function mountDrive(root,{logo,icon,icons}) {
   $('[data-image]').onclick=e=>{showImage=!showImage;e.currentTarget.setAttribute('aria-pressed',String(showImage));for(const m of terrain.children)m.userData.imagery.value=Number(showImage);};
   $('[data-contours]').onclick=e=>{contour=!contour;e.currentTarget.setAttribute('aria-pressed',String(contour));for(const m of terrain.children)m.userData.contours.value=Number(contour);};
   const skyDialog=$('.drive-sky-dialog');
+  const refreshReference=mountGeometryReference($('.geometry-reference'),()=>{
+    const site=$('[data-site]').value;
+    return {site,name:$('[data-site]').selectedOptions[0].textContent,start:startUtc};
+  },lifetime.signal);
   const epochChoice=$('[data-epoch-choice]'),utcInput=$('[data-utc]'),lighting=$('[data-lighting]');
   function editLighting(){
     $('[data-epochs]').disabled=lighting.value==='survey';utcInput.hidden=epochChoice.value!=='custom';
@@ -343,7 +348,7 @@ export function mountDrive(root,{logo,icon,icons}) {
     held.clear();lighting.value=dated?'dated':'survey';
     const current=startUtc.slice(0,16);
     epochChoice.value=[...epochChoice.options].some(o=>o.value===current)?current:'custom';
-    utcInput.value=current;editLighting();skyDialog.showModal();
+    utcInput.value=current;editLighting();skyDialog.showModal();refreshReference();
   };
   lighting.onchange=editLighting;epochChoice.onchange=editLighting;
   $('[data-sky-close]').onclick=()=>skyDialog.close();

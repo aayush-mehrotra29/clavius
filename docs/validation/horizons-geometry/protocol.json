@@ -1,0 +1,26 @@
+{
+  "sites": ["connecting-ridge", "shackleton-rim"],
+  "epochs_utc": [
+    "2000-01-15T00:00:00.000Z",
+    "2010-09-21T17:34:01.211Z",
+    "2015-06-08T18:16:14.587Z",
+    "2019-05-02T04:18:17.800Z",
+    "2028-01-01T12:00:00.000Z",
+    "2028-01-21T12:00:00.000Z",
+    "2028-01-27T12:00:00.000Z",
+    "2049-12-15T00:00:00.000Z"
+  ],
+  "observer_height_m": 0.5,
+  "sphere_radius_km": 1737.4,
+  "gates": {
+    "direction_deg": 0.001,
+    "azimuth_deg": 0.001,
+    "elevation_deg": 0.001,
+    "range_km": {"sun": 15, "earth": 1},
+    "station_radius_error_m": 0.2,
+    "latitude_error_deg": 0.000001,
+    "minimum_negative_control_deg": 0.05
+  },
+  "negative_controls": "At each site the maximum direction error must exceed the negative-control threshold for a one-hour Sun clock offset and for an Earth vector from the lunar center with observer parallax removed.",
+  "scope": "Same nominal site origin and height, UTC schedule, geometric center vectors and lunar mean-Earth coordinate convention. Local ENU for the reference is independently constructed from Horizons station-to-lunar-center and north-pole-to-lunar-center vectors. Different planetary ephemeris generations are retained. All rows and both negative controls must pass."
+}
