@@ -84,3 +84,33 @@ def test_empty_battery_stops_motion_before_science():
     assert run['trace'][-1]['t_s'] <= .05
     assert run['trace'][-1]['battery_wh'] == 0
     assert any('depleted' in issue for issue in run['issues'])
+
+
+def test_flight_viewer_samples_follow_coasts_and_rotating_descent():
+    import spiceypy as spice
+    from clavius.flight import moon_state, saved_flight_samples
+
+    flight = solve('2028-05-01', 'shackleton-rim')
+    data = flight['trajectory_3d']
+    times = np.array(data['times_seconds'])
+    craft = np.array(data['spacecraft_coords_km'])
+    moon = np.array(data['moon_coords_km'])
+    velocities = np.array(data['spacecraft_velocities_kms'])
+    lunar_v = np.array(data['moon_velocities_kms'])
+    start = epoch(flight['departure_utc'])
+    approach = data['approach_index']
+    assert times[0] == 0 and np.diff(times).min() > 0
+    assert times[-1] == pytest.approx(flight['transfer_s'])
+    np.testing.assert_array_equal(craft[:approach+1], flight['trajectory_earth_j2000_km'])
+    for i in (0, data['patch_index'], approach, len(times)-1):
+        np.testing.assert_allclose(np.r_[moon[i], lunar_v[i]], moon_state(start+times[i]), atol=1e-8, rtol=0)
+    assert 100 == pytest.approx(np.linalg.norm(craft[approach]-moon[approach])
+                                -np.linalg.norm(craft[-1]-moon[-1]), abs=.01)
+    fixed = spice.sxform('J2000', 'MOON_ME_DE421', start+times[-1]) @ np.r_[craft[-1]-moon[-1],velocities[-1]-lunar_v[-1]]
+    np.testing.assert_allclose(fixed[:3], site('shackleton-rim').origin/1000, rtol=0, atol=1e-6)
+    np.testing.assert_allclose(fixed[3:], 0, atol=1e-10)
+    legacy = {key:value for key,value in flight.items() if key!='trajectory_3d'}
+    assert saved_flight_samples(legacy) == data
+    legacy['trajectory_earth_j2000_km']=[[0,0,0]]
+    with pytest.raises(ValueError,match='could not be reproduced'):
+        saved_flight_samples(legacy)

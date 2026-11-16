@@ -27,6 +27,7 @@ function clonePublicAssets() {
 }
 
 export default defineConfig({
+  optimizeDeps:{include:['react','react-dom/client','lucide-react','recharts']},
   plugins:process.platform==='darwin'?[clonePublicAssets()]:[],
   server:{host:'127.0.0.1',watch:{ignored:['**/.venv/**',privateData+'/**','**/backend/**','**/dist/**','**/docs/**','**/scripts/**','**/contracts/**','**/examples/**','**/tests/**']},proxy:{'/api':{target:'http://127.0.0.1:8001',changeOrigin:true}}}
 });

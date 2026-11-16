@@ -7,19 +7,6 @@ const timeLabel=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0')
 const dateLabel=stamp=>new Date(stamp).toLocaleString('en-GB',{timeZone:'UTC',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'})+' UTC';
 const stages=['Flight','Traverse','Replay'];
 
-function trackPlot(flight){
-  const rows=flight.trajectory_earth_j2000_km;
-  // Orthogonal projection onto the plane of the Earth leg, with the patch on the x-axis.
-  const dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0);
-  const unit=a=>a.map(v=>v/Math.hypot(...a));
-  const x=unit(rows[flight.patch_index]),a=rows[0],y=unit(a.map((v,i)=>v-dot(a,x)*x[i]));
-  const points=rows.map(p=>[dot(p,x),dot(p,y)]),scale=230/Math.max(...points.map(p=>p[0]));
-  const coords=points.map(([e,n])=>[14+e*scale,17+n*scale]);
-  const min=Math.min(...coords.map(p=>p[1])),max=Math.max(...coords.map(p=>p[1]));
-  const path=coords.map(p=>p.join(',')).join(' '),last=coords.at(-1);
-  return '<svg class="flight-plot" role="img" aria-label="Calculated transfer projected onto its Earth departure plane" viewBox="-2 '+(min-9)+' 266 '+(max-min+18)+'"><circle cx="14" cy="17" r="4"/><polyline points="'+path+'"/><circle cx="'+last[0]+'" cy="'+last[1]+'" r="2.5"/></svg>';
-}
-
 export function mountExpedition(root,{logo,icon,icons}){
   root.innerHTML=`<main class="expedition">
   <header class="exp-head"><a class="brand" href="/" aria-label="Clavius home">${logo}</a>
@@ -27,11 +14,12 @@ export function mountExpedition(root,{logo,icon,icons}){
     <details class="exp-tools"><summary aria-label="Open workspace tools">${icon('menu')}</summary><nav><a href="/app/atlas">Lunar atlas</a><a href="/app/simulation">Simulation lab</a><a href="/app/drive">VIPER reference</a></nav></details>
   </header><div class="exp-layout"><section class="exp-panel"><div id="exp-form"></div><p class="exp-error" role="alert" hidden></p></section>
   <section class="exp-view" aria-label="Lunar mission viewer"><div class="exp-pin" aria-hidden="true" hidden></div>
-    <figure class="exp-transfer" hidden></figure><div class="exp-caption"><h2></h2><p></p></div><div class="exp-view-error" role="status" hidden></div>
+    <div class="exp-orbit" hidden></div><div class="exp-caption"><h2></h2><p></p></div><div class="exp-view-error" role="status" hidden></div>
     <div class="exp-player" hidden><button id="exp-play" aria-label="Pause playback">${icon('play','play-glyph')}${icon('pause','pause-glyph')}</button><time>0:00</time><input type="range" id="exp-scrub" min="0" value="0" step="any" aria-label="Replay time"><select aria-label="Playback speed" id="exp-speed"><option value="1">1×</option><option value="3" selected>3×</option><option value="8">8×</option></select><button id="exp-fly" title="Replay fly-in" aria-label="Replay fly-in">${icon('rotate-ccw')}</button></div>
   </section></div></main>`;
   const $=selector=>root.querySelector(selector),form=$('#exp-form'),error=$('.exp-error'),player=$('.exp-player');
   const abort=new AbortController(),signal=abort.signal;
+  let closeOrbit,viewVersion=0;
   let robots=[],sites=[],flight,run,scene,stage=0,busy=false;
   let siteId='connecting-ridge',departure='2028-01-01T00:00',hours=96,robotId='',route=[{east_m:2,north_m:0},{east_m:4,north_m:0}],task='science',dwell=5;
   const url=(key,id)=>history.replaceState({},'',id?'/app?'+new URLSearchParams({[key]:id}):'/app');
@@ -47,7 +35,8 @@ export function mountExpedition(root,{logo,icon,icons}){
   const btn=(id,text)=>`<button class="exp-primary" id="${id}">${text}<span class="exp-action-mark">${icon('arrow-up')}</span></button>`;
   const metric=(label,value)=>`<div><dt>${label}</dt><dd>${safe(value)}</dd></div>`;
   function setStage(n,title){
-    stage=n;showError('');$('.exp-transfer').hidden=true;root.querySelectorAll('[data-step]').forEach((el,i)=>{
+    stage=n;viewVersion++;closeOrbit?.();closeOrbit=null;
+    $('.exp-orbit').hidden=true;$('.exp-orbit').replaceChildren();$('.exp-caption').hidden=false;viewerError('');showError('');root.querySelectorAll('[data-step]').forEach((el,i)=>{
       el.classList.toggle('past',i<n);if(i===n)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');
     });
     form.innerHTML='<h1 tabindex="-1">'+title+'</h1>';player.hidden=true;
@@ -55,12 +44,17 @@ export function mountExpedition(root,{logo,icon,icons}){
   function caption(name,detail){
     $('.exp-caption h2').textContent=name;$('.exp-caption p').textContent=detail;
   }
+  function ensureSurface(){
+    if(scene)return;
+    try{scene=new ExpeditionScene($('.exp-view'),$('.exp-pin'),onTime);}
+    catch(e){viewerError('3D requires WebGL. Mission calculations and results remain available.');}
+  }
   function selectSite(){
     const site=sites.find(s=>s.id===siteId);
     if(site){scene?.setSite(site.latitude_deg,site.longitude_deg);caption(site.name,formatCoordinate(site.latitude_deg)+'  /  '+site.longitude_deg.toFixed(3)+'° E');}
   }
   function flightForm(){
-    setStage(0,'Plan your flight');scene?.reset();selectSite();
+    setStage(0,'Plan your flight');ensureSurface();scene?.reset();selectSite();
     form.insertAdjacentHTML('beforeend',`<form id="flight-fields"><label>Departure <span>UTC · Earth orbit</span><input type="datetime-local" id="exp-date" min="2000-01-01T00:00" max="2049-12-31T23:59" required></label>
     <label>Landing site<select id="exp-site">${sites.map(s=>`<option value="${safe(s.id)}" ${s.available?'':'disabled'}>${safe(s.name)}${s.available?'':' · unavailable'}</option>`).join('')}</select></label>
     <label>Time to approach<select id="exp-hours">${[72,84,96,108,120].map(h=>`<option value="${h}">${h} hours</option>`).join('')}</select></label>
@@ -103,15 +97,39 @@ export function mountExpedition(root,{logo,icon,icons}){
   function flightDetails(){
     return `<details class="exp-notes"><summary>Flight solution</summary><dl>${metric('From Earth orbit',dateLabel(flight.departure_utc))}${metric('Touchdown',dateLabel(flight.landing.utc))}${Object.entries(flight.maneuvers_km_s).map(([k,v])=>metric(k.replaceAll('_',' '),v.toFixed(3)+' km/s')).join('')}</dl><p>${safe(flight.model)}</p></details>`;
   }
+  async function flightReview(){
+    setStage(0,'Your flight');
+    const version=viewVersion;
+    scene?.dispose();scene=null;
+    const host=$('.exp-orbit');host.hidden=false;
+    $('.exp-pin').hidden=true;$('.exp-caption').hidden=true;
+    host.textContent='Loading flight path…';
+    siteId=flight.landing.site_id;departure=flight.departure_utc.slice(0,16);hours=flight.request.transfer_hours;
+    form.insertAdjacentHTML('beforeend',`<section class="exp-outcome"><h2>Earth to ${safe(flight.landing.name)}</h2>
+      <dl>${metric('Departure',dateLabel(flight.departure_utc))}${metric('Landing',dateLabel(flight.landing.utc))}
+      ${metric('Flight time',(flight.transfer_s/3600).toFixed(2)+' h')}${metric('Total Δv',flight.total_delta_v_km_s.toFixed(2)+' km/s')}</dl></section>
+      ${btn('exp-continue','Plan traverse')}${flightDetails()}
+      <details class="exp-notes"><summary>About this visualization</summary><p>Positions and velocities use Earth-centered J2000 coordinates. The globe textures, body sizes and dashed lunar orbit guide are illustrative. Lunar altitude is relative to the 1,737.4 km sphere. The amber ring marks the braking point 100 km above the selected landing site.</p><a href="https://github.com/prollyAditya/Clavius/tree/3f26903fad64ae961b1464597d83d3a86ef02663/frontend/src/components/views" target="_blank" rel="noopener">Original flight visualizations ↗</a></details>
+      <button class="exp-back" id="exp-edit">Edit flight</button>`);
+    $('#exp-continue').onclick=()=>{url('route',flight.id);traverseForm();};
+    $('#exp-edit').onclick=()=>{url();flightForm();};
+    icons();
+    try{
+      const [module,data]=await Promise.all([import('./flight/viewer.tsx'),flight.trajectory_3d||api('flights/'+encodeURIComponent(flight.id)+'/trajectory')]);
+      if(signal.aborted||version!==viewVersion)return;
+      host.replaceChildren();closeOrbit=module.mountFlightViewer(host,data);
+    }catch(e){
+      if(signal.aborted||version!==viewVersion)return;
+      host.textContent='';showError(e.message);
+    }
+  }
   function traverseForm(){
-    setStage(1,'Set the traverse');scene?.reset();
-    const figure=$('.exp-transfer');figure.hidden=false;
-    figure.innerHTML=trackPlot(flight)+'<figcaption>Earth orbit to lunar approach <span>'+flight.total_delta_v_km_s.toFixed(2)+' km/s total Δv</span></figcaption>';
+    setStage(1,'Set the traverse');ensureSurface();scene?.reset();
     siteId=flight.landing.site_id;departure=flight.departure_utc.slice(0,16);hours=flight.request.transfer_hours;selectSite();
     form.insertAdjacentHTML('beforeend',`<p class="exp-arrival">Landing ${safe(dateLabel(flight.landing.utc))}</p>
       <form id="traverse-fields"><label>Rover<select id="exp-robot">${robots.map(r=>`<option value="${safe(r.id)}">${safe(r.name)}</option>`).join('')}<option value="import">Import rover…</option></select></label>
       <div id="route-editor"></div><div class="exp-pair"><label>At destination<select id="exp-task"><option value="science">Science dwell</option><option value="wait">Park</option></select></label><label>Duration (s)<input id="exp-dwell" required type="number" min="1" max="30" value="${dwell}"></label></div>
-      ${btn('exp-run','Simulate traverse')}</form>${flightDetails()}<button class="exp-back" id="exp-edit">Edit flight</button>`);
+      ${btn('exp-run','Simulate traverse')}</form>${flightDetails()}<button class="exp-back" id="exp-review">View flight path</button>`);
     form.insertAdjacentHTML('beforeend',`<dialog class="exp-import" aria-labelledby="exp-import-title"><h2 id="exp-import-title">Import rover</h2>
       <form><label>URDF or model ZIP<input type="file" name="package" accept=".zip,.urdf" required></label>
       <label>Power and mobility profile<input type="file" name="profile" accept=".json"></label><p>Include a profile here or a clavius-profile.json inside the ZIP.</p>
@@ -140,7 +158,7 @@ export function mountExpedition(root,{logo,icon,icons}){
       finally{button.disabled=false;}
     };
     $('#exp-task').value=task;$('#exp-robot').value=robotId;bindRoute();icons();
-    $('#exp-edit').onclick=()=>{url();flightForm();};
+    $('#exp-review').onclick=()=>{url('flight',flight.id);flightReview();};
     $('#traverse-fields').onsubmit=e=>{
       e.preventDefault();robotId=$('#exp-robot').value;task=$('#exp-task').value;dwell=Number($('#exp-dwell').value);
       launch('traverses',{flight_id:flight.id,robot_id:robotId,waypoints:route,task,dwell_s:dwell});
@@ -155,7 +173,7 @@ export function mountExpedition(root,{logo,icon,icons}){
     $('#exp-battery').textContent=row.battery_wh.toFixed(2)+' Wh';$('#exp-velocity').textContent=(row.speed_m_s*100).toFixed(1)+' cm/s';
   }
   async function replay(){
-    setStage(2,'Mission replay');
+    setStage(2,'Mission replay');ensureSurface();
     route=run.request.waypoints;robotId=run.robot_id;task=run.request.task;dwell=run.request.dwell_s;
     const m=run.metrics;
     form.insertAdjacentHTML('beforeend',`<p class="exp-arrival">${safe(run.robot_snapshot.model.name)}</p>
@@ -165,9 +183,10 @@ export function mountExpedition(root,{logo,icon,icons}){
     <div class="exp-telemetry"><strong id="exp-activity">At landing site</strong><span id="exp-velocity"></span><span id="exp-battery"></span></div>
     ${btn('exp-reroute','Edit traverse')}
     ${flightDetails()}<details class="exp-notes"><summary>Simulation details</summary><p>MuJoCo rigid contact on 5 m LOLA terrain. Solar power uses dated DE421 directions, local terrain horizons and the recorded body attitude. Scene fill light helps reveal terrain in shadow. Friction and power properties are engineering assumptions. The controller has 180 s to reach the route and finish its dwell within 0.18 m.</p><a href="/api/v1/runs/${encodeURIComponent(run.id)}" target="_blank" rel="noopener">Open run data ↗</a></details>
-    <button id="exp-new" class="exp-back">New flight</button>`);
+    <button id="exp-orbit-replay" class="exp-back">View flight path</button> <button id="exp-new" class="exp-back">New flight</button>`);
     caption(run.landing.name,dateLabel(run.landing.utc));icons();
-    $('#exp-reroute').onclick=()=>{url('flight',flight.id);traverseForm();};
+    $('#exp-reroute').onclick=()=>{url('route',flight.id);traverseForm();};
+    $('#exp-orbit-replay').onclick=()=>{url('flight',flight.id);flightReview();};
     $('#exp-new').onclick=()=>{url();flightForm();};
     if(!scene)return;
     const selected=run;
@@ -194,7 +213,7 @@ export function mountExpedition(root,{logo,icon,icons}){
       }
     }while(job.state!=='completed');
     const result=await api('runs/'+encodeURIComponent(job.result_id));
-    if(result.kind==='flight'){flight=result;url('flight',flight.id);traverseForm();}
+    if(result.kind==='flight'){flight=result;url('flight',flight.id);await flightReview();}
     else if(result.kind==='traverse'){run=result;flight=await api('runs/'+encodeURIComponent(run.flight_id));url('mission',run.id);await replay();}
     else throw Error('This job belongs to a different workspace.');
   }
@@ -216,7 +235,7 @@ export function mountExpedition(root,{logo,icon,icons}){
       form.innerHTML=`<h1>${path==='flights'?'Calculating flight':'Running mission'}</h1><div class="exp-progress" role="status"><progress max="1"></progress><span>Preparing inputs</span></div><button id="exp-cancel" class="exp-back">Cancel run</button>`;
       $('#exp-cancel').onclick=()=>api('jobs/'+encodeURIComponent(id)+'/cancel',{}).catch(e=>showError(e.message));
       await finishJob(id);
-    }catch(e){if(!signal.aborted){if(flight && path!=='flights'){url('flight',flight.id);traverseForm();}else{url();flightForm();}showError(e.message);}}
+    }catch(e){if(!signal.aborted){if(flight && path!=='flights'){url('route',flight.id);traverseForm();}else{url();flightForm();}showError(e.message);}}
     finally{busy=false;}
   }
   async function init(){
@@ -233,17 +252,15 @@ export function mountExpedition(root,{logo,icon,icons}){
         run=await api('runs/'+encodeURIComponent(params.get('mission')));
         if(run.kind!=='traverse')throw Error('This link requires a recorded traverse.');
         flight=await api('runs/'+encodeURIComponent(run.flight_id));await replay();
-      }else if(params.has('flight')){
-        flight=await api('runs/'+encodeURIComponent(params.get('flight')));
+      }else if(params.has('flight')||params.has('route')){
+        flight=await api('runs/'+encodeURIComponent(params.get('flight')||params.get('route')));
         if(flight.kind!=='flight')throw Error('This link requires a solved flight.');
-        traverseForm();
+        if(params.has('route'))traverseForm();else await flightReview();
       }else flightForm();
     }catch(e){
       if(!signal.aborted){showError(e.message);form.insertAdjacentHTML('beforeend','<button id="exp-retry" class="exp-back">Start again</button>');$('#exp-retry').onclick=()=>{url();init();};}
     }
   }
-  try{scene=new ExpeditionScene($('.exp-view'),$('.exp-pin'),onTime);}
-  catch(e){viewerError('3D requires WebGL. Mission calculations and results remain available.');}
   icons();init();
-  return ()=>{abort.abort();scene?.dispose();};
+  return ()=>{abort.abort();closeOrbit?.();scene?.dispose();};
 }

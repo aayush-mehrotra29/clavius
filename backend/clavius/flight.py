@@ -81,6 +81,36 @@ def moon_state(et):
         return np.asarray(spice.spkezr('MOON', et, 'J2000', 'NONE', 'EARTH')[0])
 
 
+def flight_samples(earth, moon, start, patch_time, gate, ground):
+    """Earth-centered J2000 states. At each impulse store the outbound velocity."""
+    times = np.concatenate((earth.t, patch_time-start+moon.t[1:], gate-start+np.arange(30., DESCENT_SECONDS+1, 30.)))
+    lunar = np.array([moon_state(start+t) for t in times])
+    patch = len(earth.t)-1
+    approach = patch+len(moon.t)-1
+    craft = np.empty_like(lunar)
+    craft[:patch+1] = earth.y.T
+    craft[patch, 3:] = lunar[patch, 3:] + moon.y[3:, 0]
+    craft[patch+1:approach+1] = lunar[patch+1:approach+1] + moon.y.T[1:]
+    radial = unit(ground)
+    for i in range(approach, len(times)):
+        fraction = max(0., 1-(times[i]-times[approach])/DESCENT_SECONDS)
+        fixed = np.r_[ground+APPROACH_HEIGHT*fraction**2*radial,
+                      -2*APPROACH_HEIGHT/DESCENT_SECONDS*fraction*radial]
+        with _lock:
+            transform = spice.sxform('MOON_ME_DE421', 'J2000', start+times[i])
+        state = lunar[i] + transform @ fixed
+        if i == approach:
+            # Preserve the independently integrated coast endpoint at the brake.
+            craft[i, 3:] = state[3:]
+        else:
+            craft[i] = state
+    return {'times_seconds': times.tolist(), 'spacecraft_coords_km': craft[:, :3].tolist(),
+            'spacecraft_velocities_kms': craft[:, 3:].tolist(), 'moon_coords_km': lunar[:, :3].tolist(),
+            'moon_velocities_kms': lunar[:, 3:].tolist(), 'patch_index': patch, 'approach_index': approach,
+            'lunar_reference_radius_km': 1737.4, 'earth_reference_radius_km': EARTH_RADIUS,
+            'earth_mu_km3_s2': EARTH_MU}
+
+
 def plan_flight(request, progress, cancel):
     start = start_epoch(request.departure_utc)
     duration = request.transfer_hours*3600
@@ -122,8 +152,7 @@ def plan_flight(request, progress, cancel):
     height = APPROACH_HEIGHT*(1-t/DESCENT_SECONDS)**2
     accel = MOON_MU/(np.linalg.norm(ground)+height)**2+2*APPROACH_HEIGHT/DESCENT_SECONDS**2
     impulses['powered_descent'] = float(np.trapezoid(accel,t))
-    positions = np.vstack([earth.y[:3].T, [moon_state(patch_time+dt)[:3]+p
-                                          for dt,p in zip(moon.t[1:], moon.y[:3,1:].T)]])
+    samples = flight_samples(earth, moon, start, patch_time, gate, ground)
     return {
         'request': request.model_dump(), 'departure_utc': utc_from_et(start),
         'landing': {'site_id': terrain.id, 'name': terrain.name, 'latitude_deg': terrain.lat,
@@ -131,7 +160,8 @@ def plan_flight(request, progress, cancel):
                     'east_m': 0., 'north_m': 0., 'utc': utc_from_et(landed),
                     'frame': 'MOON_ME_DE421', 'terrain_realization_id': 'nominal'},
         'transfer_s': landed-start, 'maneuvers_km_s': impulses, 'total_delta_v_km_s': sum(impulses.values()),
-        'trajectory_earth_j2000_km': positions.tolist(), 'patch_index': len(earth.t)-1,
+        'trajectory_3d': samples,
+        'trajectory_earth_j2000_km': samples['spacecraft_coords_km'][:samples['approach_index']+1], 'patch_index': len(earth.t)-1,
         'approach_utc': utc_from_et(gate), 'approach_height_km': APPROACH_HEIGHT,
         'descent_s': DESCENT_SECONDS, 'terminal_surface_speed_m_s': 0.,
         'endpoint_residual_m': [float(1000*np.linalg.norm(earth.y[:3,-1]-destination)),
@@ -140,3 +170,16 @@ def plan_flight(request, progress, cancel):
         'model': 'Two targeted point-mass coasts with a patch impulse, followed by a prescribed powered vertical descent. Departure from a selectable-epoch 200 km circular parking orbit with a freely chosen plane. No launch-pad, vehicle thrust, fuel, landing dispersion or hazard qualification.',
         'sources': drive_sources(terrain), 'provenance': {'implementation': implementation()},
     }
+
+def saved_flight_samples(flight):
+    if 'trajectory_3d' in flight:
+        return flight['trajectory_3d']
+    # Older runs saved positions only. Recover the missing states without changing
+    # the saved artifact, and verify the full original coast before using them.
+    recovered = plan_flight(FlightRequest(**flight['request']), lambda *_: None, lambda: False)
+    original = np.asarray(flight['trajectory_earth_j2000_km'])
+    replayed = np.asarray(recovered['trajectory_earth_j2000_km'])
+    if (original.shape != replayed.shape or not np.allclose(original, replayed, rtol=0, atol=1e-5)
+            or recovered['landing'] != flight['landing']):
+        raise ValueError('The saved trajectory could not be reproduced. Calculate a new flight to view its telemetry.')
+    return recovered['trajectory_3d']

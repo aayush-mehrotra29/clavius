@@ -4,6 +4,8 @@ Plan a flight from Earth orbit to a lunar polar site, give a rover waypoints and
 
 ![The hypothetical Clavius R1 replaying a simulated science traverse at Connecting Ridge](docs/validation/mission-replay.jpg)
 
+After calculating a flight, open **Flight path** to orbit Earth and the moving Moon, scrub the spacecraft trail, or follow the spacecraft. **Charts** shows velocity, Earth and Moon range, lunar altitude, and orbital energy. **Plan traverse** uses the same flight’s landing site and UTC. The Three.js renderer and Recharts plots are adapted directly from [Aditya’s flight simulator and trajectory analysis](https://github.com/prollyAditya/Clavius/tree/3f26903fad64ae961b1464597d83d3a86ef02663/frontend/src/components/views).
+
 ## Run locally
 
 Requires Node.js 20.19+ or 22.12+.

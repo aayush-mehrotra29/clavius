@@ -1,0 +1,37 @@
+.exp-orbit{position:absolute;inset:0;z-index:2;min-width:0;background:#030712;color:#e2e8f0;font:12px/1.5 ui-monospace,SFMono-Regular,monospace}
+.orbital-simulator,.orbital-canvas{position:absolute;inset:0}
+.orbital-canvas canvas{cursor:grab;touch-action:none}.orbital-canvas canvas:active{cursor:grabbing}
+.orbital-panel{background:rgba(10,16,31,.85);backdrop-filter:blur(8px);border:1px solid rgba(56,189,248,.18);border-radius:12px}
+.orb-view-switch,.orb-chart-tabs,.orb-rates{display:flex;align-items:center;gap:3px}
+.orb-view-switch{position:absolute;top:16px;left:16px;z-index:2;border-radius:999px;border:1px solid #334155;background:#0a101fef;padding:3px;font-family:Inter,system-ui,sans-serif}
+.exp-orbit button{border-radius:999px;color:#aebdce}
+.exp-orbit button:hover{background:#23314b;color:white}
+.orb-view-switch button,.orb-chart-tabs button,.orb-cameras button{padding:6px 12px}
+.exp-orbit button[aria-pressed=true]{background:#153452;color:#a6ebff}
+.orb-view-switch button[aria-pressed=true]{background:var(--action-blue);color:#fff}
+.orb-hud{position:absolute;top:65px;left:16px;width:244px;padding:10px 13px}
+.orb-hud summary{cursor:pointer;font-size:12px}.orb-hud summary span{float:right;color:#67e8f9;font-size:10px}
+.orb-clock{margin-top:10px;padding:6px 8px;background:#111d31;color:#67e8f9;font-weight:600}
+.exp-orbit .orb-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin:6px 0}
+.exp-orbit .orb-metrics>div{display:block;padding:5px 7px;background:#101a2c;border-radius:4px}.exp-orbit .orb-metrics dt{font-size:10px;color:#a0aec0}.exp-orbit .orb-metrics dd{text-align:left;font-size:12px;color:white}
+.orb-vectors{border-top:1px solid #263448;padding-top:5px;font-size:10px;color:#b1c0d1}
+.orb-cameras{position:absolute;top:16px;right:16px;display:grid;grid-template-columns:repeat(2,1fr);gap:2px;padding:5px}
+.orb-cameras button{font-size:11px;text-align:left}
+.orb-timeline{position:absolute;bottom:16px;left:16px;right:16px;padding:10px 14px}
+.orb-playbar,.orb-events{display:flex;align-items:center;gap:6px}.orb-playbar>button{width:32px;height:32px;display:grid;place-items:center}.orb-playbar svg{width:15px;height:15px}
+.exp-orbit .orb-play{background:var(--action-blue);color:#fff}.orb-playbar output{margin-left:auto;color:#67e8f9}.orb-rates button{padding:3px 7px;font-size:11px}
+.orb-timeline input{width:100%;margin:7px 0;accent-color:#22d3ee}.orb-events{justify-content:space-between}.orb-events button{font-size:10px;padding:3px 7px}.orb-events button:nth-child(2){color:#fbbf24}
+.orb-analysis{position:absolute;inset:70px 0 0;padding:12px clamp(16px,3vw,40px) 24px;overflow:auto}
+.orb-analysis h2{font:500 clamp(21px,2.4vw,32px)/1.2 Inter,sans-serif;letter-spacing:-.04em;margin:0 0 16px}
+.orb-chart-tabs{flex-wrap:wrap}.orb-chart-tabs button{border:1px solid #334155;font-size:11px}
+.orb-chart{width:100%;height:clamp(260px,48vh,480px);margin-top:20px;border:1px solid #243449;border-radius:12px;background:#090f1d;padding:8px}
+.exp-orbit .recharts-surface{width:100%;height:100%}.exp-orbit .recharts-legend-item svg{width:14px;height:14px}
+.orb-message{margin:75px 16px;color:#afc1d3}
+@media(max-width:900px){.orb-hud{width:200px}.orb-cameras{max-width:180px}.orb-cameras button{padding:5px 8px}}
+@media(max-width:740px){.exp-view:has(.exp-orbit:not([hidden])){height:57svh;min-height:360px}.orb-cameras{top:10px;right:8px}.orb-view-switch{top:10px;left:8px}.orb-hud{top:55px;left:8px;max-width:175px}.orb-timeline{bottom:8px;left:8px;right:8px;padding:6px 9px}.orb-rates button{padding:3px 5px}.orb-playbar{gap:3px}.orb-playbar output{font-size:10px}.orb-analysis{inset:48px 0 0;padding:12px}.orb-chart{height:235px;min-width:0;margin-top:10px;padding:0}.orb-analysis h2{font-size:20px;margin-bottom:7px}.orb-chart-tabs button{padding:4px 8px}.orb-events button{font-size:9px}}
+
+.orb-camera-short{display:none}
+@media(max-width:740px){
+  .orb-camera-full{display:none}.orb-camera-short{display:inline}
+  .orb-hud summary span{float:none;padding-left:5px;font-size:9px}
+}
