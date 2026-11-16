@@ -1,0 +1,181 @@
+{
+  "public_reports": {
+    "scm-validation": {
+      "sha256": "5b608ab2118bc5a57911358227ef8479103ae452327ce44a7014e3daffc7c3b9",
+      "matches_local": true
+    },
+    "mobility-validation": {
+      "sha256": "d1c76dce7b6cd88a21cd109376ad58882f23d938df79bca8aa7f2326420b4d81",
+      "matches_local": true
+    },
+    "horizons-geometry": {
+      "sha256": "8ec7bcafd513313541b644f8c6693d50aa8cc2bebe961922cad4fd7d0a6abe59",
+      "matches_local": true
+    },
+    "illumination-validation": {
+      "sha256": "0b853723ff6526d51976606639ae0955e89e120b2638259cf45dd0663db27b9f",
+      "matches_local": true
+    },
+    "gmat-reference-validation": {
+      "sha256": "62341b694b8711e1d8b7eb8b120e603d9862f88a1d6c0d1a2dda0fb33e3093d0",
+      "matches_local": true
+    }
+  },
+  "rigid": {
+    "point_count": 18,
+    "traction_rmse_deg": 12.82585164350079,
+    "maximum_abs_traction_error_deg": 25.037176624674853,
+    "mean_bias_deg": 10.94338860957473,
+    "all_rig_controls_passed": true,
+    "traction_development_targets_met": false,
+    "lunar_validation_established": false,
+    "refinement_targets_met": true
+  },
+  "scm": {
+    "frozen_selection_sha256": "b233eacab22d46202c7146e56e3c99edc10ad517e8d030266698b4fe5845393e",
+    "fresh_cases": {
+      "candidate-0/training-07": {
+        "trace_sha256": "1f1c7dcf672678248a42bc5c5bae9cefedf8dfa368b68ad292ba52d386455696",
+        "traction_deg": 17.32953294504626
+      },
+      "candidate-0/training-16": {
+        "trace_sha256": "dd28d0d7d50a084c30f53c55d6b8fb05820bd0ee042a18a55496bce8cba7f17f",
+        "traction_deg": 26.155765074591113
+      },
+      "grid-refinement-01": {
+        "trace_sha256": "e4b54790c77d56bba79639e5c7715d0274c414aa8982f36e477a0a895b85a66c",
+        "traction_deg": -5.244666556149461
+      },
+      "grid-refinement-07": {
+        "trace_sha256": "e8c9715d63e2751c30797447fa05dea23fc4eb742dced560bf0d4e10969a9d3b",
+        "traction_deg": 18.479375376220045
+      },
+      "grid-refinement-16": {
+        "trace_sha256": "6e9382e56b0492e858189aa0efc265db83887db4b32e9ed211f46c820a242340",
+        "traction_deg": 26.149448786692364
+      },
+      "holdout-01": {
+        "trace_sha256": "8c78675d54ef2ffc1079e22b35f6f2ebe703bbd8d111bc19d62019450a18838d",
+        "traction_deg": -4.894835815764287
+      },
+      "holdout-02": {
+        "trace_sha256": "7221eb342dee98b5e2e220db2037f92ef194ded28380c7a5d750ea61966231cf",
+        "traction_deg": 1.2479135615205705
+      },
+      "holdout-03": {
+        "trace_sha256": "67705c3757fea6ddf03d5632a3f61c59a52cc782cc43b5473765bd252ad4ba76",
+        "traction_deg": 1.4397873615614944
+      },
+      "holdout-05": {
+        "trace_sha256": "66778eb28c7a1e0f335c4200869b64767dfed46c06e01649a4e6ef78e2c3ece1",
+        "traction_deg": 12.564886335756256
+      },
+      "holdout-06": {
+        "trace_sha256": "29bc6c58582702662c85d13f90884ca407605d3c8950fe4394e399300c38c57f",
+        "traction_deg": 12.638593251535704
+      },
+      "holdout-10": {
+        "trace_sha256": "57799cc3e77179b32b2e1196c88d05bf4f04f1a4e18a2dc7a3297ffaa13904ae",
+        "traction_deg": 20.712641669784297
+      },
+      "holdout-14": {
+        "trace_sha256": "f1168403d08cf62fb6d93b57c93ffe5971ae178d3329d5dfbd948c899256d922",
+        "traction_deg": 24.866383508560155
+      },
+      "holdout-15": {
+        "trace_sha256": "2a55a7bb3bbd4f6baf6e2dcdb6134f72a00ce85d55ccd440912e5ec266be5664",
+        "traction_deg": 24.90847803809826
+      },
+      "time-refinement-01": {
+        "trace_sha256": "84be143503bb5ecab94c1015ec1225778b7843c1021a2055ccbc1c50e2ff52c3",
+        "traction_deg": -4.992760501903171
+      },
+      "time-refinement-07": {
+        "trace_sha256": "115527e850ee0c30e92851498ae0c0a03445980d4403b4cb3452b3ef9765bd5b",
+        "traction_deg": 18.381840305111222
+      },
+      "time-refinement-16": {
+        "trace_sha256": "1cc5c1cd8a446b5681e1410a1e80a58ab3ba3b407a3c220717a002af58467d5d",
+        "traction_deg": 26.116179310859632
+      }
+    },
+    "matched_source_indices": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      10,
+      14,
+      15
+    ],
+    "rigid_rmse_deg": 15.602705003072185,
+    "scm_rmse_deg": 9.684587534403994,
+    "pointwise_wins": 8,
+    "relative_reduction_pct": 37.93007345523042
+  },
+  "viper": {
+    "runtime_identity": "1f18c4a4faeb68faac1d849e14c0c2b5006a85619044af30c3322b4a960ac055",
+    "baseline_defects_reproduced": true,
+    "deliberate_axis_error_detected": true,
+    "repaired_frame_targets_met": true,
+    "rigid_targets_met": true
+  },
+  "horizons": {
+    "archived_comparisons": 32,
+    "offline_replay_passed": true,
+    "max_errors": {
+      "sun": {
+        "direction_deg": 9.169621887766443e-06,
+        "azimuth_deg": 5.468877702696773e-06,
+        "elevation_deg": 7.393586359594195e-06,
+        "range_km": 0.009097546339035034
+      },
+      "earth": {
+        "direction_deg": 1.041829884169694e-05,
+        "azimuth_deg": 7.052322274603284e-06,
+        "elevation_deg": 1.0415182594591954e-05,
+        "range_km": 0.0002706628874875605
+      }
+    }
+  },
+  "gmat": {
+    "runtime_identity": "97c3f208072e53654eeb5a7c46e721abe9c71c7bda779fd6f24ab336379d03ed",
+    "passed": true,
+    "case_count": 2,
+    "failures": []
+  },
+  "gazebo": {
+    "passed": true,
+    "worker_source_sha256": "a0805fea622905276fa969f2044e918031697f5d9aa0990564fa2a73d01c8535",
+    "runtime_identity": "7ee6e7802a00a492625f5805654698e9dc4122da1a09ba4b587bd8c992662c34",
+    "cases": {
+      "flat_drive": {
+        "job_id": "4d3c23bc-c50e-4c5b-869d-e06776169101",
+        "input_bundle_sha256": "5a6090657b69c671c0eeaee8e325891ea241512928045e4c50e3a7289235843b",
+        "result_sha256": "e966b5fc9443ab4690be54100cb550379bc75e16e3bd6cc9e70ca37046da6b40",
+        "checks": {
+          "speed_m_s": 0.049900203522872236,
+          "distance_m": 0.23929241561364128,
+          "settled_root_up_m": -5.3538954979244804e-08,
+          "maximum_roll_deg": 3.27198083229554e-13,
+          "maximum_pitch_deg": 0.059494658178953434
+        },
+        "ros2_clock_messages": 51
+      },
+      "free_fall": {
+        "job_id": "809ab618-6583-474e-93c9-52adb1de7d9b",
+        "input_bundle_sha256": "10a9e6028c71ac770ec4e4a37e37d77b9c4ca74d3eb3cabf96c0c7674638078b",
+        "result_sha256": "e194f8fb8b44961dd43d50e370e4c1cde849672fe39896f1922cdab9848ddcf6",
+        "checks": {
+          "expected_root_up_m": -0.17750000000000002,
+          "actual_root_up_m": -0.17952499999979998,
+          "expected_vertical_velocity_m_s": -0.81,
+          "actual_vertical_velocity_m_s": -0.8099999999999997
+        },
+        "ros2_clock_messages": 6
+      }
+    },
+    "scope": "Executed native gravity, placement, bounded drive and ROS 2 telemetry benchmark; no measured lunar soil/contact-reaction calibration is implied."
+  }
+}

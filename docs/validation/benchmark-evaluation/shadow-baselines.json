@@ -1,0 +1,627 @@
+{
+  "source": "https://pgda.gsfc.nasa.gov/products/90",
+  "observation": "NAC reflectance I/F thresholds from the source protocol; ambiguous cells excluded.",
+  "measure": "Mean of lit recall and dark recall on the joint valid cells of each pair.",
+  "flat_horizon": "Clavius disk fraction >= 0.5 versus geometric solar elevation >= 0 degrees.",
+  "published_rendering": "Clavius disk fraction > 0 versus PGDA rendered irradiance > 0 W/m\u00b2.",
+  "protocol_sha256": "33aedda6e822758df6fd6f16a3f756769f6f5001a42bf8ba45fefeee23c85f35",
+  "samples": [
+    {
+      "file": "M1188426614-shadow-samples.npz",
+      "bytes": 210109,
+      "sha256": "5e6b19bf3b7485d0a9dbb03ab2f56fcf152809033ee1e40b3db8702d4e5e409a"
+    },
+    {
+      "file": "M1311409938-shadow-samples.npz",
+      "bytes": 336982,
+      "sha256": "6a8831b0d400c6f4a8f437bed8cb06ff36d73b4cfdb5bf1c28c30e38db1e1e17"
+    },
+    {
+      "file": "M139729686-shadow-samples.npz",
+      "bytes": 405195,
+      "sha256": "d3bc35e0e02396952a86d8f2e8ed4c07d577ab9f31763d37376ad7b466a613dc"
+    }
+  ],
+  "rows": [
+    {
+      "scene": "M1188426614",
+      "scope": "regional",
+      "thresholds": {
+        "dark_at_most": 0.001,
+        "lit_at_least": 0.005
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 2625,
+          "lit_count": 2834,
+          "false_sunlit": 4,
+          "false_shadow": 83,
+          "balanced_accuracy": 0.9845944819706287
+        },
+        "baseline": {
+          "dark_count": 2625,
+          "lit_count": 2834,
+          "false_sunlit": 2625,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 2625,
+          "lit_count": 2834,
+          "false_sunlit": 28,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.9946666666666667
+        },
+        "baseline": {
+          "dark_count": 2625,
+          "lit_count": 2834,
+          "false_sunlit": 21,
+          "false_shadow": 2,
+          "balanced_accuracy": 0.9956471418489767
+        }
+      }
+    },
+    {
+      "scene": "M1188426614",
+      "scope": "regional",
+      "thresholds": {
+        "dark_at_most": 0.0005,
+        "lit_at_least": 0.0025
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 1180,
+          "lit_count": 2953,
+          "false_sunlit": 0,
+          "false_shadow": 141,
+          "balanced_accuracy": 0.9761259735861836
+        },
+        "baseline": {
+          "dark_count": 1180,
+          "lit_count": 2953,
+          "false_sunlit": 1180,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 1180,
+          "lit_count": 2953,
+          "false_sunlit": 0,
+          "false_shadow": 1,
+          "balanced_accuracy": 0.9998306806637318
+        },
+        "baseline": {
+          "dark_count": 1180,
+          "lit_count": 2953,
+          "false_sunlit": 0,
+          "false_shadow": 5,
+          "balanced_accuracy": 0.999153403318659
+        }
+      }
+    },
+    {
+      "scene": "M1188426614",
+      "scope": "regional",
+      "thresholds": {
+        "dark_at_most": 0.002,
+        "lit_at_least": 0.01
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 2698,
+          "lit_count": 2654,
+          "false_sunlit": 20,
+          "false_shadow": 18,
+          "balanced_accuracy": 0.9929024430164854
+        },
+        "baseline": {
+          "dark_count": 2698,
+          "lit_count": 2654,
+          "false_sunlit": 2698,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 2698,
+          "lit_count": 2654,
+          "false_sunlit": 81,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.984988880652335
+        },
+        "baseline": {
+          "dark_count": 2698,
+          "lit_count": 2654,
+          "false_sunlit": 71,
+          "false_shadow": 1,
+          "balanced_accuracy": 0.9866537103874985
+        }
+      }
+    },
+    {
+      "scene": "M1311409938",
+      "scope": "regional",
+      "thresholds": {
+        "dark_at_most": 0.001,
+        "lit_at_least": 0.005
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        },
+        "baseline": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        },
+        "baseline": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        }
+      }
+    },
+    {
+      "scene": "M1311409938",
+      "scope": "regional",
+      "thresholds": {
+        "dark_at_most": 0.0005,
+        "lit_at_least": 0.0025
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        },
+        "baseline": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        },
+        "baseline": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        }
+      }
+    },
+    {
+      "scene": "M1311409938",
+      "scope": "regional",
+      "thresholds": {
+        "dark_at_most": 0.002,
+        "lit_at_least": 0.01
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        },
+        "baseline": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        },
+        "baseline": {
+          "dark_count": 0,
+          "lit_count": 0,
+          "false_sunlit": 0,
+          "false_shadow": 0,
+          "balanced_accuracy": null
+        }
+      }
+    },
+    {
+      "scene": "M139729686",
+      "scope": "regional",
+      "thresholds": {
+        "dark_at_most": 0.001,
+        "lit_at_least": 0.005
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 3814,
+          "lit_count": 5297,
+          "false_sunlit": 129,
+          "false_shadow": 16,
+          "balanced_accuracy": 0.981578332027736
+        },
+        "baseline": {
+          "dark_count": 3814,
+          "lit_count": 5297,
+          "false_sunlit": 3814,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 3814,
+          "lit_count": 5297,
+          "false_sunlit": 202,
+          "false_shadow": 3,
+          "balanced_accuracy": 0.9732354364686248
+        },
+        "baseline": {
+          "dark_count": 3814,
+          "lit_count": 5297,
+          "false_sunlit": 105,
+          "false_shadow": 15,
+          "balanced_accuracy": 0.984819028174272
+        }
+      }
+    },
+    {
+      "scene": "M139729686",
+      "scope": "regional",
+      "thresholds": {
+        "dark_at_most": 0.0005,
+        "lit_at_least": 0.0025
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 1200,
+          "lit_count": 5621,
+          "false_sunlit": 6,
+          "false_shadow": 55,
+          "balanced_accuracy": 0.9926076320939334
+        },
+        "baseline": {
+          "dark_count": 1200,
+          "lit_count": 5621,
+          "false_sunlit": 1200,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 1200,
+          "lit_count": 5621,
+          "false_sunlit": 15,
+          "false_shadow": 14,
+          "balanced_accuracy": 0.9925046699875467
+        },
+        "baseline": {
+          "dark_count": 1200,
+          "lit_count": 5621,
+          "false_sunlit": 10,
+          "false_shadow": 40,
+          "balanced_accuracy": 0.9922752475834667
+        }
+      }
+    },
+    {
+      "scene": "M139729686",
+      "scope": "regional",
+      "thresholds": {
+        "dark_at_most": 0.002,
+        "lit_at_least": 0.01
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 4418,
+          "lit_count": 4411,
+          "false_sunlit": 266,
+          "false_shadow": 1,
+          "balanced_accuracy": 0.9697825275077256
+        },
+        "baseline": {
+          "dark_count": 4418,
+          "lit_count": 4411,
+          "false_sunlit": 4418,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 4418,
+          "lit_count": 4411,
+          "false_sunlit": 371,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.9580126754187415
+        },
+        "baseline": {
+          "dark_count": 4418,
+          "lit_count": 4411,
+          "false_sunlit": 229,
+          "false_shadow": 2,
+          "balanced_accuracy": 0.973856589646506
+        }
+      }
+    },
+    {
+      "scene": "M139729686",
+      "scope": "connecting-ridge",
+      "thresholds": {
+        "dark_at_most": 0.001,
+        "lit_at_least": 0.005
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 1131,
+          "lit_count": 598,
+          "false_sunlit": 6,
+          "false_shadow": 11,
+          "balanced_accuracy": 0.9881501556913851
+        },
+        "baseline": {
+          "dark_count": 1131,
+          "lit_count": 598,
+          "false_sunlit": 1131,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 1131,
+          "lit_count": 598,
+          "false_sunlit": 14,
+          "false_shadow": 11,
+          "balanced_accuracy": 0.9846134624995194
+        },
+        "baseline": {
+          "dark_count": 1131,
+          "lit_count": 598,
+          "false_sunlit": 23,
+          "false_shadow": 3,
+          "balanced_accuracy": 0.987323645869373
+        }
+      }
+    },
+    {
+      "scene": "M139729686",
+      "scope": "connecting-ridge",
+      "thresholds": {
+        "dark_at_most": 0.0005,
+        "lit_at_least": 0.0025
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 360,
+          "lit_count": 647,
+          "false_sunlit": 0,
+          "false_shadow": 26,
+          "balanced_accuracy": 0.9799072642967542
+        },
+        "baseline": {
+          "dark_count": 360,
+          "lit_count": 647,
+          "false_sunlit": 360,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 360,
+          "lit_count": 647,
+          "false_sunlit": 1,
+          "false_shadow": 25,
+          "balanced_accuracy": 0.9792911729349133
+        },
+        "baseline": {
+          "dark_count": 360,
+          "lit_count": 647,
+          "false_sunlit": 4,
+          "false_shadow": 11,
+          "balanced_accuracy": 0.9859436716469174
+        }
+      }
+    },
+    {
+      "scene": "M139729686",
+      "scope": "connecting-ridge",
+      "thresholds": {
+        "dark_at_most": 0.002,
+        "lit_at_least": 0.01
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 1222,
+          "lit_count": 502,
+          "false_sunlit": 24,
+          "false_shadow": 1,
+          "balanced_accuracy": 0.9891840167969692
+        },
+        "baseline": {
+          "dark_count": 1222,
+          "lit_count": 502,
+          "false_sunlit": 1222,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 1222,
+          "lit_count": 502,
+          "false_sunlit": 39,
+          "false_shadow": 1,
+          "balanced_accuracy": 0.9830465372552344
+        },
+        "baseline": {
+          "dark_count": 1222,
+          "lit_count": 502,
+          "false_sunlit": 52,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.9787234042553191
+        }
+      }
+    },
+    {
+      "scene": "M139729686",
+      "scope": "shackleton-rim",
+      "thresholds": {
+        "dark_at_most": 0.001,
+        "lit_at_least": 0.005
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 817,
+          "lit_count": 1185,
+          "false_sunlit": 13,
+          "false_shadow": 21,
+          "balanced_accuracy": 0.9831833041538199
+        },
+        "baseline": {
+          "dark_count": 817,
+          "lit_count": 1185,
+          "false_sunlit": 817,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 817,
+          "lit_count": 1185,
+          "false_sunlit": 20,
+          "false_shadow": 20,
+          "balanced_accuracy": 0.9793212793538159
+        },
+        "baseline": {
+          "dark_count": 817,
+          "lit_count": 1185,
+          "false_sunlit": 31,
+          "false_shadow": 8,
+          "balanced_accuracy": 0.9776526243486254
+        }
+      }
+    },
+    {
+      "scene": "M139729686",
+      "scope": "shackleton-rim",
+      "thresholds": {
+        "dark_at_most": 0.0005,
+        "lit_at_least": 0.0025
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 130,
+          "lit_count": 1256,
+          "false_sunlit": 1,
+          "false_shadow": 40,
+          "balanced_accuracy": 0.9802302792748653
+        },
+        "baseline": {
+          "dark_count": 130,
+          "lit_count": 1256,
+          "false_sunlit": 130,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 130,
+          "lit_count": 1256,
+          "false_sunlit": 2,
+          "false_shadow": 36,
+          "balanced_accuracy": 0.9779764821166095
+        },
+        "baseline": {
+          "dark_count": 130,
+          "lit_count": 1256,
+          "false_sunlit": 5,
+          "false_shadow": 17,
+          "balanced_accuracy": 0.9740017148456639
+        }
+      }
+    },
+    {
+      "scene": "M139729686",
+      "scope": "shackleton-rim",
+      "thresholds": {
+        "dark_at_most": 0.002,
+        "lit_at_least": 0.01
+      },
+      "flat_horizon": {
+        "clavius": {
+          "dark_count": 895,
+          "lit_count": 1015,
+          "false_sunlit": 31,
+          "false_shadow": 6,
+          "balanced_accuracy": 0.9797258992211795
+        },
+        "baseline": {
+          "dark_count": 895,
+          "lit_count": 1015,
+          "false_sunlit": 895,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "published_rendering": {
+        "clavius": {
+          "dark_count": 895,
+          "lit_count": 1015,
+          "false_sunlit": 43,
+          "false_shadow": 5,
+          "balanced_accuracy": 0.9735145994440928
+        },
+        "baseline": {
+          "dark_count": 895,
+          "lit_count": 1015,
+          "false_sunlit": 58,
+          "false_shadow": 0,
+          "balanced_accuracy": 0.9675977653631285
+        }
+      }
+    }
+  ]
+}

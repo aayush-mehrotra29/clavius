@@ -90,3 +90,16 @@ def test_validation_locations_round_trip_through_production_enu_frame():
         assert abs(up) < 1e-8
         assert abs(actual_lat - lat) < 1e-10
         assert abs((actual_lon - lon + 180) % 360 - 180) < 1e-10
+
+
+def test_paired_baseline_balanced_accuracy_uses_equal_class_weights_and_common_support():
+    from scripts.score_shadow_baselines import classification
+
+    truth = np.array([False, False, False, True, True])
+    prediction = np.array([True, False, False, False, True])
+    valid = np.array([True, True, True, True, False])
+    score = classification(truth, prediction, valid)
+    assert (score["dark_count"], score["lit_count"]) == (3, 1)
+    assert (score["false_sunlit"], score["false_shadow"]) == (1, 1)
+    np.testing.assert_allclose(score["balanced_accuracy"], 1/3)
+    assert classification(truth, prediction, ~truth)["balanced_accuracy"] is None
