@@ -1,0 +1,382 @@
+{
+  "model": "clavius-viper-parked-battery-v1",
+  "array_model": "clavius-viper-array-incidence-v1",
+  "production_step_s": 300,
+  "reference_step_s": 60,
+  "hardware_sha256": "812e42e71e0bf5fa1eef10fc1f280d22d1dc3dececba7ccd86424139648449aa",
+  "battery_sha256": "5ab9f28c78af057f1e41e26baea760c9209d885d00c27fa8ae34376c68063d8a",
+  "scenario": {
+    "hours": 48,
+    "capacity": 5420,
+    "initialPct": 75,
+    "load": 150,
+    "chargeEfficiency": 0.95,
+    "dischargeEfficiency": 0.9
+  },
+  "limits": {
+    "energy_wh": 54.2,
+    "first_unmet_s": 300
+  },
+  "cases": [
+    {
+      "site": "connecting-ridge",
+      "start": "2028-01-01T12:00:00Z",
+      "heading": 0,
+      "environment_sha256": "4db4dc9beb534f5350c76df6ce8f8200152a29037640d2b8fc7dce0d89eadcc7",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.000871845015353756,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": -0.0008718449953448726,
+        "unmet": 0,
+        "losses": -2.8421709430404007e-13
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "start": "2028-01-01T12:00:00Z",
+      "heading": 90,
+      "environment_sha256": "4db4dc9beb534f5350c76df6ce8f8200152a29037640d2b8fc7dce0d89eadcc7",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.0008716878837731201,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": -0.0008716879274288658,
+        "unmet": 0,
+        "losses": 2.842170943040401e-14
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "start": "2028-01-01T12:00:00Z",
+      "heading": 225,
+      "environment_sha256": "4db4dc9beb534f5350c76df6ce8f8200152a29037640d2b8fc7dce0d89eadcc7",
+      "production_end_wh": 3955.6879987125626,
+      "reference_end_wh": 3955.6883106685245,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.0003084185054831323,
+        "end": -0.00031195596193356323,
+        "minimum": -0.00031195596193356323,
+        "curtailed": 0,
+        "unmet": 0,
+        "losses": 0.000003537479372539565
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "start": "2028-01-21T12:00:00Z",
+      "heading": 0,
+      "environment_sha256": "375e5eb8a27f2cd400b06aad219a5dd28e38644bee99cdc864f8626d2e2d6c56",
+      "production_end_wh": 0,
+      "reference_end_wh": 0,
+      "production_first_unmet_s": 124144.38294880014,
+      "reference_first_unmet_s": 124144.62302884254,
+      "residuals_wh": {
+        "generated": -0.0036148760275409586,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": 0,
+        "unmet": 0.0036148760127616697,
+        "losses": 6.821210263296962e-13
+      },
+      "first_unmet_difference_s": -0.2400800424074987,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "start": "2028-01-21T12:00:00Z",
+      "heading": 90,
+      "environment_sha256": "375e5eb8a27f2cd400b06aad219a5dd28e38644bee99cdc864f8626d2e2d6c56",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.02849049273208948,
+        "end": 0,
+        "minimum": 0.01644982100378911,
+        "curtailed": -0.02597973058527714,
+        "unmet": 0,
+        "losses": -0.0025107621526956336
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "start": "2028-01-21T12:00:00Z",
+      "heading": 225,
+      "environment_sha256": "375e5eb8a27f2cd400b06aad219a5dd28e38644bee99cdc864f8626d2e2d6c56",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.041328700877784286,
+        "end": 0,
+        "minimum": 0.020465145113121253,
+        "curtailed": -0.038205073460630956,
+        "unmet": 0,
+        "losses": -0.003123627411554253
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "start": "2028-01-27T12:00:00Z",
+      "heading": 0,
+      "environment_sha256": "fad6eee8a05f83f7d0185a6111dd300ab1d9e0c40dd350428979a79c5f930c48",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.00027968999165750574,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": -0.00027969004986516666,
+        "unmet": 0,
+        "losses": -4.689582056016661e-13
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "start": "2028-01-27T12:00:00Z",
+      "heading": 90,
+      "environment_sha256": "fad6eee8a05f83f7d0185a6111dd300ab1d9e0c40dd350428979a79c5f930c48",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.0003319985407870263,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": -0.0003319985371490475,
+        "unmet": 0,
+        "losses": -4.405364961712621e-13
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "start": "2028-01-27T12:00:00Z",
+      "heading": 225,
+      "environment_sha256": "fad6eee8a05f83f7d0185a6111dd300ab1d9e0c40dd350428979a79c5f930c48",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.000234704275499098,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": -0.0002347042764085927,
+        "unmet": 0,
+        "losses": -3.126388037344441e-13
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "start": "2028-01-01T12:00:00Z",
+      "heading": 0,
+      "environment_sha256": "5135ac4867c0e4856e6da4d84c34ac8765ed8407317267a59daa3e2da0e3ebe1",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": 0.000073297465860378,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": 0.00007329747586481972,
+        "unmet": 0,
+        "losses": -9.094947017729282e-13
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "start": "2028-01-01T12:00:00Z",
+      "heading": 90,
+      "environment_sha256": "5135ac4867c0e4856e6da4d84c34ac8765ed8407317267a59daa3e2da0e3ebe1",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": 0.004131251909711864,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": 0.004131251938815694,
+        "unmet": 0,
+        "losses": 1.4210854715202004e-14
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "start": "2028-01-01T12:00:00Z",
+      "heading": 225,
+      "environment_sha256": "5135ac4867c0e4856e6da4d84c34ac8765ed8407317267a59daa3e2da0e3ebe1",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.0004899149535049219,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": -0.0004899149389530066,
+        "unmet": 0,
+        "losses": -3.694822225952521e-13
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "start": "2028-01-21T12:00:00Z",
+      "heading": 0,
+      "environment_sha256": "faf4cd3bd0b158ca083ae59db7e7136381b6d73387a340c5fa6e7d84f64ed2bc",
+      "production_end_wh": 0,
+      "reference_end_wh": 0,
+      "production_first_unmet_s": 107722.16932587768,
+      "reference_first_unmet_s": 107722.57197452248,
+      "residuals_wh": {
+        "generated": -0.017156776335923496,
+        "end": 0,
+        "minimum": 0,
+        "curtailed": 0,
+        "unmet": 0.017156776279989572,
+        "losses": 1.5916157281026244e-11
+      },
+      "first_unmet_difference_s": -0.40264864479831886,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "start": "2028-01-21T12:00:00Z",
+      "heading": 90,
+      "environment_sha256": "faf4cd3bd0b158ca083ae59db7e7136381b6d73387a340c5fa6e7d84f64ed2bc",
+      "production_end_wh": 1671.0972009210705,
+      "reference_end_wh": 1671.1380745402064,
+      "production_first_unmet_s": 113143.87231163529,
+      "reference_first_unmet_s": 113144.46023801478,
+      "residuals_wh": {
+        "generated": -0.021499605179087666,
+        "end": -0.04087361913593668,
+        "minimum": 0,
+        "curtailed": 0,
+        "unmet": -0.02152525711949238,
+        "losses": -0.0021512430952839168
+      },
+      "first_unmet_difference_s": -0.5879263794922736,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "start": "2028-01-21T12:00:00Z",
+      "heading": 225,
+      "environment_sha256": "faf4cd3bd0b158ca083ae59db7e7136381b6d73387a340c5fa6e7d84f64ed2bc",
+      "production_end_wh": 3100.04351269586,
+      "reference_end_wh": 3100.0902771429983,
+      "production_first_unmet_s": 124487.81585369185,
+      "reference_first_unmet_s": 124486.75788404171,
+      "residuals_wh": {
+        "generated": -0.03040784034601529,
+        "end": -0.046764447138230025,
+        "minimum": 0,
+        "curtailed": 0,
+        "unmet": -0.02323229996004983,
+        "losses": -0.00687569307456215
+      },
+      "first_unmet_difference_s": 1.0579696501372382,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "start": "2028-01-27T12:00:00Z",
+      "heading": 0,
+      "environment_sha256": "d02b41db9a1778844266c7d1007e7f3c214ef0e9a3c93c7d5e694cb581b215e7",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.003760204939680989,
+        "end": 0,
+        "minimum": 0.009626819870391046,
+        "curtailed": -0.0022908482608272607,
+        "unmet": 0,
+        "losses": -0.001469356715659842
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "start": "2028-01-27T12:00:00Z",
+      "heading": 90,
+      "environment_sha256": "d02b41db9a1778844266c7d1007e7f3c214ef0e9a3c93c7d5e694cb581b215e7",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.012454848088964354,
+        "end": 0,
+        "minimum": 0.0334608152875262,
+        "curtailed": -0.007347670996750821,
+        "unmet": 0,
+        "losses": -0.005107177069689328
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "start": "2028-01-27T12:00:00Z",
+      "heading": 225,
+      "environment_sha256": "d02b41db9a1778844266c7d1007e7f3c214ef0e9a3c93c7d5e694cb581b215e7",
+      "production_end_wh": 5420,
+      "reference_end_wh": 5420,
+      "production_first_unmet_s": null,
+      "reference_first_unmet_s": null,
+      "residuals_wh": {
+        "generated": -0.010616845929689589,
+        "end": 0,
+        "minimum": 0.022541897240444086,
+        "curtailed": -0.00717624058961519,
+        "unmet": 0,
+        "losses": -0.003440605368595584
+      },
+      "first_unmet_difference_s": null,
+      "passed": true
+    }
+  ]
+}

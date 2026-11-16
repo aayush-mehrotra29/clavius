@@ -70,6 +70,15 @@ def drive_replay_environment(identity:str,start_utc:str,replay_sha256:str):
  try:return live_replay(identity,start_utc,replay_sha256)
  except (ValueError,OSError) as e:raise HTTPException(422,str(e)) from e
 
+@app.get('/api/v1/sites/{identity}/parked-sunlight')
+def parked_environment(identity:str,start_utc:str,hours:int=Query(24,ge=1,le=48),
+                       east_m:float=Query(0,allow_inf_nan=False),north_m:float=Query(0,allow_inf_nan=False)):
+ from .drive_environment import parked_sunlight
+ if not any(d['id']==identity for d in catalogue()):raise HTTPException(404,'Unknown drive site.')
+ try:return parked_sunlight(identity,start_utc,east_m,north_m,hours)
+ except (ValueError,OSError) as e:raise HTTPException(422,str(e)) from e
+
+
 @app.get('/api/v1/sites/{identity}/thermal-context')
 def thermal_context(identity:str,east_m:float=0,north_m:float=0):
  if not any(d['id']==identity for d in catalogue()):raise HTTPException(404)

@@ -1,0 +1,12 @@
+{
+  "model": "clavius-viper-parked-battery-v1",
+  "reference_capacity_wh": 5420,
+  "condition": "Beginning of life at 0 °C",
+  "reference": {
+    "title": "VIPER Rover Overview and Mobility and Hardware",
+    "page": 2,
+    "url": "https://ntrs.nasa.gov/citations/20240013903",
+    "sha256": "fde1179cbf7af0fa04bdf4d19bb2c133a6c551e616fa921bb69354c21ec18465"
+  },
+  "assumptions": "Usable capacity fixed at the reference value. Load, initial charge, and charge/discharge efficiencies are scenario inputs. Battery temperature, voltage limits, controller restart and aging remain unresolved."
+}

@@ -95,3 +95,22 @@ def live_replay(identity, start_utc, replay_sha256):
     return {"model": MODEL, "site_id": identity, "replay_sha256": replay_sha256, "start_utc": start_utc,
             "sample_interval_s": 1, "samples": replay_samples(terrain, start_utc, frames, frequency),
             "sources": drive_sources(terrain)}
+
+
+def parked_sunlight(identity, start_utc, east, north, hours, step_s=300):
+    """Fixed-site Sun samples for a parked, terrain-aligned array scenario."""
+    terrain = site(identity)
+    start = start_epoch(start_utc)
+    duration = hours * 3600
+    if start + duration >= epoch("2050-01-01T00:00:00Z"):
+        raise ValueError("The parking interval ends outside the supported kernel interval.")
+    dz_de = float(terrain.height(east+5,north) - terrain.height(east-5,north)) / 10
+    dz_dn = float(terrain.height(east,north+5) - terrain.height(east,north-5)) / 10
+    rows = []
+    for elapsed in [*range(0,duration,step_s), duration]:
+        s = drive_sample(terrain, start + elapsed, east, north)
+        rows.append([elapsed, *s["sun_site_enu"], s["sun_distance_km"], s["disk_fraction"]])
+    return {"model":"clavius-viper-parked-sun-v1", "site_id":identity, "start_utc":start_utc,
+            "east_m":east, "north_m":north, "duration_hours":hours, "step_s":step_s,
+            "dz_de":dz_de, "dz_dn":dz_dn, "sources":drive_sources(terrain),
+            "columns":["elapsed_s","sun_e","sun_n","sun_u","sun_distance_km","disk_fraction"], "rows":rows}

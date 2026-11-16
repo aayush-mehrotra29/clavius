@@ -586,8 +586,42 @@
         "model": "clavius-drive-directional-horizon-v1",
         "sample_interval_s": 1,
         "role": "Three selected UTC starts applied to the recorded traces; calculated nominal observer visibility."
+      },
+      "battery": {
+        "url": "/robots/viper/battery.json",
+        "sha256": "5ab9f28c78af057f1e41e26baea760c9209d885d00c27fa8ae34376c68063d8a"
       }
     },
-    "role": "Browser kinematic drive and recorded native component experiments. Controlled NAC mosaic is historical display imagery only."
+    "role": "Browser kinematic drive and recorded native component experiments. Controlled NAC mosaic is historical display imagery only.",
+    "parked_sunlight": {
+      "connecting-ridge": {
+        "2028-01-01T12:00:00Z": {
+          "url": "/data/drive/connecting-ridge-parked-2028-01-01.json",
+          "sha256": "4db4dc9beb534f5350c76df6ce8f8200152a29037640d2b8fc7dce0d89eadcc7"
+        },
+        "2028-01-21T12:00:00Z": {
+          "url": "/data/drive/connecting-ridge-parked-2028-01-21.json",
+          "sha256": "375e5eb8a27f2cd400b06aad219a5dd28e38644bee99cdc864f8626d2e2d6c56"
+        },
+        "2028-01-27T12:00:00Z": {
+          "url": "/data/drive/connecting-ridge-parked-2028-01-27.json",
+          "sha256": "fad6eee8a05f83f7d0185a6111dd300ab1d9e0c40dd350428979a79c5f930c48"
+        }
+      },
+      "shackleton-rim": {
+        "2028-01-01T12:00:00Z": {
+          "url": "/data/drive/shackleton-rim-parked-2028-01-01.json",
+          "sha256": "5135ac4867c0e4856e6da4d84c34ac8765ed8407317267a59daa3e2da0e3ebe1"
+        },
+        "2028-01-21T12:00:00Z": {
+          "url": "/data/drive/shackleton-rim-parked-2028-01-21.json",
+          "sha256": "faf4cd3bd0b158ca083ae59db7e7136381b6d73387a340c5fa6e7d84f64ed2bc"
+        },
+        "2028-01-27T12:00:00Z": {
+          "url": "/data/drive/shackleton-rim-parked-2028-01-27.json",
+          "sha256": "d02b41db9a1778844266c7d1007e7f3c214ef0e9a3c93c7d5e694cb581b215e7"
+        }
+      }
+    }
   }
 }

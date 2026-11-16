@@ -5,6 +5,7 @@ import {groundHeight, loadGround, loadDriveImage, terrainMesh} from './drive-gro
 import {applyReplay,drawReplayPaths,loadReplay,replayAssembly} from './viper-replay.js';
 import {arrayPower,replayArrayEnergy,manualBodyToEnu} from './viper-array.js';
 import {DriveSunlight,loadDriveSource} from './drive-sunlight.js';
+import {mountParkedPower} from './parked-view.js';
 import './drive.css';
 
 const directions={w:'forward',s:'reverse',a:'left',d:'right',arrowup:'forward',arrowdown:'reverse',arrowleft:'left',arrowright:'right'};
@@ -25,7 +26,7 @@ export function mountDrive(root,{logo,icon,icons}) {
   <div class="drive-buttons"><select data-motion aria-label="Motion model"><option value="manual">Manual drive</option><option value="native">Recorded dynamics</option></select><select data-maneuver aria-label="Steering maneuver"><option value="turn">Coordinated turn</option><option value="crab">Crab steering</option></select><button data-demo disabled>Start traverse</button><select data-rate aria-label="Simulation rate"><option value="1">Real time</option><option value="10" selected>10× time</option><option value="30">30× time</option></select>
   <div class="drive-pad" aria-label="Hold to drive">${[['left','←'],['forward','↑'],['reverse','↓'],['right','→']].map(([d,k])=>`<button data-dir="${d}" aria-label="Drive ${d}">${k}</button>`).join('')}</div><button data-reset aria-label="Reset rover position">${icon('rotate-ccw')}</button></div><label class="drive-clock" hidden>Replay time <input type="range" data-scrub min="0" max="20" step=".05" value="0"><output data-time>0.00 / 20 s</output></label>
   <details class="drive-paths" hidden><summary>Compare recorded paths</summary><div><canvas width="520" height="260" aria-label="Plan view of both recorded paths. East is right and north is up."></canvas><dl><dt>Straight · dashed</dt><dd data-path-turn></dd><dt>Crab · solid</dt><dd data-path-crab></dd></dl></div></details></section>
-  <footer class="drive-foot"><span>WASD to drive · Drag to orbit · Scroll to zoom</span><div><button data-sky>Sun at rover</button><button data-info>Data & rover model</button></div></footer>
+  <footer class="drive-foot"><span>WASD to drive · Drag to orbit · Scroll to zoom</span><div><button data-park disabled>Parked power</button><button data-sky>Sun at rover</button><button data-info>Data & rover model</button></div></footer>
   <dialog class="drive-sky-dialog drive-info" aria-labelledby="sky-heading"><form data-sky-form><button type="button" data-sky-close>Close</button><h2 id="sky-heading">Sun at the rover</h2><p>Choose a UTC start for the drive. Clavius samples the Sun and Earth from 0.5 m above the nominal terrain at the rover’s position.</p>
   <label>Lighting<select data-lighting><option value="survey">Survey light</option><option value="dated">Mission sunlight</option></select></label>
   <fieldset data-epochs><legend>Drive start (UTC)</legend><select data-epoch-choice aria-label="Choose an epoch"><option value="2028-01-01T12:00">1 Jan 2028 · 12:00 UTC</option><option value="2028-01-21T12:00" selected>21 Jan 2028 · 12:00 UTC</option><option value="2028-01-27T12:00">27 Jan 2028 · 12:00 UTC</option><option value="custom">Custom UTC start</option></select>
@@ -78,6 +79,17 @@ export function mountDrive(root,{logo,icon,icons}) {
   let imageryIndex,showImage=true,replayIndex,recording,assembly,native=false,replayTime=0;
   let plottedTime, plottedRecording;
   let state=parkedDrive(), local, rover, catalog, currentRequest, active=false, demo=false, overview=false, contour=false, frame,last=performance.now(),hudTime=0;
+  const parked = mountParkedPower(root,()=>{
+    if(!active)return;
+    setDemo(false);held.clear();
+    const chassis=native?assembly.children[0]:null;
+    const axis=chassis?new THREE.Vector3(1,0,0).applyQuaternion(chassis.quaternion):null;
+    const heading=axis?Math.atan2(axis.x,axis.y):Math.PI/2-state.heading;
+    return {site:lightingSite,name:catalog.sites[lightingSite].name,utc:startUtc,
+      east:chassis?chassis.position.x:state.east,north:chassis?chassis.position.y:state.north,
+      heading:(heading*180/Math.PI%360+360)%360};
+  });
+  $('[data-park]').onclick=()=>parked.open();
   const resize=()=>{const w=host.clientWidth,h=host.clientHeight;if(w&&h){camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);}};
   const observer=new ResizeObserver(resize);observer.observe(host);resize();
   function cameraMode(wide) {
@@ -185,7 +197,7 @@ export function mountDrive(root,{logo,icon,icons}) {
   async function siteChange(){
     const id=$('[data-site]').value;
     currentRequest?.abort();const request=currentRequest=new AbortController();
-    active=false;sky.reset();held.clear();setDemo(false);$('[data-demo]').disabled=true;
+    active=false;$('[data-park]').disabled=true;sky.reset();held.clear();setDemo(false);$('[data-demo]').disabled=true;
     $('.drive-paths').hidden=true;
     for(const indicator of root.querySelectorAll('.drive-instruments strong'))indicator.textContent='—';
     status.hidden=false;status.textContent='Loading '+catalog.sites[id].name+'…';
@@ -201,7 +213,7 @@ export function mountDrive(root,{logo,icon,icons}) {
       const [turnTrace, crabTrace] = await Promise.all([straight, crab].map(entry=>loadReplay(entry,near,request.signal)));
       if(request.signal.aborted)return;
       recording = {turn:turnTrace, crab:crabTrace};
-      lightingSite=id;active=true;replayTime=0;$('.drive-paths').hidden=!native;reset();setDemo(!matchMedia('(prefers-reduced-motion: reduce)').matches);
+      lightingSite=id;active=true;$('[data-park]').disabled=false;replayTime=0;$('.drive-paths').hidden=!native;reset();setDemo(!matchMedia('(prefers-reduced-motion: reduce)').matches);
       $('[data-demo]').disabled=false;status.hidden=true;
       const url=new URL(location.href);url.searchParams.set('site',id);history.replaceState({},'',url);
     }catch(err){if(!request.signal.aborted)status.textContent='Could not load this site. '+err.message;}
@@ -283,5 +295,5 @@ export function mountDrive(root,{logo,icon,icons}) {
     }catch(err){if(!lifetime.signal.aborted)status.textContent='Could not open the drive view. '+err.message;}
   })();
   frame=requestAnimationFrame(tick);
-  return ()=>{dated=false;sky.reset();lifetime.abort();currentRequest?.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();release(scene);light.shadow.dispose();renderer.dispose();};
+  return ()=>{parked.dispose();dated=false;sky.reset();lifetime.abort();currentRequest?.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();release(scene);light.shadow.dispose();renderer.dispose();};
 }

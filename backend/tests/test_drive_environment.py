@@ -89,3 +89,18 @@ def test_custom_replay_samples_match_live_query_and_are_bound_to_site_and_time()
     assert result["samples"][-1]["sun_distance_km"] > 1e8
     assert client.get(endpoint.replace("connecting-ridge","shackleton-rim"),params=params).status_code == 422
     assert client.get(endpoint,params={**params,"start_utc":"2049-12-31T23:59:50Z"}).status_code == 422
+
+
+def test_parked_solar_series_uses_fixed_position_and_si_clock():
+    start = "2028-01-22T12:00:00Z"
+    endpoint = route.replace("drive-environment", "parked-sunlight")
+    params = {"hours":1, "east_m":12., "north_m":-9., "start_utc":start}
+    response = client.get(endpoint,params=params)
+    assert response.status_code == 200
+    result = response.json()
+    assert len(result["rows"]) == 13
+    for row in result["rows"][::6]:
+        s = live_sample("connecting-ridge",start,row[0],12.,-9.)["sample"]
+        np.testing.assert_allclose(row[1:],[*s["sun_site_enu"],s["sun_distance_km"],s["disk_fraction"]])
+    for invalid in ({"hours":49},{"hours":0},{"east_m":1e8},{"start_utc":"2049-12-31T23:30:00Z"}):
+        assert client.get(endpoint,params={**params,**invalid}).status_code == 422

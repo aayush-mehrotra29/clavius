@@ -4,6 +4,10 @@ export async function loadDriveSource(name, signal) {
   const index = await fetch('/data/manifest.json', {signal});
   if (!index.ok) throw new Error('Drive source manifest unavailable');
   const record = (await index.json()).rover_drive.sources[name];
+  return readDriveSource(record, signal);
+}
+
+export async function readDriveSource(record, signal) {
   const response = await fetch(record.url, {signal});
   if (!response.ok) throw new Error('Drive source unavailable');
   const bytes = await response.arrayBuffer();
