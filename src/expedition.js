@@ -315,9 +315,9 @@ export function mountExpedition(root,{logo,icon,icons}){
           path='landing-plans';searchDraft=saved.request;
         }else throw Error('This job belongs to a different workspace.');
       }
+      form.innerHTML=`<h1>${path==='landing-plans'?'Comparing landings':path==='flights'?'Calculating flight':'Running mission'}</h1><div class="exp-progress" role="status"><progress max="1"></progress><span>Calculating with the selected terrain and date…</span></div><button id="exp-cancel" class="exp-back" hidden>Cancel run</button>`;
       const id=resumeId||(await api(path,body)).id;
-      url('job',id);
-      form.innerHTML=`<h1>${path==='landing-plans'?'Comparing landings':path==='flights'?'Calculating flight':'Running mission'}</h1><div class="exp-progress" role="status"><progress max="1"></progress><span>Preparing inputs</span></div><button id="exp-cancel" class="exp-back">Cancel run</button>`;
+      url('job',id);$('#exp-cancel').hidden=false;
       $('#exp-cancel').onclick=()=>api('jobs/'+encodeURIComponent(id)+'/cancel',{}).catch(e=>showError(e.message));
       await finishJob(id);
     }catch(e){if(!signal.aborted){if(path==='landing-plans'){url();plannerForm();}else if(flight && path==='traverses'){url('route',flight.id);traverseForm();}else{url();flightForm();}showError(e.message);}}

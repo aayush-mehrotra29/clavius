@@ -179,7 +179,7 @@ def selected_flight(plan, key):
     if not candidate or key not in plan['ranked_keys']:
         raise ValueError('Choose an evaluated option that meets the planning limits.')
     digest = candidate['flight_sha256']
-    raw = (RUNTIME/'artifacts'/f'{digest}.json').read_bytes()
+    raw = store.restore_file(RUNTIME/'artifacts'/f'{digest}.json').read_bytes()
     if hashlib.sha256(raw).hexdigest() != digest:
         raise ValueError('Saved transfer failed its integrity check.')
     identity = str(uuid5(NAMESPACE_URL, f"clavius:landing:{plan['id']}:{key}"))

@@ -63,8 +63,8 @@ export function mountSimulation(root,{logo,icon,icons}) {
  async function refreshHistory(){history=await api('/runs');$('#run-count').textContent=history.length;if(tab==='runs')renderHistory();}
  function request(){readSetup();if(!defaults.start_utc)throw new Error('Choose a UTC mission start time.');return {robot_id:selectedRobot,site_id:siteId,name:`${selected().name.replace(' (hypothetical)','')} · ${defaults.start_utc.slice(5,10)}`,start_utc:defaults.start_utc+'Z',duration_hours:defaults.duration_hours,observer_height_m:defaults.observer_height_m,waypoints,activities,heater_enabled:defaults.heater_enabled,max_earth_outage_s:defaults.max_earth_outage_s,scenario:{...defaults.scenario,terrain_realization_id:surfaceId},thermal:thermalEnabled?structuredClone(thermalConfig):null,seed:42};}
  async function startRun(kind='mission',override){
-  try{const payload=override||(kind==='campaign'?{mission:request(),samples:6,seed:42}:kind==='mission'?request():{robot_id:selectedRobot,site_id:siteId,terrain_realization_id:surfaceId,east_m:waypoints[0].east_m,north_m:waypoints[0].north_m,duration_s:20,speed_m_s:selected().profile.mobility.nominal_speed_m_s});busy=true;playing=false;refreshButtons();job=await post(kind==='campaign'?'/scenario-searches':kind==='mission'?'/planning-runs':'/robot-segments',payload);$('.sim-job').hidden=false;poll();}
-  catch(error){busy=false;refreshButtons();toast(error.message,true);}
+  try{const payload=override||(kind==='campaign'?{mission:request(),samples:6,seed:42}:kind==='mission'?request():{robot_id:selectedRobot,site_id:siteId,terrain_realization_id:surfaceId,east_m:waypoints[0].east_m,north_m:waypoints[0].north_m,duration_s:20,speed_m_s:selected().profile.mobility.nominal_speed_m_s});busy=true;playing=false;job=null;refreshButtons();$('.sim-job').hidden=false;$('#job-label').textContent='Calculating with the selected terrain and date…';$('#job-progress').removeAttribute('value');job=await post(kind==='campaign'?'/scenario-searches':kind==='mission'?'/planning-runs':'/robot-segments',payload);$('.sim-job').hidden=false;poll();}
+  catch(error){busy=false;$('.sim-job').hidden=true;refreshButtons();toast(error.message,true);}
  }
  async function poll(){
   if(disposed||!job)return;
@@ -208,7 +208,7 @@ export function mountSimulation(root,{logo,icon,icons}) {
    const text=$('#repair-dates').value.split(',').map(v=>v.trim());if(text.some(v=>!/^[-+]?\d+$/.test(v)))throw new Error('Use comma-separated integer date offsets.');
    const policy=JSON.parse($('#repair-policy').value);if(!policy||Array.isArray(policy)||Object.keys(policy).some(k=>!['costs','audit_bounds'].includes(k)))throw new Error('The policy accepts costs and audit_bounds only.');
    const value={source_run_id:source.id,date_offsets_days:text.map(Number),wait_at_start_s:$('#repair-wait').checked?[0,3600]:[0],capacity_factors:$('#repair-capacity').checked?[1,1.2]:[1],solar_factors:$('#repair-solar').checked?[1,1.1]:[1],heater_choices:$('#repair-heater').checked?[false,true]:null,max_candidates:Number($('#repair-budget').value),max_audit_candidates:Number($('#repair-audit-count').value),audit_samples:Number($('#repair-audit-samples').value),audit_seed:Number($('#repair-seed').value),...policy};
-   busy=true;playing=false;refreshButtons();job=await post('/repair-searches',value);closeDialog();$('.sim-job').hidden=false;poll();
+   busy=true;playing=false;job=null;refreshButtons();$('.sim-job').hidden=false;$('#job-label').textContent='Calculating with the selected terrain and date…';$('#job-progress').removeAttribute('value');job=await post('/repair-searches',value);closeDialog();$('.sim-job').hidden=false;poll();
   }catch(error){busy=false;refreshButtons();$('.sim-form-error').hidden=false;$('.sim-form-error').textContent=error.message;$('.sim-form-error').scrollIntoView({block:'nearest'});}finally{button.disabled=false;}};
  }
  function showRepairSearch(result,partialJobId){

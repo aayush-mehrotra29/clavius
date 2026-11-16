@@ -3,7 +3,7 @@ from pathlib import Path
 from urllib.request import urlretrieve
 from concurrent.futures import ThreadPoolExecutor
 import argparse,hashlib,json,sys
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--diviner',action='store_true',help='Also prepare the optional historical Diviner context (~410 MB).');parser.add_argument('--observed-shadows',action='store_true',help='Also fetch the optional pinned NAC validation images, renderings and acquisition labels (~153 MB).');args=parser.parse_args()
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--diviner',action='store_true',help='Also prepare the optional historical Diviner context (~410 MB).');parser.add_argument('--observed-shadows',action='store_true',help='Also fetch the optional pinned NAC validation images, renderings and acquisition labels (~153 MB).');parser.add_argument('--skip-support-derivatives',action='store_true',help='Keep the already-pinned public display derivatives during hosted builds.');args=parser.parse_args()
 root=Path(__file__).resolve().parents[1]
 manifest=json.loads((root/'public/data/simulation-manifest.json').read_text())
 def digest(path):
@@ -28,7 +28,7 @@ from clavius.terrain import prepare_manifest,catalogue
 for entry in catalogue():prepare_manifest(entry['id'])
 sys.path.insert(0,str(root/'scripts'))
 from derive_lola_support import derive as derive_support
-derive_support()
+if not args.skip_support_derivatives:derive_support()
 if args.diviner:
  from clavius.diviner import derive,selected_specification
  spec=manifest['diviner']

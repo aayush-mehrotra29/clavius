@@ -1,12 +1,29 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "vite",
-  "installCommand": "npm ci",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "services": {
+    "web": {
+      "root": ".", "framework": "vite", "installCommand": "npm ci",
+      "buildCommand": "npm run build", "outputDirectory": "dist",
+      "rewrites": [
+        {"source": "/app", "destination": "/index.html"},
+        {"source": "/app/:path*", "destination": "/index.html"}
+      ]
+    },
+    "simulation": {
+      "root": ".", "framework": "fastapi", "runtime": "python",
+      "entrypoint": "hosting.app:app",
+      "buildCommand": "python scripts/setup_hosted_simulation.py",
+      "functions": {
+        "hosting/app.py": {
+          "maxDuration": 300,
+          "includeFiles": "{public/data/**,public/robots/**,contracts/**,data/**,requirements-simulation.txt}",
+          "excludeFiles": "{node_modules,dist,tests,docs,workers,.git,.venv}/**"
+        }
+      }
+    }
+  },
   "rewrites": [
-    {"source": "/api/:path*", "destination": "/api/backend-unavailable"},
-    {"source": "/app", "destination": "/index.html"},
-    {"source": "/app/:path*", "destination": "/index.html"}
+    {"source": "/api/(.*)", "destination": {"service": "simulation"}},
+    {"source": "/(.*)", "destination": {"service": "web"}}
   ]
 }

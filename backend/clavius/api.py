@@ -1,5 +1,5 @@
 """Local simulation API; numerical work runs outside request handlers."""
-import concurrent.futures,hashlib,io,json,mimetypes,shutil,threading,traceback,zipfile
+import concurrent.futures,hashlib,io,json,mimetypes,shutil,threading,traceback,zipfile,os,time
 from pathlib import Path
 from fastapi import FastAPI,File,UploadFile,Form,HTTPException,Query
 from fastapi.responses import FileResponse,Response
@@ -25,7 +25,7 @@ def initialize_reference():
  robot['source_class']='hypothetical_reference';store.put('robot',robot,robot['id'])
  return robot
 reference=initialize_reference()
-for job in store.listing('job'):
+for job in ([] if os.environ.get('CLAVIUS_HOSTED') else store.listing('job')):
  if job.get('state') in {'queued','running'}:store.put('job',{**job,'state':'failed','error':'Backend restarted before this job completed.'},job['id'])
 
 @app.get('/api/v1/health')
@@ -41,7 +41,7 @@ def health():
 @app.get('/api/v1/physics-engines')
 def physics_engines():
  import importlib.metadata
- return {'mujoco':{'available':True,'name':'MuJoCo','version':importlib.metadata.version('mujoco'),'location':'local'},'gazebo':GazeboClient().capabilities()}
+ return {'mujoco':{'available':True,'name':'MuJoCo','version':importlib.metadata.version('mujoco'),'location':'Vercel Linux' if os.environ.get('CLAVIUS_HOSTED') else 'local'},'gazebo':GazeboClient().capabilities()}
 
 @app.get('/api/v1/thermal-model')
 def thermal_model():
@@ -97,6 +97,7 @@ def robots():return store.listing('robot')
 def robot(identity:str):
  result=store.get(identity)
  if not result or 'model' not in result:raise HTTPException(404,'Robot not found.')
+ store.restore_directory(RUNTIME/'robots'/result['package_sha256'])
  return result
 
 @app.post('/api/v1/robots')
@@ -108,7 +109,8 @@ async def upload_robot(package:UploadFile=File(...),profile_json:str|None=Form(N
    _,files=parse_urdf(raw,package.filename or '')
    sidecars=[v for n,v in files.items() if n.endswith('clavius-profile.json')]
    if len(sidecars)==1:profile=json.loads(sidecars[0])
-  return import_robot(raw,package.filename or '',profile)
+  from starlette.concurrency import run_in_threadpool
+  return await run_in_threadpool(import_robot,raw,package.filename or '',profile)
  except (ValueError,TypeError,KeyError) as e:raise HTTPException(422,str(e)) from e
 
 @app.put('/api/v1/robots/{identity}/profile')
@@ -126,6 +128,8 @@ def edit_profile(identity:str,profile:dict):
 def robot_asset(package_hash:str,asset_path:str):
  if len(package_hash)!=64 or any(c not in '0123456789abcdef' for c in package_hash):raise HTTPException(404)
  root=(RUNTIME/'robots'/package_hash).resolve();target=(root/asset_path).resolve()
+ if not target.is_relative_to(root):raise HTTPException(404)
+ store.restore_directory(root)
  if not target.is_relative_to(root) or not target.is_file():raise HTTPException(404)
  return FileResponse(target)
 
@@ -154,21 +158,39 @@ def sample(identity:str,east_m:float=0,north_m:float=0,realization:TerrainRealiz
  return {**{k:bool(v) if isinstance(v,(np.bool_,bool)) else (float(v) if np.isfinite(v) else None) for k,v in value.items()},'terrain_realization_id':realization}
 
 def submit(kind,request,worker,collection='run'):
- if sum(j['state'] in {'queued','running'} for j in store.listing('job'))>=6:raise HTTPException(429,'Six jobs are already queued or running.')
- job=store.put('job',{'kind':kind,'state':'queued','progress':0.,'message':'Queued','request':request,'result_id':None});event=threading.Event();cancellations[job['id']]=event
+ jobs=store.listing('job')
+ for previous in jobs:
+  if previous['state'] in {'queued','running'} and previous.get('deadline_unix_s',float('inf'))<time.time():
+   previous.update(state='failed',message='The hosted calculation was interrupted or exceeded its time limit.',error='HostedExecutionInterrupted');store.put('job',previous,previous['id'])
+ if sum(j['state'] in {'queued','running'} for j in jobs)>=6:raise HTTPException(429,'Six jobs are already queued or running.')
+ job=store.put('job',{'kind':kind,'state':'queued','progress':0.,'message':'Queued','request':request,'result_id':None,**({'deadline_unix_s':time.time()+290} if os.environ.get('CLAVIUS_HOSTED') else {})});event=threading.Event();cancellations[job['id']]=event
  def work():
+  started=time.monotonic();last_cancel_check=started
+  def cancelled():
+   nonlocal last_cancel_check
+   if os.environ.get('CLAVIUS_HOSTED') and time.monotonic()-started>270:raise TimeoutError('This calculation exceeded the hosted 270 s budget. Reduce the search or mission duration and retry.')
+   if os.environ.get('CLAVIUS_HOSTED') and time.monotonic()-last_cancel_check>=2:
+    last_cancel_check=time.monotonic()
+    if store.cancel_requested(job['id']):event.set()
+   return event.is_set()
   def update(progress,message,**metadata):
-   if event.is_set():raise Cancelled()
+   if cancelled():raise Cancelled()
    store.put('job',{**store.get(job['id']),'state':'running','progress':progress,'message':message,**metadata},job['id'])
   try:
-   update(.01,'Preparing inputs');result=worker(update,event.is_set)
-   if event.is_set():raise Cancelled()
+   update(.01,'Preparing inputs');result=worker(update,cancelled)
+   if cancelled():raise Cancelled()
    h=store.artifact(result);saved=store.put(collection,{**result,'artifact_sha256':h,'kind':kind})
    store.put('job',{**store.get(job['id']),'state':'completed','progress':1.,'message':'Complete','result_id':saved['id']},job['id'])
   except Cancelled:store.put('job',{**store.get(job['id']),'state':'cancelled','message':'Cancelled'},job['id'])
   except Exception as e:
    traceback.print_exc();store.put('job',{**store.get(job['id']),'state':'failed','message':str(e),'error':type(e).__name__},job['id'])
   finally:cancellations.pop(job['id'],None)
+ if os.environ.get('CLAVIUS_HOSTED'):
+  # Functions can stop after a response. Finish computation and durable writes
+  # while this request is alive, then return the real terminal job record.
+  from .blob_store import defer_progress
+  with defer_progress():work()
+  return store.get(job['id'])
  pool.submit(work);return job
 
 from .flight import FlightRequest,plan_flight,saved_flight_samples
@@ -220,11 +242,14 @@ def list_jobs():return store.listing('job')
 def get_job(identity:str):
  result=store.get(identity)
  if not result or 'state' not in result:raise HTTPException(404)
+ if result['state'] in {'queued','running'} and result.get('deadline_unix_s',float('inf'))<time.time():
+  result=store.put('job',{**result,'state':'failed','message':'The hosted calculation was interrupted or exceeded its time limit. Retry with a shorter mission or smaller search.','error':'HostedExecutionInterrupted'},identity)
  return result
 
 @app.post('/api/v1/jobs/{identity}/cancel')
 def cancel_job(identity:str):
  result=get_job(identity)
+ if result['state'] in {'queued','running'}:store.request_cancel(identity)
  if identity in cancellations:cancellations[identity].set()
  return get_job(identity)
 
@@ -253,18 +278,20 @@ def export(identity:str):
   z.writestr('assessment.json',json.dumps(result,indent=2,allow_nan=False))
   context=result.get('provenance',{}).get('diviner')
   if context:
-   context_hash=context['derivative']['sha256'];captured=RUNTIME/'artifacts'/(context_hash+'.json')
+   context_hash=context['derivative']['sha256'];captured=store.restore_file(RUNTIME/'artifacts'/(context_hash+'.json'))
    if not captured.is_file() or hashlib.sha256(captured.read_bytes()).hexdigest()!=context_hash:raise HTTPException(503,'Recorded Diviner context artifact is missing or altered.')
    z.write(captured,'context/diviner-'+context.get('selected_site_id','connecting-ridge')+'.json')
    z.writestr('context/diviner-manifest.json',json.dumps(context,indent=2,allow_nan=False))
   code_hash=result.get('provenance',{}).get('implementation',{}).get('source_sha256')
   snapshot=RUNTIME/'implementations'/str(code_hash)
+  if code_hash:store.restore_directory(snapshot)
   if snapshot.is_dir():
    for source in snapshot.rglob('*'):
     if source.is_file() and source.suffix in {'.py','.txt'}:z.write(source,'implementation/'+str(source.relative_to(snapshot)))
   if result.get('robot_id'):
    model=robot(result['robot_id']);z.writestr('robot.json',json.dumps(model,indent=2))
    root=RUNTIME/'robots'/model['package_sha256']
+   store.restore_directory(root)
    for path in root.rglob('*'):
     if path.is_file():z.write(path,'robot-package/'+str(path.relative_to(root)))
   child_ids={o['run_id'] for o in result.get('outcomes',[]) if o.get('run_id')}

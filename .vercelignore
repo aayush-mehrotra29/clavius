@@ -8,6 +8,16 @@
 !package-lock.json
 !vite.config.js
 !vercel.json
+!backend
+!hosting
+!contracts
+!scripts
+!requirements.txt
+!requirements-simulation.txt
+!.python-version
+!data
+/data/*
+!/data/sites
 # The landing page imports these committed validation reports at build time.
 !docs
 /docs/*

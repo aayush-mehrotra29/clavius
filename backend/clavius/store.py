@@ -1,5 +1,5 @@
 """Local immutable artifacts and persistent job/run metadata."""
-import hashlib,json,sqlite3,threading,time,uuid
+import hashlib,json,sqlite3,threading,time,uuid,os
 from .paths import RUNTIME
 _lock=threading.RLock()
 def connection():
@@ -30,3 +30,14 @@ def get(identity):
 def listing(kind,limit=100):
  with connection() as c:rows=c.execute('SELECT data FROM records WHERE kind=? ORDER BY created DESC LIMIT ?',(kind,limit)).fetchall()
  return [json.loads(r['data']) for r in rows]
+
+# Local launchers retain SQLite; hosted instances use private durable storage.
+def persist_file(path):return path
+def restore_file(path):return path
+def persist_directory(path):return path
+def restore_directory(path):return path
+def request_cancel(identity):return None
+def cancel_requested(identity):return False
+
+if os.environ.get('CLAVIUS_STORAGE')=='vercel-blob':
+ from .blob_store import put,get,listing,artifact,persist_file,restore_file,persist_directory,restore_directory,request_cancel,cancel_requested

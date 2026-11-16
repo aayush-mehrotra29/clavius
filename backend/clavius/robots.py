@@ -188,6 +188,7 @@ def import_robot(raw,filename,profile=None):
   target=directory/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(content)
  result={'schema_version':'0.2.0','name':model['name'],'package_filename':filename,'package_sha256':h,'model':model,'profile':profile,'profile_sha256':store.artifact(profile) if profile else None,'source_class':'user_supplied','assets':[{'path':n,'url':f'/api/v1/robot-assets/{h}/{n}'} for n in files]}
  identity=hashlib.sha256((h+(result['profile_sha256'] or '')).encode()).hexdigest()[:24]
+ store.persist_directory(directory)
  return store.get(identity) or store.put('robot',result,identity=identity)
 
 def revise_mechanics(current,changes):
@@ -195,6 +196,7 @@ def revise_mechanics(current,changes):
  import xml.etree.ElementTree as XML
  if not isinstance(changes,list) or not changes:raise ImportIssue('Provide at least one link property change.')
  directory=RUNTIME/'robots'/current['package_sha256']
+ store.restore_directory(directory)
  files={a['path']:(directory/a['path']).read_bytes() for a in current['assets']}
  root=ET.fromstring(files[current['model']['urdf_file']]);links={node.get('name'):node for node in root.findall('link')};seen=set()
  for change in changes:
