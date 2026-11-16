@@ -11,7 +11,7 @@ const Analysis = lazy(()=>import('./TrajectoryAnalysisView').then(module=>({defa
 class SceneBoundary extends Component<{children:React.ReactNode}, {failed:boolean}> {
   state={failed:false};
   static getDerivedStateFromError(){return {failed:true};}
-  render(){return this.state.failed?<p className="orb-message">The 3D view needs WebGL. Open Charts to inspect this flight.</p>:this.props.children;}
+  render(){return this.state.failed?<p className="orb-message">The flight path could not be displayed. Reload the flight to try again.</p>:this.props.children;}
 }
 
 function FlightViewer({data}: {data: FlightSamples}){

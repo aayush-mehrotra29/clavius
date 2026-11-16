@@ -4,6 +4,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Play, Pause, RotateCcw } from 'lucide-react';
 import type { FlightSamples } from './types';
+import {FlightCanvasRenderer} from './FlightCanvasRenderer';
+import {advanceSample} from './playback.js';
 
 // Procedural texture generator for Earth
 function createEarthTexture(): THREE.CanvasTexture {
@@ -172,15 +174,35 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     cameraRef.current = camera;
     camera.position.set(0, -450, 320);
 
-    // Renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.innerHTML = '';
-    container.appendChild(renderer.domElement);
+    const canvas = document.createElement('canvas');
+    let gpu: THREE.WebGLRenderer | undefined;
+    // Probe the same canvas and attributes that Three will use.
+    const attributes = {antialias: true, alpha: true, depth: true, stencil: false};
+    try {
+      const context = canvas.getContext('webgl2', attributes);
+      if (context) gpu = new THREE.WebGLRenderer({canvas, context, ...attributes});
+    } catch (error) {
+      console.warn('Could not initialize the WebGL flight renderer.', error);
+    }
+    gpu?.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    let renderer: THREE.WebGLRenderer | FlightCanvasRenderer = gpu ?? new FlightCanvasRenderer();
+    const mountRenderer = () => {
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      container.replaceChildren(renderer.domElement);
+    };
+    mountRenderer();
+    let needsFrame = true;
+    const useSoftware = () => {
+      needsFrame = true;
+      renderer = new FlightCanvasRenderer();
+      mountRenderer();
+      gpu?.dispose();
+      gpu = undefined;
+    };
+    canvas.addEventListener('webglcontextlost', useSoftware, {once: true});
 
-    // OrbitControls
-    const controls = new OrbitControls(camera, renderer.domElement);
+    // Keep the camera controls attached when a lost GPU canvas is replaced.
+    const controls = new OrbitControls(camera, container);
     controlsRef.current = controls;
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
@@ -348,6 +370,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     fitOverview.current();
     const resize = new ResizeObserver(() => {
       if (!container.clientWidth || !container.clientHeight) return;
+      needsFrame = true;
       camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(container.clientWidth, container.clientHeight);
@@ -356,14 +379,16 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     resize.observe(container);
     let followed = new THREE.Vector3();
     let lastMode = '';
+    let lastSample = -1;
+    const lastView = new THREE.Matrix4();
     // Animation Loop
-    let lastTime = performance.now();
+    let lastTime: number | undefined;
     let animId: number;
 
     const animate = (now: number) => {
       animId = requestAnimationFrame(animate);
 
-      const dt = Math.min((now - lastTime) / 1000, .25);
+      const previousFrame = lastTime;
       lastTime = now;
       if (!activeRef.current || document.hidden) return;
 
@@ -373,11 +398,7 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       // Update trajectory playback
       if (isPlayingRef.current && trajData && trajData.spacecraft_coords_km.length > 0) {
         const total = trajData.spacecraft_coords_km.length;
-        const advance = speedRef.current * dt;
-        let nextIdx = timeIndexRef.current + advance;
-        if (nextIdx >= total) {
-          nextIdx = 0; // loop
-        }
+        const nextIdx = advanceSample(timeIndexRef.current, previousFrame, now, speedRef.current, total);
         timeIndexRef.current = nextIdx;
         setTimeIndex(Math.floor(nextIdx));
       }
@@ -413,7 +434,12 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       }
 
       controls.update();
-      renderer.render(scene, camera);
+      if (gpu || needsFrame || idx !== lastSample || !camera.matrixWorld.equals(lastView)) {
+        renderer.render(scene, camera);
+        lastSample = idx;
+        lastView.copy(camera.matrixWorld);
+        needsFrame = false;
+      }
     };
 
     animId = requestAnimationFrame(animate);
@@ -429,8 +455,9 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
       });
       earthTex.dispose();
       moonTex.dispose();
-      renderer.forceContextLoss();
-      renderer.dispose();
+      canvas.removeEventListener('webglcontextlost', useSoftware);
+      gpu?.dispose();
+      gpu?.forceContextLoss();
       container.innerHTML = '';
     };
   }, [trajData]);
