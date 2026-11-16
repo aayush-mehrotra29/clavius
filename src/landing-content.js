@@ -78,7 +78,6 @@ export function landingSections() {
           <div id="mission-step">
             ${missionSteps.map(({title,copy}, index) => `<div data-step-copy="${index}" role="tabpanel" id="mission-panel-${index}" aria-labelledby="mission-tab-${index}" ${index ? 'inert' : 'data-current'}><h3>${title}</h3><p class="story-body">${copy}</p></div>`).join('')}
           </div>
-          <a class="story-link" href="/app">Plan a mission</a>
         </div>
         <div class="mission-visual" aria-hidden="true">
           <div class="mission-scene" data-scene="0" data-current><img loading="lazy" decoding="async" src="/images/rover-study.webp" width="1280" height="854" alt=""></div>
