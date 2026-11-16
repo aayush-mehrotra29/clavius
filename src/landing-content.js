@@ -151,6 +151,9 @@ export function landingFooter(logo) {
     <div class="sky-backdrop" aria-hidden="true"></div>
     <span class="brand">${logo}</span>
     <h2 id="footer-title">${heroHeadline}</h2>
-    <a id="get-started" class="get-started sky-start" href="/app">Get started</a>
+    <div class="footer-links">
+      <a id="get-started" class="get-started sky-start" href="/app">Get started</a>
+      <a class="story-link" href="https://github.com/aayush-mehrotra29/clavius">View on GitHub</a>
+    </div>
   </footer>`;
 }
