@@ -57,25 +57,25 @@ def validate_thermal_model(config:ThermalConfig):
 
 @app.get('/api/v1/sites/{identity}/drive-environment')
 def drive_environment(identity:str,start_utc:str,elapsed_s:float=Query(0,ge=0,allow_inf_nan=False),
-                      east_m:float=Query(0,allow_inf_nan=False),north_m:float=Query(0,allow_inf_nan=False)):
+                      east_m:float=Query(0,allow_inf_nan=False),north_m:float=Query(0,allow_inf_nan=False),realization:TerrainRealization="nominal"):
  from .drive_environment import live_sample
  if not any(d['id']==identity for d in catalogue()):raise HTTPException(404,'Unknown drive site.')
- try:return live_sample(identity,start_utc,elapsed_s,east_m,north_m)
+ try:return live_sample(identity,start_utc,elapsed_s,east_m,north_m,realization)
  except (ValueError,OSError) as e:raise HTTPException(422,str(e)) from e
 
 @app.get('/api/v1/sites/{identity}/drive-replay-environment')
-def drive_replay_environment(identity:str,start_utc:str,replay_sha256:str):
+def drive_replay_environment(identity:str,start_utc:str,replay_sha256:str,realization:TerrainRealization="nominal"):
  from .drive_environment import live_replay
  if not any(d['id']==identity for d in catalogue()):raise HTTPException(404,'Unknown drive site.')
- try:return live_replay(identity,start_utc,replay_sha256)
+ try:return live_replay(identity,start_utc,replay_sha256,realization)
  except (ValueError,OSError) as e:raise HTTPException(422,str(e)) from e
 
 @app.get('/api/v1/sites/{identity}/parked-sunlight')
 def parked_environment(identity:str,start_utc:str,hours:int=Query(24,ge=1,le=48),
-                       east_m:float=Query(0,allow_inf_nan=False),north_m:float=Query(0,allow_inf_nan=False)):
+                       east_m:float=Query(0,allow_inf_nan=False),north_m:float=Query(0,allow_inf_nan=False),realization:TerrainRealization="nominal"):
  from .drive_environment import parked_sunlight
  if not any(d['id']==identity for d in catalogue()):raise HTTPException(404,'Unknown drive site.')
- try:return parked_sunlight(identity,start_utc,east_m,north_m,hours)
+ try:return parked_sunlight(identity,start_utc,east_m,north_m,hours,realization=realization)
  except (ValueError,OSError) as e:raise HTTPException(422,str(e)) from e
 
 

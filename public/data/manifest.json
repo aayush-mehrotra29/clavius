@@ -590,6 +590,10 @@
       "battery": {
         "url": "/robots/viper/battery.json",
         "sha256": "5ab9f28c78af057f1e41e26baea760c9209d885d00c27fa8ae34376c68063d8a"
+      },
+      "terrain_comparison": {
+        "url": "/data/drive/viper-terrain-comparison.json",
+        "sha256": "509d5a811042eb888030301f76d27157442480817163f90f2028bdc6d0b209b7"
       }
     },
     "role": "Browser kinematic drive and recorded native component experiments. Controlled NAC mosaic is historical display imagery only.",
@@ -620,6 +624,38 @@
         "2028-01-27T12:00:00Z": {
           "url": "/data/drive/shackleton-rim-parked-2028-01-27.json",
           "sha256": "d02b41db9a1778844266c7d1007e7f3c214ef0e9a3c93c7d5e694cb581b215e7"
+        }
+      }
+    },
+    "parked_sunlight_realizations": {
+      "pgda78-0001": {
+        "connecting-ridge": {
+          "2028-01-01T12:00:00Z": {
+            "url": "/data/drive/connecting-ridge-pgda78-0001-parked-2028-01-01.json",
+            "sha256": "3b902d8913688fde72e31f5778ca102ebe89a888d280a88b86ee1f7b15b38c18"
+          },
+          "2028-01-21T12:00:00Z": {
+            "url": "/data/drive/connecting-ridge-pgda78-0001-parked-2028-01-21.json",
+            "sha256": "5745187b9b18c005bd881eced473e5ec0eb19c34621fe01722b348a41d21fccb"
+          },
+          "2028-01-27T12:00:00Z": {
+            "url": "/data/drive/connecting-ridge-pgda78-0001-parked-2028-01-27.json",
+            "sha256": "e32b62f83f61fcf6036cc15c6eded29918eac253293f60d8fec75cca8890c8fa"
+          }
+        },
+        "shackleton-rim": {
+          "2028-01-01T12:00:00Z": {
+            "url": "/data/drive/shackleton-rim-pgda78-0001-parked-2028-01-01.json",
+            "sha256": "e46eec3f3c37f876f2a7656d572130d3911d65f111afa5af923d8385b4be9794"
+          },
+          "2028-01-21T12:00:00Z": {
+            "url": "/data/drive/shackleton-rim-pgda78-0001-parked-2028-01-21.json",
+            "sha256": "a3cff58b47985d9597a83db90d0e22113ff36213ee3e2c6520192a4689009da0"
+          },
+          "2028-01-27T12:00:00Z": {
+            "url": "/data/drive/shackleton-rim-pgda78-0001-parked-2028-01-27.json",
+            "sha256": "e7aecc2f2989acb36b2bd576d2c7acf0f9300dbcba72d6d6d26b609eb71ff0dd"
+          }
         }
       }
     }

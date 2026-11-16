@@ -1,4 +1,4 @@
-"""Geometric sunlight and Earth visibility at a nominal VIPER drive position."""
+"""Geometric sunlight and Earth visibility at a selected VIPER drive position."""
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -26,10 +26,12 @@ def start_epoch(utc):
 
 def drive_sources(terrain):
     keys = (terrain.definition["local_asset_id"], terrain.definition["regional_asset_id"])
+    if terrain.realization_id != "nominal":
+        keys += (terrain.manifest["realization"]["asset_id"],)
     return {
         "terrain_sha256": {a["id"]: a["sha256"] for a in terrain.manifest["assets"] if a["id"] in keys},
         "kernel_sha256": {a["file"]: a["sha256"] for a in verify_sources("kernels")["assets"]},
-        "frame": "MOON_ME_DE421", "aberration": "NONE", "realization": "nominal",
+        "frame": "MOON_ME_DE421", "aberration": "NONE", "realization": terrain.realization_id,
         "observer_height_m": OBSERVER_HEIGHT_M, "max_ray_distance_m": 220000,
     }
 
@@ -37,7 +39,7 @@ def drive_sources(terrain):
 def drive_sample(terrain, et, east, north):
     point = terrain.sample(east, north)
     if not point["covered"]:
-        raise TerrainCoverageError("The observer lies outside the nominal local terrain.")
+        raise TerrainCoverageError("The observer lies outside the selected local terrain.")
     lat, lon = float(point["lat_deg"]), float(point["lon_deg"])
     geometry = directions(et, lat, lon, float(point["elevation_m"]) + OBSERVER_HEIGHT_M)
     sun, earth = geometry["sun"], geometry["earth"]
@@ -56,8 +58,8 @@ def drive_sample(terrain, et, east, north):
     }
 
 
-def live_sample(identity, start_utc, elapsed, east, north):
-    terrain = site(identity)
+def live_sample(identity, start_utc, elapsed, east, north, realization="nominal"):
+    terrain = site(identity, realization)
     et = start_epoch(start_utc) + elapsed
     if et >= epoch("2050-01-01T00:00:00Z"):
         raise ValueError("The sample time exceeds the supported kernel interval.")
@@ -79,10 +81,16 @@ def read_replay(directory, trace, frame_count):
     return np.frombuffer(raw, dtype="<f4").reshape(frame_count, 17, 7)
 
 
-def live_replay(identity, start_utc, replay_sha256):
+def live_replay(identity, start_utc, replay_sha256, realization="nominal"):
     directory = ROOT / "public/data/drive"
     catalog = json.loads((directory / "replays.json").read_text())
-    primary = catalog["sites"][identity]
+    if realization == "nominal":
+        primary = catalog["sites"][identity]
+    else:
+        comparison = json.loads((directory / "viper-terrain-comparison.json").read_text())
+        if realization != comparison["realization"]:
+            raise ValueError("No recorded drive for this terrain realization.")
+        primary = comparison["sites"][identity]["replays"]
     traces = [primary, *primary.get("maneuvers", {}).values()]
     trace = next((r for r in traces if r["sha256"] == replay_sha256), None)
     if trace is None:
@@ -91,15 +99,15 @@ def live_replay(identity, start_utc, replay_sha256):
     if frequency * catalog["sample_period_s"] != 1:
         raise ValueError("One second must contain a whole number of recorded frames.")
     frames = read_replay(directory, trace, catalog["frame_count"])
-    terrain = site(identity)
+    terrain = site(identity, realization)
     return {"model": MODEL, "site_id": identity, "replay_sha256": replay_sha256, "start_utc": start_utc,
             "sample_interval_s": 1, "samples": replay_samples(terrain, start_utc, frames, frequency),
             "sources": drive_sources(terrain)}
 
 
-def parked_sunlight(identity, start_utc, east, north, hours, step_s=300):
+def parked_sunlight(identity, start_utc, east, north, hours, step_s=300, realization="nominal"):
     """Fixed-site Sun samples for a parked, terrain-aligned array scenario."""
-    terrain = site(identity)
+    terrain = site(identity, realization)
     start = start_epoch(start_utc)
     duration = hours * 3600
     if start + duration >= epoch("2050-01-01T00:00:00Z"):

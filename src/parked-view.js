@@ -61,15 +61,16 @@ export function mountParkedPower(root, context) {
     const east=fields.position.value==='origin'?0:position.east;
     const north=fields.position.value==='origin'?0:position.north;
     const start=fields.start.value+':00Z', hours=Number(fields.hours.value);
-    const key=JSON.stringify([position.site,start,east,north]);
+    const key=JSON.stringify([position.site,position.realization,start,east,north]);
     el('status').textContent='Calculating the solar and battery history…';el('run').disabled=true;
     try{
       if(cache?.key!==key || cache.environment.duration_hours<hours){
         const manifest=await fetch('/data/manifest.json',{signal});
         if(!manifest.ok)throw new Error('Drive dataset manifest unavailable.');
         const index=(await manifest.json()).rover_drive;
-        const preset=east===0 && north===0 && index.parked_sunlight?.[position.site]?.[start];
-        const params=new URLSearchParams({start_utc:start,east_m:east,north_m:north,hours});
+        const presets=position.realization==='nominal' ? index.parked_sunlight : index.parked_sunlight_realizations?.[position.realization];
+        const preset=east===0 && north===0 && presets?.[position.site]?.[start];
+        const params=new URLSearchParams({realization:position.realization,start_utc:start,east_m:east,north_m:north,hours});
         async function environment(){
           if(preset)return readDriveSource(preset,signal);
           const r=await fetch('/api/v1/sites/'+position.site+'/parked-sunlight?'+params,{signal});
@@ -80,7 +81,7 @@ export function mountParkedPower(root, context) {
         }
         const [sun,rover,battery]=await Promise.all([environment(),readDriveSource(index.sources.rover,signal),readDriveSource(index.sources.battery,signal)]);
         if(signal.aborted)return;
-        if(sun.model!=='clavius-viper-parked-sun-v1' || sun.site_id!==position.site || sun.start_utc!==start ||
+        if(sun.sources?.realization!==position.realization || sun.model!=='clavius-viper-parked-sun-v1' || sun.site_id!==position.site || sun.start_utc!==start ||
           sun.east_m!==east || sun.north_m!==north)throw new Error('Solar history does not match this scenario.');
         cache={key,environment:sun,array:rover.solar_array,battery,source:preset?'Packaged site geometry':'Live site geometry'};
       }
@@ -105,7 +106,7 @@ export function mountParkedPower(root, context) {
     open(){
       position=context();
       if(!position)return;
-      el('location').textContent=position.name+' · fixed position and terrain-aligned attitude';
+      el('location').textContent=position.name+(position.realization==='nominal'?' · nominal':' · clone 001')+' · fixed position and terrain-aligned attitude';
       fields.start.value=position.utc.slice(0,16);fields.heading.value=position.heading.toFixed(1);
       dialog.showModal();evaluate();
     },

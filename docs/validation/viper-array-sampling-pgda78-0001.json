@@ -1,0 +1,133 @@
+{
+  "model": "clavius-viper-array-incidence-v1",
+  "sunlight_sha256": "509d5a811042eb888030301f76d27157442480817163f90f2028bdc6d0b209b7",
+  "hardware_sha256": "812e42e71e0bf5fa1eef10fc1f280d22d1dc3dececba7ccd86424139648449aa",
+  "reference_step_s": 0.05,
+  "production_environment_step_s": 1,
+  "realization": "pgda78-0001",
+  "energy_tolerance_wh": 0.02,
+  "point_tolerance_w": 15.0,
+  "scope": "Time and position sampling comparison on the same selected terrain and pose traces. Physical electrical calibration is unresolved.",
+  "cases": [
+    {
+      "site": "connecting-ridge",
+      "maneuver": "straight",
+      "start_utc": "2028-01-01T12:00:00Z",
+      "trace_sha256": "89ac646ac58fc88b77d66c2334c64a9eb2d5f50477f2fb5bca8a7338c0e957aa",
+      "held_wh": 2.237853570940205,
+      "refined_wh": 2.237855191239462,
+      "max_point_difference_w": 0.0006089470145980158,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "maneuver": "straight",
+      "start_utc": "2028-01-21T12:00:00Z",
+      "trace_sha256": "89ac646ac58fc88b77d66c2334c64a9eb2d5f50477f2fb5bca8a7338c0e957aa",
+      "held_wh": 5.832722434493494e-05,
+      "refined_wh": 5.444675663826863e-05,
+      "max_point_difference_w": 0.4550238945332412,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "maneuver": "straight",
+      "start_utc": "2028-01-27T12:00:00Z",
+      "trace_sha256": "89ac646ac58fc88b77d66c2334c64a9eb2d5f50477f2fb5bca8a7338c0e957aa",
+      "held_wh": 2.5108765251129492,
+      "refined_wh": 2.510875661485256,
+      "max_point_difference_w": 0.00031017624399964916,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "maneuver": "crab",
+      "start_utc": "2028-01-01T12:00:00Z",
+      "trace_sha256": "7b825c743ba33f32ba4fbd6f6f4c3006cb220aa2c28179b231f90f5f04a5f8f5",
+      "held_wh": 2.234474310089939,
+      "refined_wh": 2.2344759361072657,
+      "max_point_difference_w": 0.0006089470145980158,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "maneuver": "crab",
+      "start_utc": "2028-01-21T12:00:00Z",
+      "trace_sha256": "7b825c743ba33f32ba4fbd6f6f4c3006cb220aa2c28179b231f90f5f04a5f8f5",
+      "held_wh": 0.0005192353389357429,
+      "refined_wh": 0.00047898852486242275,
+      "max_point_difference_w": 0.8835578116796492,
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "maneuver": "crab",
+      "start_utc": "2028-01-27T12:00:00Z",
+      "trace_sha256": "7b825c743ba33f32ba4fbd6f6f4c3006cb220aa2c28179b231f90f5f04a5f8f5",
+      "held_wh": 2.5123573663075245,
+      "refined_wh": 2.5123565096898037,
+      "max_point_difference_w": 0.00031884821061112234,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "maneuver": "straight",
+      "start_utc": "2028-01-01T12:00:00Z",
+      "trace_sha256": "00faa83f6a8f7b7685b00d3797006c2b4e2aa35236e33a0cc88dd4d5f3473530",
+      "held_wh": 0.002761331752671309,
+      "refined_wh": 0.0021291873103734316,
+      "max_point_difference_w": 2.5631829976143186,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "maneuver": "straight",
+      "start_utc": "2028-01-21T12:00:00Z",
+      "trace_sha256": "00faa83f6a8f7b7685b00d3797006c2b4e2aa35236e33a0cc88dd4d5f3473530",
+      "held_wh": 0.16902131938395037,
+      "refined_wh": 0.1620799731708473,
+      "max_point_difference_w": 3.0931863751379822,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "maneuver": "straight",
+      "start_utc": "2028-01-27T12:00:00Z",
+      "trace_sha256": "00faa83f6a8f7b7685b00d3797006c2b4e2aa35236e33a0cc88dd4d5f3473530",
+      "held_wh": 0.0,
+      "refined_wh": 0.0,
+      "max_point_difference_w": 0.0,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "maneuver": "crab",
+      "start_utc": "2028-01-01T12:00:00Z",
+      "trace_sha256": "c2ea5c8cfe4451dd8787c5ab8c3e6b126fa45cc07747f67ef0fea8a55d66c570",
+      "held_wh": 0.0027176103501111663,
+      "refined_wh": 0.001988300031516395,
+      "max_point_difference_w": 2.672510758721948,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "maneuver": "crab",
+      "start_utc": "2028-01-21T12:00:00Z",
+      "trace_sha256": "c2ea5c8cfe4451dd8787c5ab8c3e6b126fa45cc07747f67ef0fea8a55d66c570",
+      "held_wh": 0.19239853306209057,
+      "refined_wh": 0.1863727268772866,
+      "max_point_difference_w": 2.570298166419697,
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "maneuver": "crab",
+      "start_utc": "2028-01-27T12:00:00Z",
+      "trace_sha256": "c2ea5c8cfe4451dd8787c5ab8c3e6b126fa45cc07747f67ef0fea8a55d66c570",
+      "held_wh": 0.0,
+      "refined_wh": 0.0,
+      "max_point_difference_w": 0.0,
+      "passed": true
+    }
+  ]
+}

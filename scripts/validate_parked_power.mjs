@@ -11,16 +11,19 @@ const array=json('public'+manifest.sources.rover.url).solar_array;
 const battery=json('public'+manifest.sources.battery.url);
 const base={hours:48,capacity:battery.reference_capacity_wh,initialPct:75,load:150,
   chargeEfficiency:.95,dischargeEfficiency:.9};
+const realization=process.argv[2] ?? 'nominal';
+if(!['nominal','pgda78-0001'].includes(realization))throw new Error('Unknown drive surface');
+const presets=realization==='nominal'?manifest.parked_sunlight:manifest.parked_sunlight_realizations[realization];
 const cases=[];
 const limits={energy_wh:base.capacity*.01,first_unmet_s:300};
-for(const [site,epochs] of Object.entries(manifest.parked_sunlight)){
+for(const [site,epochs] of Object.entries(presets)){
   for(const [start,source] of Object.entries(epochs)){
     const raw=readFileSync('public'+source.url);
     if(sha(raw)!==source.sha256)throw new Error('Parked source identity mismatch');
     const coarse=JSON.parse(raw);
     const fine=JSON.parse(execFileSync('.venv/bin/python',['-c',
-      'import sys,json; from backend.clavius.drive_environment import parked_sunlight; print(json.dumps(parked_sunlight(sys.argv[1],sys.argv[2],0,0,48,60),allow_nan=False))',
-      site,start],{env:{...process.env,OPENBLAS_NUM_THREADS:'1'},maxBuffer:5e6}));
+      'import sys,json; from backend.clavius.drive_environment import parked_sunlight; print(json.dumps(parked_sunlight(sys.argv[1],sys.argv[2],0,0,48,60,sys.argv[3]),allow_nan=False))',
+      site,start,realization],{env:{...process.env,OPENBLAS_NUM_THREADS:'1'},maxBuffer:5e6}));
     for(const heading of [0,90,225]){
       const scenario={...base,heading};
       const a=parkedBudget(coarse,array,scenario), b=parkedBudget(fine,array,scenario);
@@ -37,7 +40,7 @@ for(const [site,epochs] of Object.entries(manifest.parked_sunlight)){
     console.log(site,start);
   }
 }
-const report={model:battery.model,array_model:array.model,production_step_s:300,reference_step_s:60,
+const report={realization,model:battery.model,array_model:array.model,production_step_s:300,reference_step_s:60,
   hardware_sha256:manifest.sources.rover.sha256,battery_sha256:manifest.sources.battery.sha256,scenario:base,limits,cases};
-writeFileSync('docs/validation/viper-parked-sampling.json',JSON.stringify(report,null,2)+'\n');
+writeFileSync('docs/validation/viper-parked-sampling'+(realization==='nominal'?'':'-'+realization)+'.json',JSON.stringify(report,null,2)+'\n');
 if(cases.some(c=>!c.passed))process.exitCode=1;

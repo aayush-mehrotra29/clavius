@@ -48,6 +48,30 @@ def check_crab(frames, straight):
                 north_gain_over_straight_m=lateral_gain, interval_s=[4, 20])
 
 
+def record_pair(site, grid, temp):
+    for mode in ("straight", "crab"):
+        filename = site + ("-replay.bin" if mode == "straight" else "-crab.bin")
+        path = Path(temp)/filename
+        args = [EXE, ROOT/"data/raw/robots/chrono/data", grid, path]
+        raw = Path(temp)/"solver.raw"
+        args.extend([mode, raw])
+        result = subprocess.run(args, check=True, timeout=900, capture_output=True, text=True)
+        frames = read_frames(path)
+        entry = dict(file=filename, sha256=sha(path), terrain_sha256=sha(grid),
+                     final_enu_m=frames[-1, 0, :3].tolist(), checks=result.stdout.strip())
+        wheel_file = Path(temp)/f"{site}-{mode}-wheels.bin"
+        checks = build_wheels(raw,grid,frames,wheel_file)
+        entry["wheels"] = dict(file=wheel_file.name,sha256=sha(wheel_file),pose_sha256=entry["sha256"],
+                               raw_states_sha256=sha(raw),checks=checks)
+        if mode == "straight":
+            primary = entry
+            straight = frames
+        else:
+            entry["steering_checks"] = check_crab(frames, straight)
+            primary["maneuvers"] = {"crab": entry}
+    return primary
+
+
 def main():
     runtime = verified_runtime()
     catalog = json.loads((OUT/"index.json").read_text())
@@ -72,26 +96,7 @@ def main():
             grid = OUT/near["file"]
             if sha(grid) != near["sha256"]:
                 raise ValueError("Terrain hash mismatch")
-            for mode in ("straight", "crab"):
-                filename = site + ("-replay.bin" if mode == "straight" else "-crab.bin")
-                path = Path(temp)/filename
-                args = [EXE, ROOT/"data/raw/robots/chrono/data", grid, path]
-                raw = Path(temp)/"solver.raw"
-                args.extend([mode, raw])
-                result = subprocess.run(args, check=True, timeout=900, capture_output=True, text=True)
-                frames = read_frames(path)
-                entry = dict(file=filename, sha256=sha(path), terrain_sha256=sha(grid),
-                             final_enu_m=frames[-1, 0, :3].tolist(), checks=result.stdout.strip())
-                wheel_file = Path(temp)/f"{site}-{mode}-wheels.bin"
-                checks = build_wheels(raw,grid,frames,wheel_file)
-                entry["wheels"] = dict(file=wheel_file.name,sha256=sha(wheel_file),pose_sha256=entry["sha256"],
-                                       raw_states_sha256=sha(raw),checks=checks)
-                if mode == "straight":
-                    record["sites"][site] = entry
-                    straight = frames
-                else:
-                    entry["steering_checks"] = check_crab(frames, straight)
-                    record["sites"][site]["maneuvers"] = {"crab": entry}
+            record["sites"][site] = record_pair(site,grid,Path(temp))
         for path in Path(temp).glob("*.bin"):
             path.replace(OUT/path.name)
         (OUT/"replays.json").write_text(json.dumps(record, indent=2)+"\n")

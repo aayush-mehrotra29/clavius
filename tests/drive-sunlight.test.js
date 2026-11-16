@@ -56,3 +56,14 @@ test('a custom native date downloads one series and samples it at the latest cur
   light.reset();light.update({...ctx,elapsed:.6},11);
   assert.equal(calls,1); assert.equal(events.at(-1).elapsed,0);
 });
+
+test('surface changes use only the matching terrain horizon and native trace',()=>{
+  const study=JSON.parse(readFileSync(new URL('../public/data/drive/viper-terrain-comparison.json',import.meta.url)));
+  for(const [identity,entry] of Object.entries(study.sites)){
+    const ctx={...context,site:identity,realization:study.realization,replayHash:entry.replays.sha256};
+    const clone=replaySunlight(catalog,ctx,study);
+    assert.deepEqual(clone.sample,entry.sunlight.samples[start][4]);
+    assert.equal(replaySunlight(catalog,{...ctx,realization:'nominal'},study),null);
+    assert.equal(replaySunlight(catalog,{...ctx,replayHash:catalog.sites[identity].replay_sha256},study),null);
+  }
+});

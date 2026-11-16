@@ -17,8 +17,10 @@ export async function readDriveSource(record, signal) {
   return JSON.parse(new TextDecoder().decode(bytes));
 }
 
-export function replaySunlight(catalog, context) {
-  const site = catalog?.sites?.[context.site];
+export function replaySunlight(catalog, context, alternative) {
+  const realization=context.realization ?? 'nominal';
+  const site = realization==='nominal' ? catalog?.sites?.[context.site] :
+    (alternative?.realization===realization ? alternative.sites[context.site]?.sunlight : null);
   if (!context.native || catalog?.model !== model || catalog.sample_interval_s !== 1 ||
       !site) return null;
   const trace = [site, ...Object.values(site.maneuvers ?? {})].find(
@@ -59,10 +61,10 @@ export class DriveSunlight {
   update(ctx, now) {
     if (this.pending || now < this.retryAt) return;
     const old = this.previous;
-    if (old && old.site === ctx.site && old.start === ctx.start && old.native === ctx.native &&
+    if (old && old.site === ctx.site && old.start === ctx.start && old.native === ctx.native && old.realization===ctx.realization && old.replayHash===ctx.replayHash &&
         ctx.elapsed >= old.elapsed && Math.floor(ctx.elapsed) === Math.floor(old.elapsed) &&
         Math.hypot(ctx.east - old.east, ctx.north - old.north) < 0.5) return;
-    let saved = replaySunlight(this.catalog, ctx);
+    let saved = replaySunlight(this.catalog, ctx, this.alternative);
     const live = this.liveSeries;
     if (!saved && ctx.native && live && live.site_id === ctx.site && live.start_utc === ctx.start &&
         live.replay_sha256 === ctx.replayHash) {
@@ -82,19 +84,21 @@ export class DriveSunlight {
   async requestLive(ctx) {
     const request = new AbortController();
     this.pending = request;
-    const params = new URLSearchParams({
+    const realization=ctx.realization ?? 'nominal';
+    const params = new URLSearchParams({realization,
       start_utc: ctx.start, elapsed_s: ctx.elapsed, east_m: ctx.east, north_m: ctx.north
     });
     const timeout = setTimeout(() => request.abort(), 10000);
     try {
       const base = '/api/v1/sites/' + encodeURIComponent(ctx.site);
       const path = ctx.native ? base + '/drive-replay-environment?' +
-        new URLSearchParams({start_utc:ctx.start, replay_sha256:ctx.replayHash}) :
+        new URLSearchParams({realization,start_utc:ctx.start, replay_sha256:ctx.replayHash}) :
         base + '/drive-environment?' + params;
       const response = await this.fetcher(path, {signal: request.signal});
       if (!response.ok) throw new Error('Environment service unavailable');
       const result = await response.json();
       if (this.pending !== request) return;
+      if ((result.sources?.realization ?? 'nominal')!==realization) throw new Error('Terrain realization mismatch');
       if (ctx.native) {
         if (result.site_id !== ctx.site || result.model !== model || result.start_utc !== ctx.start ||
             result.replay_sha256 !== ctx.replayHash || result.sample_interval_s !== 1 ||
