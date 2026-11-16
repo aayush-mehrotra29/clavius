@@ -128,20 +128,12 @@ export function landingSections() {
         <div><dt>Students and educators</dt><dd>Pick a ridge on the lunar map and predict when Earth will be visible from it. Use the simulated horizon to check your prediction.</dd></div>
       </dl>
       <div id="research" class="research-notes">
-        <h3>Research &amp; benchmarks</h3>
+        <h3>Research</h3>
         <ul>
           <li><a href="https://doi.org/10.1016/j.actaastro.2025.03.010">Campana &amp; Topputo, <cite>Acta Astronautica</cite> (2025)</a>. How departure timing affects low-energy transfers to the Moon.</li>
           <li><a href="https://doi.org/10.3390/rs18172950">Chen et al., <cite>Remote Sensing</cite> (2026)</a>. Using hourly sunlight maps and slope limits to plan polar rover routes.</li>
         </ul>
       </div>
-      <details id="benchmarks" class="story-detail">
-        <summary>Explore the benchmark results</summary>
-        <div class="bench-topics">
-          <article><h3>Flight planning</h3><p>Two NASA GMAT examples converged and passed their endpoint checks. Searching a range of Earth departure dates remains planned work.</p><a class="story-link" href="/data/gmat-reference-validation.json" target="_blank" rel="noreferrer">Orbital reference results</a></article>
-          <article><h3>Terrain &amp; illumination</h3><p>Dated lunar images helped identify a narrow ridge the model had missed. Checks at Connecting Ridge and the Shackleton rim still exceed some horizon-refinement targets.</p><a class="story-link" href="/data/illumination-validation.json" target="_blank" rel="noreferrer">Shadow comparison results</a></article>
-          <article><h3>Rover dynamics</h3><p>In a separate NASA Glenn wheel-test comparison, the rigid-plane model missed its 5° traction target. The RMS discrepancy across 18 reference points was 12.83°.</p><a class="story-link" href="/data/mobility-validation.json" target="_blank" rel="noreferrer">Wheel-test results</a></article>
-      </div>
-      </details>
     </section>`;
 }
 

@@ -142,7 +142,7 @@ export function renderMissionAnalysis(host,{run,flight,plan,message,safe,dateLab
       <details><summary>Sun, Earth and validation</summary><p>DE421 SPICE geometry in ${safe(sources.frame ?? 'an unrecorded lunar frame')}. Earth contact measures geometric center visibility. Link margin, station access and relay coverage require additional modeling. Shadow comparisons retain unresolved terrain and sampling errors.</p>${auditLinks}</details>
       <details><summary>Rover and energy assumptions</summary><p>Rigid ground contact, assumed friction and a declared rover power profile. Incident energy at the landing site is per unit area. Rover solar watts include array orientation and the visible solar disk.</p></details>
       <details><summary>Recorded source hashes</summary>${hashes.map(([k,v])=>`<p>${safe(k)}<code>${safe(v)}</code></p>`).join('') || '<p>Unavailable for this run.</p>'}</details>
-      <div class="ma-links"><a href="${raw(run.id)}" target="_blank" rel="noopener">Traverse data</a><a href="${raw(flight.id)}" target="_blank" rel="noopener">Flight data</a>${plan?`<a href="${raw(plan.id)}" target="_blank" rel="noopener">Planning data</a>`:''}</div></article></div>`;
+      <div class="ma-links"><a href="/#benchmarks" target="_blank" rel="noopener">Explore benchmarks</a><a href="${raw(run.id)}" target="_blank" rel="noopener">Traverse data</a><a href="${raw(flight.id)}" target="_blank" rel="noopener">Flight data</a>${plan?`<a href="${raw(plan.id)}" target="_blank" rel="noopener">Planning data</a>`:''}</div></article></div>`;
   const planning=host.querySelector('.ma-planning');
   if(row?.samples?.length && plan.sites[row.site_id]?.skyline_deg)bindPlanning(planning,plan,row,safe,dateLabel);
   else {

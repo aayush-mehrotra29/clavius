@@ -1,4 +1,5 @@
 import './landing.css';
+import { mountBenchmarks } from './landing-benchmarks.js';
 import { landingSections, landingFooter } from './landing-content.js';
 
 // The scene is decorative art, separate from the explorer's NASA surface data.
@@ -15,6 +16,7 @@ export function mountLanding(root, { logo }) {
             <a href="#mission">Surface mission</a>
             <a href="#sources">Lunar atlas</a>
             <a href="#users">Who it’s for</a>
+            <a href="#benchmarks">Benchmarks</a>
           </div>
           <a class="get-started sky-explore" href="/app">Get started</a>
         </nav>
@@ -29,9 +31,12 @@ export function mountLanding(root, { logo }) {
           </div>
         </section>
         ${landingSections()}
+        <section id="benchmarks" class="benchmarks story-width" aria-labelledby="benchmark-title"></section>
       </main>
       ${landingFooter(logo)}
     </div>`;
+
+  mountBenchmarks(root.querySelector('#benchmarks'));
 
   const stepButtons = [...root.querySelectorAll('[data-step]')];
   const stepCopy = root.querySelectorAll('[data-step-copy]');
