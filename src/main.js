@@ -1,10 +1,9 @@
-import './style.css';
 import { mountSimulation } from './simulation.js';
 import { mountLanding } from './landing.js';
-import { createIcons, ArrowUp, Play, Pause, ArrowUpRight, ArrowRight, ArrowLeft, Globe2, Mountain, Search, Crosshair, Plus, Minus, RotateCcw, Layers, Info, X, ChevronDown, ChevronRight, MapPin, SlidersHorizontal, Menu, Grid2X2, Maximize, Check, MousePointer2, Navigation, ExternalLink } from 'lucide';
+import { createIcons, Play, Pause, ArrowUpRight, ArrowRight, ArrowLeft, Globe2, Mountain, Search, Crosshair, Plus, Minus, RotateCcw, Layers, Info, X, ChevronDown, ChevronRight, MapPin, SlidersHorizontal, Menu, Grid2X2, Maximize, Check, MousePointer2, Navigation, ExternalLink } from 'lucide';
 import { ElevationGrid, regions, formatCoordinate as coord } from './lunar.js';
 
-const iconSet = {ArrowUp,Play,Pause,ArrowUpRight,ArrowRight,ArrowLeft,Globe2,Mountain,Search,Crosshair,Plus,Minus,RotateCcw,Layers,Info,X,ChevronDown,ChevronRight,MapPin,SlidersHorizontal,Menu,Grid2X2,Maximize,Check,MousePointer2,Navigation,ExternalLink};
+const iconSet = {Play,Pause,ArrowUpRight,ArrowRight,ArrowLeft,Globe2,Mountain,Search,Crosshair,Plus,Minus,RotateCcw,Layers,Info,X,ChevronDown,ChevronRight,MapPin,SlidersHorizontal,Menu,Grid2X2,Maximize,Check,MousePointer2,Navigation,ExternalLink};
 const icon = (name, cls='') => `<i data-lucide="${name}" class="${cls}" aria-hidden="true"></i>`;
 const icons = () => createIcons({icons:iconSet,attrs:{'stroke-width':1.5}});
 const logo = `<img class="brand-mark" src="/images/clavius-mark.svg?v=3" width="28" height="28" alt="" aria-hidden="true"><span class="brand-wordmark">Clavius</span>`;
@@ -21,6 +20,13 @@ function navigate() {
     document.title='Mission — Clavius';window.scrollTo(0,0);root.replaceChildren();
     import('./expedition.js').then(({mountExpedition})=>{if(alive===generation)cleanup=mountExpedition(root,{logo,icon,icons});});
     return;
+  }
+  // The expedition uses bundled Inter. Load the atlas and lab fonts independently of layout.
+  if(!document.getElementById('workspace-fonts')){
+    const fonts=document.createElement('link');
+    fonts.id='workspace-fonts';fonts.rel='stylesheet';
+    fonts.href='https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=IBM+Plex+Mono:wght@400;450;500&display=swap';
+    document.head.append(fonts);
   }
   if(location.pathname.replace(/\/$/,'')==='/app/drive'){
     const generation=++alive;cleanup?.();cleanup=null;viewer?.dispose();viewer=null;
