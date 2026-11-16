@@ -1,0 +1,115 @@
+{
+  "deployment": "https://clavius-3ql7rye08-aayushmw-3928s-projects.vercel.app",
+  "purpose": "Hosted application acceptance; not physical or flight calibration.",
+  "runs": {
+    "plan": {
+      "id": "febbfdd3-fa3f-4dbc-9fa9-1b874c8cca36",
+      "kind": "landing_plan",
+      "artifact_sha256": "41a38cd06e0035d4b5b7d2469be8e46f01003bab678889275b718f7acc627b46",
+      "candidate_count": 6,
+      "ranked_count": 6
+    },
+    "flight": {
+      "id": "48166c3a-e6f1-5783-b3c6-f15380554c93",
+      "kind": "flight",
+      "implementation": {
+        "libraries": {
+          "mujoco": "4.0.1",
+          "numpy": "2.5.4",
+          "rasterio": "1.5.2",
+          "scipy": "1.18.1",
+          "spiceypy": "8.4.0"
+        },
+        "source_sha256": "69c1ec3657bcf842c0689111d05498324a8b02af16ddc1fa75cae74e5d09bee7",
+        "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+      },
+      "artifact_sha256": "f3f2c7a0c217cee8992a541799c7bf01464ac30dadb738162e659c304aacf184"
+    },
+    "traverse": {
+      "id": "581abbfd-c07e-4116-9045-9646bb32ebb0",
+      "kind": "traverse",
+      "engine": {
+        "gravity_m_s2": [
+          0,
+          0,
+          -1.62
+        ],
+        "name": "MuJoCo",
+        "terrain_resolution_m": 5,
+        "timestep_s": 0.005,
+        "version": "4.0.1"
+      },
+      "metrics": {
+        "arrival_tolerance_m": 0.18,
+        "battery_capacity_wh": 500,
+        "contacts_observed": true,
+        "displacement_m": 3.9319672650352526,
+        "distance_m": 3.931982566343438,
+        "duration_s": 77.95500000000159,
+        "maximum_abs_slip_ratio": 0.9936783645050382,
+        "maximum_pitch_deg": 3.1450860779334158,
+        "maximum_roll_deg": 1.0287089062674135,
+        "minimum_battery_wh": 424.69611064062985,
+        "mobility_bus_energy_wh": 0.2631948914016626
+      },
+      "implementation": {
+        "libraries": {
+          "mujoco": "4.0.1",
+          "numpy": "2.5.4",
+          "rasterio": "1.5.2",
+          "scipy": "1.18.1",
+          "spiceypy": "8.4.0"
+        },
+        "source_sha256": "69c1ec3657bcf842c0689111d05498324a8b02af16ddc1fa75cae74e5d09bee7",
+        "utc_assumption": "Future UTC conversion uses the pinned naif0012 LSK; no future leap seconds beyond its announcements are assumed."
+      },
+      "artifact_sha256": "407743db3097bb3b74c9e13e7f8f71f458049642c21e9580ec8d255964347211",
+      "task_completed": true,
+      "route_events": [
+        {
+          "t_s": 35.94999999999994,
+          "waypoint": 1
+        },
+        {
+          "completed_task": "science",
+          "t_s": 77.9500000000016,
+          "waypoint": 2
+        }
+      ],
+      "issues": []
+    }
+  },
+  "export": {
+    "bytes": 496733,
+    "sha256": "97cd9c068eaa14d5e067ab5a0125741337b82a0d1f4398f98ddb067dee9013e6",
+    "source_and_original_robot_included": true
+  },
+  "environment_checks": [
+    {
+      "site": "connecting-ridge",
+      "endpoint": "/thermal-context",
+      "passed": true
+    },
+    {
+      "site": "connecting-ridge",
+      "endpoint": "/sample?realization=pgda78-0001",
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "endpoint": "/thermal-context",
+      "passed": true
+    },
+    {
+      "site": "shackleton-rim",
+      "endpoint": "/sample?realization=pgda78-0001",
+      "passed": true
+    }
+  ],
+  "local_verification": {
+    "frontend_tests_passed": 56,
+    "backend_integration_and_storage_tests_passed": 33,
+    "fresh_process_evidence_export_passed": true
+  },
+  "production_url": "https://clavius-space.vercel.app"
+}

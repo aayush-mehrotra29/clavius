@@ -51,6 +51,19 @@ The flat physical rover benchmark settles at approximately 38.88 N total contact
 
 ## Browser acceptance evidence
 
+The [hosted acceptance record](validation/hosted-deployment.json) documents the
+separate Vercel Linux/Python deployment: both curated sites, site-specific
+Diviner context and clone-001 samples, six calculated landing options, selected
+flight, native MuJoCo R1 traverse, replay/analysis and evidence export. In the
+recorded Shackleton case the hypothetical rover reached both waypoints and
+completed its science dwell after about 78 simulated seconds. This is an app
+acceptance case, not another physical calibration gate. Private durable storage
+restores saved records, original robot bytes and code snapshots across empty
+instance caches. Hosted requests retain computation until completion and have
+a cooperative 270-second budget; hard platform termination may lose a partial
+checkpoint. Gazebo remains local and unavailable on this deployment. See
+[deployment behavior and limits](DEPLOYMENT.md).
+
 The later [illumination validation update](ILLUMINATION_VALIDATION.md) retains dated image comparisons, 35 exactly reproduced arrays and the corrected horizon sampling implementation. The [current Gazebo runtime](validation/gazebo-horizon-runtime.json) passed a matching native benchmark and a new linked 20-second Shackleton clone-001 probe. Its source mission and native probe exports reproduced with no differences. Previous runtime records below remain historical evidence for their recorded versions.
 
 Verified in the live app: import the reference ZIP through the file input, inspect model/colliders, save a mechanical mass revision, edit capability fields, run both mission dates, inspect first-violation events, select a mission activity time, launch a linked detailed probe, follow its physical replay, compare dates, execute a six-scenario sweep, open a child replay and export evidence. Draft changes clear stale numerical results while saved runs remain available. Desktop (1440 × 900) and mobile (390 × 844) checks passed, including scroll access to the setup panel, the terrain-layer scale, and no horizontal document overflow. The browser downloaded the 146,688-byte January 1 evidence ZIP. [Acceptance details](validation/browser-acceptance.json).
