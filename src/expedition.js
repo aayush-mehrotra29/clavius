@@ -1,4 +1,6 @@
 import './expedition.css';
+import { renderMissionAnalysis } from './mission-analysis.js';
+import { selectedScenario } from './mission-series.js';
 import {landingForm,showLandingOptions} from './landing-planner.js';
 import {mountTraverseMap} from './traverse-map.js';
 import {ExpeditionScene} from './expedition-scene.js';
@@ -7,7 +9,7 @@ import {formatCoordinate} from './lunar.js';
 const safe=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const timeLabel=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
 const dateLabel=stamp=>new Date(stamp).toLocaleString('en-GB',{timeZone:'UTC',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'})+' UTC';
-const stages=['Flight','Traverse','Replay'];
+const stages=['Flight','Traverse','Replay','Analysis'];
 
 export function mountExpedition(root,{logo,icon,icons}){
   root.innerHTML=`<main class="expedition">
@@ -17,11 +19,12 @@ export function mountExpedition(root,{logo,icon,icons}){
   <section class="exp-view" aria-label="Lunar mission viewer"><div class="exp-pin" aria-hidden="true" hidden></div>
     <div class="exp-surface-map" hidden></div><div class="exp-orbit" hidden></div><div class="exp-caption"><h2></h2><p></p></div><div class="exp-view-error" role="status" hidden></div>
     <div class="exp-player" hidden><button id="exp-play" aria-label="Pause playback">${icon('play','play-glyph')}${icon('pause','pause-glyph')}</button><time>0:00</time><input type="range" id="exp-scrub" min="0" value="0" step="any" aria-label="Replay time"><select aria-label="Playback speed" id="exp-speed"><option value="1">1×</option><option value="3" selected>3×</option><option value="8">8×</option></select><button id="exp-fly" title="Replay fly-in" aria-label="Replay fly-in">${icon('rotate-ccw')}</button></div>
-  </section></div></main>`;
+  </section></div><section class="mission-analysis" aria-label="Mission analysis" hidden></section></main>`;
   const $=selector=>root.querySelector(selector),form=$('#exp-form'),error=$('.exp-error'),player=$('.exp-player');
   const abort=new AbortController(),signal=abort.signal;
   const mapHost=$('.exp-surface-map');
-  let surfaceMap,closeOrbit,viewVersion=0;
+  const report=$('.mission-analysis');
+  let surfaceMap,closeOrbit,viewVersion=0,savedPlan;
   let robots=[],sites=[],flight,run,scene,stage=0,busy=false;
   let siteId='connecting-ridge',departure='2028-01-01T00:00',hours=96,robotId='',route=[{east_m:2,north_m:0},{east_m:4,north_m:0}],task='science',dwell=5;
   let searchDraft={landing_utc:'2028-01-01T00:00Z',date_spacing_days:7,surface_hours:24,priority:'balanced',array_mount:'level'};
@@ -41,6 +44,7 @@ export function mountExpedition(root,{logo,icon,icons}){
     stage=n;viewVersion++;closeOrbit?.();closeOrbit=null;
     surfaceMap?.dispose();surfaceMap=null;mapHost.hidden=true;
     $('.exp-orbit').hidden=true;$('.exp-orbit').replaceChildren();$('.exp-caption').hidden=false;viewerError('');showError('');
+    report.hidden=n!==3;report.replaceChildren();$('.exp-layout').hidden=n===3;
     syncTabs();
     form.innerHTML='<h1 tabindex="-1">'+title+'</h1>';player.hidden=true;
   }
@@ -51,7 +55,7 @@ export function mountExpedition(root,{logo,icon,icons}){
       route.every((p,i)=>p.east_m===recorded.waypoints[i].east_m && p.north_m===recorded.waypoints[i].north_m);
     root.querySelectorAll('.exp-steps [data-step]').forEach((button,i)=>{
       if(i===stage)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');
-      button.disabled=busy||(i===1&&!flight)||(i===2&&!matchesReplay);
+      button.disabled=busy||(i===1&&!flight)||(i>=2&&!matchesReplay);
     });
   }
   $('.exp-steps').onclick=e=>{
@@ -60,9 +64,10 @@ export function mountExpedition(root,{logo,icon,icons}){
     if(next===0){url('flight',flight.id);flightReview();}
     if(next===1){url('route',flight.id);traverseForm();}
     if(next===2){url('mission',run.id);replay();}
+    if(next===3)analysis();
   };
   function resetFlight(){
-    flight=null;run=null;route=[{east_m:2,north_m:0},{east_m:4,north_m:0}];
+    flight=null;run=null;savedPlan=null;route=[{east_m:2,north_m:0},{east_m:4,north_m:0}];
   }
   function caption(name,detail){
     $('.exp-caption h2').textContent=name;$('.exp-caption p').textContent=detail;
@@ -82,7 +87,7 @@ export function mountExpedition(root,{logo,icon,icons}){
     landingForm(form,searchDraft,btn,request=>{searchDraft=request;launch('landing-plans',request);},flightForm);icons();
   }
   function comparison(plan,optionKey){
-    setStage(0,'Compare landings');searchDraft=plan.request;
+    savedPlan=plan;setStage(0,'Compare landings');searchDraft=plan.request;
     scene?.dispose();scene=null;
     const host=$('.exp-orbit');host.hidden=false;$('.exp-pin').hidden=true;$('.exp-caption').hidden=true;
     if(!plan.request.array_mount){
@@ -227,7 +232,24 @@ export function mountExpedition(root,{logo,icon,icons}){
     $('#exp-activity').textContent=row.activity==='drive'?'To waypoint '+row.waypoint:row.activity==='science'?'Science dwell':'Parked';
     $('#exp-battery').textContent=row.battery_wh.toFixed(2)+' Wh';$('#exp-velocity').textContent=(row.speed_m_s*100).toFixed(1)+' cm/s';
   }
-  async function replay(){
+  async function analysis(){
+    url('analysis',run.id);setStage(3,'Mission analysis');
+    scene?.dispose();scene=null;
+    const version=viewVersion,selection=flight.planning_selection;
+    const render=(plan,message)=>renderMissionAnalysis(report,{run,flight,plan,message,safe,dateLabel});
+    if(run.flight_id!==flight.id || (run.flight_sha256 && run.flight_sha256!==flight.artifact_sha256)){
+      report.textContent='The saved flight does not match this traverse.';return;
+    }
+    render(null,selection?'Loading the saved landing comparison…':'This flight was planned directly. No site/date comparison was recorded.');
+    if(!selection)return;
+    try{
+      const plan=savedPlan?.id===selection.plan_id?savedPlan:await api('runs/'+encodeURIComponent(selection.plan_id));
+      if(signal.aborted||version!==viewVersion)return;
+      if(!selectedScenario(flight,plan))throw Error('The saved comparison does not match this landing.');
+      savedPlan=plan;render(plan,'');
+    }catch(e){if(!signal.aborted&&version===viewVersion)render(null,'Landing comparison unavailable. '+e.message);}
+  }
+  async function replay(autoAdvance=false){
     setStage(2,'Mission replay');ensureSurface();
     const version=viewVersion;
     const m=run.metrics;
@@ -236,14 +258,16 @@ export function mountExpedition(root,{logo,icon,icons}){
     <dl>${metric('Distance driven',m.distance_m.toFixed(2)+' m')}${metric('Elapsed',m.duration_s.toFixed(1)+' s')}${metric('Peak roll',m.maximum_roll_deg.toFixed(1)+'°')}${metric('Minimum battery',m.minimum_battery_wh.toFixed(2)+' Wh')}</dl>
     ${run.issues.map(v=>'<p>'+safe(v)+'</p>').join('')}</section>
     <div class="exp-telemetry"><strong id="exp-activity">At landing site</strong><span id="exp-velocity"></span><span id="exp-battery"></span></div>
-    ${btn('exp-reroute','Edit traverse')}
+    ${btn('exp-analysis','View mission analysis')}<button class="exp-back" id="exp-reroute">Edit traverse</button>
     ${flightDetails()}${comparisonLink()}<details class="exp-notes"><summary>Simulation details</summary><p>MuJoCo rigid contact on 5 m LOLA terrain. Solar power uses dated DE421 directions, local terrain horizons and the recorded body attitude. Scene fill light helps reveal terrain in shadow. Friction and power properties are engineering assumptions. The controller has 180 s to reach the route and finish its dwell within 0.18 m.</p><a href="/api/v1/runs/${encodeURIComponent(run.id)}" target="_blank" rel="noopener">Open run data ↗</a></details>
     <button id="exp-orbit-replay" class="exp-back">View flight path</button> <button id="exp-new" class="exp-back">New flight</button>`);
     caption(run.landing.name,dateLabel(run.landing.utc));icons();
+    $('#exp-analysis').onclick=analysis;
     $('#exp-reroute').onclick=()=>{url('route',flight.id);traverseForm();};
     $('#exp-orbit-replay').onclick=()=>{url('flight',flight.id);flightReview();};
     $('#exp-new').onclick=()=>{url();plannerForm();};
     if(!scene)return;
+    scene.onPlaybackEnd=autoAdvance?()=>{if(stage===2&&viewVersion===version)analysis();}:null;
     const selected=run;
     try{
       await scene.prepare(selected);
@@ -273,7 +297,7 @@ export function mountExpedition(root,{logo,icon,icons}){
     const result=await api('runs/'+encodeURIComponent(job.result_id));
     if(result.kind==='flight'){flight=result;url('flight',flight.id);await flightReview();}
     else if(result.kind==='landing_plan'){url('plan',result.id);comparison(result);}
-    else if(result.kind==='traverse'){run=result;restoreRoute(run.request);flight=await api('runs/'+encodeURIComponent(run.flight_id));url('mission',run.id);await replay();}
+    else if(result.kind==='traverse'){run=result;restoreRoute(run.request);flight=await api('runs/'+encodeURIComponent(run.flight_id));url('mission',run.id);await replay(true);}
     else throw Error('This job belongs to a different workspace.');
   }
   async function launch(path,body,resumeId){
@@ -313,10 +337,11 @@ export function mountExpedition(root,{logo,icon,icons}){
         const plan=await api('runs/'+encodeURIComponent(params.get('plan')));
         if(plan.kind!=='landing_plan')throw Error('This link requires a saved landing comparison.');
         comparison(plan,params.get('option'));
-      }else if(params.has('mission')){
-        run=await api('runs/'+encodeURIComponent(params.get('mission')));
+      }else if(params.has('mission')||params.has('analysis')){
+        run=await api('runs/'+encodeURIComponent(params.get('analysis')||params.get('mission')));
         if(run.kind!=='traverse')throw Error('This link requires a recorded traverse.');
-        restoreRoute(run.request);flight=await api('runs/'+encodeURIComponent(run.flight_id));await replay();
+        restoreRoute(run.request);flight=await api('runs/'+encodeURIComponent(run.flight_id));
+        if(params.has('analysis'))await analysis();else await replay();
       }else if(params.has('flight')||params.has('route')){
         flight=await api('runs/'+encodeURIComponent(params.get('flight')||params.get('route')));
         if(flight.kind!=='flight')throw Error('This link requires a solved flight.');

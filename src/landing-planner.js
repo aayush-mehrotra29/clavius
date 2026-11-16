@@ -37,7 +37,7 @@ export function landingForm(form, draft, btn, onSearch, onManual) {
   form.querySelector('#exp-manual').onclick=onManual;
 }
 
-function sky(site, s) {
+export function sky(site, s) {
   const steps=site.skyline_deg, sun=s.sun_elevation_deg, earth=s.earth_elevation_deg;
   const lo=Math.min(-3,Math.floor(Math.min(...steps,sun,earth)-1));
   const hi=Math.max(3,Math.ceil(Math.max(...steps,sun,earth)+1));

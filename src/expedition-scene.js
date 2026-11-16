@@ -164,7 +164,10 @@ export class ExpeditionScene {
     if(this.disposed)return;
     if(this.fly)this.flyFrame(now);
     else {
-      if(this.local && this.playing)this.seek(this.time+Math.min(.1,(now-(this.previous||now))/1000)*this.speed);
+      if(this.local && this.playing){
+        this.seek(this.time+Math.min(.1,(now-(this.previous||now))/1000)*this.speed);
+        if(!this.playing&&this.onPlaybackEnd)queueMicrotask(this.onPlaybackEnd);
+      }
       this.controls.update();
     }
     this.previous=now;
