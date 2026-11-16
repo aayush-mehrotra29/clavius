@@ -89,3 +89,33 @@ for(const [id,straight] of Object.entries(recordings.sites))test(id+' native cra
   assert.deepEqual(group.children[0].position.toArray(),entry.final_enu_m);
   assert.ok(entry.steering_checks.north_gain_over_straight_m>=.3);
 });
+
+import {wheelSample} from '../src/drive-wheels.js';
+
+test('wheel slip uses only elapsed windows and preserves signed mismatch',()=>{
+  const values=new Float32Array(401*4*5).fill(NaN);
+  for(const [wheel,rim,along,loaded] of [[0,.1,.1,1],[1,.1,.125,1],[2,-.1,-.075,.5],[3,0,.04,1]]){
+    values.set([100,loaded,rim,along,.01],(4+wheel)*5);
+  }
+  assert.ok(Number.isNaN(wheelSample(values,.049,.02).rows[0].slip));
+  const {rows}=wheelSample(values,.051,.02);
+  assert.equal(rows[0].slip,0);
+  assert.ok(Math.abs(rows[1].slip+.25)<1e-6);
+  assert.ok(Math.abs(rows[2].slip-.25)<1e-6);
+  assert.ok(Number.isNaN(rows[3].slip));
+  values[21]=0;
+  assert.ok(Number.isNaN(wheelSample(values,.05,.02).rows[0].slip));
+});
+
+test('every wheel recording is pinned to its native pose and verified with integrated velocities',()=>{
+  for(const straight of Object.values(recordings.sites))for(const entry of [straight,straight.maneuvers.crab]){
+    const w=entry.wheels, bytes=read(w.file);
+    assert.equal(w.pose_sha256,entry.sha256);assert.equal(w.sha256,digest(bytes));
+    assert.equal(bytes.length,401*4*5*4);
+    assert.ok(w.checks.max_hub_interval_residual_m<=.001 && w.checks.max_rotation_interval_residual_rad<=.01);
+    const samples=new Float32Array(bytes.buffer,bytes.byteOffset,bytes.byteLength/4);
+    assert.ok(samples.subarray(0,20).every(Number.isNaN));
+    const last=wheelSample(samples,20,recordings.wheel_telemetry.min_rim_speed_m_s);
+    assert.ok(last.rows.every(r=>r.load>0 && r.fraction>0 && r.rim>.02 && Number.isFinite(r.slip)));
+  }
+});

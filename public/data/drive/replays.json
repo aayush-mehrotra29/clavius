@@ -2,8 +2,8 @@
   "engine": "Project Chrono 9.0.1, SMC rigid contact, Bullet",
   "model": "clavius-viper-mechanical-frame-repair-v1",
   "runtime_identity": "1f18c4a4faeb68faac1d849e14c0c2b5006a85619044af30c3322b4a960ac055",
-  "executable_sha256": "227d342be05c879a45d38e378608350e15ddcf35207dd5b8af1321631824e947",
-  "worker_sha256": "bdc83e5c4af9169a6d89222cc07b3ebb20505e89e88fafe84cf96e9a71e0ee87",
+  "executable_sha256": "595b27b7e9bcd31405e73b2099db7b6b576f82026b4f83e0189aa71daa111036",
+  "worker_sha256": "b099b858fcf868fa1ecffdfa76430ad709b47f28ea102b0b647cacf1151df123",
   "gravity_m_s2": 1.62,
   "solver_step_s": 0.001,
   "sample_period_s": 0.05,
@@ -16,6 +16,22 @@
   "crab_command": "All four wheel planes steer left from 0 to 25 degrees during 1\u20133 s; rear motor commands use reversed axes.",
   "ground": "20 m square near site origin, same nominal 5 m grid and triangle split as browser",
   "layout": "little-endian float32. Each frame has chassis then LF, RF, LB, RB. Each corner has upper arm, lower arm, upright, wheel. Each body has ENU xyz metres, quaternion xyzw in the reference frame.",
+  "wheel_telemetry": {
+    "channels": [
+      "mean_normal_load_n",
+      "loaded_fraction",
+      "rim_m_s",
+      "along_m_s",
+      "lateral_m_s"
+    ],
+    "radius_m": 0.25,
+    "min_load_n": 1.0,
+    "min_rim_speed_m_s": 0.02,
+    "reducer_sha256": "4b5dd00ee09a630b4cf550ca5a921541361b414d5e94deee33f9afea42be8b98",
+    "layout": "401 x 4 x 5 little-endian float32; LF, RF, LB, RB. Frame zero has no interval.",
+    "window": "Preceding 50 solver steps. Mean compressive load on the facet under the hub. Speeds average only steps above the load threshold. NaN means unavailable.",
+    "slip": "1 - mean along-track hub speed / mean nominal rim speed; display only above minimum absolute rim speed."
+  },
   "flight_validated": false,
   "soil_calibrated": false,
   "sites": {
@@ -29,6 +45,24 @@
         0.2903325855731964
       ],
       "checks": "Forward displacement (m) 1.53027 mean vertical support / weight 1.0344",
+      "wheels": {
+        "file": "connecting-ridge-straight-wheels.bin",
+        "sha256": "6d9e0f599028b1ef682c4ade35412b26da3eb27b83f28acced70f438c3e1f3e8",
+        "pose_sha256": "af8773215c6db4300f4cfae32046e4c7c5ad5e72ff68a0ee041cefe509501fad",
+        "raw_states_sha256": "f98f27ef65ee450e57278893c5f16f72b36fc4ceedcaced90c99c15b880c1871",
+        "checks": {
+          "interval_s": [
+            4,
+            20
+          ],
+          "max_hub_interval_residual_m": 2.126402883528361e-07,
+          "max_rotation_interval_residual_rad": 1.8960205808996714e-06,
+          "limits_m_rad": [
+            0.001,
+            0.01
+          ]
+        }
+      },
       "maneuvers": {
         "crab": {
           "file": "connecting-ridge-crab.bin",
@@ -40,6 +74,24 @@
             0.2991974949836731
           ],
           "checks": "Forward displacement (m) 1.45223 mean vertical support / weight 0.989201",
+          "wheels": {
+            "file": "connecting-ridge-crab-wheels.bin",
+            "sha256": "07ddd5ee7f8eee0ae3b83918b7790be3cd38ce1b93bd2c9dc63241a9521a03d8",
+            "pose_sha256": "fcd257aa28915a6fe5371fc025ddba99894aecdfe1dff42614287c5b7c6d14c8",
+            "raw_states_sha256": "5dfdc2e751fd52d07a134ae497344d3ef1129bff839ccdb525cf692e98494b43",
+            "checks": {
+              "interval_s": [
+                4,
+                20
+              ],
+              "max_hub_interval_residual_m": 1.9363132904973941e-07,
+              "max_rotation_interval_residual_rad": 1.271129317708592e-06,
+              "limits_m_rad": [
+                0.001,
+                0.01
+              ]
+            }
+          },
           "steering_checks": {
             "max_wheel_heading_error_deg": 1.8682621352184015e-06,
             "max_chassis_yaw_change_deg": 0.23934293646042842,
@@ -62,6 +114,24 @@
         0.1630733162164688
       ],
       "checks": "Forward displacement (m) 1.83975 mean vertical support / weight 1.02773",
+      "wheels": {
+        "file": "shackleton-rim-straight-wheels.bin",
+        "sha256": "2f094fa72c190d65b65382bb384f24ea34ceadf2a3026171703f46dbc7f831cb",
+        "pose_sha256": "3b01b258b52c0dc1cc762ac10857125deb7a15b7a52f0c059ced2acb4154537f",
+        "raw_states_sha256": "8c69d81c4683aa24ceeae3bdb92ca5564ef8363e149b44df9870cd7d84fbc7b8",
+        "checks": {
+          "interval_s": [
+            4,
+            20
+          ],
+          "max_hub_interval_residual_m": 2.3758779140701384e-07,
+          "max_rotation_interval_residual_rad": 2.7925831216354804e-06,
+          "limits_m_rad": [
+            0.001,
+            0.01
+          ]
+        }
+      },
       "maneuvers": {
         "crab": {
           "file": "shackleton-rim-crab.bin",
@@ -73,6 +143,24 @@
             0.17647087574005127
           ],
           "checks": "Forward displacement (m) 1.64913 mean vertical support / weight 0.993902",
+          "wheels": {
+            "file": "shackleton-rim-crab-wheels.bin",
+            "sha256": "58ce31e00732d2942d877a85d6fb41d53f1ba5ebe950aebea056f694f285b95a",
+            "pose_sha256": "efc6215eabc41267497115b0e7f3f92046f4e98d5323d99a7ac38819f2acf63e",
+            "raw_states_sha256": "70083eb1bbd68a37bd1108304f17a3c9a74f64b0b07cf57da6436395c6a753fd",
+            "checks": {
+              "interval_s": [
+                4,
+                20
+              ],
+              "max_hub_interval_residual_m": 2.3995258018034244e-07,
+              "max_rotation_interval_residual_rad": 3.358584929187293e-06,
+              "limits_m_rad": [
+                0.001,
+                0.01
+              ]
+            }
+          },
           "steering_checks": {
             "max_wheel_heading_error_deg": 2.4363182760112068e-06,
             "max_chassis_yaw_change_deg": 0.45394877786379145,

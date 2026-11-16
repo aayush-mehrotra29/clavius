@@ -14,19 +14,29 @@ export function replayAssembly(rover) {
   return group;
 }
 
+async function readRecording(file, expectedHash, length, signal) {
+  const response = await fetch('/data/drive/'+file, {signal});
+  if (!response.ok) throw new Error('Drive recording unavailable.');
+  const bytes = await response.arrayBuffer();
+  const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),
+    n=>n.toString(16).padStart(2,'0')).join('');
+  if (hash !== expectedHash || bytes.byteLength !== length*4) throw new Error('Invalid drive recording.');
+  return new Float32Array(bytes);
+}
+
 export async function loadReplay(record,grid,signal) {
   if(record.terrain_sha256!==grid.sha256)throw new Error('Replay and terrain identities differ.');
-  const response=await fetch('/data/drive/'+record.file,{signal});
-  if(!response.ok)throw new Error('Drive recording unavailable.');
-  const bytes=await response.arrayBuffer();
-  const sha=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),n=>n.toString(16).padStart(2,'0')).join('');
-  if(sha!==record.sha256||bytes.byteLength!==401*17*7*4)throw new Error('Invalid drive recording.');
-  const poses=new Float32Array(bytes), distance=new Float64Array(401);
+  if(record.wheels.pose_sha256!==record.sha256)throw new Error('Wheel measurements belong to a different drive.');
+  const [poses,wheels] = await Promise.all([
+    readRecording(record.file,record.sha256,401*17*7,signal),
+    readRecording(record.wheels.file,record.wheels.sha256,401*4*5,signal)
+  ]);
+  const distance=new Float64Array(401);
   for(let i=1;i<401;i++){
     const a=(i-1)*119,b=i*119;
     distance[i]=distance[i-1]+Math.hypot(poses[b]-poses[a],poses[b+1]-poses[a+1]);
   }
-  return {poses,distance,sha256:sha};
+  return {poses,distance,wheels,sha256:record.sha256};
 }
 
 const nextRotation=new THREE.Quaternion();

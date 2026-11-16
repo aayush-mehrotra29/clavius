@@ -5,6 +5,7 @@ import {groundHeight, loadGround, loadDriveImage, terrainMesh} from './drive-gro
 import {applyReplay,drawReplayPaths,loadReplay,replayAssembly} from './viper-replay.js';
 import {arrayPower,replayArrayEnergy,manualBodyToEnu} from './viper-array.js';
 import {DriveSunlight,loadDriveSource} from './drive-sunlight.js';
+import {wheelPanelMarkup, renderWheelSample} from './drive-wheels.js';
 import {mountParkedPower} from './parked-view.js';
 import './drive.css';
 
@@ -18,21 +19,22 @@ function release(object) {
 
 export function mountDrive(root,{logo,icon,icons}) {
   root.innerHTML=`<main class="drive-page"><header class="app-header"><a class="brand" href="/" aria-label="Clavius home">${logo}</a><nav class="drive-nav" aria-label="Workspace"><a href="/app">Explorer</a><span aria-current="page">Rover drive</span><a href="/app/simulation">Simulation</a></nav></header>
-  <section class="drive-stage" aria-label="Lunar driving surface"><div class="drive-canvas"></div>
+  <section class="drive-stage" aria-label="Lunar driving surface"><div class="drive-canvas"></div><button class="drive-rover-pin" aria-label="Return to rover camera" hidden>VIPER</button>
   <div class="drive-hud"><div><span class="eyebrow">LUNAR SOUTH POLE</span><h1>VIPER surface drive</h1></div><label>Terrain site<select data-site><option value="connecting-ridge">Connecting Ridge</option><option value="shackleton-rim">Shackleton rim</option></select></label></div>
   <div class="drive-camera"><button data-camera aria-label="Change to site overview">${icon('maximize')} Site overview</button><button data-image aria-pressed="true">LROC mosaic</button><button data-contours aria-pressed="false">${icon('layers')} Contours</button></div>
   <div class="drive-sun-readout" hidden><strong data-disk></strong><span data-sun-angles></span><span data-earth></span><details data-array hidden><summary>Solar array estimate <b data-array-total></b></summary><dl><dt>Port</dt><dd data-watts="port"></dd><dt>Starboard</dt><dd data-watts="starboard"></dd><dt>Aft</dt><dd data-watts="aft"></dd></dl><span data-array-energy></span></details><small data-sun-stamp></small></div><p class="drive-loading" role="status">Loading NASA terrain and rover geometry…</p></section>
   <section class="drive-console" aria-label="Drive controls"><div class="drive-instruments"><div><small>Ground speed</small><strong data-speed>0.00 m/s</strong></div><div><small>Distance</small><strong data-distance>0.0 m</strong></div><div><small>Front-left steer</small><strong data-steer>0.0°</strong></div><div><small>Local slope</small><strong data-slope>—</strong></div></div>
   <div class="drive-buttons"><select data-motion aria-label="Motion model"><option value="manual">Manual drive</option><option value="native">Recorded dynamics</option></select><select data-maneuver aria-label="Steering maneuver"><option value="turn">Coordinated turn</option><option value="crab">Crab steering</option></select><button data-demo disabled>Start traverse</button><select data-rate aria-label="Simulation rate"><option value="1">Real time</option><option value="10" selected>10× time</option><option value="30">30× time</option></select>
   <div class="drive-pad" aria-label="Hold to drive">${[['left','←'],['forward','↑'],['reverse','↓'],['right','→']].map(([d,k])=>`<button data-dir="${d}" aria-label="Drive ${d}">${k}</button>`).join('')}</div><button data-reset aria-label="Reset rover position">${icon('rotate-ccw')}</button></div><label class="drive-clock" hidden>Replay time <input type="range" data-scrub min="0" max="20" step=".05" value="0"><output data-time>0.00 / 20 s</output></label>
-  <details class="drive-paths" hidden><summary>Compare recorded paths</summary><div><canvas width="520" height="260" aria-label="Plan view of both recorded paths. East is right and north is up."></canvas><dl><dt>Straight · dashed</dt><dd data-path-turn></dd><dt>Crab · solid</dt><dd data-path-crab></dd></dl></div></details></section>
-  <footer class="drive-foot"><span>WASD to drive · Drag to orbit · Scroll to zoom</span><div><button data-park disabled>Parked power</button><button data-sky>Sun at rover</button><button data-info>Data & rover model</button></div></footer>
+  <details class="drive-paths" hidden><summary>Compare recorded paths</summary><div><canvas width="520" height="260" aria-label="Plan view of both recorded paths. East is right and north is up."></canvas><dl><dt>Straight · dashed</dt><dd data-path-turn></dd><dt>Crab · solid</dt><dd data-path-crab></dd></dl></div></details>
+  ${wheelPanelMarkup}</section>
+  <footer class="drive-foot"><span data-navigation-hint>WASD to drive · Drag to orbit · Scroll to zoom</span><div><button data-park disabled>Parked power</button><button data-sky>Sun at rover</button><button data-info>Data & rover model</button></div></footer>
   <dialog class="drive-sky-dialog drive-info" aria-labelledby="sky-heading"><form data-sky-form><button type="button" data-sky-close>Close</button><h2 id="sky-heading">Sun at the rover</h2><p>Choose a UTC start for the drive. Clavius samples the Sun and Earth from 0.5 m above the nominal terrain at the rover’s position.</p>
   <label>Lighting<select data-lighting><option value="survey">Survey light</option><option value="dated">Mission sunlight</option></select></label>
   <fieldset data-epochs><legend>Drive start (UTC)</legend><select data-epoch-choice aria-label="Choose an epoch"><option value="2028-01-01T12:00">1 Jan 2028 · 12:00 UTC</option><option value="2028-01-21T12:00" selected>21 Jan 2028 · 12:00 UTC</option><option value="2028-01-27T12:00">27 Jan 2028 · 12:00 UTC</option><option value="custom">Custom UTC start</option></select>
   <input type="datetime-local" data-utc aria-label="Custom UTC start" min="2000-01-01T00:00" max="2049-12-31T23:59" value="2028-01-21T12:00" hidden></fieldset>
   <p>The directional light follows visibility at the rover. Other locations in the view share this lighting approximation. The three listed epochs ship with Recorded dynamics. Manual driving and custom dates use the local simulation service. Mission sunlight uses shaded terrain with a display fill light. The historical photo layer is available in survey light. Expand Solar array estimate to see how heading, tilt and terrain shadow affect each of VIPER’s three panels. The estimate is gross generation before electrical loads. It assumes clean panels and omits temperature losses and shading by the rover.</p><button type="submit">Apply lighting</button></form></dialog>
-  <dialog class="drive-info drive-model-dialog"><button data-close>Close</button><h2>VIPER surface drive</h2><p>The articulated chassis, suspension and wheels come from Project Chrono’s VIPER model. Four-wheel steering follows an ideal rolling path at the documented nominal speed of 0.1 m/s. In a coordinated turn the wheels follow different arcs. Crab steering points all four wheels the same way so you can travel diagonally while the chassis keeps its heading. Hold forward and left or right together to steer. Manual steering angles can reach the documented ±50°. Pitch and roll follow the terrain. The drive clock can be accelerated.</p><p>Recorded dynamics replays 20 seconds of Project Chrono rigid-contact simulation on this site. Choose a straight traverse or a 25° crab traverse to inspect the solver’s chassis, suspension and wheel poses. Both use the native model’s 30° steering limit. The 434.92 kg model uses assumed friction, a 1 ms step and ideal wheel-speed control under 1.62 m/s² gravity.</p><p>The photographed surface comes from the LROC controlled south-pole average mosaic at 1 m/pixel. It combines historical exposures. Missing coverage shows shaded topography. The local surface uses NASA PGDA78 with 5 m posting. The surrounding 40.96 km landscape uses PGDA90 with 80 m posting. Survey lighting and fine material grain are illustrative. Mission sunlight uses a dated Sun direction and terrain horizon at the rover. Wheel slip, sinkage, battery draw and flight suspension response are unresolved in this preview.</p><a href="/data/drive/index.json" target="_blank" rel="noreferrer">Terrain files and source hashes</a><a href="/data/drive/sunlight.json" target="_blank" rel="noreferrer">Dated sunlight samples and source hashes</a><a href="/robots/viper/source.json" target="_blank" rel="noreferrer">Rover geometry and hardware sources</a></dialog></main>`;
+  <dialog class="drive-info drive-model-dialog"><button data-close>Close</button><h2>VIPER surface drive</h2><p>The articulated chassis, suspension and wheels come from Project Chrono’s VIPER model. Four-wheel steering follows an ideal rolling path at the documented nominal speed of 0.1 m/s. In a coordinated turn the wheels follow different arcs. Crab steering points all four wheels the same way so you can travel diagonally while the chassis keeps its heading. Hold forward and left or right together to steer. Manual steering angles can reach the documented ±50°. Pitch and roll follow the terrain. The drive clock can be accelerated.</p><p>Recorded dynamics replays 20 seconds of Project Chrono rigid-contact simulation on this site. Choose a straight traverse or a 25° crab traverse to inspect the solver’s chassis, suspension and wheel poses. Both use the native model’s 30° steering limit. The 434.92 kg model uses assumed friction, a 1 ms step and ideal wheel-speed control under 1.62 m/s² gravity.</p><p>The photographed surface comes from the LROC controlled south-pole average mosaic at 1 m/pixel. It combines historical exposures. Missing coverage shows shaded topography. The local surface uses NASA PGDA78 with 5 m posting. The surrounding 40.96 km landscape uses PGDA90 with 80 m posting. Survey lighting and fine material grain are illustrative. Mission sunlight uses a dated Sun direction and terrain horizon at the rover. Recorded wheel slip estimates use nominal wheel radius and rigid terrain. Soil deformation, sinkage and flight suspension response remain unresolved.</p><label class="grain-setting"><input type="checkbox" data-grain checked> Show illustrative surface grain</label><a href="/data/drive/index.json" target="_blank" rel="noreferrer">Terrain files and source hashes</a><a href="/data/drive/sunlight.json" target="_blank" rel="noreferrer">Dated sunlight samples and source hashes</a><a href="/robots/viper/source.json" target="_blank" rel="noreferrer">Rover geometry and hardware sources</a></dialog></main>`;
   icons();
   const $=s=>root.querySelector(s), host=$('.drive-canvas'), status=$('.drive-loading'), lifetime=new AbortController();
   let renderer;
@@ -41,7 +43,7 @@ export function mountDrive(root,{logo,icon,icons}) {
   renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));
   renderer.setClearColor(0x06080a);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;host.append(renderer.domElement);
-  const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(44,1,.08,65000);
+  const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(44,1,.08,350000);
   const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=2.1;controls.maxDistance=22000;controls.maxPolarAngle=Math.PI*.48;
   const light=new THREE.DirectionalLight(0xfff6e5,2.75);
   light.castShadow=true;light.shadow.mapSize.set(2048,2048);
@@ -76,7 +78,7 @@ export function mountDrive(root,{logo,icon,icons}) {
     $('[data-earth]').textContent='Earth center '+(sample.earth_center_visible?'visible':'occluded');
     $('[data-sun-stamp]').textContent=sample.utc+' · '+result.source+' · E '+sample.east_m.toFixed(1)+' / N '+sample.north_m.toFixed(1)+' m';
   });
-  let imageryIndex,showImage=true,replayIndex,recording,assembly,native=false,replayTime=0;
+  let imageryIndex,showImage=true,showGrain=true,replayIndex,recording,assembly,native=false,replayTime=0;
   let plottedTime, plottedRecording;
   let state=parkedDrive(), local, rover, catalog, currentRequest, active=false, demo=false, overview=false, contour=false, frame,last=performance.now(),hudTime=0;
   const parked = mountParkedPower(root,()=>{
@@ -90,12 +92,27 @@ export function mountDrive(root,{logo,icon,icons}) {
       heading:(heading*180/Math.PI%360+360)%360};
   });
   $('[data-park]').onclick=()=>parked.open();
-  const resize=()=>{const w=host.clientWidth,h=host.clientHeight;if(w&&h){camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);}};
+  const resize=()=>{const w=host.clientWidth,h=host.clientHeight;if(w&&h){camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);}};
   const observer=new ResizeObserver(resize);observer.observe(host);resize();
+  const pinPoint=new THREE.Vector3(), planCenter=new THREE.Vector3(), cameraOffset=new THREE.Vector3();
+  let regionalHalf=0, regionalGrid;
   function cameraMode(wide) {
     overview=wide;
-    controls.target.copy(target);
-    camera.position.copy(target).add(wide?new THREE.Vector3(1700,1900,2300):new THREE.Vector3(3.1,1.15,3.7).multiplyScalar(camera.aspect<1?1.35:1));
+    controls.enablePan=wide;controls.screenSpacePanning=false;
+    if(wide){
+      const halfFov=THREE.MathUtils.degToRad(camera.fov/2);
+      const tightFov=Math.min(halfFov,Math.atan(Math.tan(halfFov)*camera.aspect));
+      const fit=regionalHalf*Math.SQRT2/Math.sin(tightFov);
+      controls.maxDistance=fit*1.5;
+      camera.far=Math.max(350000,fit*2);camera.updateProjectionMatrix();
+      controls.target.set(0,groundHeight(local,0,0),0);
+      camera.position.copy(controls.target).addScaledVector(cameraOffset.set(.12,1,.42).normalize(),fit);
+    }else{
+      controls.maxDistance=22000;controls.target.copy(target);
+      camera.position.copy(target).add(cameraOffset.set(3.1,1.15,3.7).multiplyScalar(camera.aspect<1?1.35:1));
+    }
+    $('.drive-rover-pin').hidden=!wide;
+    $('[data-navigation-hint]').textContent=wide?'40.96 km site · Shift-drag or use two fingers to pan · Double-click terrain to inspect':'WASD to drive · Drag to orbit · Scroll to zoom';
     controls.update();lastTarget.copy(target);
     $('[data-camera]').textContent=wide?'Follow rover':'Site overview';
     $('[data-camera]').setAttribute('aria-label',wide?'Follow rover':'Change to site overview');
@@ -144,6 +161,17 @@ export function mountDrive(root,{logo,icon,icons}) {
     lastTarget.copy(target);
   }
   function reset(){manualTime=0;sky.reset();state=parkedDrive();held.clear();pose();cameraMode(false);}
+  const wheelPanel=$('.drive-wheels');
+  let lastWheelData, lastWheelFrame;
+  function syncWheelPanel(){
+    if(!active || !native || !wheelPanel.open)return;
+    const data=recording[$('[data-maneuver]').value].wheels;
+    const frame=Math.floor(replayTime*20+1e-10);
+    if(data===lastWheelData && frame===lastWheelFrame)return;
+    renderWheelSample(wheelPanel,data,replayTime,replayIndex.wheel_telemetry.min_rim_speed_m_s);
+    lastWheelData=data;lastWheelFrame=frame;
+  }
+  wheelPanel.ontoggle=syncWheelPanel;
   function tick(now) {
     frame=requestAnimationFrame(tick);
     const dt=Math.max(0,(now-last)/1000);last=now;
@@ -162,6 +190,7 @@ export function mountDrive(root,{logo,icon,icons}) {
       slope=Math.atan(Math.hypot(dx,dn))*180/Math.PI;
       speed=measured.speed;distance=measured.distance;
       if(now-hudTime>100){
+        syncWheelPanel();
         if($('.drive-paths').open && (plottedTime!==replayTime || plottedRecording!==recording)){
           drawReplayPaths($('.drive-paths canvas'),recording,replayTime);
           plottedTime=replayTime;plottedRecording=recording;
@@ -192,29 +221,42 @@ export function mountDrive(root,{logo,icon,icons}) {
     controls.update();
     if(!overview && Math.abs(camera.position.x)<local.half_extent_m && Math.abs(camera.position.z)<local.half_extent_m)
       camera.position.y=Math.max(camera.position.y,groundHeight(local,camera.position.x,-camera.position.z)+.18);
+    if(overview){
+      planCenter.copy(controls.target);
+      controls.target.x=THREE.MathUtils.clamp(controls.target.x,-regionalHalf,regionalHalf);
+      controls.target.z=THREE.MathUtils.clamp(controls.target.z,-regionalHalf,regionalHalf);
+      const focusGrid=Math.max(Math.abs(controls.target.x),Math.abs(controls.target.z))<local.half_extent_m-80 ? local : regionalGrid;
+      controls.target.y=groundHeight(focusGrid,controls.target.x,-controls.target.z);
+      camera.position.add(planCenter.subVectors(controls.target,planCenter));
+      camera.updateMatrixWorld();
+      pinPoint.copy(target).project(camera);
+      const marker=$('.drive-rover-pin');
+      marker.hidden=Math.abs(pinPoint.x)>.96 || Math.abs(pinPoint.y)>.94 || Math.abs(pinPoint.z)>1;
+      marker.style.left=(50+50*pinPoint.x)+'%';marker.style.top=(50-50*pinPoint.y)+'%';
+    }
     renderer.render(scene,camera);
   }
   async function siteChange(){
     const id=$('[data-site]').value;
     currentRequest?.abort();const request=currentRequest=new AbortController();
     active=false;$('[data-park]').disabled=true;sky.reset();held.clear();setDemo(false);$('[data-demo]').disabled=true;
-    $('.drive-paths').hidden=true;
+    $('.drive-rover-pin').hidden=true;$('.drive-wheels').hidden=true;$('.drive-paths').hidden=true;
     for(const indicator of root.querySelectorAll('.drive-instruments strong'))indicator.textContent='—';
     status.hidden=false;status.textContent='Loading '+catalog.sites[id].name+'…';
     try{
       const [near,far]=await Promise.all(catalog.sites[id].levels.map(l=>loadGround(l,request.signal)));
       const images=await Promise.all(['drive','horizon'].map(level=>loadDriveImage(imageryIndex.sites[id][level],request.signal)));
       if(request.signal.aborted){images.forEach(t=>t.dispose());return;}
-      release(terrain);terrain.clear();local=near;
+      release(terrain);terrain.clear();local=near;regionalGrid=far;regionalHalf=far.half_extent_m;
       terrain.add(terrainMesh(far,near.half_extent_m,null,images[1]),terrainMesh(near,near.half_extent_m,far,images[0]));
-      for(const mesh of terrain.children){mesh.userData.contours.value=Number(contour);mesh.userData.imagery.value=Number(showImage&&!dated);}
+      for(const mesh of terrain.children){mesh.userData.grain.value=Number(showGrain);mesh.userData.contours.value=Number(contour);mesh.userData.imagery.value=Number(showImage&&!dated);}
       const straight = replayIndex.sites[id];
       const crab = straight.maneuvers.crab;
       const [turnTrace, crabTrace] = await Promise.all([straight, crab].map(entry=>loadReplay(entry,near,request.signal)));
       if(request.signal.aborted)return;
       recording = {turn:turnTrace, crab:crabTrace};
-      lightingSite=id;active=true;$('[data-park]').disabled=false;replayTime=0;$('.drive-paths').hidden=!native;reset();setDemo(!matchMedia('(prefers-reduced-motion: reduce)').matches);
-      $('[data-demo]').disabled=false;status.hidden=true;
+      lightingSite=id;active=true;$('[data-park]').disabled=false;replayTime=0;$('.drive-wheels').hidden=!native;$('.drive-paths').hidden=!native;reset();setDemo(!matchMedia('(prefers-reduced-motion: reduce)').matches);
+      syncWheelPanel();$('[data-demo]').disabled=false;status.hidden=true;
       const url=new URL(location.href);url.searchParams.set('site',id);history.replaceState({},'',url);
     }catch(err){if(!request.signal.aborted)status.textContent='Could not load this site. '+err.message;}
   }
@@ -236,19 +278,35 @@ export function mountDrive(root,{logo,icon,icons}) {
     $('[data-maneuver]').options[0].textContent = native ? 'Straight traverse' : 'Coordinated turn';
     $('[data-maneuver]').options[1].textContent = native ? '25° crab traverse' : 'Crab steering';
     if(rover){rover.body.visible=!native;assembly.visible=native;}
-    $('.drive-paths').hidden=!active||!native;$('.drive-pad').hidden=native;$('.drive-clock').hidden=!native;$('[data-rate]').value=native?'1':'10';
+    $('.drive-wheels').hidden=!active||!native;$('.drive-paths').hidden=!active||!native;$('.drive-pad').hidden=native;$('.drive-clock').hidden=!native;$('[data-rate]').value=native?'1':'10';
     setDemo(active&&!matchMedia('(prefers-reduced-motion: reduce)').matches);
-    if(active)cameraMode(false);
+    if(active){cameraMode(false);syncWheelPanel();}
   };
   $('[data-maneuver]').onchange=()=>{
     held.clear();sky.reset();
-    if(native) replayTime=0;
+    if(native){replayTime=0;syncWheelPanel();}
   };
-  $('[data-scrub]').oninput=e=>{sky.reset();replayTime=Number(e.target.value);setDemo(false);};
+  $('[data-scrub]').oninput=e=>{sky.reset();replayTime=Number(e.target.value);setDemo(false);syncWheelPanel();};
   listen(document,'visibilitychange',()=>{last=performance.now();held.clear();});
   $('[data-demo]').onclick=()=>{held.clear();if(native&&replayTime===20){replayTime=0;sky.reset();}setDemo(!demo);};
+  $('.drive-rover-pin').onclick=()=>{if(active)cameraMode(false);};
+  listen(renderer.domElement,'dblclick',e=>{
+    if(!active || !overview)return;
+    const bounds=renderer.domElement.getBoundingClientRect(), ray=new THREE.Raycaster();
+    ray.setFromCamera(new THREE.Vector2(2*(e.clientX-bounds.left)/bounds.width-1,1-2*(e.clientY-bounds.top)/bounds.height),camera);
+    const [hit]=ray.intersectObjects(terrain.children,false);
+    if(!hit)return;
+    cameraOffset.subVectors(camera.position,controls.target).normalize();
+    controls.target.copy(hit.point);
+    camera.position.copy(hit.point).addScaledVector(cameraOffset,180);
+    controls.update();
+  });
   $('[data-camera]').onclick=()=>{if(active)cameraMode(!overview);};
-  $('[data-reset]').onclick=()=>{if(active){status.hidden=true;replayTime=0;setDemo(false);reset();}};
+  $('[data-reset]').onclick=()=>{if(active){status.hidden=true;replayTime=0;setDemo(false);reset();syncWheelPanel();}};
+  $('[data-grain]').onchange=e=>{
+    showGrain=e.target.checked;
+    for(const mesh of terrain.children)mesh.userData.grain.value=Number(showGrain);
+  };
   $('[data-image]').onclick=e=>{showImage=!showImage;e.currentTarget.setAttribute('aria-pressed',String(showImage));for(const m of terrain.children)m.userData.imagery.value=Number(showImage);};
   $('[data-contours]').onclick=e=>{contour=!contour;e.currentTarget.setAttribute('aria-pressed',String(contour));for(const m of terrain.children)m.userData.contours.value=Number(contour);};
   const skyDialog=$('.drive-sky-dialog');
@@ -278,9 +336,7 @@ export function mountDrive(root,{logo,icon,icons}) {
     try{
       const r=await fetch('/data/drive/index.json',{signal:lifetime.signal});if(!r.ok)throw new Error('Terrain catalogue unavailable.');
       catalog=await r.json();
-      const meta=await fetch('/data/drive/replays.json',{signal:lifetime.signal});
-      if(!meta.ok)throw new Error('Native replay catalogue unavailable.');
-      replayIndex=await meta.json();
+      replayIndex=await loadDriveSource('recordings',lifetime.signal);
       loadDriveSource('rover',lifetime.signal)
         .then(source=>{if(!lifetime.signal.aborted)hardware=source.solar_array;}).catch(()=>{});
       loadDriveSource('sunlight',lifetime.signal)

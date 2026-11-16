@@ -35,8 +35,8 @@ class Driver : public ViperDriver {
 
 int main(int argc, char** argv) {
   try {
-    if (argc != 4 && !(argc == 5 && std::string(argv[4]) == "crab"))
-        throw std::runtime_error("Usage: clavius_site_drive chrono-data drive-grid.bin frames.bin [crab]");
+    if (argc < 4 || argc > 6 || (argc >= 5 && std::string(argv[4]) != "straight" && std::string(argv[4]) != "crab"))
+        throw std::runtime_error("Usage: clavius_site_drive chrono-data drive-grid.bin frames.bin [straight|crab [wheel-states.bin]]");
     SetChronoDataPath(std::string(argv[1])+"/");
     std::vector<float> grid(513*513);
     std::ifstream input(argv[2], std::ios::binary);
@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
     floor->EnableCollision(true);sys.AddBody(floor);
     Viper rover(&sys,ViperWheelType::RealWheel);
     rover.SetChassisVisualization(false);rover.SetWheelVisualization(false);rover.SetSuspensionVisualization(false);
-    rover.SetWheelContactMaterial(material);rover.SetDriver(chrono_types::make_shared<Driver>(argc == 5));
+    rover.SetWheelContactMaterial(material);rover.SetDriver(chrono_types::make_shared<Driver>(argc >= 5 && std::string(argv[4]) == "crab"));
     rover.Initialize(ChFrame<>(point(0,0)+ChVector3d(0,0,.52),QUNIT));
     std::vector<std::shared_ptr<ChBodyAuxRef>> bodies={rover.GetChassis()->GetBody()};
     for(int i=0;i<4;i++) {
@@ -72,8 +72,27 @@ int main(int argc, char** argv) {
                       rover.GetUpright(id)->GetBody(),rover.GetWheel(id)->GetBody()});
     }
     std::ofstream out(argv[3],std::ios::binary);
+    std::ofstream wheel_states;
+    if (argc == 6) {
+        wheel_states.open(argv[5], std::ios::binary);
+        if (!wheel_states) throw std::runtime_error("Cannot open wheel telemetry output");
+    }
     double normal=0;int force_samples=0;
     for(int step=0;step<=20000;step++) {
+        if (step > 0 && argc == 6) {
+            for (int i = 0; i < 4; ++i) {
+                const auto id = static_cast<ViperWheelID>(i);
+                const auto& frame = rover.GetWheel(id)->GetBody()->GetFrameRefToAbs();
+                const std::array<ChVector3d,5> state = {
+                    frame.GetPos(), rover.GetWheelLinVel(id), rover.GetWheelAngVel(id),
+                    frame.GetRot().Rotate(ChVector3d(0,1,0)), rover.GetWheelContactForce(id)
+                };
+                for (const auto& v : state) {
+                    const std::array<float,3> xyz = {float(v.x()),float(v.y()),float(v.z())};
+                    wheel_states.write(reinterpret_cast<const char*>(xyz.data()),sizeof(xyz));
+                }
+            }
+        }
         if(step%50==0){
             for(const auto& b:bodies){
                 const auto& f=b->GetFrameRefToAbs();auto p=f.GetPos();auto q=f.GetRot();
@@ -90,6 +109,7 @@ int main(int argc, char** argv) {
         }
         if(step<20000){rover.Update();sys.DoStepDynamics(.001);}
     }
+    if (argc == 6) { wheel_states.close(); if (!wheel_states) throw std::runtime_error("Wheel telemetry write failed"); }
     out.close();if(!out)throw std::runtime_error("Trace write failed");
     const double support=normal/(force_samples*rover.GetRoverMass()*1.62);
     if(support<.85||support>1.15||rover.GetChassisPos().x()<.6)throw std::runtime_error("Support or forward progress check failed");

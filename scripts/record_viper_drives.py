@@ -8,6 +8,7 @@ import tempfile
 import numpy as np
 from scipy.spatial.transform import Rotation
 
+from scripts.viper_wheels import CHANNELS, MIN_LOAD_N, MIN_RIM_M_S, RADIUS_M, build_wheels
 from planner.validation.viper_frames import verified_runtime
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -59,6 +60,11 @@ def main():
                   crab_command="All four wheel planes steer left from 0 to 25 degrees during 1–3 s; rear motor commands use reversed axes.",
                   ground="20 m square near site origin, same nominal 5 m grid and triangle split as browser",
                   layout="little-endian float32. Each frame has chassis then LF, RF, LB, RB. Each corner has upper arm, lower arm, upright, wheel. Each body has ENU xyz metres, quaternion xyzw in the reference frame.",
+                  wheel_telemetry=dict(channels=CHANNELS, radius_m=RADIUS_M, min_load_n=MIN_LOAD_N,
+                      min_rim_speed_m_s=MIN_RIM_M_S, reducer_sha256=sha(ROOT/"scripts/viper_wheels.py"),
+                      layout="401 x 4 x 5 little-endian float32; LF, RF, LB, RB. Frame zero has no interval.",
+                      window="Preceding 50 solver steps. Mean compressive load on the facet under the hub. Speeds average only steps above the load threshold. NaN means unavailable.",
+                      slip="1 - mean along-track hub speed / mean nominal rim speed; display only above minimum absolute rim speed."),
                   flight_validated=False, soil_calibrated=False, sites={})
     with tempfile.TemporaryDirectory(dir=ROOT/"data/runtime") as temp:
         for site, info in catalog["sites"].items():
@@ -70,12 +76,16 @@ def main():
                 filename = site + ("-replay.bin" if mode == "straight" else "-crab.bin")
                 path = Path(temp)/filename
                 args = [EXE, ROOT/"data/raw/robots/chrono/data", grid, path]
-                if mode == "crab":
-                    args.append("crab")
+                raw = Path(temp)/"solver.raw"
+                args.extend([mode, raw])
                 result = subprocess.run(args, check=True, timeout=900, capture_output=True, text=True)
                 frames = read_frames(path)
                 entry = dict(file=filename, sha256=sha(path), terrain_sha256=sha(grid),
                              final_enu_m=frames[-1, 0, :3].tolist(), checks=result.stdout.strip())
+                wheel_file = Path(temp)/f"{site}-{mode}-wheels.bin"
+                checks = build_wheels(raw,grid,frames,wheel_file)
+                entry["wheels"] = dict(file=wheel_file.name,sha256=sha(wheel_file),pose_sha256=entry["sha256"],
+                                       raw_states_sha256=sha(raw),checks=checks)
                 if mode == "straight":
                     record["sites"][site] = entry
                     straight = frames

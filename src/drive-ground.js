@@ -52,29 +52,49 @@ export function terrainMesh(grid, localHalf, regional, image) {
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(vertices,3));g.setIndex(indices);g.computeVertexNormals();
   const mat=new THREE.MeshStandardMaterial({color:0x999893,roughness:1});
-  const contours={value:0}, imagery={value:1};
+  const contours={value:0}, imagery={value:1}, grain={value:1};
   mat.onBeforeCompile=shader=>{
     shader.uniforms.drawContours=contours;
     shader.uniforms.showImage=imagery;
+    shader.uniforms.showGrain=grain;
     shader.uniforms.mosaic={value:image};
     shader.uniforms.footprint={value:2*grid.half_extent_m};
     shader.vertexShader='varying vec3 surfacePoint;\n'+shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nsurfacePoint = position;');
-    shader.fragmentShader='varying vec3 surfacePoint;\nuniform float drawContours; uniform float showImage; uniform float footprint; uniform sampler2D mosaic;\n'+shader.fragmentShader.replace('#include <color_fragment>',`
+    shader.fragmentShader=`
+      varying vec3 surfacePoint;
+      uniform float drawContours, showImage, showGrain, footprint;
+      uniform sampler2D mosaic;
+      float randomCell(vec2 cell) {
+        vec3 p=fract(vec3(cell.xyx)*vec3(.1031,.1030,.0973));
+        p+=dot(p,p.yzx+33.33);
+        return fract((p.x+p.y)*p.z);
+      }
+      // Color variation only. Fade each band before it becomes subpixel.
+      float surfaceGrain(vec2 p) {
+        vec2 pixel=fwidth(p);
+        float visible=1.-smoothstep(.25,1.,max(pixel.x,pixel.y));
+        if(visible<=0.)return 0.;
+        vec2 cell=floor(p), f=fract(p);
+        f=f*f*(3.-2.*f);
+        float a=mix(randomCell(cell),randomCell(cell+vec2(1,0)),f.x);
+        float b=mix(randomCell(cell+vec2(0,1)),randomCell(cell+vec2(1,1)),f.x);
+        return (mix(a,b,f.y)-.5)*visible;
+      }
+    `+shader.fragmentShader.replace('#include <color_fragment>',`
       #include <color_fragment>
       vec2 lunarUV=vec2(surfacePoint.x,-surfacePoint.z)/footprint+.5;
       vec4 observation=texture2D(mosaic,lunarUV);
       float brightness=.26+1.55*sqrt(observation.r);
       diffuseColor.rgb*=mix(1.,brightness,observation.a*showImage);
-      vec2 p=surfacePoint.xz*85.0;
-      float seed=fract(sin(dot(mod(floor(p),256.0),vec2(12.9898,78.233)))*43758.5453);
-      float grain=(seed-.5)*(1.0-smoothstep(.35,1.3,max(fwidth(p.x),fwidth(p.y))));
-      diffuseColor.rgb*=1.0+.16*grain;
+      vec2 p=surfacePoint.xz;
+      float variation=.52*surfaceGrain(p*7.3)+.82*surfaceGrain(p*34.+13.)+.65*surfaceGrain(p*120.+37.);
+      diffuseColor.rgb*=1.+showGrain*variation;
       float level=surfacePoint.y/10.0;
       float line=1.0-smoothstep(.0,max(.012,fwidth(level)),abs(fract(level+.5)-.5));
       diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.23,.35,.28),drawContours*line*.75);
     `);
   };
   const mesh=new THREE.Mesh(g,mat);mesh.receiveShadow=!!regional;
-  mesh.userData.contours=contours;mesh.userData.imagery=imagery;mesh.userData.texture=image;
+  mesh.userData.contours=contours;mesh.userData.imagery=imagery;mesh.userData.texture=image;mesh.userData.grain=grain;
   return mesh;
 }

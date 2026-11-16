@@ -1699,7 +1699,7 @@
       },
       "recordings": {
         "url": "/data/drive/replays.json",
-        "sha256": "8d6f11296507ac5528a171b3d6fc3b971b1ef3bc9d785141213eaa335b0659f3"
+        "sha256": "a2cdb8fab225c9c45362376bcbece62d9b4fb98e6d87b96973d1b816dcb12adb"
       },
       "rover": {
         "url": "/robots/viper/source.json",
