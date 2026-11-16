@@ -1,10 +1,10 @@
 import './style.css';
 import { mountSimulation } from './simulation.js';
 import { mountLanding } from './landing.js';
-import { createIcons, ArrowUpRight, ArrowRight, ArrowLeft, Globe2, Mountain, Search, Crosshair, Plus, Minus, RotateCcw, Layers, Info, X, ChevronDown, ChevronRight, MapPin, SlidersHorizontal, Menu, Grid2X2, Maximize, Check, MousePointer2, Navigation, ExternalLink } from 'lucide';
+import { createIcons, ArrowUp, Play, Pause, ArrowUpRight, ArrowRight, ArrowLeft, Globe2, Mountain, Search, Crosshair, Plus, Minus, RotateCcw, Layers, Info, X, ChevronDown, ChevronRight, MapPin, SlidersHorizontal, Menu, Grid2X2, Maximize, Check, MousePointer2, Navigation, ExternalLink } from 'lucide';
 import { ElevationGrid, regions, formatCoordinate as coord } from './lunar.js';
 
-const iconSet = {ArrowUpRight,ArrowRight,ArrowLeft,Globe2,Mountain,Search,Crosshair,Plus,Minus,RotateCcw,Layers,Info,X,ChevronDown,ChevronRight,MapPin,SlidersHorizontal,Menu,Grid2X2,Maximize,Check,MousePointer2,Navigation,ExternalLink};
+const iconSet = {ArrowUp,Play,Pause,ArrowUpRight,ArrowRight,ArrowLeft,Globe2,Mountain,Search,Crosshair,Plus,Minus,RotateCcw,Layers,Info,X,ChevronDown,ChevronRight,MapPin,SlidersHorizontal,Menu,Grid2X2,Maximize,Check,MousePointer2,Navigation,ExternalLink};
 const icon = (name, cls='') => `<i data-lucide="${name}" class="${cls}" aria-hidden="true"></i>`;
 const icons = () => createIcons({icons:iconSet,attrs:{'stroke-width':1.5}});
 const logo = `<img class="brand-mark" src="/images/clavius-mark.svg?v=3" width="28" height="28" alt="" aria-hidden="true"><span class="brand-wordmark">Clavius</span>`;

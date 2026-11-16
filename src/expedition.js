@@ -28,7 +28,7 @@ export function mountExpedition(root,{logo,icon,icons}){
   </header><div class="exp-layout"><section class="exp-panel"><div id="exp-form"></div><p class="exp-error" role="alert" hidden></p></section>
   <section class="exp-view" aria-label="Lunar mission viewer"><div class="exp-pin" aria-hidden="true" hidden></div>
     <figure class="exp-transfer" hidden></figure><div class="exp-caption"><h2></h2><p></p></div><div class="exp-view-error" role="status" hidden></div>
-    <div class="exp-player" hidden><button id="exp-play" aria-label="Pause playback"></button><time>0:00</time><input type="range" id="exp-scrub" min="0" value="0" step="any" aria-label="Replay time"><select aria-label="Playback speed" id="exp-speed"><option value="1">1×</option><option value="3" selected>3×</option><option value="8">8×</option></select><button id="exp-fly" title="Replay fly-in" aria-label="Replay fly-in">${icon('rotate-ccw')}</button></div>
+    <div class="exp-player" hidden><button id="exp-play" aria-label="Pause playback">${icon('play','play-glyph')}${icon('pause','pause-glyph')}</button><time>0:00</time><input type="range" id="exp-scrub" min="0" value="0" step="any" aria-label="Replay time"><select aria-label="Playback speed" id="exp-speed"><option value="1">1×</option><option value="3" selected>3×</option><option value="8">8×</option></select><button id="exp-fly" title="Replay fly-in" aria-label="Replay fly-in">${icon('rotate-ccw')}</button></div>
   </section></div></main>`;
   const $=selector=>root.querySelector(selector),form=$('#exp-form'),error=$('.exp-error'),player=$('.exp-player');
   const abort=new AbortController(),signal=abort.signal;
@@ -44,7 +44,7 @@ export function mountExpedition(root,{logo,icon,icons}){
     if(!response.ok)throw Error(typeof data.detail==='string'?data.detail:(data.detail?.[0]?.msg||'The simulation service could not complete this request.'));
     return data;
   }
-  const btn=(id,text)=>`<button class="exp-primary" id="${id}">${text} ${icon('arrow-right')}</button>`;
+  const btn=(id,text)=>`<button class="exp-primary" id="${id}">${text}<span class="exp-action-mark">${icon('arrow-up')}</span></button>`;
   const metric=(label,value)=>`<div><dt>${label}</dt><dd>${safe(value)}</dd></div>`;
   function setStage(n,title){
     stage=n;showError('');$('.exp-transfer').hidden=true;root.querySelectorAll('[data-step]').forEach((el,i)=>{
@@ -115,7 +115,7 @@ export function mountExpedition(root,{logo,icon,icons}){
     form.insertAdjacentHTML('beforeend',`<dialog class="exp-import" aria-labelledby="exp-import-title"><h2 id="exp-import-title">Import rover</h2>
       <form><label>URDF or model ZIP<input type="file" name="package" accept=".zip,.urdf" required></label>
       <label>Power and mobility profile<input type="file" name="profile" accept=".json"></label><p>Include a profile here or a clavius-profile.json inside the ZIP.</p>
-      <p role="alert" hidden></p><button class="exp-primary">Import rover</button><button class="exp-back" type="button">Cancel</button></form></dialog>`);
+      <p role="alert" hidden></p>${btn('exp-import-submit','Import rover')}<button class="exp-back" type="button">Cancel</button></form></dialog>`);
     const robotSelect=$('#exp-robot'),dialog=$('.exp-import');
     robotSelect.onchange=()=>{
       if(robotSelect.value==='import'){robotSelect.value=robotId;dialog.showModal();}
@@ -148,7 +148,7 @@ export function mountExpedition(root,{logo,icon,icons}){
   }
   function onTime(t,row,playing){
     if(stage!==2)return;
-    player.hidden=false;$('#exp-play').textContent=playing?'Ⅱ':'▶';$('#exp-play').setAttribute('aria-label',playing?'Pause playback':'Play replay');
+    player.hidden=false;$('#exp-play').dataset.playing=String(playing);$('#exp-play').setAttribute('aria-label',playing?'Pause playback':'Play replay');
     $('#exp-scrub').value=t;player.querySelector('time').textContent=timeLabel(t);
     if(row.utc)$('.exp-caption p').textContent=row.utc.slice(0,19).replace('T',' ')+' UTC';
     $('#exp-activity').textContent=row.activity==='drive'?'To waypoint '+row.waypoint:row.activity==='science'?'Science dwell':'Parked';
@@ -163,7 +163,7 @@ export function mountExpedition(root,{logo,icon,icons}){
     <dl>${metric('Distance driven',m.distance_m.toFixed(2)+' m')}${metric('Elapsed',m.duration_s.toFixed(1)+' s')}${metric('Peak roll',m.maximum_roll_deg.toFixed(1)+'°')}${metric('Minimum battery',m.minimum_battery_wh.toFixed(2)+' Wh')}</dl>
     ${run.issues.map(v=>'<p>'+safe(v)+'</p>').join('')}</section>
     <div class="exp-telemetry"><strong id="exp-activity">At landing site</strong><span id="exp-velocity"></span><span id="exp-battery"></span></div>
-    <button id="exp-reroute" class="exp-primary">Edit traverse ${icon('arrow-right')}</button>
+    ${btn('exp-reroute','Edit traverse')}
     ${flightDetails()}<details class="exp-notes"><summary>Simulation details</summary><p>MuJoCo rigid contact on 5 m LOLA terrain. Solar power uses dated DE421 directions, local terrain horizons and the recorded body attitude. Scene fill light helps reveal terrain in shadow. Friction and power properties are engineering assumptions. The controller has 180 s to reach the route and finish its dwell within 0.18 m.</p><a href="/api/v1/runs/${encodeURIComponent(run.id)}" target="_blank" rel="noopener">Open run data ↗</a></details>
     <button id="exp-new" class="exp-back">New flight</button>`);
     caption(run.landing.name,dateLabel(run.landing.utc));icons();

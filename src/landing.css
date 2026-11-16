@@ -9,8 +9,8 @@
 .sky-intro h1 span{display:block;text-wrap:balance}
 .sky-intro .sky-start{margin-top:4px}
 @media(max-height:540px){.sky-intro{top:56%;gap:14px}.sky-intro h1{font-size:clamp(38px,5vw,62px)}}
-.get-started{display:inline-flex;align-items:center;justify-content:center;border:1px solid #fff;border-radius:30px;background:#fff;color:#000;font-weight:500;white-space:nowrap;transition:background .2s,border-color .2s,transform .2s}
-.get-started:hover{background:#ececf1;border-color:#ececf1}
+.get-started{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--action-blue);border-radius:999px;background:var(--action-blue);color:#fff;font-weight:500;white-space:nowrap;transition:background .2s,border-color .2s,transform .2s}
+.get-started:hover{background:var(--action-blue-hover);border-color:var(--action-blue-hover)}
 .get-started:active{transform:scale(.98)}
 .sky-start{min-height:40px;padding:8px 17px;font-size:16px;line-height:1.25}
 .sky-header{position:fixed;top:20px;left:0;width:100%;z-index:50;pointer-events:none}
@@ -125,7 +125,7 @@
 }
 .step-switch button[aria-selected=true] { color: #111; }
 .step-switch button:focus-visible, .landing-page summary:focus-visible,
-.landing-page a:focus-visible { outline: 2px solid #ac9cff; outline-offset: 3px; }
+.landing-page a:focus-visible { outline: 2px solid var(--action-focus); outline-offset: 3px; }
 .mission-controls h3, .bench-topics h3 {
   font-size: clamp(24px, 2.3vw, 38px);
   line-height: 1.12;
