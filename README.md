@@ -1,8 +1,8 @@
 # Clavius
 
-Explore the Moon from orbit, drive a 3D VIPER reference at two south-polar sites, and test mission scenarios on NASA terrain. The browser includes a manual drive and recorded Project Chrono straight and crab traverses at both sites.
+Plan a flight from Earth orbit to a lunar polar site, give a rover waypoints and a task, and replay its simulated drive on the terrain where the flight lands. Clavius also includes a lunar atlas, a simulation lab and a VIPER visual reference.
 
-![VIPER during a recorded traverse at Shackleton rim](docs/validation/viper-surface-drive.jpg)
+![The hypothetical Clavius R1 replaying a simulated science traverse at Connecting Ridge](docs/validation/mission-replay.jpg)
 
 ## Run locally
 
@@ -10,10 +10,13 @@ Requires Node.js 20.19+ or 22.12+.
 
 ```bash
 npm install
+uv venv .venv
+uv pip install --python .venv/bin/python -r requirements-simulation.txt
+.venv/bin/python scripts/setup_simulation.py
 npm run dev
 ```
 
-Open the Local URL printed by Vite (normally http://127.0.0.1:5173). The landing page is `/`; the explorer is `/app`. The NASA assets are included locally, so no API key is needed. The initial explorer load transfers approximately 57 MB of elevation, imagery and derived surface normals.
+Open [the mission workspace](http://127.0.0.1:5173/app). After the first-time Python and dataset setup, `npm run dev` starts the frontend and simulation service together. Calculate a flight, select a rover or import a URDF package with a capability profile, set the route and final dwell, then simulate. The replay URL reopens that run on the same service. Its menu opens the atlas (`/app/atlas`), simulation lab and VIPER reference. The landing page is `/`.
 
 ```bash
 npm test

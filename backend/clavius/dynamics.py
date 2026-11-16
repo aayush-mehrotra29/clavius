@@ -103,7 +103,7 @@ def build_model(robot,request,terrain=None,flat=False):
  if not flat:model.hfield_data[:]=((heights-hmin)/height_range).astype(np.float32).ravel()
  return model,wheel_settings,xml,collision_conversions
 
-def simulate_segment(request,robot,progress=lambda *_:None,cancel=lambda:False,flat=False):
+def simulate_segment(request,robot,progress=lambda *_:None,cancel=lambda:False,flat=False,controller=None,observe_frame=lambda _:False):
  if request.engine!='mujoco':raise UnsupportedDynamics('Gazebo requests must use the Gazebo worker adapter; no engine substitution is allowed.')
  import mujoco
  terrain=None if flat else site(request.site_id,request.terrain_realization_id);model,wheels,xml,collision_conversions=build_model(robot,request,terrain,flat)
@@ -117,6 +117,15 @@ def simulate_segment(request,robot,progress=lambda *_:None,cancel=lambda:False,f
  steps=math.ceil(request.duration_s/model.opt.timestep);trace=[];max_roll=0;max_pitch=0;contacts_seen=False;bus_energy=0;max_slip=0;distance=0.;previous=data.xpos[root_id][:2].copy();events=[]
  for step in range(steps):
   if step%100==0 and cancel():raise Cancelled()
+  if controller and step%10==0:
+   # Feedback uses the integrated chassis pose. Wheel commands never set body poses.
+   position=data.xpos[root_id]
+   rotation=data.xmat[root_id].reshape(3,3)
+   speed,turn=controller.command(data.time,position[0]+request.east_m,position[1]+request.north_m,
+                                 math.atan2(rotation[1,0],rotation[0,0]))
+   for index,w in enumerate(wheels):
+    target=(speed-turn*w['lateral_m'])/w['radius']*w['axis_sign']
+    data.ctrl[index]=np.clip(target,-w['velocity_limit'],w['velocity_limit'])
   mujoco.mj_step(model,data)
   distance+=float(np.linalg.norm(data.xpos[root_id][:2]-previous));previous=data.xpos[root_id][:2].copy()
   mechanical_w=float(np.sum(np.abs(data.actuator_force*data.actuator_velocity)));bus_w=base+mechanical_w/request.motor_efficiency;bus_energy+=bus_w*model.opt.timestep/3600
@@ -131,6 +140,11 @@ def simulate_segment(request,robot,progress=lambda *_:None,cancel=lambda:False,f
     force=np.zeros(6);mujoco.mj_contactForce(model,data,index,force);contact_force+=max(0,float(force[0]))
    contacts_seen|=data.ncon>0;pos=data.xpos[root_id].copy();q=data.xquat[root_id]
    trace.append({'t_s':float(data.time),'east_m':float(pos[0]+request.east_m),'north_m':float(pos[1]+request.north_m),'up_m':float(pos[2]),'quaternion_xyzw':[float(q[1]),float(q[2]),float(q[3]),float(q[0])],'joint_positions':{j['name']:float(data.qpos[model.jnt_qposadr[mujoco.mj_name2id(model,mujoco.mjtObj.mjOBJ_JOINT,j['name'])]]) for j in robot['model']['joints'] if j['type']!='fixed'},'speed_m_s':speed,'roll_deg':float(angles[0]/DEG),'pitch_deg':float(angles[1]/DEG),'contact_count':int(data.ncon),'total_contact_normal_n':contact_force,'wheel_slip_ratios':slips,'mechanical_w':mechanical_w,'mobility_bus_power_w':bus_w})
+   if controller:
+    trace[-1]['mobility_bus_energy_wh']=bus_energy
+    trace[-1]['activity']=controller.activity
+    trace[-1]['waypoint']=controller.index+1
+    if observe_frame(trace[-1]) or controller.finished:break
   if step%1000==0:progress(.1+.8*step/steps,f'Integrating rigid-contact dynamics · {data.time:.1f} / {request.duration_s:g} s')
   if not np.isfinite(data.qpos).all() or np.max(np.abs(data.qvel))>100:raise ValueError('Dynamics became numerically unstable; no accepted replay was generated.')
  result={'schema_version':'0.2.0','name':'Detailed rover segment','robot_id':robot['id'],'request':request.model_dump(),'engine':{'name':'MuJoCo','version':mujoco.__version__,'timestep_s':float(model.opt.timestep),'gravity_m_s2':[0,0,-1.62],'terrain_resolution_m':None if flat else 5},'status':'constraint_violated' if events else ('supported_under_assumptions' if contacts_seen else 'insufficient_evidence'),'events':events,'first_violation':events[0] if events else None,'assessment_scope':'rigid-contact wheeled rover dynamics under declared friction; not validated regolith or sub-grid hazard performance','metrics':{'duration_s':float(data.time),'distance_m':distance,'displacement_m':float(np.linalg.norm(data.xpos[root_id][:2])),'maximum_roll_deg':max_roll,'maximum_pitch_deg':max_pitch,'maximum_abs_slip_ratio':max_slip,'mobility_bus_energy_wh':bus_energy,'contacts_observed':contacts_seen},'trace':trace,'issues':[{'code':'ASSUMED_RIGID_SOIL','message':'Friction and motor efficiency are declared. No calibrated lunar sinkage/deformable-regolith model is used.'},{'code':'NATIVE_ADAPTER','message':'This is an executed MuJoCo run. It is not a Gazebo/ROS 2 run.'}],'model_xml':xml,'collision_conversions':collision_conversions,'provenance':{'implementation':implementation(),'robot_package_sha256':robot['package_sha256'],'profile_sha256':robot.get('profile_sha256'),'terrain':None if flat else terrain.manifest,'seed':request.seed}}

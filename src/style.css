@@ -13,3 +13,10 @@
 .explorer-sim-link{display:flex;align-items:center;gap:7px;padding:0 14px;color:#9daab2;font-size:12px}.explorer-sim-link svg{width:15px}.explorer-sim-link:hover{color:var(--accent)}
 @media(max-width:600px){.workspace:not(.sim-workspace) .main-nav{display:flex;margin-left:auto}.workspace:not(.sim-workspace) .main-nav>.nav-active{display:none}.explorer-sim-link{font-size:10px;padding:0 4px}.workspace:not(.sim-workspace) .header-right{margin-left:0}.workspace:not(.sim-workspace) .header-right .text-button span{display:none}}
 .drive-entry{display:flex;justify-content:center;align-items:center;gap:7px;margin:9px 0;color:#d7edb0;text-decoration:underline;font-size:12px}.drive-entry svg{width:14px;height:14px}
+
+/* Shared workspace chrome. Scientific layers retain their own color scales. */
+.workspace,.drive-page{--bg:#101010;--panel:#171717;--border:#323232;--accent:#eee;font-family:Inter,system-ui,sans-serif}
+.workspace .app-header,.drive-page .app-header,.workspace .sidebar,.workspace .sim-setup,.workspace .status-bar{background:#101010;border-color:#303030}
+.workspace .primary,.workspace .primary:hover{background:#eee;border-color:#eee;color:#151515;border-radius:24px}
+.workspace .region-row.active,.workspace .side-footer,.workspace .sim-setup select,.workspace .sim-setup input:not([type=checkbox]){background:#1c1c1c;border-color:#393939}
+.workspace .drive-entry,.workspace .explorer-sim-link:hover,.drive-page .drive-nav [aria-current]{color:#eee}

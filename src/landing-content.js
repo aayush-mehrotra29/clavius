@@ -59,10 +59,10 @@ export function landingSections() {
     <section id="about" class="lunar-intro story-width" aria-labelledby="about-title">
       <h2 id="about-title" class="story-title">A rover’s first day on the Moon.</h2>
       <div id="users">
-        <p id="challenge" class="story-body">Explore lunar terrain and rehearse surface operations today. Our planned flight tools will connect departure from Earth orbit to a rover’s first day on the Moon.</p>
+        <p id="challenge" class="story-body">Plan a transfer from Earth orbit, choose a traverse and watch the rover follow it across the lunar surface.</p>
         <details class="story-detail" id="questions">
-          <summary>How will flight planning work?</summary>
-          <p class="story-body">Mission planners will be able to compare departure dates from an Earth parking orbit, travel time to lunar capture and sunlight at the rover’s destination. The interval from capture to touchdown will be a planning assumption.</p>
+          <summary>How does the flight set the surface mission?</summary>
+          <p class="story-body">Choose a departure and site. Clavius solves the transfer and adds a prescribed descent. The rover starts there at the modeled touchdown time, with sunlight calculated for that place and date.</p>
         </details>
       </div>
     </section>
@@ -80,7 +80,7 @@ export function landingSections() {
           <div id="mission-step">
             ${missionSteps.map(({title,copy}, index) => `<div data-step-copy="${index}" role="tabpanel" id="mission-panel-${index}" aria-labelledby="mission-tab-${index}" ${index ? 'inert' : 'data-current'}><h3>${title}</h3><p class="story-body">${copy}</p></div>`).join('')}
           </div>
-          <a class="story-link" href="/app/simulation">Open surface simulator</a>
+          <a class="story-link" href="/app">Plan a mission</a>
         </div>
         <div class="mission-visual" aria-hidden="true">
           <div class="mission-scene" data-scene="0" data-current><img loading="lazy" decoding="async" src="/images/rover-study.webp" width="1280" height="854" alt=""></div>
@@ -128,7 +128,7 @@ export function landingSections() {
       <div class="research-studies">
         <article>
           <h3>When can a spacecraft leave Earth orbit?</h3>
-          <p>Campana and Topputo studied how the changing positions of Earth, the Moon and the Sun affect low-energy transfers. Their work shows why Clavius’s planned flight tools need to compare departure dates.</p>
+          <p>Campana and Topputo studied how the changing positions of Earth, the Moon and the Sun affect low-energy transfers. Their work shows why departure dates matter.</p>
           <a class="story-link" href="https://doi.org/10.1016/j.actaastro.2025.03.010" aria-label="Read Campana and Topputo’s paper on low-energy Earth–Moon transfers">Campana &amp; Topputo · <cite>Acta Astronautica</cite>, 2025</a>
         </article>
         <article>

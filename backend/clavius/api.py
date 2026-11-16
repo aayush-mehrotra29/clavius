@@ -153,7 +153,7 @@ def sample(identity:str,east_m:float=0,north_m:float=0,realization:TerrainRealiz
  if not value['covered']:raise HTTPException(422,'No local terrain coverage at this point.')
  return {**{k:bool(v) if isinstance(v,(np.bool_,bool)) else (float(v) if np.isfinite(v) else None) for k,v in value.items()},'terrain_realization_id':realization}
 
-def submit(kind,request,worker):
+def submit(kind,request,worker,collection='run'):
  if sum(j['state'] in {'queued','running'} for j in store.listing('job'))>=6:raise HTTPException(429,'Six jobs are already queued or running.')
  job=store.put('job',{'kind':kind,'state':'queued','progress':0.,'message':'Queued','request':request,'result_id':None});event=threading.Event();cancellations[job['id']]=event
  def work():
@@ -163,13 +163,28 @@ def submit(kind,request,worker):
   try:
    update(.01,'Preparing inputs');result=worker(update,event.is_set)
    if event.is_set():raise Cancelled()
-   h=store.artifact(result);saved=store.put('run',{**result,'artifact_sha256':h,'kind':kind})
+   h=store.artifact(result);saved=store.put(collection,{**result,'artifact_sha256':h,'kind':kind})
    store.put('job',{**store.get(job['id']),'state':'completed','progress':1.,'message':'Complete','result_id':saved['id']},job['id'])
   except Cancelled:store.put('job',{**store.get(job['id']),'state':'cancelled','message':'Cancelled'},job['id'])
   except Exception as e:
    traceback.print_exc();store.put('job',{**store.get(job['id']),'state':'failed','message':str(e),'error':type(e).__name__},job['id'])
   finally:cancellations.pop(job['id'],None)
  pool.submit(work);return job
+
+from .flight import FlightRequest,plan_flight
+from .expedition import TraverseRequest,traverse
+
+@app.post('/api/v1/flights')
+def create_flight(request:FlightRequest):
+ return submit('flight',request.model_dump(),lambda p,c:plan_flight(request,p,c),'expedition')
+
+@app.post('/api/v1/traverses')
+def create_traverse(request:TraverseRequest):
+ flight=store.get(request.flight_id)
+ if not flight or flight.get('kind')!='flight' or 'landing' not in flight:raise HTTPException(404,'Solved flight not found.')
+ model=robot(request.robot_id)
+ if not model.get('profile') or not model['model']['physical_ready']:raise HTTPException(422,'Choose a rover with a physical model and a validated power profile.')
+ return submit('traverse',request.model_dump(),lambda p,c:traverse(request,flight,model,p,c),'expedition')
 
 @app.post('/api/v1/planning-runs')
 def planning_run(request:MissionRequest):

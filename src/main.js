@@ -14,6 +14,14 @@ let alive=0;
 function navigate() {
   // Native fragment navigation on the landing page keeps the walkthrough and focus intact.
   if (location.pathname === '/' && root.querySelector('.landing-page')) return;
+  const path=location.pathname.replace(/\/$/,'');
+  const atlasParams=['region','view','lat','lon'].some(k=>new URLSearchParams(location.search).has(k));
+  if(path==='/app'&&!atlasParams){
+    const generation=++alive;cleanup?.();cleanup=null;viewer?.dispose();viewer=null;
+    document.title='Mission — Clavius';window.scrollTo(0,0);root.replaceChildren();
+    import('./expedition.js').then(({mountExpedition})=>{if(alive===generation)cleanup=mountExpedition(root,{logo,icon,icons});});
+    return;
+  }
   if(location.pathname.replace(/\/$/,'')==='/app/drive'){
     const generation=++alive;cleanup?.();cleanup=null;viewer?.dispose();viewer=null;
     document.title='VIPER surface drive — Clavius';window.scrollTo(0,0);
@@ -27,7 +35,7 @@ function navigate() {
     document.title='Mission simulation — Clavius';window.scrollTo(0,0);
     cleanup=mountSimulation(root,{logo,icon,icons});return;
   }
-  const isApp=location.pathname.replace(/\/$/,'')==='/app';
+  const isApp=path==='/app/atlas'||path==='/app';
   if(isApp && document.querySelector('.workspace:not(.sim-workspace)')) return;
   alive++;
   cleanup?.(); cleanup=null; viewer?.dispose(); viewer=null;
@@ -49,13 +57,13 @@ function renderApp() {
     <div class="workspace">
       <header class="app-header">
         <a class="brand" href="/" aria-label="Clavius home">${logo}</a>
-        <span class="header-divider"></span><span class="workspace-name">Lunar workspace ${icon('chevron-down')}</span>
+        <a class="explorer-sim-link" href="/app">Mission</a>
         <nav class="main-nav" aria-label="Workspace"><span class="nav-active">${icon('globe-2')} Explorer</span><a href="/app/simulation" class="explorer-sim-link">${icon('sliders-horizontal')} Simulation</a><a href="/app/drive" class="explorer-sim-link">${icon('navigation')} Rover drive</a></nav>
-        <div class="header-right"><span class="build-tag mono">PREVIEW 0.1</span><button class="text-button" data-action="sources">${icon('info')} <span>Data & sources</span></button><span class="avatar">C</span></div>
+        <div class="header-right"><button class="text-button" data-action="sources">${icon('info')} <span>Data & sources</span></button></div>
       </header>
       <div class="work-body">
         <aside class="sidebar" aria-label="Region browser">
-          <div class="side-heading"><div><span class="eyebrow">LUNAR ATLAS</span><h1>Explore the Moon</h1></div><button class="icon-button mobile-close" data-action="sidebar" aria-label="Close region browser">${icon('x')}</button></div>
+          <div class="side-heading"><div><h1>Explore the Moon</h1></div><button class="icon-button mobile-close" data-action="sidebar" aria-label="Close region browser">${icon('x')}</button></div>
           <label class="search-box">${icon('search')}<input type="search" aria-label="Search lunar regions" placeholder="Find a region…" autocomplete="off"><kbd>/</kbd></label>
           <div class="region-filters" role="group" aria-label="Filter regions"><button class="selected" data-filter="all">All regions</button><button data-filter="polar">South pole</button><button data-filter="far">Far side</button></div>
           <div class="list-caption"><span>REGIONS</span><span class="region-count mono">08</span></div>
@@ -66,7 +74,7 @@ function renderApp() {
           <div id="viewport"></div>
           <div class="viewport-top"><div class="view-title"><button class="icon-button mobile-menu" data-action="sidebar" aria-expanded="false" aria-label="Open region browser">${icon('menu')}</button><span class="eyebrow">EXPLORER</span><span class="crumb-divider">/</span><span id="view-label">Moon</span><span class="mode-tag mono">3D</span></div><span class="data-state"><span class="source-dot"></span><span id="data-status">Loading NASA surface</span></span></div>
           <div class="view-switch" role="group" aria-label="View mode"><button data-mode="globe" class="selected" aria-pressed="true">${icon('globe-2')} Globe</button><button data-mode="terrain" aria-pressed="false">${icon('mountain')} Terrain</button></div>
-          <div class="canvas-wordmark" aria-hidden="true"><span class="eyebrow">SOLAR SYSTEM / 03.1</span><span>THE MOON</span></div>
+          <div class="canvas-wordmark" aria-hidden="true"></div>
           <div class="viewport-controls" aria-label="Viewport controls"><button class="icon-button" data-action="zoom-in" aria-label="Zoom in" title="Zoom in">${icon('plus')}</button><button class="icon-button" data-action="zoom-out" aria-label="Zoom out" title="Zoom out">${icon('minus')}</button><span class="control-separator"></span><button class="icon-button" data-action="reset" aria-label="Reset view" title="Reset view">${icon('rotate-ccw')}</button><button class="icon-button" data-action="grid" aria-label="Toggle coordinate grid" aria-pressed="false" title="Coordinate grid">${icon('grid-2-x2')}</button><button class="icon-button" data-action="layers" aria-label="Surface layers" aria-expanded="false" title="Surface layers">${icon('layers')}</button></div>
           <section class="layers-panel floating-panel" hidden aria-label="Surface layers"><div class="panel-label">Surface layers<button class="icon-button" data-action="layers" aria-label="Close layers">${icon('x')}</button></div><label>Display<select id="layer-select"><option value="imagery">LROC natural color</option><option value="relief">Shaded relief</option><option value="wireframe">Terrain mesh</option></select></label><label>Vertical exaggeration <output id="relief-value">1× · true scale</output><input type="range" id="relief-slider" min="1" max="5" step="1" value="1"></label><label>Sun elevation <output id="sun-value">46° · illustrative</output><input type="range" id="sun-slider" min="5" max="70" step="1" value="46"></label><p>LOLA-derived surface shading. Lower the sun angle to reveal crater rims and slopes. Lighting is illustrative; elevation readouts stay at true scale.</p></section>
           <div class="region-indicator" aria-hidden="true"><span></span><span id="indicator-name">${activeRegion.name}</span></div>
@@ -76,7 +84,7 @@ function renderApp() {
           <div class="toast" role="status" hidden></div>
         </main>
       </div>
-      <footer class="status-bar mono"><span><span class="source-dot"></span> LUNAR SURFACE EXPLORER</span><span id="cursor-readout">${coord(activeRegion.lat)} &nbsp; ${coord(activeRegion.lon,false)}</span><span id="resolution-readout">LOLA 16 px/° <b>·</b> GLOBAL PREVIEW</span></footer>
+      <footer class="status-bar mono"><span></span><span id="cursor-readout">${coord(activeRegion.lat)} &nbsp; ${coord(activeRegion.lon,false)}</span><span id="resolution-readout">LOLA 16 px/° <b>·</b> GLOBAL PREVIEW</span></footer>
     </div>
     <dialog id="sources-dialog" aria-labelledby="sources-title"><div class="dialog-top"><span class="eyebrow">DATA PROVENANCE</span><button class="icon-button" data-action="close-dialog" aria-label="Close data sources">${icon('x')}</button></div><h2 id="sources-title">A real Moon. A first foundation.</h2><p>Clavius builds its own 3D meshes from NASA’s lunar elevation samples, with the LRO camera mosaic wrapped over the surface.</p><div class="source-item"><span class="mono">01 / ELEVATION</span><h3>Lunar Orbiter Laser Altimeter</h3><p>Source file: <code>ldem_16_uint.tif</code>. LOLA global cylindrical DEM, 5,760 × 2,880 samples (16 pixels/degree). About 1.9 km spacing at the equator; physical east–west spacing decreases toward the poles.</p><p>Unsigned 16-bit values are decoded as <code>height = sample × 0.5 − 10,000 m</code>, relative to the 1,737.4 km reference sphere. Samples are bilinearly interpolated for display.</p></div><div class="source-item"><span class="mono">02 / IMAGERY</span><h3>LROC Wide Angle Camera</h3><p>Source file: <code>lroc_color_poles_8k.tif</code>. NASA’s 2019 natural-color Moon Kit mosaic, served at 8,192 × 4,096 pixels. Polar areas beyond ±70° use LOLA albedo fill. This is a visualization mosaic, not scientific reflectance data.</p></div><div class="data-note">This global preview does not resolve rocks, wheel-scale slopes, or landing hazards. Terrain view streams a 400 km patch of NASA’s 64 px/degree LOLA DEM, about 474 m between samples at the equator. It is not the 5 m polar dataset. Regional relief follows the finer mesh. Globe shading uses the 16 px/degree DEM. Adjustable low-angle lighting and mesh shadows improve visibility, but do not add measured resolution or establish real sunlight conditions. The separate Simulation workspace uses measured 5 m Connecting Ridge terrain, date-specific geometry and declared rover models.</div><p class="credit">Credit: NASA’s Scientific Visualization Studio, Ernie Wright, and the LRO / LOLA / LROC instrument teams.</p><div class="dialog-links"><a href="https://svs.gsfc.nasa.gov/4720/" target="_blank" rel="noreferrer">NASA Moon Kit ${icon('arrow-up-right')}</a><a href="/data/manifest.json" target="_blank">Asset manifest ${icon('arrow-up-right')}</a></div></dialog>`;
   renderRegions(); renderDetail(); icons();
@@ -106,7 +114,7 @@ function updateURL() {
   if(activeRegion.id==='custom'){p.set('lat',activeRegion.lat.toFixed(5));p.set('lon',activeRegion.lon.toFixed(5));}
   else p.set('region',activeRegion.id);
   if(mode==='terrain')p.set('view','terrain');
-  history.replaceState({},'',`/app?${p}`);
+  history.replaceState({},'',`/app/atlas?${p}`);
 }
 function setMode(value) {
   if(!viewer)return;
@@ -197,6 +205,6 @@ async function loadScene(generation) {
     document.querySelector('#retry-load').onclick=()=>{viewer?.dispose();viewer=null;document.querySelector('#viewport').replaceChildren();document.querySelector('.loading-screen').innerHTML='<strong>Loading lunar surface…</strong>';loadScene(alive);};icons();
   }
 }
-document.addEventListener('click',e=>{const a=e.target.closest('a');if(a&&a.origin===location.origin&&['/','/app','/app/simulation','/app/drive'].includes(a.pathname)&&!a.hash&&!a.target&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&e.button===0){e.preventDefault();history.pushState({},'',a.href);navigate();}});
-window.addEventListener('popstate',()=>{if(location.pathname==='/app'&&document.querySelector('.workspace')){alive++;cleanup?.();viewer?.dispose();viewer=null;renderApp();}else navigate();});
+document.addEventListener('click',e=>{const a=e.target.closest('a');if(a&&a.origin===location.origin&&['/','/app','/app/atlas','/app/simulation','/app/drive'].includes(a.pathname)&&!a.hash&&!a.target&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&e.button===0){e.preventDefault();history.pushState({},'',a.href);navigate();}});
+window.addEventListener('popstate',()=>{if(location.pathname==='/app/atlas'&&document.querySelector('.workspace:not(.sim-workspace)')){alive++;cleanup?.();viewer?.dispose();viewer=null;renderApp();}else navigate();});
 navigate();

@@ -4,6 +4,9 @@ import { resolve } from 'node:path';
 const cwd=resolve(import.meta.dirname,'..');
 if(!existsSync(resolve(cwd,'.venv/bin/python'))){console.error('Simulation dependencies are missing. Run: uv venv .venv && uv pip install --python .venv/bin/python -r requirements-simulation.txt');process.exit(1);}
 const children=[];
+const viteArgs=process.argv.slice(2);
+const portIndex=viteArgs.indexOf('--port');
+const port=portIndex>=0?viteArgs[portIndex+1]:(viteArgs.find(arg=>arg.startsWith('--port='))?.slice(7)||'5173');
 const localWorker={};
 const workerEnvPath=resolve(cwd,'data/runtime/gazebo-local.env');
 if(existsSync(workerEnvPath))for(const line of readFileSync(workerEnvPath,'utf8').split(/\r?\n/)){
@@ -12,8 +15,8 @@ if(existsSync(workerEnvPath))for(const line of readFileSync(workerEnvPath,'utf8'
 }
 async function available(url){try{return (await fetch(url,{signal:AbortSignal.timeout(3000)})).ok;}catch{return false;}}
 if(!await available('http://127.0.0.1:8001/api/v1/health'))children.push(spawn(resolve(cwd,'.venv/bin/python'),['-m','uvicorn','clavius.api:app','--host','127.0.0.1','--port','8001'],{cwd,stdio:'inherit',env:{...localWorker,...process.env,PYTHONPATH:resolve(cwd,'backend'),OPENBLAS_NUM_THREADS:'1'}}));
-if(!await available('http://127.0.0.1:5173'))children.push(spawn(process.execPath,[resolve(cwd,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','5173'],{cwd,stdio:'inherit'}));
-console.log('Clavius simulation: http://127.0.0.1:5173/app/simulation');
+if(!await available(`http://127.0.0.1:${port}`))children.push(spawn(process.execPath,[resolve(cwd,'node_modules/vite/bin/vite.js'),...viteArgs],{cwd,stdio:'inherit'}));
+console.log(`Clavius mission: http://127.0.0.1:${port}/app`);
 for(const child of children)child.on('exit',code=>{if(code)console.error(`Service exited with code ${code}`);});
 const shutdown=()=>{for(const child of children)child.kill('SIGTERM');process.exit(0);};
 process.on('SIGINT',shutdown);process.on('SIGTERM',shutdown);
