@@ -299,10 +299,31 @@
   }
   .audience-list > div { scroll-snap-align: start; }
 }
-.landing-footer { display: flex; align-items: center; justify-content: space-between; padding-block: 32px; }
-.landing-footer { gap: 18px; }
-.landing-footer .brand { margin-right: auto; }
-.landing-footer > a:not(.brand) { font-size: 15px; color: #ceccd6; }
+.landing-footer {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  min-height: clamp(250px, 36svh, 360px);
+  padding: 32px 20px;
+  text-align: center;
+  background: #000;
+}
+.landing-footer .sky-backdrop {
+  background-size: 100% 100%;
+  mask-image: linear-gradient(transparent, black 22%);
+}
+.landing-footer .brand { font-size: 17px; gap: 7px; }
+.landing-footer .brand-mark { width: 19px; height: 19px; }
+.landing-footer h2 {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 450;
+  line-height: 1.06;
+  letter-spacing: -.045em;
+}
+.landing-footer h2 span { display: block; }
 @media (prefers-reduced-motion: no-preference) {
   .step-switch::before { transition: transform .42s var(--nav-ease); }
   .step-switch button { transition: color .28s ease; }
@@ -332,5 +353,4 @@
 }
 @media (max-width: 550px) {
   .story-title { font-size: clamp(36px, 9vw, 48px); }
-  .landing-footer { padding-block: 25px; }
 }

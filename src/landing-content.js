@@ -1,5 +1,7 @@
 import comparisonUrl from '../docs/validation/reference-comparison.json?url&no-inline';
 
+export const heroHeadline = 'Mission Planning <span>from Earth to the Moon</span>';
+
 const missionSteps = [
   {
     name: 'Rover',
@@ -145,5 +147,10 @@ export function landingSections() {
 }
 
 export function landingFooter(logo) {
-  return `<footer class="landing-footer story-width"><a class="brand" href="#sky" aria-label="Clavius home">${logo}</a><a id="get-started" href="/app">Get started</a><a href="#sky">Back to top</a></footer>`;
+  return `<footer class="landing-footer" id="footer" aria-labelledby="footer-title">
+    <div class="sky-backdrop" aria-hidden="true"></div>
+    <span class="brand">${logo}</span>
+    <h2 id="footer-title">${heroHeadline}</h2>
+    <a id="get-started" class="get-started sky-start" href="/app">Get started</a>
+  </footer>`;
 }
