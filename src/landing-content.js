@@ -146,14 +146,16 @@ export function landingSections() {
     </section>`;
 }
 
+export const githubButton = '<a class="github-button sky-start" href="https://github.com/aayush-mehrotra29/clavius">View on GitHub</a>';
+
 export function landingFooter(logo) {
   return `<footer class="landing-footer" id="footer" aria-labelledby="footer-title">
     <div class="sky-backdrop" aria-hidden="true"></div>
     <span class="brand">${logo}</span>
     <h2 id="footer-title">${heroHeadline}</h2>
-    <div class="footer-links">
+    <div class="landing-actions">
       <a id="get-started" class="get-started sky-start" href="/app">Get started</a>
-      <a class="story-link" href="https://github.com/aayush-mehrotra29/clavius">View on GitHub</a>
+      ${githubButton}
     </div>
   </footer>`;
 }

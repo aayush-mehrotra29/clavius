@@ -7,11 +7,14 @@
 .sky-intro{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-46%);width:calc(100% - 48px);display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
 .sky-intro h1{font-size:clamp(44px,6.3vw,100px);font-weight:450;line-height:1.08;letter-spacing:-.04em;color:#fff;max-width:1100px}
 .sky-intro h1 span{display:block;text-wrap:balance}
-.sky-intro .sky-start{margin-top:4px}
+.sky-intro .landing-actions{margin-top:4px}
 @media(max-height:540px){.sky-intro{top:56%;gap:14px}.sky-intro h1{font-size:clamp(38px,5vw,62px)}}
-.get-started{display:inline-flex;align-items:center;justify-content:center;border:1px solid #fff;border-radius:999px;background:#fff;color:#000;font-weight:500;white-space:nowrap;transition:background .2s,border-color .2s,transform .2s}
+.get-started,.github-button{display:inline-flex;align-items:center;justify-content:center;border:1px solid #fff;border-radius:999px;font-weight:500;white-space:nowrap;transition:background .2s,border-color .2s,transform .2s}
+.get-started{background:#fff;color:#000}
+.github-button{background:transparent;color:#fff}
+.github-button:hover{background:#ffffff16}
 .get-started:hover{background:#f2f2f2;border-color:#f2f2f2}
-.get-started:active{transform:scale(.98)}
+.get-started:active,.github-button:active{transform:scale(.98)}
 .sky-start{min-height:40px;padding:8px 17px;font-size:16px;line-height:1.25}
 .sky-header{position:fixed;top:20px;left:0;width:100%;z-index:50;pointer-events:none}
 .sky-nav{position:relative;display:flex;align-items:center;justify-content:space-between;gap:30px;width:calc(100% - 72px);max-width:1600px;height:62px;margin:0 auto;padding:8px 0;border:1px solid transparent;border-radius:40px;background:transparent;pointer-events:auto;transition:width .7s var(--nav-ease),max-width .7s var(--nav-ease),height .7s var(--nav-ease),padding .7s var(--nav-ease),background .5s ease,border-color .5s ease,box-shadow .5s ease,backdrop-filter .5s ease}
@@ -46,7 +49,7 @@
 }
 @media(max-width:700px){.sky-hero{min-height:500px}.sky-backdrop{background-position:48% center}.sky-intro{gap:28px;width:calc(100% - 40px)}.sky-intro h1{max-width:540px;font-size:clamp(44px,8.5vw,60px)}}
 @media(max-width:460px){.sky-brand .brand-wordmark{display:none}.sky-brand .brand-mark{width:26px;height:26px}.sky-intro h1{font-size:clamp(40px,10vw,44px)}}
-@media(prefers-reduced-motion:reduce){.sky-header,.sky-nav,.sky-links a,.get-started{transition:none}}
+@media(prefers-reduced-motion:reduce){.sky-header,.sky-nav,.sky-links a,.get-started,.github-button{transition:none}}
 
 /* Editorial sections share typography and gutters. Changes of scale and
    background separate the chapters. */
@@ -324,8 +327,8 @@
   letter-spacing: -.045em;
 }
 .landing-footer h2 span { display: block; }
-.footer-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; }
-.landing-footer .get-started { min-height: 36px; padding: 6px 14px; font-size: 14px; }
+.landing-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+.landing-footer .sky-start { min-height: 36px; padding: 6px 14px; font-size: 14px; }
 @media (prefers-reduced-motion: no-preference) {
   .step-switch::before { transition: transform .42s var(--nav-ease); }
   .step-switch button { transition: color .28s ease; }

@@ -1,6 +1,6 @@
 import './landing.css';
 import { mountBenchmarks } from './landing-benchmarks.js';
-import { heroHeadline, landingSections, landingFooter } from './landing-content.js';
+import { githubButton, heroHeadline, landingSections, landingFooter } from './landing-content.js';
 
 // The scene is decorative art, separate from the explorer's NASA surface data.
 export function mountLanding(root, { logo }) {
@@ -27,7 +27,10 @@ export function mountLanding(root, { logo }) {
           <canvas class="sky-flights" aria-hidden="true"></canvas>
           <div class="sky-intro">
             <h1 id="hero-title">${heroHeadline}</h1>
-            <a class="get-started sky-start" href="/app">Get started</a>
+            <div class="landing-actions">
+              <a class="get-started sky-start" href="/app">Get started</a>
+              ${githubButton}
+            </div>
           </div>
         </section>
         ${landingSections()}
