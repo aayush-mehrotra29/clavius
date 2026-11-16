@@ -1,5 +1,10 @@
 # Vercel deployment
 
+Production: https://clavius-space.vercel.app
+
+Project: `clavius` in `aayushmw-3928s-projects` (Hobby). The connected GitHub
+repository is `aayush-mehrotra29/clavius`, with `main` as the production branch.
+
 The Vite frontend deploys to Vercel's Hobby plan with a free `vercel.app`
 address. Vercel uses `npm ci`, `npm run build` and the `dist` output directory.
 `vercel.json` serves `/app` and its nested routes through `index.html` while
