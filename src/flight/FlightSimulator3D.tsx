@@ -101,10 +101,10 @@ export function FlightSimulator3D({trajData, active}: {trajData: FlightSamples, 
     controls.minDistance = 2;
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.25);
     scene.add(ambientLight);
 
-    const sunLight = new THREE.DirectionalLight(0xffffff, 1.8);
+    const sunLight = new THREE.DirectionalLight(0xffffff, 2.5);
     sunLight.position.set(600, 300, 200);
     scene.add(sunLight);
 

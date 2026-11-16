@@ -48,7 +48,7 @@ export class SoftwareGlobe {
         const t = (b - Math.sqrt(disc)) / a;
         if (t < camera.near) continue;
         const n = this.normal.set(dx*t-center.x, dy*t-center.y, -t-center.z).multiplyScalar(1/radius);
-        const light = Math.sqrt(0.14 + 0.86 * Math.max(0, n.dot(sunCamera)));
+        const light = Math.sqrt(0.40 + 0.80 * Math.max(0, n.dot(sunCamera)));
         n.applyQuaternion(this.cameraToLocal);
         const src = source ? mapPixel(n.x, n.y, n.z, source.width, source.height) : 0;
         const dst = 4 * (j*w + i);

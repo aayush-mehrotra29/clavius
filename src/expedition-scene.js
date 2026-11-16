@@ -21,8 +21,8 @@ export class ExpeditionScene {
     this.renderer.shadowMap.enabled=true;
     host.prepend(this.renderer.domElement);
     this.space=new T.Scene();
-    this.globe=new T.Mesh(new T.SphereGeometry(globeRadius,192,128),new T.MeshStandardMaterial({color:0xdcdcdc,roughness:1}));
-    this.space.add(this.globe,new T.AmbientLight(0xffffff,.30));
+    this.globe=new T.Mesh(new T.SphereGeometry(globeRadius,192,128),new T.MeshStandardMaterial({color:0xffffff,roughness:1}));
+    this.space.add(this.globe,new T.AmbientLight(0xffffff,1.05));
     const key=new T.DirectionalLight(0xffffff,2.2);key.position.set(-1,-.45,1.4);this.space.add(key);
     const loader=new T.TextureLoader();
     this.texture=loader.load('/data/lroc-color.jpg',tex=>{tex.colorSpace=T.SRGBColorSpace;this.globe.material.map=tex;this.globe.material.needsUpdate=true;});
