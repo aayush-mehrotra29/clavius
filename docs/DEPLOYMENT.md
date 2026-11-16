@@ -33,7 +33,8 @@ the intended commit so unfinished local work is not included. Git integration
 can deploy future pushes to the production branch automatically.
 
 `.vercelignore` allows only the frontend, public assets, the unavailable-backend
-handler and web build configuration in CLI uploads. Raw caches, Python/native
+handler, the landing page's imported validation report and web build
+configuration in CLI uploads. Raw caches, Python/native
 runtimes, credentials and transient simulation work stay local. `.vercel/`
 is ignored by Git.
 

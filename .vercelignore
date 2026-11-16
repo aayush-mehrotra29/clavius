@@ -8,3 +8,9 @@
 !package-lock.json
 !vite.config.js
 !vercel.json
+# The landing page imports this committed validation report at build time.
+!docs
+/docs/*
+!/docs/validation
+/docs/validation/*
+!/docs/validation/reference-comparison.json
