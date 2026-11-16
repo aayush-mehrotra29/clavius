@@ -20,12 +20,12 @@ export function groundHeight(grid,east,north) {
   return v[k+n+1]+(1-a)*(v[k+n]-v[k+n+1])+(1-b)*(v[k+1]-v[k+n+1]);
 }
 
-export async function driveImageBlob(record, signal) {
+export async function driveImageBlob(record, signal, name = 'LROC mosaic') {
   const r=await fetch('/data/drive/'+record.file,{signal});
-  if(!r.ok)throw new Error('LROC mosaic download failed.');
+  if(!r.ok)throw new Error(name+' download failed.');
   const bytes=await r.arrayBuffer();
   const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),n=>n.toString(16).padStart(2,'0')).join('');
-  if(digest!==record.sha256)throw new Error('LROC mosaic checksum mismatch.');
+  if(digest!==record.sha256)throw new Error(name+' checksum mismatch.');
   return new Blob([bytes],{type:'image/png'});
 }
 

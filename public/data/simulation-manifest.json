@@ -1789,5 +1789,10 @@
     "url": "/data/horizons-geometry.json",
     "sha256": "8ec7bcafd513313541b644f8c6693d50aa8cc2bebe961922cad4fd7d0a6abe59",
     "role": "External geometric direction and range comparison at two nominal site origins."
+  },
+  "traverse_relief": {
+    "url": "/data/drive/traverse-relief.json",
+    "sha256": "3bb96dd496c7e5a471b3e78a099b9c927ed7e988f782f7f60b78f7573541c546",
+    "role": "Traverse map display. LROC/DLR 1 m orthoimagery and 2 m stereo relief and slope on nominal PGDA78 rover geometry."
   }
 }

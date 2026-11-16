@@ -105,3 +105,14 @@
 .exp-orbit:has(.lp-report) { position:absolute; inset:0; z-index:2; }
 
 @media(max-width:950px) { .lp-report .lp-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.route-layers { position:absolute; right:18px; top:22px; display:flex; gap:2px; background:#171719ed; border:1px solid #ffffff40; border-radius:999px; padding:3px; }
+.route-layers button { font:inherit; font-size:12px; padding:5px 12px; color:#ccc; border-radius:999px; }
+.route-layers [aria-pressed=true] { color:#171719; background:#eee; }
+.route-heading { padding-right:148px; }
+.route-legend { position:absolute; right:18px; top:65px; width:140px; padding:9px 13px; border-radius:12px; background:#141419ed; display:grid; grid-template-columns:repeat(3,1fr); color:#eee; font-size:10px; pointer-events:none; }
+.route-legend span:first-child,.route-legend i,.route-legend small { grid-column:1/-1; }
+.route-legend i { height:5px; border-radius:3px; margin:5px 0 2px; }
+.route-legend span:nth-child(4) { text-align:center; }
+.route-legend span:nth-child(5) { text-align:right; }
+.route-legend small { margin-top:3px; font-size:10px; color:#bbb; }
+@media(max-width:740px){ .route-layers{right:12px;top:12px}.route-heading{padding-right:125px}.route-legend{right:12px;top:51px;width:118px} }

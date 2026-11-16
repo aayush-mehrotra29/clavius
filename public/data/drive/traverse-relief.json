@@ -1,0 +1,145 @@
+{
+  "credit": "NASA/GSFC/Arizona State University; ESA Lunar Lander stereo products by DLR.",
+  "script": "scripts/prepare_traverse_relief.py",
+  "tilt_deg": 34,
+  "half_extent_m": 512,
+  "display_pitch_m": 0.5,
+  "projection": "Orthographic (east, north*cos(tilt) + nominal ENU up*sin(tilt)).",
+  "slope_encoding": "0 unavailable; (DN-1)/4 degrees, saturated at 63.5 degrees.",
+  "sites": {
+    "connecting-ridge": {
+      "product": "ESALL_CR1",
+      "latitude_deg": -89.44,
+      "longitude_deg": 222.8,
+      "catalogue": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_DTM_ESALL_CR1",
+      "sources": {
+        "stereo": {
+          "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/NAC_DTM/ESALL_CR1/NAC_DTM_ESALL_CR1.TIF",
+          "sha256": "fc57e2d4452bf2522ae7ed3a091e4f6dfc4eea6a989324edb06344689712a453",
+          "bytes": 25020674,
+          "spacing_m": 2.0,
+          "transform": [
+            2.0,
+            0.0,
+            -13381.0,
+            0.0,
+            -2.0,
+            -9539.0
+          ],
+          "nodata": -3.4028226550889045e+38,
+          "local_file": "ESALL_CR1.TIF"
+        },
+        "confidence": {
+          "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/NAC_DTM/ESALL_CR1/NAC_DTM_ESALL_CR1_CONF.IMG",
+          "sha256": "c1847418d7756b47d0abaeaea95e6f8c8af233924494c12f6b9fc33528b25410",
+          "bytes": 6257500,
+          "spacing_m": 2.0,
+          "transform": [
+            2.0,
+            0.0,
+            -13381.0,
+            0.0,
+            -2.0,
+            -9539.0
+          ],
+          "nodata": 0.0,
+          "local_file": "ESALL_CR1_CONF.IMG"
+        },
+        "ortho": {
+          "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/BROWSE/NAC_DTM/ESALL_CR1/NAC_DTM_ESALL_CR1_NACMOS_1M.TIF",
+          "sha256": "2b399a480f648170db35b51934710068c234125cabcd5f1fa4694e43c0a9ff44",
+          "bytes": 25040636,
+          "spacing_m": 1.0,
+          "transform": [
+            1.0,
+            0.0,
+            -13381.0,
+            0.0,
+            -1.0,
+            -9539.0
+          ],
+          "nodata": 0.0,
+          "local_file": "ESALL_CR1_ORTHO.TIF"
+        }
+      },
+      "terrain_sha256": "e20ebabb9725d1000497c2949acf4a840b87c77de98dffec1a2c3f2579bde820",
+      "relief": {
+        "file": "connecting-ridge-traverse-relief.png",
+        "sha256": "42ac35060a900591d6d5ea0e33f7a13c9224ab19fa0f1368fcafb7c61f1d6d04",
+        "bytes": 2755711
+      },
+      "slope": {
+        "file": "connecting-ridge-traverse-slope.png",
+        "sha256": "e6d40d0d965204cf9b871db97b0a690e723dd682a2eac6f45113a3b3d28f53f0",
+        "bytes": 892868
+      }
+    },
+    "shackleton-rim": {
+      "product": "ESALL_SR12",
+      "latitude_deg": -89.78487391500357,
+      "longitude_deg": 204.04052123431973,
+      "catalogue": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_DTM_ESALL_SR12",
+      "sources": {
+        "stereo": {
+          "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/NAC_DTM/ESALL_SR12/NAC_DTM_ESALL_SR12.TIF",
+          "sha256": "52d35898a61991bb13bd463156bd95a8c01be6806247247e891752f56fbb425c",
+          "bytes": 25020674,
+          "spacing_m": 2.0,
+          "transform": [
+            2.0,
+            0.0,
+            -5141.0,
+            0.0,
+            -2.0,
+            -4859.0
+          ],
+          "nodata": -3.4028226550889045e+38,
+          "local_file": "ESALL_SR12.TIF"
+        },
+        "confidence": {
+          "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/NAC_DTM/ESALL_SR12/NAC_DTM_ESALL_SR12_CONF.IMG",
+          "sha256": "fa312cd5ddc2c8322d5ac7e73968a84f89d3aa72da17358fe47f513efe15e8f0",
+          "bytes": 6257500,
+          "spacing_m": 2.0,
+          "transform": [
+            2.0,
+            0.0,
+            -5141.0,
+            0.0,
+            -2.0,
+            -4859.0
+          ],
+          "nodata": 0.0,
+          "local_file": "ESALL_SR12_CONF.IMG"
+        },
+        "ortho": {
+          "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/BROWSE/NAC_DTM/ESALL_SR12/NAC_DTM_ESALL_SR12_NACMOS_1M.TIF",
+          "sha256": "12f5517bcb55ede2090ac20f844624bece8934aec5467a15cf07df8cfb74815f",
+          "bytes": 25040636,
+          "spacing_m": 1.0,
+          "transform": [
+            1.0,
+            0.0,
+            -5141.0,
+            0.0,
+            -1.0,
+            -4859.0
+          ],
+          "nodata": 0.0,
+          "local_file": "ESALL_SR12_ORTHO.TIF"
+        }
+      },
+      "terrain_sha256": "57df2cfad6272c3eae0e5b7c96cde6662b6fcbba74a8e1db7ac57d234951bfe5",
+      "relief": {
+        "file": "shackleton-rim-traverse-relief.png",
+        "sha256": "16b06d287dd29abf656bdce068c1bdf488093e0a5a71791068eb24fef564f224",
+        "bytes": 2410627
+      },
+      "slope": {
+        "file": "shackleton-rim-traverse-slope.png",
+        "sha256": "6823ceb7a23325dd365f5e3c7b3720c65abf62185c64a1881fcde8101ee7a909",
+        "bytes": 953553
+      }
+    }
+  }
+}
