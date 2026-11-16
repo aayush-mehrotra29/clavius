@@ -159,7 +159,7 @@ def parse_urdf(raw,filename):
 def validate_profile(profile):
  schemas=[json.loads(p.read_text()) for p in (ROOT/'contracts/v0.1').glob('*.schema.json')]
  registry=Registry().with_resources((s['$id'],Resource.from_contents(s)) for s in schemas)
- schema=next(s for s in schemas if s['title']=='Robot capability profile')
+ schema=next(s for s in schemas if s.get('title')=='Robot capability profile')
  errors=list(Draft202012Validator(schema,registry=registry).iter_errors(profile))
  if errors:raise ImportIssue('; '.join(f'{".".join(map(str,e.path))}: {e.message}' for e in errors[:6]))
  p=profile['power'];m=profile['mobility']

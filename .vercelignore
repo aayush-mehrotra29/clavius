@@ -1,4 +1,4 @@
-# Only the web application belongs in a Vercel deployment.
+# Web/API source and pinned build dependencies; local caches remain excluded.
 /*
 !api
 !public

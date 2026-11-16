@@ -69,3 +69,18 @@ def test_invalid_identity_does_not_reach_blob(hosted):
  blob,_=hosted
  with pytest.raises(ValueError):store.get('../somewhere')
  assert not blob.objects
+
+def test_profile_schema_selection_is_independent_of_filesystem_order(monkeypatch):
+ from pathlib import Path
+ from clavius.paths import ROOT
+ from clavius.robots import validate_profile,ImportIssue
+ original=Path.glob
+ def common_first(path,pattern):
+  results=list(original(path,pattern))
+  if path==ROOT/'contracts/v0.1':results.sort(key=lambda p:p.name!='common.schema.json')
+  return iter(results)
+ monkeypatch.setattr(Path,'glob',common_first)
+ profile=json.loads((ROOT/'public/robots/clavius-r1-profile.json').read_text())
+ assert validate_profile(profile)==profile
+ profile.pop('mass_kg')
+ with pytest.raises(ImportIssue):validate_profile(profile)
