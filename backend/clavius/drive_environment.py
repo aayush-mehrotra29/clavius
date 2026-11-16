@@ -53,7 +53,7 @@ def drive_sample(terrain, et, east, north):
         "sun_elevation_deg": sun["elevation_deg"], "sun_horizon_deg": float(sh),
         "sun_angular_radius_deg": sun["angular_radius_deg"], "sun_distance_km": sun["distance_km"],
         "disk_fraction": solar_disk_fraction(sun["elevation_deg"], float(sh), sun["angular_radius_deg"]),
-        "earth_elevation_deg": earth["elevation_deg"], "earth_horizon_deg": float(eh),
+        "earth_azimuth_deg": earth["azimuth_deg"], "earth_elevation_deg": earth["elevation_deg"], "earth_horizon_deg": float(eh),
         "earth_center_visible": earth["elevation_deg"] > float(eh),
     }
 

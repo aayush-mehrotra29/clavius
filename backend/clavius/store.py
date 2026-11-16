@@ -10,7 +10,11 @@ with connection() as c:
 def canonical(value):return json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()
 def artifact(value):
  raw=canonical(value);h=hashlib.sha256(raw).hexdigest();p=RUNTIME/'artifacts'/f'{h}.json'
- if not p.exists():p.write_bytes(raw)
+ if not p.exists():
+  temporary=p.with_name(f'.{h}-{uuid.uuid4()}.tmp')
+  try:
+   temporary.write_bytes(raw);temporary.replace(p)
+  finally:temporary.unlink(missing_ok=True)
  return h
 
 def put(kind,value,identity=None):

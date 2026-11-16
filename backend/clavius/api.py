@@ -174,6 +174,20 @@ def submit(kind,request,worker,collection='run'):
 from .flight import FlightRequest,plan_flight,saved_flight_samples
 from .expedition import TraverseRequest,traverse
 
+from .landing_planner import LandingSearch, search_landings, selected_flight
+
+@app.post('/api/v1/landing-plans')
+def create_landing_plan(request:LandingSearch):
+ return submit('landing_plan',request.model_dump(),lambda p,c:search_landings(request,p,c),'expedition')
+
+@app.post('/api/v1/landing-plans/{identity}/options/{key}')
+def use_landing_option(identity:str,key:str):
+ plan=store.get(identity)
+ if not plan or plan.get('kind')!='landing_plan' or 'artifact_sha256' not in plan:
+  raise HTTPException(404,'Landing comparison not found.')
+ try:return selected_flight(plan,key)
+ except (ValueError,FileNotFoundError) as e:raise HTTPException(409,str(e)) from e
+
 @app.post('/api/v1/flights')
 def create_flight(request:FlightRequest):
  return submit('flight',request.model_dump(),lambda p,c:plan_flight(request,p,c),'expedition')
