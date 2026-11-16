@@ -8,7 +8,7 @@ class FakeBlob:
  def __init__(self):self.objects={}
  def put_blob(self,key,body,**kwargs):
   assert kwargs['access']=='private'
-  assert key not in self.objects
+  assert key not in self.objects or kwargs.get('allow_overwrite')
   self.objects[key]=bytes(body)
  def query_blobs(self,prefix):
   return [SimpleNamespace(pathname=p,url=p) for p in self.objects if p.startswith(prefix)]
@@ -69,6 +69,30 @@ def test_invalid_identity_does_not_reach_blob(hosted):
  blob,_=hosted
  with pytest.raises(ValueError):store.get('../somewhere')
  assert not blob.objects
+
+def test_cancellation_marker_is_visible_without_shared_process_memory(hosted):
+ assert not store.cancel_requested('job-one')
+ store.request_cancel('job-one');store.request_cancel('job-one')
+ assert store.cancel_requested('job-one')
+
+def test_hosted_job_finishes_before_returning_a_response(monkeypatch):
+ from clavius import api
+ monkeypatch.setenv('CLAVIUS_HOSTED','1')
+ monkeypatch.setattr(api.pool,'submit',lambda *a:pytest.fail('Hosted work escaped the request.'))
+ def work(progress,cancel):
+  progress(.5,'Computing');assert not cancel()
+  return {'name':'Hosted lifecycle acceptance','status':'test_fixture'}
+ result=api.submit('test_fixture',{},work)
+ assert result['state']=='completed'
+ assert api.store.get(result['result_id'])['name']=='Hosted lifecycle acceptance'
+
+def test_hosted_timeout_does_not_accept_a_result(monkeypatch):
+ from clavius import api
+ monkeypatch.setenv('CLAVIUS_HOSTED','1')
+ times=iter([0,271]);monkeypatch.setattr(api.time,'monotonic',lambda:next(times))
+ result=api.submit('test_fixture',{},lambda *_:pytest.fail('Expired work executed.'))
+ assert result['state']=='failed' and result['error']=='TimeoutError'
+ assert result['result_id'] is None
 
 def test_profile_schema_selection_is_independent_of_filesystem_order(monkeypatch):
  from pathlib import Path
